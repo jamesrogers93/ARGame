@@ -16,6 +16,10 @@
 		1A44DCCF1E55F34C0036E753 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCCD1E55F34C0036E753 /* LaunchScreen.storyboard */; };
 		1A44DCDA1E55F34C0036E753 /* ARGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCD91E55F34C0036E753 /* ARGameTests.swift */; };
 		1A44DCE51E55F34C0036E753 /* ARGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCE41E55F34C0036E753 /* ARGameUITests.swift */; };
+		1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF21E55F87E0036E753 /* MainMenuController.swift */; };
+		1A44DCF61E55FEC40036E753 /* objLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF51E55FEC40036E753 /* objLoader.swift */; };
+		1A44DCF91E5601C80036E753 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF81E5601C80036E753 /* Object.swift */; };
+		1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C1B1E57B46500E2FFBC /* Mesh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,11 @@
 		1A44DCE01E55F34C0036E753 /* ARGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A44DCE41E55F34C0036E753 /* ARGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameUITests.swift; sourceTree = "<group>"; };
 		1A44DCE61E55F34C0036E753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A44DCF21E55F87E0036E753 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
+		1A44DCF51E55FEC40036E753 /* objLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = objLoader.swift; sourceTree = "<group>"; };
+		1A44DCF81E5601C80036E753 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		1A755C1B1E57B46500E2FFBC /* Mesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
+		1A755C1E1E58441200E2FFBC /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +94,7 @@
 				1A44DCD81E55F34C0036E753 /* ARGameTests */,
 				1A44DCE31E55F34C0036E753 /* ARGameUITests */,
 				1A44DCBE1E55F34C0036E753 /* Products */,
+				1A755C1D1E58441100E2FFBC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,14 +111,16 @@
 		1A44DCBF1E55F34C0036E753 /* ARGame */ = {
 			isa = PBXGroup;
 			children = (
+				1A44DCF71E5601920036E753 /* Model */,
+				1A44DCF41E55F88E0036E753 /* Controllers */,
 				1A44DCC01E55F34C0036E753 /* AppDelegate.swift */,
 				1A44DCC21E55F34C0036E753 /* Shader.fsh */,
 				1A44DCC41E55F34C0036E753 /* Shader.vsh */,
-				1A44DCC61E55F34C0036E753 /* GameViewController.swift */,
 				1A44DCC81E55F34C0036E753 /* Main.storyboard */,
 				1A44DCCB1E55F34C0036E753 /* Assets.xcassets */,
 				1A44DCCD1E55F34C0036E753 /* LaunchScreen.storyboard */,
 				1A44DCD01E55F34C0036E753 /* Info.plist */,
+				1A44DCF51E55FEC40036E753 /* objLoader.swift */,
 			);
 			path = ARGame;
 			sourceTree = "<group>";
@@ -129,6 +141,32 @@
 				1A44DCE61E55F34C0036E753 /* Info.plist */,
 			);
 			path = ARGameUITests;
+			sourceTree = "<group>";
+		};
+		1A44DCF41E55F88E0036E753 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1A44DCF21E55F87E0036E753 /* MainMenuController.swift */,
+				1A44DCC61E55F34C0036E753 /* GameViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		1A44DCF71E5601920036E753 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A44DCF81E5601C80036E753 /* Object.swift */,
+				1A755C1B1E57B46500E2FFBC /* Mesh.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1A755C1D1E58441100E2FFBC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A755C1E1E58441200E2FFBC /* libassimp.3.3.1.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +308,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */,
+				1A44DCF91E5601C80036E753 /* Object.swift in Sources */,
+				1A44DCF61E55FEC40036E753 /* objLoader.swift in Sources */,
 				1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */,
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,
+				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,8 +466,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3BPNYRZL37;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -437,8 +481,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3BPNYRZL37;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -522,6 +568,7 @@
 				1A44DCEB1E55F34C0036E753 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A44DCEC1E55F34C0036E753 /* Build configuration list for PBXNativeTarget "ARGameTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +577,7 @@
 				1A44DCEE1E55F34C0036E753 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A44DCEF1E55F34C0036E753 /* Build configuration list for PBXNativeTarget "ARGameUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +586,7 @@
 				1A44DCF11E55F34C0036E753 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
