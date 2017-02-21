@@ -16,11 +16,11 @@ class Object
     private var scale:GLKMatrix4 = GLKMatrix4Identity
     private var rotate:GLKMatrix4 = GLKMatrix4Identity
     
-    private var mesh:Mesh
+    private var GLmodel:Model
     
-    init(_ mesh: Mesh)
+    init(_ GLmodel: Model)
     {
-        self.mesh = mesh
+        self.GLmodel = GLmodel
     }
     
     public func getModel() -> GLKMatrix4
@@ -56,7 +56,7 @@ class Object
         // Set model in renderer
         effect?.transform.modelviewMatrix = self.model
         
-        self.mesh.draw(effect: effect)
+        self.GLmodel.draw(effect)
     }
 }
 

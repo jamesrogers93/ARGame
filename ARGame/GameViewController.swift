@@ -13,7 +13,7 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
     return UnsafeRawPointer(bitPattern: i)
 }
 
-class GameViewController: GLKViewController {
+@objc class GameViewController: GLKViewController {
     
     var context: EAGLContext? = nil
     var effect: GLKBaseEffect? = nil
@@ -77,21 +77,8 @@ class GameViewController: GLKViewController {
         let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 0.1, 100.0)
         self.effect?.transform.projectionMatrix = projectionMatrix
         
-        var vertices: Array<Vertex> = Array()
-        var indices: Array<GLuint> = Array()
-        
-        //Populate Vertex array
-        vertices.append(Vertex(GLKVector3Make(-0.5, -0.5, 0.5), GLKVector3Make(0.0, 0.0, 1.0), GLKVector2Make(0.0, 0.0)))
-        vertices.append(Vertex(GLKVector3Make(-0.5, 0.5, 0.5), GLKVector3Make(0.0, 0.0, 1.0), GLKVector2Make(0.0, 0.0)))
-        vertices.append(Vertex(GLKVector3Make(0.5, 0.5, 0.5), GLKVector3Make(0.0, 0.0, 1.0), GLKVector2Make(0.0, 0.0)))
-        vertices.append(Vertex(GLKVector3Make(0.5, -0.5, 0.5), GLKVector3Make(0.0, 0.0, 1.0), GLKVector2Make(0.0, 0.0)))
-        
-        // Populate indices array
-        indices.append(0); indices.append(1); indices.append(2)
-        indices.append(2); indices.append(3); indices.append(0)
-        
-        self.obj = Object(Mesh(vertices, indices))
-
+        // Create object with monkey model
+        self.obj = Object(ModelLoader.loadModelFromFile("robot"))
     }
     
     func tearDownGL() {
@@ -102,12 +89,14 @@ class GameViewController: GLKViewController {
         
     }
     
+    var rotation: Float = 0.0
     // Update view in here
     func update()
     {
         self.obj?.translate(GLKVector3Make(0.0, 0.0, -5.5))
-        //self.obj?.rotate(0.5, GLKVector3Make(1.0, 1.0, 0.0))
+        self.obj?.rotate(rotation, GLKVector3Make(0.0, 1.0, 0.0))
         //self.obj?.scale(GLKVector3Make(1.5, 0.5, 1.0))
+        rotation+=0.01
     }
     
     // Draw OpenGL content here
