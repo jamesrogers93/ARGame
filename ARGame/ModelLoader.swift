@@ -11,13 +11,16 @@ import SceneKit
 
 class ModelLoader
 {
-    
-    static public func loadModelFromFile(_ path: String?) -> Model
+    /**  Loads a model from file using the Assimp library.
+     *
+     *  @param resource Name of the resource to be loaded.
+     *  @return The loaded model.
+     */
+    static public func loadModelFromFile(_ resource: String?) -> Model
     {
         // Convert Swift string to C string
-        let path2 = Bundle.main.path(forResource: path, ofType: "obj")
-        
-        let cpath = path2?.cString(using: .utf8)
+        let path = Bundle.main.path(forResource: resource, ofType: "obj")
+        let cpath = path?.cString(using: .utf8)
         
         // Load model using C code
         let loader = UnsafeRawPointer(initAssimpModelLoader(cpath))
@@ -57,6 +60,9 @@ class ModelLoader
             // Add mesh to new mesh array
             meshes.append(Mesh(vertices, indices))
         }
+        
+        // Destroy assimp model
+        deinitAssimpModelLoader(loader)
         
         return Model(meshes);
     }
