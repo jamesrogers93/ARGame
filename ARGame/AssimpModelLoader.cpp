@@ -98,10 +98,10 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
         aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
         // Diffuse map
-        std::string diffuseMap = this->loadMaterialTextures(material, aiTextureType_DIFFUSE);
+        std::string diffuseMap = this->loadMaterialTexture(material, aiTextureType_DIFFUSE);
         
         // Specular map
-        std::string specularMap = this->loadMaterialTextures(material, aiTextureType_SPECULAR);
+        std::string specularMap = this->loadMaterialTexture(material, aiTextureType_SPECULAR);
         
         // Return mesh with texture maps if they exist
         if(!diffuseMap.empty() && !specularMap.empty())
@@ -114,7 +114,7 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
 
 // Checks all material textures of a given type and loads the textures if they're not loaded yet.
 // The required info is returned as a Texture struct.
-std::string AssimpModelLoader::loadMaterialTextures(aiMaterial* mat, aiTextureType type)
+std::string AssimpModelLoader::loadMaterialTexture(aiMaterial* mat, aiTextureType type)
 {
     
     // Check if texture type exists

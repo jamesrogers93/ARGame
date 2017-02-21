@@ -44,6 +44,12 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
         self.setupGL()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
+    {
+        // Update the projection matrix
+        self.setupProjectionMatrix(size.width, size.height)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -59,8 +65,8 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
         }
     }
     
-    func setupGL() {
-        
+    func setupGL()
+    {
         // Set current GL context
         EAGLContext.setCurrent(self.context)
         
@@ -72,21 +78,27 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
         // Allow depth testing
         glEnable(GLenum(GL_DEPTH_TEST))
         
-        // Set up projection matrix
-        let aspect = fabsf(Float(self.view.bounds.size.width / self.view.bounds.size.height))
-        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 0.1, 100.0)
-        self.effect?.transform.projectionMatrix = projectionMatrix
+        // Setup the projection matrix
+        self.setupProjectionMatrix(self.view.bounds.size.width, self.view.bounds.size.height)
         
         // Create object with monkey model
         self.obj = Object(ModelLoader.loadModelFromFile("robot"))
     }
     
-    func tearDownGL() {
+    func setupProjectionMatrix(_ width:CGFloat, _ height:CGFloat)
+    {
+        // Set up projection matrix
+        let aspect = fabsf(Float(width / height))
+        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 0.1, 100.0)
+        self.effect?.transform.projectionMatrix = projectionMatrix
+    }
+    
+    func tearDownGL()
+    {
         EAGLContext.setCurrent(self.context)
         
         // Delete renderer
         self.effect = nil
-        
     }
     
     var rotation: Float = 0.0
