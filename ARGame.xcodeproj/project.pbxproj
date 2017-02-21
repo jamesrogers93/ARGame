@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC01E55F34C0036E753 /* AppDelegate.swift */; };
-		1A44DCC31E55F34C0036E753 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCC21E55F34C0036E753 /* Shader.fsh */; };
-		1A44DCC51E55F34C0036E753 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCC41E55F34C0036E753 /* Shader.vsh */; };
 		1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC61E55F34C0036E753 /* GameViewController.swift */; };
 		1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCC81E55F34C0036E753 /* Main.storyboard */; };
 		1A44DCCC1E55F34C0036E753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCCB1E55F34C0036E753 /* Assets.xcassets */; };
@@ -17,9 +15,19 @@
 		1A44DCDA1E55F34C0036E753 /* ARGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCD91E55F34C0036E753 /* ARGameTests.swift */; };
 		1A44DCE51E55F34C0036E753 /* ARGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCE41E55F34C0036E753 /* ARGameUITests.swift */; };
 		1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF21E55F87E0036E753 /* MainMenuController.swift */; };
-		1A44DCF61E55FEC40036E753 /* objLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF51E55FEC40036E753 /* objLoader.swift */; };
+		1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF51E55FEC40036E753 /* ModelLoader.swift */; };
 		1A44DCF91E5601C80036E753 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF81E5601C80036E753 /* Object.swift */; };
+		1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B66FD1E5BAD06000463E3 /* monkey.mtl */; };
+		1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B66FE1E5BAD06000463E3 /* monkey.obj */; };
+		1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67011E5BADCE000463E3 /* cube.mtl */; };
+		1A5B67041E5BADCE000463E3 /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67021E5BADCE000463E3 /* cube.obj */; };
+		1A5B67071E5C4045000463E3 /* robot.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67051E5C4045000463E3 /* robot.mtl */; };
+		1A5B67081E5C4046000463E3 /* robot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67061E5C4045000463E3 /* robot.obj */; };
 		1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C1B1E57B46500E2FFBC /* Mesh.swift */; };
+		1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C221E59C95F00E2FFBC /* libassimp-fat.a */; };
+		1A755C251E59CD1300E2FFBC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C241E59CD1300E2FFBC /* Model.swift */; };
+		1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */; };
+		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +50,6 @@
 /* Begin PBXFileReference section */
 		1A44DCBD1E55F34C0036E753 /* ARGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A44DCC01E55F34C0036E753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1A44DCC21E55F34C0036E753 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
-		1A44DCC41E55F34C0036E753 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		1A44DCC61E55F34C0036E753 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1A44DCC91E55F34C0036E753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A44DCCB1E55F34C0036E753 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,10 +62,26 @@
 		1A44DCE41E55F34C0036E753 /* ARGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameUITests.swift; sourceTree = "<group>"; };
 		1A44DCE61E55F34C0036E753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A44DCF21E55F87E0036E753 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
-		1A44DCF51E55FEC40036E753 /* objLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = objLoader.swift; sourceTree = "<group>"; };
+		1A44DCF51E55FEC40036E753 /* ModelLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
 		1A44DCF81E5601C80036E753 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		1A5B66F81E5BA82D000463E3 /* cube.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.mtl; path = ARGame/cube.mtl; sourceTree = "<group>"; };
+		1A5B66F91E5BA82D000463E3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = ARGame/cube.obj; sourceTree = "<group>"; };
+		1A5B66FD1E5BAD06000463E3 /* monkey.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = monkey.mtl; path = Assets/monkey.mtl; sourceTree = "<group>"; };
+		1A5B66FE1E5BAD06000463E3 /* monkey.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = monkey.obj; path = Assets/monkey.obj; sourceTree = "<group>"; };
+		1A5B67011E5BADCE000463E3 /* cube.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.mtl; path = Assets/cube.mtl; sourceTree = "<group>"; };
+		1A5B67021E5BADCE000463E3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = Assets/cube.obj; sourceTree = "<group>"; };
+		1A5B67051E5C4045000463E3 /* robot.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = robot.mtl; path = Assets/robot.mtl; sourceTree = "<group>"; };
+		1A5B67061E5C4045000463E3 /* robot.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = robot.obj; path = Assets/robot.obj; sourceTree = "<group>"; };
 		1A755C1B1E57B46500E2FFBC /* Mesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
 		1A755C1E1E58441200E2FFBC /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
+		1A755C201E592D7300E2FFBC /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimp.a; path = ../Dependencies/assimp/lib/iOS/x86_64/libassimp.a; sourceTree = "<group>"; };
+		1A755C221E59C95F00E2FFBC /* libassimp-fat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libassimp-fat.a"; path = "../Dependencies/assimp/lib/iOS/libassimp-fat.a"; sourceTree = "<group>"; };
+		1A755C241E59CD1300E2FFBC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpModelLoader.cpp; sourceTree = "<group>"; };
+		1A755C291E59E0A100E2FFBC /* AssimpModelLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AssimpModelLoader.hpp; sourceTree = "<group>"; };
+		1A755C2B1E5A08D300E2FFBC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		1A755C2D1E5A163800E2FFBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderBridgeC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModelLoaderBridgeC.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */,
+				1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,16 +135,14 @@
 		1A44DCBF1E55F34C0036E753 /* ARGame */ = {
 			isa = PBXGroup;
 			children = (
+				1A5B66FC1E5BACF4000463E3 /* Assets */,
 				1A44DCF71E5601920036E753 /* Model */,
 				1A44DCF41E55F88E0036E753 /* Controllers */,
 				1A44DCC01E55F34C0036E753 /* AppDelegate.swift */,
-				1A44DCC21E55F34C0036E753 /* Shader.fsh */,
-				1A44DCC41E55F34C0036E753 /* Shader.vsh */,
 				1A44DCC81E55F34C0036E753 /* Main.storyboard */,
 				1A44DCCB1E55F34C0036E753 /* Assets.xcassets */,
 				1A44DCCD1E55F34C0036E753 /* LaunchScreen.storyboard */,
 				1A44DCD01E55F34C0036E753 /* Info.plist */,
-				1A44DCF51E55FEC40036E753 /* objLoader.swift */,
 			);
 			path = ARGame;
 			sourceTree = "<group>";
@@ -155,18 +177,50 @@
 		1A44DCF71E5601920036E753 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1A755C261E59E06A00E2FFBC /* ModelLoader */,
 				1A44DCF81E5601C80036E753 /* Object.swift */,
 				1A755C1B1E57B46500E2FFBC /* Mesh.swift */,
+				1A755C241E59CD1300E2FFBC /* Model.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		1A5B66FC1E5BACF4000463E3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				1A5B67051E5C4045000463E3 /* robot.mtl */,
+				1A5B67061E5C4045000463E3 /* robot.obj */,
+				1A5B67011E5BADCE000463E3 /* cube.mtl */,
+				1A5B67021E5BADCE000463E3 /* cube.obj */,
+				1A5B66FD1E5BAD06000463E3 /* monkey.mtl */,
+				1A5B66FE1E5BAD06000463E3 /* monkey.obj */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		1A755C1D1E58441100E2FFBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A5B66F81E5BA82D000463E3 /* cube.mtl */,
+				1A5B66F91E5BA82D000463E3 /* cube.obj */,
+				1A755C2D1E5A163800E2FFBC /* libz.tbd */,
+				1A755C2B1E5A08D300E2FFBC /* OpenGLES.framework */,
+				1A755C221E59C95F00E2FFBC /* libassimp-fat.a */,
+				1A755C201E592D7300E2FFBC /* libassimp.a */,
 				1A755C1E1E58441200E2FFBC /* libassimp.3.3.1.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1A755C261E59E06A00E2FFBC /* ModelLoader */ = {
+			isa = PBXGroup;
+			children = (
+				1A44DCF51E55FEC40036E753 /* ModelLoader.swift */,
+				1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */,
+				1A755C291E59E0A100E2FFBC /* AssimpModelLoader.hpp */,
+				1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderBridgeC.h */,
+			);
+			name = ModelLoader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +292,7 @@
 					1A44DCBC1E55F34C0036E753 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 3BPNYRZL37;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					1A44DCD41E55F34C0036E753 = {
@@ -280,10 +335,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */,
-				1A44DCC51E55F34C0036E753 /* Shader.vsh in Resources */,
+				1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */,
+				1A5B67071E5C4045000463E3 /* robot.mtl in Resources */,
+				1A5B67081E5C4046000463E3 /* robot.obj in Resources */,
 				1A44DCCC1E55F34C0036E753 /* Assets.xcassets in Resources */,
+				1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */,
+				1A5B67041E5BADCE000463E3 /* cube.obj in Resources */,
 				1A44DCCF1E55F34C0036E753 /* LaunchScreen.storyboard in Resources */,
-				1A44DCC31E55F34C0036E753 /* Shader.fsh in Resources */,
+				1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,9 +367,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A755C251E59CD1300E2FFBC /* Model.swift in Sources */,
 				1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */,
 				1A44DCF91E5601C80036E753 /* Object.swift in Sources */,
-				1A44DCF61E55FEC40036E753 /* objLoader.swift in Sources */,
+				1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */,
+				1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */,
 				1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */,
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,
 				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
@@ -465,13 +526,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3BPNYRZL37;
-				HEADER_SEARCH_PATHS = "";
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = /Users/James/Documents/University/Advanced_Computer_Science/Year_1/Comupter_Games/Coursework/Dependencies/assimp/include;
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/James/Documents/University/Advanced_Computer_Science/Year_1/Comupter_Games/Coursework/Dependencies/assimp/lib/iOS,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ARGame/AssimpModelLoaderBridgeC.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -480,13 +549,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3BPNYRZL37;
-				HEADER_SEARCH_PATHS = "";
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = /Users/James/Documents/University/Advanced_Computer_Science/Year_1/Comupter_Games/Coursework/Dependencies/assimp/include;
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/James/Documents/University/Advanced_Computer_Science/Year_1/Comupter_Games/Coursework/Dependencies/assimp/lib/iOS,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ARGame/AssimpModelLoaderBridgeC.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

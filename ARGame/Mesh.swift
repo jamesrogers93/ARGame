@@ -28,7 +28,7 @@ struct Vertex
     }
 };
 
-class Mesh
+@objc class Mesh : NSObject
 {
     
     private var vertices: Array<Vertex>
@@ -43,6 +43,8 @@ class Mesh
         self.vertices = vertices
         self.indices = indices
         
+        super.init()
+        
         self.setupMesh()
     }
     
@@ -53,7 +55,7 @@ class Mesh
         glDeleteVertexArraysOES(1, &self.VAO)
     }
     
-    public func draw(effect: GLKBaseEffect?)
+    public func draw(_ effect: GLKBaseEffect?)
     {
         // Bind vertex array for drawing
         glBindVertexArrayOES(VAO)
