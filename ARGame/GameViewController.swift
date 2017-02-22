@@ -13,14 +13,17 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
     return UnsafeRawPointer(bitPattern: i)
 }
 
-@objc class GameViewController: GLKViewController {
+class GameViewController: GLKViewController {
     
     var context: EAGLContext? = nil
     var effect: GLKBaseEffect? = nil
     
     var obj: Object? = nil
     
-    deinit {
+    var arView: ARHandler = ARHandler()
+    
+    deinit
+    {
         self.tearDownGL()
         
         if EAGLContext.current() === self.context {
@@ -28,7 +31,8 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
         }
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         self.context = EAGLContext(api: .openGLES2)
@@ -42,6 +46,9 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
         view.drawableDepthFormat = .format24
         
         self.setupGL()
+        
+        self.arView.onViewLoad()
+        self.arView.start()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)

@@ -6,8 +6,8 @@
 //  Copyright © 2017 James Rogers. All rights reserved.
 //
 
-#ifndef AssimpModelLoaderBridgeC_h
-#define AssimpModelLoaderBridgeC_h
+#ifndef AssimpModelLoaderCInterface_h
+#define AssimpModelLoaderCInterface_h
 
 #ifdef __cplusplus
 extern "C" {
@@ -99,3 +99,18 @@ extern "C" {
 #endif
 
 #endif /* AssimpModelLoaderBridge2_h */
+
+
+
+// ARHandler Bridge
+
+//#ifndef ARHandler_h
+//#define ARHandler_h
+
+//#import <Foundation/Foundation.h>
+//#import <QuartzCore/QuartzCore.h>
+//#import <AR/ar.h>
+//#import <AR/video.h>
+//#import <AR/gsub_es.h>
+//#import <AR/sys/CameraVideo.h>
+/* ARMarkerTracker_h */
