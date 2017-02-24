@@ -21,6 +21,7 @@ class GameViewController: GLKViewController {
     var obj: Object? = nil
     
     var arView: ARHandler = ARHandler()
+    var arCameraFeed: ARCameraFeed? = nil
     
     deinit
     {
@@ -47,7 +48,33 @@ class GameViewController: GLKViewController {
         
         self.setupGL()
         
+        // Create object with monkey model
+        self.obj = Object(ModelLoader.loadModelFromFile("robot"))
+        
         self.arView.onViewLoad()
+        //self.arCameraFeed = ARCameraFeed(self.arView.camProjection)
+        self.arCameraFeed = ARCameraFeed((self.effect?.transform.projectionMatrix)!)
+
+        let opt:[String : NSNumber] = [GLKTextureLoaderOriginBottomLeft : false, GLKTextureLoaderApplyPremultiplication : false]
+        //let pic = UIImage(named: "Car.png")!.cgImage! //pic needs to be CGImage, not UIImage
+        let url = URL(string: "https://www.qdtricks.net/wp-content/uploads/2016/05/hd-road-wallpaper.jpg")
+        let tex:GLKTextureInfo?
+        do
+        {
+            tex = try GLKTextureLoader.texture(withContentsOf: url!, options: opt) //put `try` just before the method call
+            //arCameraFeed?.texture = (tex?.name)!
+            //arCameraFeed?.setCameraBuffer(tex!)
+        } catch
+        {
+            tex = nil
+        }
+}
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        // Start the AR handler
         self.arView.start()
     }
     
@@ -87,9 +114,6 @@ class GameViewController: GLKViewController {
         
         // Setup the projection matrix
         self.setupProjectionMatrix(self.view.bounds.size.width, self.view.bounds.size.height)
-        
-        // Create object with monkey model
-        self.obj = Object(ModelLoader.loadModelFromFile("robot"))
     }
     
     func setupProjectionMatrix(_ width:CGFloat, _ height:CGFloat)
@@ -112,6 +136,24 @@ class GameViewController: GLKViewController {
     // Update view in here
     func update()
     {
+        // Update ARCameraFeed
+        arCameraFeed?.texture = arView.camBufferTexture
+        
+        let opt:[String : NSNumber] = [GLKTextureLoaderOriginBottomLeft : false, GLKTextureLoaderApplyPremultiplication : false]
+        let data:Data = arView.camBuffer
+        let tex:GLKTextureInfo?
+        do
+        {
+            tex = try GLKTextureLoader.texture(withContentsOf: data, options: opt) //put `try` just before the method call
+            arCameraFeed?.texture = (tex?.name)!
+            //arCameraFeed?.setCameraBuffer(tex!)
+        } catch
+        {
+            tex = nil
+        }
+
+        
+        
         self.obj?.translate(GLKVector3Make(0.0, 0.0, -5.5))
         self.obj?.rotate(rotation, GLKVector3Make(0.0, 1.0, 0.0))
         //self.obj?.scale(GLKVector3Make(1.5, 0.5, 1.0))
@@ -124,5 +166,7 @@ class GameViewController: GLKViewController {
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT) | GLbitfield(GL_DEPTH_BUFFER_BIT))
         
         self.obj?.draw(self.effect)
+        
+        self.arCameraFeed?.draw()
     }
 }

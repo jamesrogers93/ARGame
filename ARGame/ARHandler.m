@@ -9,8 +9,16 @@
 
 #import "ARHandler.h"
 
+#define VIEW_DISTANCE_MIN        5.0f          // Objects closer to the camera than this will not be displayed.
+#define VIEW_DISTANCE_MAX        2000.0f        // Objects further away from the camera than this will not be displayed.
+
+
 @implementation ARHandler
 {
+    // Loop handlers
+    BOOL            running;
+    BOOL            videoPaused;
+    
     // Video acquisition
     AR2VideoParamT *gVid;
     
@@ -27,10 +35,21 @@
     
     // Camera
     ARParamLT      *gCparamLT;
+    GLsizei         camWidth;
+    GLsizei         camHeight;
 }
+
+@synthesize camProjection;
+@synthesize camBuffer;
+@synthesize camBufferTexture;
+
 
 - (void) onViewLoad
 {
+    // Loop handlers
+    running = FALSE;
+    videoPaused = FALSE;
+    
     // Video
     gVid = NULL;
     
@@ -44,6 +63,62 @@
     
     // Markers
     markers = nil;
+    
+    // Camera
+    gCparamLT = NULL;
+    camWidth = 0;
+    camHeight = 0;
+    camBuffer = 0;
+    camBufferTexture = 0;
+    
+    // Start ARToolKit
+    [self start];
+}
+
+- (void) startRunLoop
+{
+    if (!running) {
+        // After starting the video, new frames will invoke cameraVideoTookPicture:userData:.
+        if (ar2VideoCapStart(gVid) != 0) {
+            NSLog(@"Error: Unable to begin camera data capture.\n");
+            [self stop];
+            return;
+        }
+        running = TRUE;
+    }
+}
+
+- (void) stopRunLoop
+{
+    if (running) {
+        ar2VideoCapStop(gVid);
+        running = FALSE;
+    }
+}
+
+- (BOOL) isPaused
+{
+    if (!running) return (NO);
+    
+    return (videoPaused);
+}
+
+- (void) setPaused:(BOOL)paused
+{
+    if (!running) return;
+    
+    if (videoPaused != paused)
+    {
+        if (paused)
+            ar2VideoCapStop(gVid);
+        else
+            ar2VideoCapStart(gVid);
+        
+        videoPaused = paused;
+#  ifdef DEBUG
+        NSLog(@"Run loop was %s.\n", (paused ? "PAUSED" : "UNPAUSED"));
+#  endif
+    }
 }
 
 static void startCallback(void *userData);
@@ -54,7 +129,7 @@ static void startCallback(void *userData);
     char *vconf = "";
     if (!(gVid = ar2VideoOpenAsync(vconf, startCallback, (__bridge void *)(self)))) {
         NSLog(@"Error: Unable to open connection to camera.\n");
-        //[self stop];
+        [self stop];
         return;
     }
 }
@@ -72,7 +147,7 @@ static void startCallback(void *userData)
     int xsize, ysize;
     if (ar2VideoGetSize(gVid, &xsize, &ysize) < 0) {
         NSLog(@"Error: ar2VideoGetSize.\n");
-        //[self stop];
+        [self stop];
         return;
     }
     
@@ -80,7 +155,7 @@ static void startCallback(void *userData)
     AR_PIXEL_FORMAT pixFormat = ar2VideoGetPixelFormat(gVid);
     if (pixFormat == AR_PIXEL_FORMAT_INVALID) {
         NSLog(@"Error: Camera is using unsupported pixel format.\n");
-     //   [self stop];
+        [self stop];
         return;
     }
     
@@ -105,7 +180,7 @@ static void startCallback(void *userData)
         NSLog(@"Unable to automatically determine camera parameters. Using default.\n");
         if (arParamLoad([filename cStringUsingEncoding:1], 1, &cparam) < 0) {
             NSLog(@"Error: Unable to load parameter file %@ for camera.\n", filename);
-          //  [self stop];
+            [self stop];
             return;
         }
     }
@@ -122,24 +197,24 @@ static void startCallback(void *userData)
 #endif
     if ((gCparamLT = arParamLTCreate(&cparam, AR_PARAM_LT_DEFAULT_OFFSET)) == NULL) {
         NSLog(@"Error: arParamLTCreate.\n");
-     //   [self stop];
+        [self stop];
         return;
     }
     
     // AR init.
     if ((gARHandle = arCreateHandle(gCparamLT)) == NULL) {
         NSLog(@"Error: arCreateHandle.\n");
-    //    [self stop];
+        [self stop];
         return;
     }
     if (arSetPixelFormat(gARHandle, pixFormat) < 0) {
         NSLog(@"Error: arSetPixelFormat.\n");
-    //    [self stop];
+        [self stop];
         return;
     }
     if ((gAR3DHandle = ar3DCreateHandle(&gCparamLT->param)) == NULL) {
         NSLog(@"Error: ar3DCreateHandle.\n");
-     //   [self stop];
+        [self stop];
         return;
     }
     
@@ -148,46 +223,103 @@ static void startCallback(void *userData)
     CameraVideo *cameraVideo = ar2VideoGetNativeVideoInstanceiPhone(gVid->device.iPhone);
     if (!cameraVideo) {
         NSLog(@"Error: Unable to set up AR camera: missing CameraVideo instance.\n");
-       // [self stop];
+        [self stop];
         return;
     }
-}
-- (void) startVideoCapture
-{
-    // After starting the video, new frames will invoke cameraVideoTookPicture:userData:.
-    if (ar2VideoCapStart(gVid) != 0) {
-        NSLog(@"Error: Unable to begin camera data capture.\n");
-        return;
-    }
+    
+    // The camera will be started by -startRunLoop.
+    [cameraVideo setTookPictureDelegate:self];
+    [cameraVideo setTookPictureDelegateUserData:NULL];
+    
+    // Allocate the camBuffer
+    ////////////////////////// Not here?
+    
+    // Set camera projection matrix from calibrated camera paramters
+    GLfloat frustum[16];
+    arglCameraFrustumRHf(&gCparamLT->param, VIEW_DISTANCE_MIN, VIEW_DISTANCE_MAX, frustum);
+    camProjection = GLKMatrix4Make(frustum[0], frustum[1], frustum[2], frustum[3], frustum[4], frustum[5], frustum[6], frustum[7], frustum[8], frustum[9], frustum[10], frustum[11], frustum[12], frustum[13], frustum[14], frustum[15]);
+    
+    //camProjection = GLKMatrix4Make(frustum[0], frustum[4], frustum[8], frustum[12], frustum[1], frustum[5], frustum[9], frustum[13], frustum[2], frustum[6], frustum[10], frustum[14], frustum[3], frustum[7], frustum[11], frustum[15]);
+    
+    // Set camera size
+    camWidth = gARHandle->xsize;
+    camHeight = gARHandle->ysize;
+    
+    // Start run loop
+    [self startRunLoop];
 }
 
-- (void) endVideoCapture
+- (void) cameraVideoTookPicture:(id)sender userData:(void *)data
 {
-    ar2VideoCapStop(gVid);
+    AR2VideoBufferT *buffer = ar2VideoGetImage(gVid);
+    if (buffer)
+        [self processFrame:buffer];
 }
-
 
 - (void) processFrame:(AR2VideoBufferT *)buffer
 {
     if (buffer) {
         
-        // NEED TO MODIFY THIS
-        // Upload the frame to OpenGL.
-        //if (buffer->bufPlaneCount == 2)
-        //    arglPixelBufferDataUploadBiPlanar(arglContextSettings, buffer->bufPlanes[0], buffer->bufPlanes[1]);
-        //else
-        //    arglPixelBufferDataUpload(arglContextSettings, buffer->buff);
+        //camBuffer = buffer->buff;
+        //camBuffer = [NSData dataWithBytesNoCopy:buffer->buff length:(camWidth * camHeight * 4) freeWhenDone:YES];
+        camBuffer = [NSData dataWithBytes:buffer->buff length:(camWidth*camHeight*4)];
+        // Bind camera buff to GL texture
         
+        //glGenTextures(1, &camBufferTexture);
+        //glBindTexture(GL_TEXTURE_2D, camBufferTexture);
+        
+        //    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            //glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, camWidth, camHeight, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, buffer->buff);
+        //    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, camWidth, camHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer->buff);
+        
+        //glBindTexture(GL_TEXTURE_2D, 0);
+        
+       // if(camBufferTexture == 0)
+       // {
+       //     return;
+       // }
         
         // Detect the markers in the video frame.
         if (arDetectMarker(gARHandle, buffer->buff) < 0)
             return;
-        int markerNum = arGetMarkerNum(gARHandle);
-        ARMarkerInfo *markerInfo = arGetMarker(gARHandle);
+        
+        //int markerNum = arGetMarkerNum(gARHandle);
+        //ARMarkerInfo *markerInfo = arGetMarker(gARHandle);
         
         // The display has changed.
         // NEED TO MODIFY THIS
         //[glView drawView:self];
+    }
+}
+
+- (void)stop
+{
+    [self stopRunLoop];
+    
+    if (gARHandle)
+        arPattDetach(gARHandle);
+    
+    if (gARPattHandle)
+    {
+        arPattDeleteHandle(gARPattHandle);
+        gARPattHandle = NULL;
+    }
+    
+    if (gAR3DHandle)
+        ar3DDeleteHandle(&gAR3DHandle);
+    
+    if (gARHandle)
+    {
+        arDeleteHandle(gARHandle);
+        gARHandle = NULL;
+    }
+    
+    arParamLTFree(&gCparamLT);
+    
+    if (gVid)
+    {
+        ar2VideoClose(gVid);
+        gVid = NULL;
     }
 }
 
