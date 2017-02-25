@@ -12,11 +12,6 @@
 // Assimp Model Loader C Interface
 #include "AssimpModelLoaderCInterface.h"
 
-// ARToolKit
-#import "ARHandler.h"
-//#import <AR/ar.h>
-//#import <AR/video.h>
-//#import <AR/sys/CameraVideo.h>
 
 
 #endif /* Bridge_h */

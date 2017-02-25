@@ -13,8 +13,8 @@ class ModelLoader
 {
     /**  Loads a model from file using the Assimp library.
      *
-     *  @param resource Name of the resource to be loaded.
-     *  @return The loaded model.
+     * @param resource  Name of the resource to be loaded.
+     * @return The loaded model.
      */
     static public func loadModelFromFile(_ resource: String?) -> Model
     {

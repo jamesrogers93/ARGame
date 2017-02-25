@@ -8,8 +8,10 @@
 
 import GLKit
 import OpenGLES
+import AVFoundation
 
-func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
+func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer?
+{
     return UnsafeRawPointer(bitPattern: i)
 }
 
@@ -20,8 +22,7 @@ class GameViewController: GLKViewController {
     
     var obj: Object? = nil
     
-    var arView: ARHandler = ARHandler()
-    var arCameraFeed: ARCameraFeed? = nil
+    var cameraFeed: CameraFeed? = nil
     
     deinit
     {
@@ -30,6 +31,9 @@ class GameViewController: GLKViewController {
         if EAGLContext.current() === self.context {
             EAGLContext.setCurrent(nil)
         }
+        
+        // Stop camera
+        self.cameraFeed?.stopCapture()
     }
     
     override func viewDidLoad()
@@ -48,34 +52,47 @@ class GameViewController: GLKViewController {
         
         self.setupGL()
         
-        // Create object with monkey model
+        // Create object with model
         self.obj = Object(ModelLoader.loadModelFromFile("robot"))
         
-        self.arView.onViewLoad()
-        //self.arCameraFeed = ARCameraFeed(self.arView.camProjection)
-        self.arCameraFeed = ARCameraFeed((self.effect?.transform.projectionMatrix)!)
+        self.cameraFeed = CameraFeed(self.context!)
+        //self.cameraFeed?.setCameraFeedDelegate(delegate: self)
 
+        // Load dummy texture and give to camerafeed
         let opt:[String : NSNumber] = [GLKTextureLoaderOriginBottomLeft : false, GLKTextureLoaderApplyPremultiplication : false]
-        //let pic = UIImage(named: "Car.png")!.cgImage! //pic needs to be CGImage, not UIImage
         let url = URL(string: "https://www.qdtricks.net/wp-content/uploads/2016/05/hd-road-wallpaper.jpg")
         let tex:GLKTextureInfo?
         do
         {
             tex = try GLKTextureLoader.texture(withContentsOf: url!, options: opt) //put `try` just before the method call
-            //arCameraFeed?.texture = (tex?.name)!
-            //arCameraFeed?.setCameraBuffer(tex!)
+            cameraFeed?.setCameraBuffer(tex!)
         } catch
         {
             tex = nil
         }
-}
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        
+        if(!(self.cameraFeed?.startCapture())!)
+        {
+            print("Could not start camera capture")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        
+        self.cameraFeed?.stopCapture()
+    }
     
     override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
-        
-        // Start the AR handler
-        self.arView.start()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
@@ -137,23 +154,6 @@ class GameViewController: GLKViewController {
     func update()
     {
         // Update ARCameraFeed
-        arCameraFeed?.texture = arView.camBufferTexture
-        
-        let opt:[String : NSNumber] = [GLKTextureLoaderOriginBottomLeft : false, GLKTextureLoaderApplyPremultiplication : false]
-        let data:Data = arView.camBuffer
-        let tex:GLKTextureInfo?
-        do
-        {
-            tex = try GLKTextureLoader.texture(withContentsOf: data, options: opt) //put `try` just before the method call
-            arCameraFeed?.texture = (tex?.name)!
-            //arCameraFeed?.setCameraBuffer(tex!)
-        } catch
-        {
-            tex = nil
-        }
-
-        
-        
         self.obj?.translate(GLKVector3Make(0.0, 0.0, -5.5))
         self.obj?.rotate(rotation, GLKVector3Make(0.0, 1.0, 0.0))
         //self.obj?.scale(GLKVector3Make(1.5, 0.5, 1.0))
@@ -167,6 +167,6 @@ class GameViewController: GLKViewController {
         
         self.obj?.draw(self.effect)
         
-        self.arCameraFeed?.draw()
+        self.cameraFeed?.draw()
     }
 }

@@ -17,8 +17,6 @@
 		1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF21E55F87E0036E753 /* MainMenuController.swift */; };
 		1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF51E55FEC40036E753 /* ModelLoader.swift */; };
 		1A44DCF91E5601C80036E753 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF81E5601C80036E753 /* Object.swift */; };
-		1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4F606E1E5CBE7400B4C602 /* libAR.a */; };
-		1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F60711E5CCFA700B4C602 /* ARHandler.m */; };
 		1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B66FD1E5BAD06000463E3 /* monkey.mtl */; };
 		1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B66FE1E5BAD06000463E3 /* monkey.obj */; };
 		1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67011E5BADCE000463E3 /* cube.mtl */; };
@@ -26,15 +24,13 @@
 		1A5B67071E5C4045000463E3 /* robot.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67051E5C4045000463E3 /* robot.mtl */; };
 		1A5B67081E5C4046000463E3 /* robot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67061E5C4045000463E3 /* robot.obj */; };
 		1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */; };
-		1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */; };
-		1A6BA4051E5E2F0400D136D5 /* libARWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E71E5E225500D136D5 /* libARWrapper.a */; };
 		1A6BA4081E5E329300D136D5 /* camera_para.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1A6BA4071E5E329300D136D5 /* camera_para.dat */; };
 		1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C1B1E57B46500E2FFBC /* Mesh.swift */; };
 		1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C221E59C95F00E2FFBC /* libassimp-fat.a */; };
 		1A755C251E59CD1300E2FFBC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C241E59CD1300E2FFBC /* Model.swift */; };
 		1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */; };
 		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
-		1A8E219F1E5F32530021780C /* ARCameraFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8E219E1E5F32530021780C /* ARCameraFeed.swift */; };
+		1A8E219F1E5F32530021780C /* CameraFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8E219E1E5F32530021780C /* CameraFeed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +68,6 @@
 		1A44DCF51E55FEC40036E753 /* ModelLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
 		1A44DCF81E5601C80036E753 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		1A4F606E1E5CBE7400B4C602 /* libAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAR.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libAR.a"; sourceTree = "<group>"; };
-		1A4F60711E5CCFA700B4C602 /* ARHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARHandler.m; sourceTree = "<group>"; };
-		1A4F60731E5CCFC100B4C602 /* ARHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARHandler.h; sourceTree = "<group>"; };
 		1A5B66F81E5BA82D000463E3 /* cube.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.mtl; path = ARGame/cube.mtl; sourceTree = "<group>"; };
 		1A5B66F91E5BA82D000463E3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = ARGame/cube.obj; sourceTree = "<group>"; };
 		1A5B66FD1E5BAD06000463E3 /* monkey.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = monkey.mtl; path = Assets/monkey.mtl; sourceTree = "<group>"; };
@@ -107,7 +101,7 @@
 		1A755C2B1E5A08D300E2FFBC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1A755C2D1E5A163800E2FFBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModelLoaderCInterface.h; sourceTree = "<group>"; };
-		1A8E219E1E5F32530021780C /* ARCameraFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCameraFeed.swift; sourceTree = "<group>"; };
+		1A8E219E1E5F32530021780C /* CameraFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFeed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +110,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */,
-				1A6BA4051E5E2F0400D136D5 /* libARWrapper.a in Frameworks */,
-				1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */,
-				1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */,
 				1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */,
 				1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */,
 			);
@@ -210,6 +201,7 @@
 			children = (
 				1A4F60701E5CC42000B4C602 /* AR */,
 				1A755C261E59E06A00E2FFBC /* ModelLoader */,
+				1A8E219E1E5F32530021780C /* CameraFeed.swift */,
 				1A44DCF81E5601C80036E753 /* Object.swift */,
 				1A755C1B1E57B46500E2FFBC /* Mesh.swift */,
 				1A755C241E59CD1300E2FFBC /* Model.swift */,
@@ -220,9 +212,6 @@
 		1A4F60701E5CC42000B4C602 /* AR */ = {
 			isa = PBXGroup;
 			children = (
-				1A4F60711E5CCFA700B4C602 /* ARHandler.m */,
-				1A4F60731E5CCFC100B4C602 /* ARHandler.h */,
-				1A8E219E1E5F32530021780C /* ARCameraFeed.swift */,
 			);
 			name = AR;
 			sourceTree = "<group>";
@@ -426,7 +415,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A755C251E59CD1300E2FFBC /* Model.swift in Sources */,
-				1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */,
 				1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */,
 				1A44DCF91E5601C80036E753 /* Object.swift in Sources */,
 				1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */,
@@ -434,7 +422,7 @@
 				1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */,
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,
 				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
-				1A8E219F1E5F32530021780C /* ARCameraFeed.swift in Sources */,
+				1A8E219F1E5F32530021780C /* CameraFeed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,16 +578,12 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3BPNYRZL37;
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = (
-					../Dependencies/assimp/include,
-					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/include",
-				);
+				HEADER_SEARCH_PATHS = ../Dependencies/assimp/include;
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					../Dependencies/assimp/lib/iOS,
-					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -617,16 +601,12 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3BPNYRZL37;
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = (
-					../Dependencies/assimp/include,
-					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/include",
-				);
+				HEADER_SEARCH_PATHS = ../Dependencies/assimp/include;
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					../Dependencies/assimp/lib/iOS,
-					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
