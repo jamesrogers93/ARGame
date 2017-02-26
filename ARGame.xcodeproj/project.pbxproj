@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A1788051E637A270087DE26 /* libARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E11E5E223800D136D5 /* libARgsub_es2.a */; };
+		1A1788061E637A270087DE26 /* libARICP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E31E5E225500D136D5 /* libARICP.a */; };
+		1A1788081E637A400087DE26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1788071E637A400087DE26 /* QuartzCore.framework */; };
 		1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC01E55F34C0036E753 /* AppDelegate.swift */; };
 		1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC61E55F34C0036E753 /* GameViewController.swift */; };
 		1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCC81E55F34C0036E753 /* Main.storyboard */; };
@@ -27,7 +30,6 @@
 		1A5B67081E5C4046000463E3 /* robot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67061E5C4045000463E3 /* robot.obj */; };
 		1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */; };
 		1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */; };
-		1A6BA4051E5E2F0400D136D5 /* libARWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E71E5E225500D136D5 /* libARWrapper.a */; };
 		1A6BA4081E5E329300D136D5 /* camera_para.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1A6BA4071E5E329300D136D5 /* camera_para.dat */; };
 		1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C1B1E57B46500E2FFBC /* Mesh.swift */; };
 		1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C221E59C95F00E2FFBC /* libassimp-fat.a */; };
@@ -55,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A1788071E637A400087DE26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A44DCBD1E55F34C0036E753 /* ARGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A44DCC01E55F34C0036E753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A44DCC61E55F34C0036E753 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -115,10 +118,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */,
-				1A6BA4051E5E2F0400D136D5 /* libARWrapper.a in Frameworks */,
-				1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */,
 				1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */,
+				1A1788061E637A270087DE26 /* libARICP.a in Frameworks */,
+				1A1788051E637A270087DE26 /* libARgsub_es2.a in Frameworks */,
+				1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */,
+				1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */,
+				1A1788081E637A400087DE26 /* QuartzCore.framework in Frameworks */,
 				1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */,
 				1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */,
 			);
@@ -245,6 +250,7 @@
 		1A755C1D1E58441100E2FFBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A1788071E637A400087DE26 /* QuartzCore.framework */,
 				1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */,
 				1A6BA3E31E5E225500D136D5 /* libARICP.a */,
 				1A6BA3E41E5E225500D136D5 /* libARMulti.a */,

@@ -66,8 +66,6 @@ class ARCameraFeed
     private func initEffect(_ projection: GLKMatrix4)
     {
         self.effect = GLKBaseEffect()
-        //self.effect?.transform.projectionMatrix = projection
-        //self.effect?.transform.modelviewMatrix = GLKMatrix4Translate(GLKMatrix4Identity, 0.0, 0.0, -5.5)
         self.effect?.transform.projectionMatrix = GLKMatrix4Identity
         self.effect?.transform.modelviewMatrix = GLKMatrix4Identity
         

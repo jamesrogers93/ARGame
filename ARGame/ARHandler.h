@@ -11,10 +11,10 @@
 
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
-//#import <QuartzCore/QuartzCore.h>
-#import <AR/ar.h>
-#import <AR/video.h>
-#import <AR/gsub_es.h>
+#import <QuartzCore/QuartzCore.h>
+#include <AR/ar.h>
+#include <AR/video.h>
+#include <AR/gsub_es2.h>
 #import <AR/sys/CameraVideo.h>
 
 @interface ARHandler: NSObject <CameraVideoTookPictureDelegate>
@@ -22,15 +22,15 @@
 
 - (void) onViewLoad;
 - (void) start;
-- (void) startRunLoop;
-- (void) stopRunLoop;
+- (void) draw;
 - (void) processFrame:(AR2VideoBufferT *)buffer;
 
-@property (readonly) GLKMatrix4 camProjection;
-@property (readonly) NSData*   camBuffer;
-@property (readonly) GLuint   camBufferTexture;
+@property (readonly) ARGL_CONTEXT_SETTINGS_REF arglContextSettings;
 
+@property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (nonatomic, getter=isPaused) BOOL paused;
+
+@property (readonly) GLKMatrix4 camProjection;
 
 @end
 

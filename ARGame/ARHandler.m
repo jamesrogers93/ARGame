@@ -29,20 +29,27 @@
     
     // Transformation matrix retrieval.
     AR3DHandle     *gAR3DHandle;
+    ARdouble        gPatt_width;            // Per-marker, but we are using only 1 marker.
+    ARdouble        gPatt_trans[3][4];      // Per-marker, but we are using only 1 marker.
+    int             gPatt_found;            // Per-marker, but we are using only 1 marker.
+    int             gPatt_id;               // Per-marker, but we are using only 1 marker.
+    BOOL            useContPoseEstimation;
     
-    // Markers.
-    NSMutableArray *markers;
-    
-    // Camera
+    // Drawing
     ARParamLT      *gCparamLT;
-    GLsizei         camWidth;
-    GLsizei         camHeight;
+    ARGL_CONTEXT_SETTINGS_REF arglContextSettings;
 }
 
+@synthesize arglContextSettings;
+@synthesize running;
 @synthesize camProjection;
-@synthesize camBuffer;
-@synthesize camBufferTexture;
 
+- (void) draw
+{
+    glDisable(GL_DEPTH_TEST);
+    arglDispImage(arglContextSettings);
+    glEnable(GL_DEPTH_TEST);
+}
 
 - (void) onViewLoad
 {
@@ -61,21 +68,11 @@
     // Transform matrix
     gAR3DHandle = NULL;
     
-    // Markers
-    markers = nil;
-    
     // Camera
     gCparamLT = NULL;
-    camWidth = 0;
-    camHeight = 0;
-    camBuffer = 0;
-    camBufferTexture = 0;
-    
-    // Start ARToolKit
-    [self start];
 }
 
-- (void) startRunLoop
+- (void)startRunLoop
 {
     if (!running) {
         // After starting the video, new frames will invoke cameraVideoTookPicture:userData:.
@@ -88,7 +85,7 @@
     }
 }
 
-- (void) stopRunLoop
+- (void)stopRunLoop
 {
     if (running) {
         ar2VideoCapStop(gVid);
@@ -98,14 +95,16 @@
 
 - (BOOL) isPaused
 {
-    if (!running) return (NO);
+    if (!running)
+        return (NO);
     
     return (videoPaused);
 }
 
 - (void) setPaused:(BOOL)paused
 {
-    if (!running) return;
+    if (!running)
+        return;
     
     if (videoPaused != paused)
     {
@@ -115,9 +114,6 @@
             ar2VideoCapStart(gVid);
         
         videoPaused = paused;
-#  ifdef DEBUG
-        NSLog(@"Run loop was %s.\n", (paused ? "PAUSED" : "UNPAUSED"));
-#  endif
     }
 }
 
@@ -174,45 +170,46 @@ static void startCallback(void *userData)
     
     // Load the camera parameters, resize for the window and init.
     ARParam cparam;
-    if (ar2VideoGetCParam(gVid, &cparam) < 0) {
+    if (ar2VideoGetCParam(gVid, &cparam) < 0)
+    {
         NSString *filename = [[NSBundle mainBundle] pathForResource:@"camera_para" ofType:@"dat"];
         
         NSLog(@"Unable to automatically determine camera parameters. Using default.\n");
-        if (arParamLoad([filename cStringUsingEncoding:1], 1, &cparam) < 0) {
+        if (arParamLoad([filename cStringUsingEncoding:1], 1, &cparam) < 0)
+        {
             NSLog(@"Error: Unable to load parameter file %@ for camera.\n", filename);
             [self stop];
             return;
         }
     }
     
-    if (cparam.xsize != xsize || cparam.ysize != ysize) {
-#ifdef DEBUG
-        fprintf(stdout, "*** Camera Parameter resized from %d, %d. ***\n", cparam.xsize, cparam.ysize);
-#endif
+    if (cparam.xsize != xsize || cparam.ysize != ysize)
+    {
         arParamChangeSize(&cparam, xsize, ysize, &cparam);
     }
-#ifdef DEBUG
-    fprintf(stdout, "*** Camera Parameter ***\n");
-    arParamDisp(&cparam);
-#endif
-    if ((gCparamLT = arParamLTCreate(&cparam, AR_PARAM_LT_DEFAULT_OFFSET)) == NULL) {
+    
+    if ((gCparamLT = arParamLTCreate(&cparam, AR_PARAM_LT_DEFAULT_OFFSET)) == NULL)
+    {
         NSLog(@"Error: arParamLTCreate.\n");
         [self stop];
         return;
     }
     
     // AR init.
-    if ((gARHandle = arCreateHandle(gCparamLT)) == NULL) {
+    if ((gARHandle = arCreateHandle(gCparamLT)) == NULL)
+    {
         NSLog(@"Error: arCreateHandle.\n");
         [self stop];
         return;
     }
-    if (arSetPixelFormat(gARHandle, pixFormat) < 0) {
+    if (arSetPixelFormat(gARHandle, pixFormat) < 0)
+    {
         NSLog(@"Error: arSetPixelFormat.\n");
         [self stop];
         return;
     }
-    if ((gAR3DHandle = ar3DCreateHandle(&gCparamLT->param)) == NULL) {
+    if ((gAR3DHandle = ar3DCreateHandle(&gCparamLT->param)) == NULL)
+    {
         NSLog(@"Error: ar3DCreateHandle.\n");
         [self stop];
         return;
@@ -221,7 +218,8 @@ static void startCallback(void *userData)
     // libARvideo on iPhone uses an underlying class called CameraVideo. Here, we
     // access the instance of this class to get/set some special types of information.
     CameraVideo *cameraVideo = ar2VideoGetNativeVideoInstanceiPhone(gVid->device.iPhone);
-    if (!cameraVideo) {
+    if (!cameraVideo)
+    {
         NSLog(@"Error: Unable to set up AR camera: missing CameraVideo instance.\n");
         [self stop];
         return;
@@ -231,22 +229,58 @@ static void startCallback(void *userData)
     [cameraVideo setTookPictureDelegate:self];
     [cameraVideo setTookPictureDelegateUserData:NULL];
     
-    // Allocate the camBuffer
-    ////////////////////////// Not here?
+    // Other ARToolKit setup.
+    arSetMarkerExtractionMode(gARHandle, AR_USE_TRACKING_HISTORY_V2);
+    //arSetMarkerExtractionMode(gARHandle, AR_NOUSE_TRACKING_HISTORY);
+    //arSetLabelingThreshMode(gARHandle, AR_LABELING_THRESH_MODE_MANUAL); // Uncomment to use  manual thresholding.
+    
+    // Allocate the OpenGL view
+    ////////////////////////// Not here!
     
     // Set camera projection matrix from calibrated camera paramters
+    // Create the OpenGL projection from the calibrated camera parameters.
+    // If flipV is set, flip.
     GLfloat frustum[16];
     arglCameraFrustumRHf(&gCparamLT->param, VIEW_DISTANCE_MIN, VIEW_DISTANCE_MAX, frustum);
+    
+    // Need to change this, This is NOT the Camera Projection!!!!
     camProjection = GLKMatrix4Make(frustum[0], frustum[1], frustum[2], frustum[3], frustum[4], frustum[5], frustum[6], frustum[7], frustum[8], frustum[9], frustum[10], frustum[11], frustum[12], frustum[13], frustum[14], frustum[15]);
     
-    //camProjection = GLKMatrix4Make(frustum[0], frustum[4], frustum[8], frustum[12], frustum[1], frustum[5], frustum[9], frustum[13], frustum[2], frustum[6], frustum[10], frustum[14], frustum[3], frustum[7], frustum[11], frustum[15]);
+    // Setup ARGL to draw the background video.
+    arglContextSettings = arglSetupForCurrentContext(&gCparamLT->param, pixFormat);
     
-    // Set camera size
-    camWidth = gARHandle->xsize;
-    camHeight = gARHandle->ysize;
+    arglSetRotate90(arglContextSettings, FALSE);
+    if (flipV)
+        arglSetFlipV(arglContextSettings, TRUE);
+    int width, height;
+    ar2VideoGetBufferSize(gVid, &width, &height);
+    arglPixelBufferSizeSet(arglContextSettings, width, height);
     
-    // Start run loop
+    // Prepare ARToolKit to load patterns.
+    if (!(gARPattHandle = arPattCreateHandle())) {
+        NSLog(@"Error: arPattCreateHandle.\n");
+        [self stop];
+        return;
+    }
+    arPattAttach(gARHandle, gARPattHandle);
+    
+    // Load marker(s).
+    // Loading only 1 pattern in this example.
+    /*char *patt_name  = "Data2/hiro.patt";
+    if ((gPatt_id = arPattLoad(gARPattHandle, patt_name)) < 0) {
+        NSLog(@"Error loading pattern file %s.\n", patt_name);
+        [self stop];
+        return;
+    }
+    gPatt_width = 40.0f;
+    gPatt_found = FALSE;*/
+    
+    // For FPS statistics.
+    arUtilTimerReset();
+    gCallCountMarkerDetect = 0;
+    
     [self startRunLoop];
+    
 }
 
 - (void) cameraVideoTookPicture:(id)sender userData:(void *)data
@@ -258,37 +292,13 @@ static void startCallback(void *userData)
 
 - (void) processFrame:(AR2VideoBufferT *)buffer
 {
-    if (buffer) {
-        
-        //camBuffer = buffer->buff;
-        //camBuffer = [NSData dataWithBytesNoCopy:buffer->buff length:(camWidth * camHeight * 4) freeWhenDone:YES];
-        camBuffer = [NSData dataWithBytes:buffer->buff length:(camWidth*camHeight*4)];
-        // Bind camera buff to GL texture
-        
-        //glGenTextures(1, &camBufferTexture);
-        //glBindTexture(GL_TEXTURE_2D, camBufferTexture);
-        
-        //    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-            //glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, camWidth, camHeight, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, buffer->buff);
-        //    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, camWidth, camHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer->buff);
-        
-        //glBindTexture(GL_TEXTURE_2D, 0);
-        
-       // if(camBufferTexture == 0)
-       // {
-       //     return;
-       // }
-        
-        // Detect the markers in the video frame.
-        if (arDetectMarker(gARHandle, buffer->buff) < 0)
-            return;
-        
-        //int markerNum = arGetMarkerNum(gARHandle);
-        //ARMarkerInfo *markerInfo = arGetMarker(gARHandle);
-        
-        // The display has changed.
-        // NEED TO MODIFY THIS
-        //[glView drawView:self];
+    if (buffer)
+    {
+        // Upload the frame to OpenGL.
+        if (buffer->bufPlaneCount == 2)
+            arglPixelBufferDataUploadBiPlanar(arglContextSettings, buffer->bufPlanes[0], buffer->bufPlanes[1]);
+        else
+            arglPixelBufferDataUpload(arglContextSettings, buffer->buff);
     }
 }
 
