@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A1788051E637A270087DE26 /* libARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E11E5E223800D136D5 /* libARgsub_es2.a */; };
+		1A1788061E637A270087DE26 /* libARICP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E31E5E225500D136D5 /* libARICP.a */; };
+		1A1788081E637A400087DE26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1788071E637A400087DE26 /* QuartzCore.framework */; };
 		1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC01E55F34C0036E753 /* AppDelegate.swift */; };
 		1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC61E55F34C0036E753 /* GameViewController.swift */; };
 		1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCC81E55F34C0036E753 /* Main.storyboard */; };
@@ -17,17 +20,23 @@
 		1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF21E55F87E0036E753 /* MainMenuController.swift */; };
 		1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF51E55FEC40036E753 /* ModelLoader.swift */; };
 		1A44DCF91E5601C80036E753 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF81E5601C80036E753 /* Object.swift */; };
+		1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4F606E1E5CBE7400B4C602 /* libAR.a */; };
+		1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F60711E5CCFA700B4C602 /* ARHandler.m */; };
 		1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B66FD1E5BAD06000463E3 /* monkey.mtl */; };
 		1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B66FE1E5BAD06000463E3 /* monkey.obj */; };
 		1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67011E5BADCE000463E3 /* cube.mtl */; };
 		1A5B67041E5BADCE000463E3 /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67021E5BADCE000463E3 /* cube.obj */; };
 		1A5B67071E5C4045000463E3 /* robot.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67051E5C4045000463E3 /* robot.mtl */; };
 		1A5B67081E5C4046000463E3 /* robot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67061E5C4045000463E3 /* robot.obj */; };
+		1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */; };
+		1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */; };
+		1A6BA4081E5E329300D136D5 /* camera_para.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1A6BA4071E5E329300D136D5 /* camera_para.dat */; };
 		1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C1B1E57B46500E2FFBC /* Mesh.swift */; };
 		1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C221E59C95F00E2FFBC /* libassimp-fat.a */; };
 		1A755C251E59CD1300E2FFBC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C241E59CD1300E2FFBC /* Model.swift */; };
 		1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */; };
 		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
+		1A8E219F1E5F32530021780C /* ARCameraFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8E219E1E5F32530021780C /* ARCameraFeed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A1788071E637A400087DE26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A44DCBD1E55F34C0036E753 /* ARGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A44DCC01E55F34C0036E753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A44DCC61E55F34C0036E753 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +74,9 @@
 		1A44DCF21E55F87E0036E753 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		1A44DCF51E55FEC40036E753 /* ModelLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
 		1A44DCF81E5601C80036E753 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		1A4F606E1E5CBE7400B4C602 /* libAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAR.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libAR.a"; sourceTree = "<group>"; };
+		1A4F60711E5CCFA700B4C602 /* ARHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARHandler.m; sourceTree = "<group>"; };
+		1A4F60731E5CCFC100B4C602 /* ARHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARHandler.h; sourceTree = "<group>"; };
 		1A5B66F81E5BA82D000463E3 /* cube.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.mtl; path = ARGame/cube.mtl; sourceTree = "<group>"; };
 		1A5B66F91E5BA82D000463E3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = ARGame/cube.obj; sourceTree = "<group>"; };
 		1A5B66FD1E5BAD06000463E3 /* monkey.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = monkey.mtl; path = Assets/monkey.mtl; sourceTree = "<group>"; };
@@ -72,6 +85,21 @@
 		1A5B67021E5BADCE000463E3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = Assets/cube.obj; sourceTree = "<group>"; };
 		1A5B67051E5C4045000463E3 /* robot.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = robot.mtl; path = Assets/robot.mtl; sourceTree = "<group>"; };
 		1A5B67061E5C4045000463E3 /* robot.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = robot.obj; path = Assets/robot.obj; sourceTree = "<group>"; };
+		1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARvideo.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARvideo.a"; sourceTree = "<group>"; };
+		1A6BA3E11E5E223800D136D5 /* libARgsub_es2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARgsub_es2.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARgsub_es2.a"; sourceTree = "<group>"; };
+		1A6BA3E31E5E225500D136D5 /* libARICP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARICP.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARICP.a"; sourceTree = "<group>"; };
+		1A6BA3E41E5E225500D136D5 /* libARMulti.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARMulti.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARMulti.a"; sourceTree = "<group>"; };
+		1A6BA3E51E5E225500D136D5 /* libARgsub_es.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARgsub_es.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARgsub_es.a"; sourceTree = "<group>"; };
+		1A6BA3E61E5E225500D136D5 /* libEden.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libEden.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libEden.a"; sourceTree = "<group>"; };
+		1A6BA3E71E5E225500D136D5 /* libARWrapper.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARWrapper.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARWrapper.a"; sourceTree = "<group>"; };
+		1A6BA3E81E5E225500D136D5 /* libARosg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARosg.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARosg.a"; sourceTree = "<group>"; };
+		1A6BA3E91E5E225500D136D5 /* libARUtil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARUtil.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARUtil.a"; sourceTree = "<group>"; };
+		1A6BA3EA1E5E225500D136D5 /* libKPM.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKPM.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libKPM.a"; sourceTree = "<group>"; };
+		1A6BA3EB1E5E225500D136D5 /* libAR2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAR2.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libAR2.a"; sourceTree = "<group>"; };
+		1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		1A6BA3F81E5E280900D136D5 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		1A6BA4061E5E31E700D136D5 /* camera_para.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = camera_para.dat; sourceTree = "<group>"; };
+		1A6BA4071E5E329300D136D5 /* camera_para.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = camera_para.dat; sourceTree = "<group>"; };
 		1A755C1B1E57B46500E2FFBC /* Mesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
 		1A755C1E1E58441200E2FFBC /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		1A755C201E592D7300E2FFBC /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimp.a; path = ../Dependencies/assimp/lib/iOS/x86_64/libassimp.a; sourceTree = "<group>"; };
@@ -81,7 +109,8 @@
 		1A755C291E59E0A100E2FFBC /* AssimpModelLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AssimpModelLoader.hpp; sourceTree = "<group>"; };
 		1A755C2B1E5A08D300E2FFBC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1A755C2D1E5A163800E2FFBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderBridgeC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModelLoaderBridgeC.h; sourceTree = "<group>"; };
+		1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModelLoaderCInterface.h; sourceTree = "<group>"; };
+		1A8E219E1E5F32530021780C /* ARCameraFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCameraFeed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +118,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */,
+				1A1788061E637A270087DE26 /* libARICP.a in Frameworks */,
+				1A1788051E637A270087DE26 /* libARgsub_es2.a in Frameworks */,
+				1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */,
+				1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */,
+				1A1788081E637A400087DE26 /* QuartzCore.framework in Frameworks */,
 				1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */,
 				1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */,
 			);
@@ -143,6 +178,7 @@
 				1A44DCCB1E55F34C0036E753 /* Assets.xcassets */,
 				1A44DCCD1E55F34C0036E753 /* LaunchScreen.storyboard */,
 				1A44DCD01E55F34C0036E753 /* Info.plist */,
+				1A6BA3F81E5E280900D136D5 /* Bridge.h */,
 			);
 			path = ARGame;
 			sourceTree = "<group>";
@@ -177,6 +213,7 @@
 		1A44DCF71E5601920036E753 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1A4F60701E5CC42000B4C602 /* AR */,
 				1A755C261E59E06A00E2FFBC /* ModelLoader */,
 				1A44DCF81E5601C80036E753 /* Object.swift */,
 				1A755C1B1E57B46500E2FFBC /* Mesh.swift */,
@@ -185,9 +222,21 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		1A4F60701E5CC42000B4C602 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				1A4F60711E5CCFA700B4C602 /* ARHandler.m */,
+				1A4F60731E5CCFC100B4C602 /* ARHandler.h */,
+				1A8E219E1E5F32530021780C /* ARCameraFeed.swift */,
+			);
+			name = AR;
+			sourceTree = "<group>";
+		};
 		1A5B66FC1E5BACF4000463E3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				1A6BA4071E5E329300D136D5 /* camera_para.dat */,
+				1A6BA4061E5E31E700D136D5 /* camera_para.dat */,
 				1A5B67051E5C4045000463E3 /* robot.mtl */,
 				1A5B67061E5C4045000463E3 /* robot.obj */,
 				1A5B67011E5BADCE000463E3 /* cube.mtl */,
@@ -201,6 +250,20 @@
 		1A755C1D1E58441100E2FFBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A1788071E637A400087DE26 /* QuartzCore.framework */,
+				1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */,
+				1A6BA3E31E5E225500D136D5 /* libARICP.a */,
+				1A6BA3E41E5E225500D136D5 /* libARMulti.a */,
+				1A6BA3E51E5E225500D136D5 /* libARgsub_es.a */,
+				1A6BA3E61E5E225500D136D5 /* libEden.a */,
+				1A6BA3E71E5E225500D136D5 /* libARWrapper.a */,
+				1A6BA3E81E5E225500D136D5 /* libARosg.a */,
+				1A6BA3E91E5E225500D136D5 /* libARUtil.a */,
+				1A6BA3EA1E5E225500D136D5 /* libKPM.a */,
+				1A6BA3EB1E5E225500D136D5 /* libAR2.a */,
+				1A6BA3E11E5E223800D136D5 /* libARgsub_es2.a */,
+				1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */,
+				1A4F606E1E5CBE7400B4C602 /* libAR.a */,
 				1A5B66F81E5BA82D000463E3 /* cube.mtl */,
 				1A5B66F91E5BA82D000463E3 /* cube.obj */,
 				1A755C2D1E5A163800E2FFBC /* libz.tbd */,
@@ -218,7 +281,7 @@
 				1A44DCF51E55FEC40036E753 /* ModelLoader.swift */,
 				1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */,
 				1A755C291E59E0A100E2FFBC /* AssimpModelLoader.hpp */,
-				1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderBridgeC.h */,
+				1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */,
 			);
 			name = ModelLoader;
 			sourceTree = "<group>";
@@ -338,6 +401,7 @@
 				1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */,
 				1A5B67071E5C4045000463E3 /* robot.mtl in Resources */,
 				1A5B67081E5C4046000463E3 /* robot.obj in Resources */,
+				1A6BA4081E5E329300D136D5 /* camera_para.dat in Resources */,
 				1A44DCCC1E55F34C0036E753 /* Assets.xcassets in Resources */,
 				1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */,
 				1A5B67041E5BADCE000463E3 /* cube.obj in Resources */,
@@ -368,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A755C251E59CD1300E2FFBC /* Model.swift in Sources */,
+				1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */,
 				1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */,
 				1A44DCF91E5601C80036E753 /* Object.swift in Sources */,
 				1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */,
@@ -375,6 +440,7 @@
 				1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */,
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,
 				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
+				1A8E219F1E5F32530021780C /* ARCameraFeed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,16 +596,20 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3BPNYRZL37;
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = /Users/James/Documents/University/Advanced_Computer_Science/Year_1/Comupter_Games/Coursework/Dependencies/assimp/include;
+				HEADER_SEARCH_PATHS = (
+					../Dependencies/assimp/include,
+					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/include",
+				);
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/James/Documents/University/Advanced_Computer_Science/Year_1/Comupter_Games/Coursework/Dependencies/assimp/lib/iOS,
+					../Dependencies/assimp/lib/iOS,
+					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = ARGame/AssimpModelLoaderBridgeC.h;
+				SWIFT_OBJC_BRIDGING_HEADER = ARGame/Bridge.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -553,16 +623,20 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3BPNYRZL37;
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = /Users/James/Documents/University/Advanced_Computer_Science/Year_1/Comupter_Games/Coursework/Dependencies/assimp/include;
+				HEADER_SEARCH_PATHS = (
+					../Dependencies/assimp/include,
+					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/include",
+				);
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/James/Documents/University/Advanced_Computer_Science/Year_1/Comupter_Games/Coursework/Dependencies/assimp/lib/iOS,
+					../Dependencies/assimp/lib/iOS,
+					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = ARGame/AssimpModelLoaderBridgeC.h;
+				SWIFT_OBJC_BRIDGING_HEADER = ARGame/Bridge.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

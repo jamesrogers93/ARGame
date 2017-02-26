@@ -13,14 +13,17 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
     return UnsafeRawPointer(bitPattern: i)
 }
 
-@objc class GameViewController: GLKViewController {
+class GameViewController: GLKViewController {
     
     var context: EAGLContext? = nil
     var effect: GLKBaseEffect? = nil
     
     var obj: Object? = nil
     
-    deinit {
+    var arView: ARHandler = ARHandler()
+    
+    deinit
+    {
         self.tearDownGL()
         
         if EAGLContext.current() === self.context {
@@ -28,7 +31,8 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
         }
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         self.context = EAGLContext(api: .openGLES2)
@@ -42,6 +46,20 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
         view.drawableDepthFormat = .format24
         
         self.setupGL()
+        
+        // Create object with model
+        self.obj = Object(ModelLoader.loadModelFromFile("robot"))
+        
+        // Initalise the AR handler
+        self.arView.onViewLoad()
+}
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        // Start the AR handler
+        self.arView.start()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
@@ -80,9 +98,6 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
         
         // Setup the projection matrix
         self.setupProjectionMatrix(self.view.bounds.size.width, self.view.bounds.size.height)
-        
-        // Create object with monkey model
-        self.obj = Object(ModelLoader.loadModelFromFile("robot"))
     }
     
     func setupProjectionMatrix(_ width:CGFloat, _ height:CGFloat)
@@ -102,9 +117,11 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
     }
     
     var rotation: Float = 0.0
+    
     // Update view in here
     func update()
     {
+        
         self.obj?.translate(GLKVector3Make(0.0, 0.0, -5.5))
         self.obj?.rotate(rotation, GLKVector3Make(0.0, 1.0, 0.0))
         //self.obj?.scale(GLKVector3Make(1.5, 0.5, 1.0))
@@ -116,6 +133,10 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
         glClearColor(0.65, 0.65, 0.65, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT) | GLbitfield(GL_DEPTH_BUFFER_BIT))
         
+        // Draw the camera view
+        self.arView.draw()
+        
+        // Draw the object
         self.obj?.draw(self.effect)
     }
 }

@@ -38,6 +38,9 @@ struct Vertex
     private var VBO: GLuint = 0
     private var EBO: GLuint = 0
     
+    private var texture: GLKTextureInfo? = nil
+    private var textureLoaded:Bool = false;
+    
     init(_ vertices: Array<Vertex>, _ indices: Array<GLuint>)
     {
         self.vertices = vertices
@@ -60,13 +63,30 @@ struct Vertex
         // Bind vertex array for drawing
         glBindVertexArrayOES(VAO)
         
+        // Bind texture
+        if (self.textureLoaded)
+        {
+            if((self.texture?.name)! != 0)
+            {
+                //glBindTexture(GLenum((self.texture?.target)!), (self.texture?.name)!)
+                effect?.texture2d0.enabled = GLboolean(GL_TRUE)
+                effect?.texture2d0.name = (self.texture?.name)!
+                //effect?.texture2d0.target = GLenum((self.texture?.target)!)
+            }
+        }
+        
         // Render the object with GLKit
         effect?.prepareToDraw()
         glDrawElements(GLenum(GL_TRIANGLES), GLsizei(indices.count), GLenum(GL_UNSIGNED_INT), BUFFER_OFFSET(0))
         
         // Unbind vertex array
         glBindVertexArrayOES(0)
+    }
     
+    public func setTexture(_ texture: GLKTextureInfo)
+    {
+        self.texture = texture;
+        self.textureLoaded = true;
     }
     
     private func setupMesh()

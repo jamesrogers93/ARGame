@@ -190,7 +190,7 @@ const char* AssimpModelLoader::getMeshSpecularMap(const unsigned int &index)
     return meshes[index].specularMap.c_str();
 }
 
-#include "AssimpModelLoaderBridgeC.h"
+#include "AssimpModelLoaderCInterface.h"
 
 const void* initAssimpModelLoader(const char *path)
 {
