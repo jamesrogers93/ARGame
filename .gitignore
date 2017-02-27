@@ -378,6 +378,6 @@ TSWLatexianTemp*
 *-tags.tex
 
 ## Fix for not ignoring assets
-!./ARGame/Assets/*.obj
-!./ARGame/Assets_AR/*.obj
+!ARGame/Assets/*.obj
+!ARGame/Assets_AR/*.obj
 
