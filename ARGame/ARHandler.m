@@ -42,6 +42,7 @@
 @synthesize arglContextSettings;
 @synthesize running;
 @synthesize camProjection;
+@synthesize camLens;
 
 - (void) draw
 {
@@ -245,9 +246,11 @@ static void startCallback(void *userData)
     // If flipV is set, flip.
     GLfloat frustum[16];
     arglCameraFrustumRHf(&gCparamLT->param, VIEW_DISTANCE_MIN, VIEW_DISTANCE_MAX, frustum);
-    
-    // Need to change this, This is NOT the Camera Projection!!!!
-    camProjection = GLKMatrix4Make(frustum[0], frustum[1], frustum[2], frustum[3], frustum[4], frustum[5], frustum[6], frustum[7], frustum[8], frustum[9], frustum[10], frustum[11], frustum[12], frustum[13], frustum[14], frustum[15]);
+    // Set up camera lens
+    camLens = GLKMatrix4Make(frustum[0], frustum[1], frustum[2], frustum[3], frustum[4], frustum[5], frustum[6], frustum[7], frustum[8], frustum[9], frustum[10], frustum[11], frustum[12], frustum[13], frustum[14], frustum[15]);
+    // Set up projection
+    //camProjection = GLKMatrix4Identity;
+    camProjection = GLKMatrix4Multiply(GLKMatrix4Identity, camLens);
     
     // Setup ARGL to draw the background video.
     arglContextSettings = arglSetupForCurrentContext(&gCparamLT->param, pixFormat);
@@ -271,7 +274,7 @@ static void startCallback(void *userData)
     // Load marker(s).
     // Loading only 1 pattern in this example.
     //char *patt_name  = "Data2/hiro.patt";
-    char *patt_name = [[[NSBundle mainBundle] pathForResource:@"hiro" ofType:@"patt"] UTF8String];
+    const char *patt_name = [[[NSBundle mainBundle] pathForResource:@"hiro" ofType:@"patt"] UTF8String];
     if ((gPatt_id = arPattLoad(gARPattHandle, patt_name)) < 0) {
         NSLog(@"Error loading pattern file %s.\n", patt_name);
         [self stop];
