@@ -1,0 +1,112 @@
+% Latex Style for CMP PGR DAY 2009.
+%
+% Revision 1.0
+% Feb. 12 2009.
+%
+% Barry-John Theobald, University of East Anglia, Norwich, UK
+
+\documentclass{cmppgr}
+
+% For urls
+\usepackage{hyperref}
+
+% For programming font
+\usepackage{courier}
+
+\title{Computer Games: ARGame}
+\name{James Rogers, 100062949}
+\institution{
+	School of Computing Sciences, University of East Anglia, UK
+}
+\email{}
+
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+
+Abstract.
+
+\end{abstract}
+
+% % % % % % % % % % % % % % % % 
+% % %		Introduction	   % % %
+% % % % % % % % % % % % % % % % 
+\section{Introduction}
+
+% % % % % % % % % % % % % % % % 
+% % %		Requirements   	% % %
+% % % % % % % % % % % % % % % % 
+\section{Requirements}
+
+\subsection{Specification}
+\subsection{MoSCoW}
+
+% % % % % % % % % % % % % % % % 
+% % %			Design			 % % %
+% % % % % % % % % % % % % % % % 
+\section{Design}
+
+\subsection{IID}
+\subsubsection{Version 0.1}
+
+
+\subsection{Technologies}
+\subsection{Inital Architecture}
+\subsection{Final Architecture}
+\subsection{Finite State Machine}
+
+
+% % % % % % % % % % % % % % % % 
+% % %	Implementation	   % % %
+% % % % % % % % % % % % % % % % 
+\section{Implementation}
+
+\subsection{Graphics}
+\subsubsection{Drawing}
+\subsubsection{Model Loading}
+Model loading is performed using the \texttt{ModeLoader} class. It provides an interface of static methods which take a file path to the model file as their parameter, then return an instance of the \texttt{Model} class with the data loaded inside it. 
+
+The Assimp\footnote{\url{www.assimp.org}} model loading library was used to read 3D mesh and material data from Wavefront .obj formats. The Assimp library is written in C++, therefore a class, \texttt{AssimpModelLoader} was implemented in C++ to interact with the Assimp library, interpret and temporarily store it's output. The Swift \texttt{ModelLoader} class interacts with \texttt{AssimpModelLoader} through a bridging header; which consists of C functions that Swift can interact with to retrieve data from \texttt{AssimpModelLoader}. 
+
+\subsubsection{Photogrametery}
+
+
+\subsection{Collisions}
+\subsubsection{Collision Detection}
+\subsubsection{Collision Resolution}
+
+\subsection{Augmented Reality}
+\subsubsection{Marker Tracking}
+\subsubsection{Smoothing}
+\subsubsection{Illumination Model}
+
+% % % % % % % % % % % % % % % % 
+% % %			Testing	  		 % % %
+% % % % % % % % % % % % % % % % 
+\section{Testing}
+
+\subsection{Unit Testing}
+
+\subsection{Intergration Testing}
+
+% % % % % % % % % % % % % % % % 
+% % %		Conclusion	 	  % % %
+% % % % % % % % % % % % % % % % 
+\section{Conclusion}
+
+
+
+% % % % % % % % % % % % % % % % 
+% % %		Bibliography	   % % %
+% % % % % % % % % % % % % % % % 
+
+%\bibliographystyle{apalike}
+\bibliographystyle{agsm}
+%\bibliographystyle{abbrvnat}
+
+
+
+\end{document}

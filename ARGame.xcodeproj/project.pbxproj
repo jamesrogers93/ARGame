@@ -288,8 +288,8 @@
 			isa = PBXGroup;
 			children = (
 				1A44DCF51E55FEC40036E753 /* ModelLoader.swift */,
-				1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */,
 				1A755C291E59E0A100E2FFBC /* AssimpModelLoader.hpp */,
+				1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */,
 				1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */,
 			);
 			name = ModelLoader;
