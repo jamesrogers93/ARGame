@@ -178,7 +178,8 @@ static void startCallback(void *userData)
     ARParam cparam;
     if (ar2VideoGetCParam(gVid, &cparam) < 0)
     {
-        NSString *filename = [[NSBundle mainBundle] pathForResource:@"camera_para" ofType:@"dat"];
+        //NSString *filename = [[NSBundle mainBundle] pathForResource:@"camera_para" ofType:@"dat"];
+        NSString *filename = [[NSBundle mainBundle] pathForResource:@"camera_para-iPhone 6 Plus rear 1280x720 0.3m" ofType:@"dat"];
         
         NSLog(@"Unable to automatically determine camera parameters. Using default.\n");
         if (arParamLoad([filename cStringUsingEncoding:1], 1, &cparam) < 0)
