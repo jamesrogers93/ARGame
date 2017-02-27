@@ -1,5 +1,5 @@
 //
-//  AssimpModelLoaderBridge2.h
+//  AssimpModelLoaderCInterface.h
 //  ARGame
 //
 //  Created by James Rogers on 20/02/2017.
@@ -98,19 +98,4 @@ extern "C" {
 }
 #endif
 
-#endif /* AssimpModelLoaderBridge2_h */
-
-
-
-// ARHandler Bridge
-
-//#ifndef ARHandler_h
-//#define ARHandler_h
-
-//#import <Foundation/Foundation.h>
-//#import <QuartzCore/QuartzCore.h>
-//#import <AR/ar.h>
-//#import <AR/video.h>
-//#import <AR/gsub_es.h>
-//#import <AR/sys/CameraVideo.h>
-/* ARMarkerTracker_h */
+#endif /* AssimpModelLoaderCInterface_h */

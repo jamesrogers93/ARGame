@@ -38,6 +38,7 @@
 		1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */; };
 		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
 		1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */; };
+		1ADFA8B81E64C05900588345 /* AssimpModelLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		1A755C2D1E5A163800E2FFBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModelLoaderCInterface.h; sourceTree = "<group>"; };
 		1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; path = "Assets_AR/camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; sourceTree = "<group>"; };
+		1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpModelLoaderCInterface.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +293,7 @@
 				1A755C291E59E0A100E2FFBC /* AssimpModelLoader.hpp */,
 				1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */,
 				1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */,
+				1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */,
 			);
 			name = ModelLoader;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */,
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,
 				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
+				1ADFA8B81E64C05900588345 /* AssimpModelLoaderCInterface.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
