@@ -1,7 +1,3 @@
-## Fix for not ignoring assets
-!./Assets/
-!./Assets_AR/
-
 ## Swift
 
 ## Build generated
@@ -380,3 +376,8 @@ TSWLatexianTemp*
 
 # expex forward references with \gathertags
 *-tags.tex
+
+## Fix for not ignoring assets
+!./Assets/
+!./Assets_AR/
+
