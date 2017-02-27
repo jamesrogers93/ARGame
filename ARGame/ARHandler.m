@@ -38,12 +38,10 @@
     // Drawing
     ARParamLT      *gCparamLT;
     ARGL_CONTEXT_SETTINGS_REF arglContextSettings;
+    GLKMatrix4 camLens;
 }
 
-@synthesize arglContextSettings;
-@synthesize running;
 @synthesize camProjection;
-@synthesize camLens;
 @synthesize camPose;
 
 - (void) draw

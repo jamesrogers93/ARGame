@@ -20,7 +20,7 @@ class GameViewController: GLKViewController {
     
     var obj: Object? = nil
     
-    var arView: ARHandler = ARHandler()
+    var arHandler: ARHandler = ARHandler()
     
     deinit
     {
@@ -51,7 +51,7 @@ class GameViewController: GLKViewController {
         self.obj = Object(ModelLoader.loadModelFromFile("robot"))
         
         // Initalise the AR handler
-        self.arView.onViewLoad()
+        self.arHandler.onViewLoad()
     }
     
     override func viewDidAppear(_ animated: Bool)
@@ -59,7 +59,14 @@ class GameViewController: GLKViewController {
         super.viewDidAppear(animated)
         
         // Start the AR handler
-        self.arView.start()
+        self.arHandler.start()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stop the AR handler
+        self.arHandler.stop()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
@@ -122,7 +129,7 @@ class GameViewController: GLKViewController {
     func update()
     {
         // Update the projection matrix
-        self.effect?.transform.projectionMatrix = self.arView.camProjection
+        self.effect?.transform.projectionMatrix = self.arHandler.camProjection
         
         self.obj?.translate(GLKVector3Make(0.0, 0.0, 0.0))
         //self.obj?.rotate(rotation, GLKVector3Make(0.0, 1.0, 0.0))
@@ -136,11 +143,11 @@ class GameViewController: GLKViewController {
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT) | GLbitfield(GL_DEPTH_BUFFER_BIT))
         
         // Draw the camera view
-        self.arView.draw()
+        self.arHandler.draw()
         
         // Draw the object
         // Set model in renderer
-        self.effect?.transform.modelviewMatrix = GLKMatrix4Multiply(self.arView.camPose, (self.obj?.getModel())!)
+        self.effect?.transform.modelviewMatrix = GLKMatrix4Multiply(self.arHandler.camPose, (self.obj?.getModel())!)
         self.obj?.draw(self.effect)
     }
 }
