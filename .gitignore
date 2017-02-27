@@ -378,6 +378,6 @@ TSWLatexianTemp*
 *-tags.tex
 
 ## Fix for not ignoring assets
-!./Assets/
-!./Assets_AR/
+!./Assets/*.obj
+!./Assets_AR/*.obj
 
