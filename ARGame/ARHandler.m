@@ -25,7 +25,6 @@
     // Marker detection.
     ARHandle       *gARHandle;
     ARPattHandle   *gARPattHandle;
-    long            gCallCountMarkerDetect;
     
     // Transformation matrix retrieval.
     AR3DHandle     *gAR3DHandle;
@@ -63,7 +62,6 @@
     // Marker detection
     gARHandle = NULL;
     gARPattHandle = NULL;
-    gCallCountMarkerDetect = 0;
     
     // Transform matrix
     gAR3DHandle = NULL;
@@ -74,7 +72,8 @@
 
 - (void)startRunLoop
 {
-    if (!running) {
+    if (!running)
+    {
         // After starting the video, new frames will invoke cameraVideoTookPicture:userData:.
         if (ar2VideoCapStart(gVid) != 0) {
             NSLog(@"Error: Unable to begin camera data capture.\n");
@@ -87,7 +86,8 @@
 
 - (void)stopRunLoop
 {
-    if (running) {
+    if (running)
+    {
         ar2VideoCapStop(gVid);
         running = FALSE;
     }
@@ -141,7 +141,8 @@ static void startCallback(void *userData)
 {
     // Find the size of the window.
     int xsize, ysize;
-    if (ar2VideoGetSize(gVid, &xsize, &ysize) < 0) {
+    if (ar2VideoGetSize(gVid, &xsize, &ysize) < 0)
+    {
         NSLog(@"Error: ar2VideoGetSize.\n");
         [self stop];
         return;
@@ -149,7 +150,8 @@ static void startCallback(void *userData)
     
     // Get the format in which the camera is returning pixels.
     AR_PIXEL_FORMAT pixFormat = ar2VideoGetPixelFormat(gVid);
-    if (pixFormat == AR_PIXEL_FORMAT_INVALID) {
+    if (pixFormat == AR_PIXEL_FORMAT_INVALID)
+    {
         NSLog(@"Error: Camera is using unsupported pixel format.\n");
         [self stop];
         return;
@@ -159,7 +161,8 @@ static void startCallback(void *userData)
     // 3D drawing.
     BOOL flipV = FALSE;
     int frontCamera;
-    if (ar2VideoGetParami(gVid, AR_VIDEO_PARAM_IOS_CAMERA_POSITION, &frontCamera) >= 0) {
+    if (ar2VideoGetParami(gVid, AR_VIDEO_PARAM_IOS_CAMERA_POSITION, &frontCamera) >= 0)
+    {
         if (frontCamera == AR_VIDEO_IOS_CAMERA_POSITION_FRONT) flipV = TRUE;
     }
     
@@ -257,7 +260,8 @@ static void startCallback(void *userData)
     arglPixelBufferSizeSet(arglContextSettings, width, height);
     
     // Prepare ARToolKit to load patterns.
-    if (!(gARPattHandle = arPattCreateHandle())) {
+    if (!(gARPattHandle = arPattCreateHandle()))
+    {
         NSLog(@"Error: arPattCreateHandle.\n");
         [self stop];
         return;
@@ -266,18 +270,15 @@ static void startCallback(void *userData)
     
     // Load marker(s).
     // Loading only 1 pattern in this example.
-    /*char *patt_name  = "Data2/hiro.patt";
+    //char *patt_name  = "Data2/hiro.patt";
+    char *patt_name = [[[NSBundle mainBundle] pathForResource:@"hiro" ofType:@"patt"] UTF8String];
     if ((gPatt_id = arPattLoad(gARPattHandle, patt_name)) < 0) {
         NSLog(@"Error loading pattern file %s.\n", patt_name);
         [self stop];
         return;
     }
     gPatt_width = 40.0f;
-    gPatt_found = FALSE;*/
-    
-    // For FPS statistics.
-    arUtilTimerReset();
-    gCallCountMarkerDetect = 0;
+    gPatt_found = FALSE;
     
     [self startRunLoop];
     
