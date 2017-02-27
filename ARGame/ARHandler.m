@@ -9,6 +9,7 @@
 
 #import "ARHandler.h"
 
+#define VIEW_SCALEFACTOR        1.0f
 #define VIEW_DISTANCE_MIN        5.0f          // Objects closer to the camera than this will not be displayed.
 #define VIEW_DISTANCE_MAX        2000.0f        // Objects further away from the camera than this will not be displayed.
 
@@ -25,7 +26,6 @@
     // Marker detection.
     ARHandle       *gARHandle;
     ARPattHandle   *gARPattHandle;
-    long            gCallCountMarkerDetect;
     
     // Transformation matrix retrieval.
     AR3DHandle     *gAR3DHandle;
@@ -43,6 +43,8 @@
 @synthesize arglContextSettings;
 @synthesize running;
 @synthesize camProjection;
+@synthesize camLens;
+@synthesize camPose;
 
 - (void) draw
 {
@@ -63,7 +65,6 @@
     // Marker detection
     gARHandle = NULL;
     gARPattHandle = NULL;
-    gCallCountMarkerDetect = 0;
     
     // Transform matrix
     gAR3DHandle = NULL;
@@ -74,7 +75,8 @@
 
 - (void)startRunLoop
 {
-    if (!running) {
+    if (!running)
+    {
         // After starting the video, new frames will invoke cameraVideoTookPicture:userData:.
         if (ar2VideoCapStart(gVid) != 0) {
             NSLog(@"Error: Unable to begin camera data capture.\n");
@@ -87,7 +89,8 @@
 
 - (void)stopRunLoop
 {
-    if (running) {
+    if (running)
+    {
         ar2VideoCapStop(gVid);
         running = FALSE;
     }
@@ -141,7 +144,8 @@ static void startCallback(void *userData)
 {
     // Find the size of the window.
     int xsize, ysize;
-    if (ar2VideoGetSize(gVid, &xsize, &ysize) < 0) {
+    if (ar2VideoGetSize(gVid, &xsize, &ysize) < 0)
+    {
         NSLog(@"Error: ar2VideoGetSize.\n");
         [self stop];
         return;
@@ -149,7 +153,8 @@ static void startCallback(void *userData)
     
     // Get the format in which the camera is returning pixels.
     AR_PIXEL_FORMAT pixFormat = ar2VideoGetPixelFormat(gVid);
-    if (pixFormat == AR_PIXEL_FORMAT_INVALID) {
+    if (pixFormat == AR_PIXEL_FORMAT_INVALID)
+    {
         NSLog(@"Error: Camera is using unsupported pixel format.\n");
         [self stop];
         return;
@@ -159,7 +164,8 @@ static void startCallback(void *userData)
     // 3D drawing.
     BOOL flipV = FALSE;
     int frontCamera;
-    if (ar2VideoGetParami(gVid, AR_VIDEO_PARAM_IOS_CAMERA_POSITION, &frontCamera) >= 0) {
+    if (ar2VideoGetParami(gVid, AR_VIDEO_PARAM_IOS_CAMERA_POSITION, &frontCamera) >= 0)
+    {
         if (frontCamera == AR_VIDEO_IOS_CAMERA_POSITION_FRONT) flipV = TRUE;
     }
     
@@ -242,9 +248,12 @@ static void startCallback(void *userData)
     // If flipV is set, flip.
     GLfloat frustum[16];
     arglCameraFrustumRHf(&gCparamLT->param, VIEW_DISTANCE_MIN, VIEW_DISTANCE_MAX, frustum);
-    
-    // Need to change this, This is NOT the Camera Projection!!!!
-    camProjection = GLKMatrix4Make(frustum[0], frustum[1], frustum[2], frustum[3], frustum[4], frustum[5], frustum[6], frustum[7], frustum[8], frustum[9], frustum[10], frustum[11], frustum[12], frustum[13], frustum[14], frustum[15]);
+    // Set up camera lens
+    camLens = GLKMatrix4Make(frustum[0], frustum[1], frustum[2], frustum[3], frustum[4], frustum[5], frustum[6], frustum[7], frustum[8], frustum[9], frustum[10], frustum[11], frustum[12], frustum[13], frustum[14], frustum[15]);
+    // Set up projection
+    //camProjection = GLKMatrix4Identity;
+    camProjection = GLKMatrix4Multiply(GLKMatrix4Identity, camLens);
+    camPose = GLKMatrix4Identity;
     
     // Setup ARGL to draw the background video.
     arglContextSettings = arglSetupForCurrentContext(&gCparamLT->param, pixFormat);
@@ -257,7 +266,8 @@ static void startCallback(void *userData)
     arglPixelBufferSizeSet(arglContextSettings, width, height);
     
     // Prepare ARToolKit to load patterns.
-    if (!(gARPattHandle = arPattCreateHandle())) {
+    if (!(gARPattHandle = arPattCreateHandle()))
+    {
         NSLog(@"Error: arPattCreateHandle.\n");
         [self stop];
         return;
@@ -266,18 +276,15 @@ static void startCallback(void *userData)
     
     // Load marker(s).
     // Loading only 1 pattern in this example.
-    /*char *patt_name  = "Data2/hiro.patt";
+    //char *patt_name  = "Data2/hiro.patt";
+    const char *patt_name = [[[NSBundle mainBundle] pathForResource:@"hiro" ofType:@"patt"] UTF8String];
     if ((gPatt_id = arPattLoad(gARPattHandle, patt_name)) < 0) {
         NSLog(@"Error loading pattern file %s.\n", patt_name);
         [self stop];
         return;
     }
     gPatt_width = 40.0f;
-    gPatt_found = FALSE;*/
-    
-    // For FPS statistics.
-    arUtilTimerReset();
-    gCallCountMarkerDetect = 0;
+    gPatt_found = FALSE;
     
     [self startRunLoop];
     
@@ -299,6 +306,54 @@ static void startCallback(void *userData)
             arglPixelBufferDataUploadBiPlanar(arglContextSettings, buffer->bufPlanes[0], buffer->bufPlanes[1]);
         else
             arglPixelBufferDataUpload(arglContextSettings, buffer->buff);
+        
+        // Detect the markers in the video frame.
+        if (arDetectMarker(gARHandle, buffer->buff) < 0) return;
+#ifdef DEBUG
+        NSLog(@"found %d marker(s).\n", gARHandle->marker_num);
+#endif
+        
+        // Check through the marker_info array for highest confidence
+        // visible marker matching our preferred pattern.
+        ARdouble err;
+        int j, k = -1;
+        for (j = 0; j < gARHandle->marker_num; j++) {
+            if (gARHandle->markerInfo[j].id == gPatt_id) {
+                if (k == -1) k = j; // First marker detected.
+                else if (gARHandle->markerInfo[j].cf > gARHandle->markerInfo[k].cf) k = j; // Higher confidence marker detected.
+            }
+        }
+        
+        
+        if (k != -1) {
+#ifdef DEBUG
+            NSLog(@"marker %d matched pattern %d.\n", k, gPatt_id);
+#endif
+            // Get the transformation between the marker and the real camera into gPatt_trans.
+            if (gPatt_found && useContPoseEstimation) {
+                err = arGetTransMatSquareCont(gAR3DHandle, &(gARHandle->markerInfo[k]), gPatt_trans, gPatt_width, gPatt_trans);
+            } else {
+                err = arGetTransMatSquare(gAR3DHandle, &(gARHandle->markerInfo[k]), gPatt_width, gPatt_trans);
+            }
+            float modelview[16]; // We have a new pose, so set that.
+#ifdef ARDOUBLE_IS_FLOAT
+            arglCameraViewRHf(gPatt_trans, modelview, VIEW_SCALEFACTOR);
+#else
+            float patt_transf[3][4];
+            int r, c;
+            for (r = 0; r < 3; r++) {
+                for (c = 0; c < 4; c++) {
+                    patt_transf[r][c] = (float)(gPatt_trans[r][c]);
+                }
+            }
+            arglCameraViewRHf(patt_transf, modelview, VIEW_SCALEFACTOR);
+#endif
+            gPatt_found = TRUE;
+            camPose = GLKMatrix4Make(modelview[0], modelview[1], modelview[2], modelview[3], modelview[4], modelview[5], modelview[6], modelview[7], modelview[8], modelview[9], modelview[10], modelview[11], modelview[12], modelview[13], modelview[14], modelview[15]);
+            
+            // Rotate camera pose
+            //camPose = GLKMatrix4Rotate(camPose, 90.0, 1.0, 0.0, 0.0);
+        }
     }
 }
 

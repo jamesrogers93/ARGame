@@ -53,9 +53,6 @@ class Object
     
     public func draw(_ effect: GLKBaseEffect?)
     {
-        // Set model in renderer
-        effect?.transform.modelviewMatrix = self.model
-        
         self.GLmodel.draw(effect)
     }
 }
