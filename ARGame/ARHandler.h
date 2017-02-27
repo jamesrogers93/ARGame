@@ -32,6 +32,7 @@
 
 @property (readonly) GLKMatrix4 camProjection;
 @property (readonly) GLKMatrix4 camLens;
+@property (readonly) GLKMatrix4 camPose;
 
 @end
 

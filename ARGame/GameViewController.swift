@@ -52,7 +52,7 @@ class GameViewController: GLKViewController {
         
         // Initalise the AR handler
         self.arView.onViewLoad()
-}
+    }
     
     override func viewDidAppear(_ animated: Bool)
     {
@@ -124,9 +124,9 @@ class GameViewController: GLKViewController {
         // Update the projection matrix
         self.effect?.transform.projectionMatrix = self.arView.camProjection
         
-        self.obj?.translate(GLKVector3Make(0.0, 0.0, -10.5))
-        self.obj?.rotate(rotation, GLKVector3Make(0.0, 1.0, 0.0))
-        //self.obj?.scale(GLKVector3Make(1.5, 0.5, 1.0))
+        self.obj?.translate(GLKVector3Make(0.0, 0.0, 0.0))
+        //self.obj?.rotate(rotation, GLKVector3Make(0.0, 1.0, 0.0))
+        self.obj?.scale(GLKVector3Make(10.0, 10.0, 10.0))
         rotation+=0.01
     }
     
@@ -139,6 +139,8 @@ class GameViewController: GLKViewController {
         self.arView.draw()
         
         // Draw the object
+        // Set model in renderer
+        self.effect?.transform.modelviewMatrix = GLKMatrix4Multiply(self.arView.camPose, (self.obj?.getModel())!)
         self.obj?.draw(self.effect)
     }
 }

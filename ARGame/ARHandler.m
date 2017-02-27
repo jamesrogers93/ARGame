@@ -9,6 +9,7 @@
 
 #import "ARHandler.h"
 
+#define VIEW_SCALEFACTOR        1.0f
 #define VIEW_DISTANCE_MIN        5.0f          // Objects closer to the camera than this will not be displayed.
 #define VIEW_DISTANCE_MAX        2000.0f        // Objects further away from the camera than this will not be displayed.
 
@@ -43,6 +44,7 @@
 @synthesize running;
 @synthesize camProjection;
 @synthesize camLens;
+@synthesize camPose;
 
 - (void) draw
 {
@@ -251,6 +253,7 @@ static void startCallback(void *userData)
     // Set up projection
     //camProjection = GLKMatrix4Identity;
     camProjection = GLKMatrix4Multiply(GLKMatrix4Identity, camLens);
+    camPose = GLKMatrix4Identity;
     
     // Setup ARGL to draw the background video.
     arglContextSettings = arglSetupForCurrentContext(&gCparamLT->param, pixFormat);
@@ -303,6 +306,54 @@ static void startCallback(void *userData)
             arglPixelBufferDataUploadBiPlanar(arglContextSettings, buffer->bufPlanes[0], buffer->bufPlanes[1]);
         else
             arglPixelBufferDataUpload(arglContextSettings, buffer->buff);
+        
+        // Detect the markers in the video frame.
+        if (arDetectMarker(gARHandle, buffer->buff) < 0) return;
+#ifdef DEBUG
+        NSLog(@"found %d marker(s).\n", gARHandle->marker_num);
+#endif
+        
+        // Check through the marker_info array for highest confidence
+        // visible marker matching our preferred pattern.
+        ARdouble err;
+        int j, k = -1;
+        for (j = 0; j < gARHandle->marker_num; j++) {
+            if (gARHandle->markerInfo[j].id == gPatt_id) {
+                if (k == -1) k = j; // First marker detected.
+                else if (gARHandle->markerInfo[j].cf > gARHandle->markerInfo[k].cf) k = j; // Higher confidence marker detected.
+            }
+        }
+        
+        
+        if (k != -1) {
+#ifdef DEBUG
+            NSLog(@"marker %d matched pattern %d.\n", k, gPatt_id);
+#endif
+            // Get the transformation between the marker and the real camera into gPatt_trans.
+            if (gPatt_found && useContPoseEstimation) {
+                err = arGetTransMatSquareCont(gAR3DHandle, &(gARHandle->markerInfo[k]), gPatt_trans, gPatt_width, gPatt_trans);
+            } else {
+                err = arGetTransMatSquare(gAR3DHandle, &(gARHandle->markerInfo[k]), gPatt_width, gPatt_trans);
+            }
+            float modelview[16]; // We have a new pose, so set that.
+#ifdef ARDOUBLE_IS_FLOAT
+            arglCameraViewRHf(gPatt_trans, modelview, VIEW_SCALEFACTOR);
+#else
+            float patt_transf[3][4];
+            int r, c;
+            for (r = 0; r < 3; r++) {
+                for (c = 0; c < 4; c++) {
+                    patt_transf[r][c] = (float)(gPatt_trans[r][c]);
+                }
+            }
+            arglCameraViewRHf(patt_transf, modelview, VIEW_SCALEFACTOR);
+#endif
+            gPatt_found = TRUE;
+            camPose = GLKMatrix4Make(modelview[0], modelview[1], modelview[2], modelview[3], modelview[4], modelview[5], modelview[6], modelview[7], modelview[8], modelview[9], modelview[10], modelview[11], modelview[12], modelview[13], modelview[14], modelview[15]);
+            
+            // Rotate camera pose
+            //camPose = GLKMatrix4Rotate(camPose, 90.0, 1.0, 0.0, 0.0);
+        }
     }
 }
 
