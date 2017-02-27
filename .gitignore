@@ -381,3 +381,5 @@ TSWLatexianTemp*
 !ARGame/Assets/*.obj
 !ARGame/Assets_AR/*.obj
 
+## Removes report from repo
+Report/
