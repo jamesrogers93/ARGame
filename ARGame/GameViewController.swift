@@ -62,6 +62,13 @@ class GameViewController: GLKViewController {
         self.arView.start()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stop the AR handler
+        self.arView.stop()
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
     {
         // Update the projection matrix

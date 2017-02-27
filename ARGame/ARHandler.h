@@ -27,6 +27,9 @@
 /*!  Starts the camera feed and marker tracking. */
 - (void) start;
 
+/*! Stops the camera feed and marker tracking. */
+- (void) stop;
+
 /*!  Draws the camera feed to the screen using OpenGL ES2. */
 - (void) draw;
 
