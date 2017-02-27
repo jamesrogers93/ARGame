@@ -37,7 +37,6 @@
 		1A755C251E59CD1300E2FFBC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C241E59CD1300E2FFBC /* Model.swift */; };
 		1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */; };
 		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
-		1A8E219F1E5F32530021780C /* ARCameraFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8E219E1E5F32530021780C /* ARCameraFeed.swift */; };
 		1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +111,6 @@
 		1A755C2B1E5A08D300E2FFBC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1A755C2D1E5A163800E2FFBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModelLoaderCInterface.h; sourceTree = "<group>"; };
-		1A8E219E1E5F32530021780C /* ARCameraFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCameraFeed.swift; sourceTree = "<group>"; };
 		1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; path = "Assets_AR/camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -241,7 +239,6 @@
 			children = (
 				1A4F60711E5CCFA700B4C602 /* ARHandler.m */,
 				1A4F60731E5CCFC100B4C602 /* ARHandler.h */,
-				1A8E219E1E5F32530021780C /* ARCameraFeed.swift */,
 			);
 			name = AR;
 			sourceTree = "<group>";
@@ -454,7 +451,6 @@
 				1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */,
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,
 				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
-				1A8E219F1E5F32530021780C /* ARCameraFeed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
