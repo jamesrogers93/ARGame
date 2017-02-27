@@ -69,7 +69,7 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
         
         // Texture Coordinates
         float u,v;
-        /*if(mesh->mTextureCoords[0]) // Does the mesh contain texture coordinates?
+        if(mesh->mTextureCoords[0]) // Does the mesh contain texture coordinates?
         {
             // A vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't
             // use models where a vertex can have multiple texture coordinates so we always take the first set (0).
@@ -77,9 +77,9 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
             v = mesh->mTextureCoords[0][i].y;
         }
         else
-        {*/
+        {
             u = v = 0.0f;
-        //}
+        }
         vertices.push_back(u);
         vertices.push_back(v);
     }
