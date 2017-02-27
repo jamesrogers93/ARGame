@@ -1,0 +1,134 @@
+% Latex Style for CMP PGR DAY 2009.
+%
+% Revision 1.0
+% Feb. 12 2009.
+%
+% Barry-John Theobald, University of East Anglia, Norwich, UK
+
+\documentclass{cmppgr}
+
+% For urls
+\usepackage{hyperref}
+
+% For programming font
+\usepackage{courier}
+
+\title{Computer Games: ARGame}
+\name{James Rogers, 100062949}
+\institution{
+	School of Computing Sciences, University of East Anglia, UK
+}
+\email{}
+
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+
+Abstract.
+
+\end{abstract}
+
+% % % % % % % % % % % % % % % % 
+% % %		Introduction	   % % %
+% % % % % % % % % % % % % % % % 
+\section{Introduction}
+
+% % % % % % % % % % % % % % % % 
+% % %		Requirements   	% % %
+% % % % % % % % % % % % % % % % 
+\section{Requirements}
+
+\subsection{Specification}
+\subsection{MoSCoW}
+
+% % % % % % % % % % % % % % % % 
+% % %			Design			 % % %
+% % % % % % % % % % % % % % % % 
+\section{Design}
+
+\subsection{IID}
+\subsubsection{Version 0.1}
+
+
+\subsection{Technologies}
+\subsection{Inital Architecture}
+\subsection{Final Architecture}
+\subsection{Finite State Machine}
+
+
+% % % % % % % % % % % % % % % % 
+% % %	Implementation	   % % %
+% % % % % % % % % % % % % % % % 
+\section{Implementation}
+
+\subsection{Graphics}
+This section will detail all graphical related modules. This is the method of drawing graphical information to the screen, the loading, storing and managing of geometric data and materials.
+
+\subsubsection{GLKit}
+Apple\footnote{\url{https://developer.apple.com}} provide the GLKit\footnote{\url{https://developer.apple.com/reference/glkit}} framework which manages the OpenGL ES context and state information. It also provides additional functionality such as the \texttt{Effect} class which contains ans manages shader programs for easy drawing. It also contains math libraries such as vector and matrix operations. 
+
+\subsubsection{Mesh}
+The \texttt{Mesh} class contains an array of vertex and material data to represent a virtual geometric construction. A vertex is represented via a \texttt{Vertex} structure which contains two 3D vectors, a position and a normal, and a 2D vector for the texture coordinate. The material consists of diffuse and specular textures which are used approximately model material characteristics. Instead of using every three contiguous elements in the vertex array to represent a triangle, \texttt{Model} contains an array of vertex indices to point to vertex elements. Every three contiguous elements in the indices array  forms a triangle. This eliminates the need of storing multiple vertices, ultimately using less GPU memory, which is especially important on a mobile device where memory is limited. The OpenGL ES method, glDrawElements is used to draw the mesh data using the indices array.
+
+\subsubsection{Model}
+ The \texttt{Model} class contains an array of meshes to represent a more complex object. For example, the model of a chair could contain two meshes; one mesh to represent the wooden frame, and another mesh for the cushion. This also allows models to be 'pulled apart' or attached to each other by simply combining the mesh array. 
+
+\subsubsection{Model Loading}
+Model loading is performed using the \texttt{ModeLoader} class. It provides an interface of static methods which take a file path to the model file as their parameter, then return an instance of the \texttt{Model} class with the data loaded inside it. 
+
+The Assimp\footnote{\url{www.assimp.org}} model loading library was used to read 3D mesh and material data from Wavefront .obj formats. The Assimp library is written in C++, therefore a class, \texttt{AssimpModelLoader} was implemented in C++ to interact with the Assimp library, interpret and temporarily store it's output. The Swift \texttt{ModelLoader} class interacts with \texttt{AssimpModelLoader} through a bridging header; which consists of C functions that Swift can invoke to retrieve data from \texttt{AssimpModelLoader}. 
+
+Specifically, \texttt{ModelLoader} creates an instance of \texttt{AssimpModelLoader} using the initAssimpModelLoader C method which takes the file path of the model and returns a void pointer to the instance of \texttt{AssimpModelLoader} with the model data loaded inside it. Next, the void pointer is passed through other C methods in the bridging header to retrieve the model data, which is then stored in the \texttt{Model} class. Before returning the newly created model, the void pointer to the assimpModelLoader is destroyed, along with the model data it holds to avoid memory leaks.
+
+\subsubsection{Object}
+The \texttt{Object} class holds a \texttt{Model} and transformation data such as translation, rotation and scale matrices. This class is responsible for the positioning of the \texttt{Model} and controlling its movement in the environment.
+
+\subsubsection{Photogrametery}
+
+
+\subsection{Collisions}
+\subsubsection{Collision Detection}
+\subsubsection{Collision Resolution}
+
+\subsection{Augmented Reality}
+This section will detail the augmented reality aspects of the application. \texttt{ARHandler} is a wrapper class which contains ARToolKit functionality for the camera and marker tracking. 
+ 
+\subsubsection{Camera}
+The \texttt{ARHandler} class controls the camera attached to the device. It uses the \texttt{CameraVideo} class which is a part of the ARToolKit\footnote{\url{https://artoolkit.org}} SDK. \texttt{CameraVideo} provides functionality of turning on the video from the camera. Each time a frame is captured from the camera video, a delegate method is invoked to handle the raw camera output. The raw output consists of two bit planes in the YUV colour space. These bit planes are stored in an OpenGL texture cache which avoids coping the buffers, resulting in increased performance. When the texture is drawn to the display, the YUV colour space is converted to RGB. 
+
+\subsubsection{Marker Tracking}
+Marker tracking is also handled in the \texttt{ARHandler}, as it works closely with the raw output of the camera. 
+
+\subsubsection{Smoothing}
+\subsubsection{Illumination Model}
+
+% % % % % % % % % % % % % % % % 
+% % %			Testing	  		 % % %
+% % % % % % % % % % % % % % % % 
+\section{Testing}
+
+\subsection{Unit Testing}
+
+\subsection{Intergration Testing}
+
+% % % % % % % % % % % % % % % % 
+% % %		Conclusion	 	  % % %
+% % % % % % % % % % % % % % % % 
+\section{Conclusion}
+
+
+
+% % % % % % % % % % % % % % % % 
+% % %		Bibliography	   % % %
+% % % % % % % % % % % % % % % % 
+
+%\bibliographystyle{apalike}
+\bibliographystyle{agsm}
+%\bibliographystyle{abbrvnat}
+
+
+
+\end{document}
