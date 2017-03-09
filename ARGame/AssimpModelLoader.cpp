@@ -169,11 +169,11 @@ const unsigned int* AssimpModelLoader::getMeshIndices(const unsigned int &index)
     return meshes[index].indices.data();
 }
 
-const bool AssimpModelLoader::getMeshIsTexturesLoaded(const unsigned int &index)
+const bool AssimpModelLoader::getMeshIsDiffuseMapLoaded(const unsigned int &index)
 {
     if (index >= getNumMeshes())
         return false;
-    return meshes[index].isTextureLoaded;
+    return !meshes[index].diffuseMap.empty();
 }
 
 const char* AssimpModelLoader::getMeshDiffuseMap(const unsigned int &index)
@@ -181,6 +181,13 @@ const char* AssimpModelLoader::getMeshDiffuseMap(const unsigned int &index)
     if (index >= getNumMeshes())
         return 0;
     return meshes[index].diffuseMap.c_str();
+}
+
+const bool AssimpModelLoader::getMeshIsSpecularMapLoaded(const unsigned int &index)
+{
+    if (index >= getNumMeshes())
+        return false;
+    return !meshes[index].specularMap.empty();
 }
 
 const char* AssimpModelLoader::getMeshSpecularMap(const unsigned int &index)

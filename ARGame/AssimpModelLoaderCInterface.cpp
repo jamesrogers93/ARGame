@@ -9,7 +9,7 @@
 #include "AssimpModelLoaderCInterface.h"
 #include "AssimpModelLoader.hpp"
 
-const void* initAssimpModelLoader(const char *path)
+const void* mlLoadAssimpModel(const char *path)
 {
     // Create instance of AssimpModelLoader
     AssimpModelLoader *loader = new AssimpModelLoader();
@@ -21,7 +21,7 @@ const void* initAssimpModelLoader(const char *path)
     return (void *)loader;
 }
 
-void deinitAssimpModelLoader(const void *loader)
+void mlDestroyAssimpModelLoader(const void *loader)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
@@ -30,7 +30,7 @@ void deinitAssimpModelLoader(const void *loader)
         delete ptrLoader;
 }
 
-const unsigned int getNumMeshes(const void *loader)
+const unsigned int mlGetNumMeshes(const void *loader)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
@@ -39,7 +39,7 @@ const unsigned int getNumMeshes(const void *loader)
     return ptrLoader->getNumMeshes();
 }
 
-const unsigned int getNumVerticesInMesh(const void *loader, const unsigned int index)
+const unsigned int mlGetNumVerticesInMesh(const void *loader, const unsigned int index)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
@@ -49,7 +49,7 @@ const unsigned int getNumVerticesInMesh(const void *loader, const unsigned int i
 }
 
 
-const unsigned int getNumIndicesInMesh(const void *loader, const unsigned int index)
+const unsigned int mlGetNumIndicesInMesh(const void *loader, const unsigned int index)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
@@ -58,7 +58,7 @@ const unsigned int getNumIndicesInMesh(const void *loader, const unsigned int in
     return ptrLoader->getNumIndicesInMesh(index);
 }
 
-const float* getMeshVertices(const void *loader, const unsigned int index)
+const float* mlGetMeshVertices(const void *loader, const unsigned int index)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
@@ -67,7 +67,7 @@ const float* getMeshVertices(const void *loader, const unsigned int index)
     return ptrLoader->getMeshVertices(index);
 }
 
-const unsigned int* getMeshIndices(const void *loader, const unsigned int index)
+const unsigned int* mlGetMeshIndices(const void *loader, const unsigned int index)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
@@ -76,16 +76,16 @@ const unsigned int* getMeshIndices(const void *loader, const unsigned int index)
     return ptrLoader->getMeshIndices(index);
 }
 
-const int getMeshIsTexturesLoaded(const void *loader, const unsigned int &index)
+const int mlGetMeshIsDiffuseMapLoaded(const void *loader, const unsigned int index)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
     
     // Return the bool retrieved from AssimpModelLoader
-    return ptrLoader->getMeshIsTexturesLoaded(index);
+    return ptrLoader->getMeshIsDiffuseMapLoaded(index);
 }
 
-const char* getMeshDiffuseMap(const void *loader, const unsigned int &index)
+const char* mlGetMeshDiffuseMap(const void *loader, const unsigned int index)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
@@ -94,7 +94,16 @@ const char* getMeshDiffuseMap(const void *loader, const unsigned int &index)
     return ptrLoader->getMeshDiffuseMap(index);
 }
 
-const char* getMeshSpecularMap(const void *loader, const unsigned int &index)
+const int mlGetMeshIsSpecularMapLoaded(const void *loader, const unsigned int index)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the bool retrieved from AssimpModelLoader
+    return ptrLoader->getMeshIsSpecularMapLoaded(index);
+}
+
+const char* mlGetMeshSpecularMap(const void *loader, const unsigned int index)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;

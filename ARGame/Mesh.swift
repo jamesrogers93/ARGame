@@ -38,8 +38,8 @@ struct Vertex
     private var VBO: GLuint = 0
     private var EBO: GLuint = 0
     
-    private var texture: GLKTextureInfo? = nil
-    private var textureLoaded:Bool = false;
+    private var diffuseTexture: GLKTextureInfo = GLKTextureInfo()
+    private var specularTexture: GLKTextureInfo = GLKTextureInfo()
     
     init(_ vertices: Array<Vertex>, _ indices: Array<GLuint>)
     {
@@ -53,40 +53,59 @@ struct Vertex
     
     deinit
     {
+        // Delete buffers
         glDeleteBuffers(1, &self.VBO)
         glDeleteBuffers(1, &self.EBO)
         glDeleteVertexArraysOES(1, &self.VAO)
+        
+        //Delete textures
+        var id: GLuint = 0
+        
+        if(self.diffuseTexture.name != 0)
+        {
+            id = self.diffuseTexture.name
+            glDeleteTextures(1, &id)
+        }
+        
+        if(self.specularTexture.name != 0)
+        {
+            id = self.specularTexture.name
+            glDeleteTextures(1, &id)
+        }
     }
     
     public func draw(_ effect: GLKBaseEffect?)
     {
+        // Bind diffuse texture
+        if(self.diffuseTexture.name != 0)
+        {
+            glBindTexture(self.diffuseTexture.target, self.diffuseTexture.name);
+            effect?.texture2d1.enabled = GLboolean(GL_TRUE)
+            effect?.texture2d1.name = self.diffuseTexture.name
+        }
+        
         // Bind vertex array for drawing
         glBindVertexArrayOES(VAO)
         
-        // Bind texture
-        if (self.textureLoaded)
-        {
-            if((self.texture?.name)! != 0)
-            {
-                //glBindTexture(GLenum((self.texture?.target)!), (self.texture?.name)!)
-                effect?.texture2d0.enabled = GLboolean(GL_TRUE)
-                effect?.texture2d0.name = (self.texture?.name)!
-                //effect?.texture2d0.target = GLenum((self.texture?.target)!)
-            }
-        }
-        
         // Render the object with GLKit
+        // Prepare the GLKit shader
         effect?.prepareToDraw()
+        
+        // Draw the mesh
         glDrawElements(GLenum(GL_TRIANGLES), GLsizei(indices.count), GLenum(GL_UNSIGNED_INT), BUFFER_OFFSET(0))
         
         // Unbind vertex array
         glBindVertexArrayOES(0)
     }
     
-    public func setTexture(_ texture: GLKTextureInfo)
+    public func setDiffuseTexture(_ diffuse: GLKTextureInfo)
     {
-        self.texture = texture;
-        self.textureLoaded = true;
+        self.diffuseTexture = diffuse;
+    }
+    
+    public func setSpecularTexture(_ specular: GLKTextureInfo)
+    {
+        self.specularTexture = specular;
     }
     
     private func setupMesh()

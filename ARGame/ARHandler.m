@@ -39,16 +39,63 @@
     ARParamLT      *gCparamLT;
     ARGL_CONTEXT_SETTINGS_REF arglContextSettings;
     GLKMatrix4 camLens;
+    
+    // Device details
+    int screenWidth, screenHeight;
+    
+    // Viewport details
+    float left, bottom, width, height;
 }
 
-@synthesize camProjection;
-@synthesize camPose;
+@synthesize camProjection, camPose, camWidth, camHeight;
 
 - (void) draw
 {
     glDisable(GL_DEPTH_TEST);
     arglDispImage(arglContextSettings);
     glEnable(GL_DEPTH_TEST);
+    
+    glStateCacheFlush();
+}
+
+- (void) initViewportParams
+{
+    // Get dimensions of the screen in pixels
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+    CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
+    // Scale camWidth and camHeight to fill screen
+    float scaleh = (screenHeight / camHeight);
+    float scalew = (screenWidth / camWidth);
+    
+    if(scaleh > scalew)
+    {
+        height = camHeight * scaleh;
+        width = camWidth * scaleh;
+        
+        left = -((width - screenWidth) / 2);
+        bottom = 0.0;
+    }else
+    {
+        height = camHeight * scalew;
+        width = camWidth * scalew;
+        
+        // Now center height of viewport
+        bottom = -((height - screenHeight) / 2);
+        left = 0.0;
+    }
+    
+    
+    
+    left = bottom = 0.0;
+}
+
+- (void) setViewport
+{
+    glViewport(left, bottom, width, height);
 }
 
 - (void) onViewLoad
@@ -149,6 +196,9 @@ static void startCallback(void *userData)
         return;
     }
     
+    camWidth = xsize;
+    camHeight = ysize;
+    
     // Get the format in which the camera is returning pixels.
     AR_PIXEL_FORMAT pixFormat = ar2VideoGetPixelFormat(gVid);
     if (pixFormat == AR_PIXEL_FORMAT_INVALID)
@@ -176,8 +226,8 @@ static void startCallback(void *userData)
     ARParam cparam;
     if (ar2VideoGetCParam(gVid, &cparam) < 0)
     {
-        //NSString *filename = [[NSBundle mainBundle] pathForResource:@"camera_para" ofType:@"dat"];
-        NSString *filename = [[NSBundle mainBundle] pathForResource:@"camera_para-iPhone 6 Plus rear 1280x720 0.3m" ofType:@"dat"];
+        NSString *filename = [[NSBundle mainBundle] pathForResource:@"camera_para" ofType:@"dat"];
+        //NSString *filename = [[NSBundle mainBundle] pathForResource:@"camera_para-iPhone 6 Plus rear 1280x720 0.3m" ofType:@"dat"];
         
         NSLog(@"Unable to automatically determine camera parameters. Using default.\n");
         if (arParamLoad([filename cStringUsingEncoding:1], 1, &cparam) < 0)
@@ -199,6 +249,9 @@ static void startCallback(void *userData)
         [self stop];
         return;
     }
+    
+    // Configure the viewport
+    [self initViewportParams];
     
     // AR init.
     if ((gARHandle = arCreateHandle(gCparamLT)) == NULL)
@@ -307,10 +360,9 @@ static void startCallback(void *userData)
             arglPixelBufferDataUpload(arglContextSettings, buffer->buff);
         
         // Detect the markers in the video frame.
-        if (arDetectMarker(gARHandle, buffer->buff) < 0) return;
-#ifdef DEBUG
-        NSLog(@"found %d marker(s).\n", gARHandle->marker_num);
-#endif
+        if (arDetectMarker(gARHandle, buffer->buff) < 0)
+            return;
+
         
         // Check through the marker_info array for highest confidence
         // visible marker matching our preferred pattern.
@@ -325,9 +377,6 @@ static void startCallback(void *userData)
         
         
         if (k != -1) {
-#ifdef DEBUG
-            NSLog(@"marker %d matched pattern %d.\n", k, gPatt_id);
-#endif
             // Get the transformation between the marker and the real camera into gPatt_trans.
             if (gPatt_found && useContPoseEstimation) {
                 err = arGetTransMatSquareCont(gAR3DHandle, &(gARHandle->markerInfo[k]), gPatt_trans, gPatt_width, gPatt_trans);
@@ -351,7 +400,7 @@ static void startCallback(void *userData)
             camPose = GLKMatrix4Make(modelview[0], modelview[1], modelview[2], modelview[3], modelview[4], modelview[5], modelview[6], modelview[7], modelview[8], modelview[9], modelview[10], modelview[11], modelview[12], modelview[13], modelview[14], modelview[15]);
             
             // Rotate camera pose
-            //camPose = GLKMatrix4Rotate(camPose, 90.0, 1.0, 0.0, 0.0);
+            camPose = GLKMatrix4Rotate(camPose, 1.5, 1.0, 0.0, 0.0);
         }
     }
 }

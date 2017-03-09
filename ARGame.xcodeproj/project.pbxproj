@@ -39,6 +39,24 @@
 		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
 		1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */; };
 		1ADFA8B81E64C05900588345 /* AssimpModelLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */; };
+		1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B91E64CAB600588345 /* nanosuit.obj */; };
+		1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */; };
+		1ADFA8CA1E64DE9600588345 /* arm_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8BE1E64DE9600588345 /* arm_dif.png */; };
+		1ADFA8CB1E64DE9600588345 /* arm_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8BF1E64DE9600588345 /* arm_showroom_spec.png */; };
+		1ADFA8CC1E64DE9600588345 /* body_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C01E64DE9600588345 /* body_dif.png */; };
+		1ADFA8CD1E64DE9600588345 /* body_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C11E64DE9600588345 /* body_showroom_spec.png */; };
+		1ADFA8CE1E64DE9600588345 /* glass_ddn.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C21E64DE9600588345 /* glass_ddn.png */; };
+		1ADFA8CF1E64DE9600588345 /* glass_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C31E64DE9600588345 /* glass_dif.png */; };
+		1ADFA8D01E64DE9600588345 /* hand_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C41E64DE9600588345 /* hand_dif.png */; };
+		1ADFA8D11E64DE9600588345 /* hand_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C51E64DE9600588345 /* hand_showroom_spec.png */; };
+		1ADFA8D21E64DE9600588345 /* helmet_diff.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C61E64DE9600588345 /* helmet_diff.png */; };
+		1ADFA8D31E64DE9600588345 /* helmet_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C71E64DE9600588345 /* helmet_showroom_spec.png */; };
+		1ADFA8D41E64DE9600588345 /* leg_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C81E64DE9600588345 /* leg_dif.png */; };
+		1ADFA8D51E64DE9600588345 /* leg_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C91E64DE9600588345 /* leg_showroom_spec.png */; };
+		1AEFE7481E65A12700698808 /* box.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7441E65A12700698808 /* box.mtl */; };
+		1AEFE7491E65A12700698808 /* box.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7451E65A12700698808 /* box.obj */; };
+		1AEFE74A1E65A12700698808 /* container2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7461E65A12700698808 /* container2.png */; };
+		1AEFE74B1E65A12700698808 /* container2_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7471E65A12700698808 /* container2_specular.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +132,24 @@
 		1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModelLoaderCInterface.h; sourceTree = "<group>"; };
 		1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; path = "Assets_AR/camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; sourceTree = "<group>"; };
 		1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpModelLoaderCInterface.cpp; sourceTree = "<group>"; };
+		1ADFA8B91E64CAB600588345 /* nanosuit.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nanosuit.obj; path = Assets/Nanosuit/nanosuit.obj; sourceTree = "<group>"; };
+		1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nanosuit.mtl; path = Assets/Nanosuit/nanosuit.mtl; sourceTree = "<group>"; };
+		1ADFA8BE1E64DE9600588345 /* arm_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arm_dif.png; path = Assets/Nanosuit/arm_dif.png; sourceTree = "<group>"; };
+		1ADFA8BF1E64DE9600588345 /* arm_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arm_showroom_spec.png; path = Assets/Nanosuit/arm_showroom_spec.png; sourceTree = "<group>"; };
+		1ADFA8C01E64DE9600588345 /* body_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = body_dif.png; path = Assets/Nanosuit/body_dif.png; sourceTree = "<group>"; };
+		1ADFA8C11E64DE9600588345 /* body_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = body_showroom_spec.png; path = Assets/Nanosuit/body_showroom_spec.png; sourceTree = "<group>"; };
+		1ADFA8C21E64DE9600588345 /* glass_ddn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glass_ddn.png; path = Assets/Nanosuit/glass_ddn.png; sourceTree = "<group>"; };
+		1ADFA8C31E64DE9600588345 /* glass_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glass_dif.png; path = Assets/Nanosuit/glass_dif.png; sourceTree = "<group>"; };
+		1ADFA8C41E64DE9600588345 /* hand_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hand_dif.png; path = Assets/Nanosuit/hand_dif.png; sourceTree = "<group>"; };
+		1ADFA8C51E64DE9600588345 /* hand_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hand_showroom_spec.png; path = Assets/Nanosuit/hand_showroom_spec.png; sourceTree = "<group>"; };
+		1ADFA8C61E64DE9600588345 /* helmet_diff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = helmet_diff.png; path = Assets/Nanosuit/helmet_diff.png; sourceTree = "<group>"; };
+		1ADFA8C71E64DE9600588345 /* helmet_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = helmet_showroom_spec.png; path = Assets/Nanosuit/helmet_showroom_spec.png; sourceTree = "<group>"; };
+		1ADFA8C81E64DE9600588345 /* leg_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leg_dif.png; path = Assets/Nanosuit/leg_dif.png; sourceTree = "<group>"; };
+		1ADFA8C91E64DE9600588345 /* leg_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leg_showroom_spec.png; path = Assets/Nanosuit/leg_showroom_spec.png; sourceTree = "<group>"; };
+		1AEFE7441E65A12700698808 /* box.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = box.mtl; path = Assets/Box/box.mtl; sourceTree = "<group>"; };
+		1AEFE7451E65A12700698808 /* box.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = box.obj; path = Assets/Box/box.obj; sourceTree = "<group>"; };
+		1AEFE7461E65A12700698808 /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = container2.png; path = Assets/Box/container2.png; sourceTree = "<group>"; };
+		1AEFE7471E65A12700698808 /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = container2_specular.png; path = Assets/Box/container2_specular.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +284,8 @@
 		1A5B66FC1E5BACF4000463E3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				1AEFE7431E65A11000698808 /* Box */,
+				1ADFA8BD1E64DE6E00588345 /* Nanosuit */,
 				1A5B67051E5C4045000463E3 /* robot.mtl */,
 				1A5B67061E5C4045000463E3 /* robot.obj */,
 				1A5B67011E5BADCE000463E3 /* cube.mtl */,
@@ -296,6 +334,38 @@
 				1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */,
 			);
 			name = ModelLoader;
+			sourceTree = "<group>";
+		};
+		1ADFA8BD1E64DE6E00588345 /* Nanosuit */ = {
+			isa = PBXGroup;
+			children = (
+				1ADFA8BE1E64DE9600588345 /* arm_dif.png */,
+				1ADFA8BF1E64DE9600588345 /* arm_showroom_spec.png */,
+				1ADFA8C01E64DE9600588345 /* body_dif.png */,
+				1ADFA8C11E64DE9600588345 /* body_showroom_spec.png */,
+				1ADFA8C21E64DE9600588345 /* glass_ddn.png */,
+				1ADFA8C31E64DE9600588345 /* glass_dif.png */,
+				1ADFA8C41E64DE9600588345 /* hand_dif.png */,
+				1ADFA8C51E64DE9600588345 /* hand_showroom_spec.png */,
+				1ADFA8C61E64DE9600588345 /* helmet_diff.png */,
+				1ADFA8C71E64DE9600588345 /* helmet_showroom_spec.png */,
+				1ADFA8C81E64DE9600588345 /* leg_dif.png */,
+				1ADFA8C91E64DE9600588345 /* leg_showroom_spec.png */,
+				1ADFA8B91E64CAB600588345 /* nanosuit.obj */,
+				1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */,
+			);
+			name = Nanosuit;
+			sourceTree = "<group>";
+		};
+		1AEFE7431E65A11000698808 /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				1AEFE7441E65A12700698808 /* box.mtl */,
+				1AEFE7451E65A12700698808 /* box.obj */,
+				1AEFE7461E65A12700698808 /* container2.png */,
+				1AEFE7471E65A12700698808 /* container2_specular.png */,
+			);
+			name = Box;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,18 +479,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AEFE7481E65A12700698808 /* box.mtl in Resources */,
+				1ADFA8D41E64DE9600588345 /* leg_dif.png in Resources */,
+				1ADFA8CF1E64DE9600588345 /* glass_dif.png in Resources */,
+				1ADFA8D31E64DE9600588345 /* helmet_showroom_spec.png in Resources */,
+				1ADFA8D51E64DE9600588345 /* leg_showroom_spec.png in Resources */,
 				1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */,
 				1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */,
 				1A5B67071E5C4045000463E3 /* robot.mtl in Resources */,
+				1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */,
+				1ADFA8D11E64DE9600588345 /* hand_showroom_spec.png in Resources */,
 				1A5B67081E5C4046000463E3 /* robot.obj in Resources */,
+				1AEFE74B1E65A12700698808 /* container2_specular.png in Resources */,
+				1AEFE74A1E65A12700698808 /* container2.png in Resources */,
 				1A17880B1E640D950087DE26 /* camera_para.dat in Resources */,
+				1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */,
+				1ADFA8CC1E64DE9600588345 /* body_dif.png in Resources */,
+				1ADFA8CD1E64DE9600588345 /* body_showroom_spec.png in Resources */,
 				1A44DCCC1E55F34C0036E753 /* Assets.xcassets in Resources */,
 				1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */,
 				1A5B67041E5BADCE000463E3 /* cube.obj in Resources */,
 				1A44DCCF1E55F34C0036E753 /* LaunchScreen.storyboard in Resources */,
 				1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */,
+				1ADFA8CE1E64DE9600588345 /* glass_ddn.png in Resources */,
+				1ADFA8CA1E64DE9600588345 /* arm_dif.png in Resources */,
 				1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */,
+				1ADFA8D21E64DE9600588345 /* helmet_diff.png in Resources */,
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,
+				1AEFE7491E65A12700698808 /* box.obj in Resources */,
+				1ADFA8D01E64DE9600588345 /* hand_dif.png in Resources */,
+				1ADFA8CB1E64DE9600588345 /* arm_showroom_spec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
