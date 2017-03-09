@@ -48,7 +48,7 @@ class GameViewController: GLKViewController {
         self.setupGL()
         
         // Create object with model
-        self.obj = Object(ModelLoader.loadModelFromFile("robot"))
+        self.obj = Object(ModelLoader.loadObjModelFromFile("box"))
         
         // Initalise the AR handler
         self.arHandler.onViewLoad()
@@ -60,6 +60,9 @@ class GameViewController: GLKViewController {
         
         // Start the AR handler
         self.arHandler.start()
+        
+        //glViewport(-105, 0, 851, 1136);
+        glViewport(0,0, self.arHandler.camWidth, self.arHandler.camHeight)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,13 +101,14 @@ class GameViewController: GLKViewController {
         // Set up renderer
         self.effect = GLKBaseEffect()   // Init renderer
         self.effect!.light0.enabled = GLboolean(GL_TRUE)    // Add light
-        self.effect!.light0.diffuseColor = GLKVector4Make(1.0, 0.4, 0.4, 1.0)   // Set light colour
+        self.effect!.light0.diffuseColor = GLKVector4Make(1.0, 1.0, 1.0, 1.0)   // Set light colour
         
         // Allow depth testing
         glEnable(GLenum(GL_DEPTH_TEST))
         
         // Setup the projection matrix
         self.setupProjectionMatrix(self.view.bounds.size.width, self.view.bounds.size.height)
+
     }
     
     func setupProjectionMatrix(_ width:CGFloat, _ height:CGFloat)
@@ -131,23 +135,31 @@ class GameViewController: GLKViewController {
         // Update the projection matrix
         self.effect?.transform.projectionMatrix = self.arHandler.camProjection
         
+        // Update model in renderer
+        self.effect?.transform.modelviewMatrix = GLKMatrix4Multiply(self.arHandler.camPose, (self.obj?.getModel())!)
+        
         self.obj?.translate(GLKVector3Make(0.0, 0.0, 0.0))
-        //self.obj?.rotate(rotation, GLKVector3Make(0.0, 1.0, 0.0))
+        //self.obj?.rotate(rotation, GLKVector3Make(1.0, 0.0, 0.0))
         self.obj?.scale(GLKVector3Make(10.0, 10.0, 10.0))
-        rotation+=0.01
+        //rotation+=0.01
+        //print(rotation)
     }
     
     // Draw OpenGL content here
-    override func glkView(_ view: GLKView, drawIn rect: CGRect) {
+    override func glkView(_ view: GLKView, drawIn rect: CGRect)
+    {
         glClearColor(0.65, 0.65, 0.65, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT) | GLbitfield(GL_DEPTH_BUFFER_BIT))
+        
+        // Update viewport here?
+        //glViewport(-105, 0, 851, 1136);
+        self.arHandler.setViewport()
+        
         
         // Draw the camera view
         self.arHandler.draw()
         
         // Draw the object
-        // Set model in renderer
-        self.effect?.transform.modelviewMatrix = GLKMatrix4Multiply(self.arHandler.camPose, (self.obj?.getModel())!)
         self.obj?.draw(self.effect)
     }
 }

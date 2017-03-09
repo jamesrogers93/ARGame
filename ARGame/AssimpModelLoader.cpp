@@ -69,7 +69,7 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
         
         // Texture Coordinates
         float u,v;
-        /*if(mesh->mTextureCoords[0]) // Does the mesh contain texture coordinates?
+        if(mesh->mTextureCoords[0]) // Does the mesh contain texture coordinates?
         {
             // A vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't
             // use models where a vertex can have multiple texture coordinates so we always take the first set (0).
@@ -77,9 +77,9 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
             v = mesh->mTextureCoords[0][i].y;
         }
         else
-        {*/
+        {
             u = v = 0.0f;
-        //}
+        }
         vertices.push_back(u);
         vertices.push_back(v);
     }
@@ -169,11 +169,11 @@ const unsigned int* AssimpModelLoader::getMeshIndices(const unsigned int &index)
     return meshes[index].indices.data();
 }
 
-const bool AssimpModelLoader::getMeshIsTexturesLoaded(const unsigned int &index)
+const bool AssimpModelLoader::getMeshIsDiffuseMapLoaded(const unsigned int &index)
 {
     if (index >= getNumMeshes())
         return false;
-    return meshes[index].isTextureLoaded;
+    return !meshes[index].diffuseMap.empty();
 }
 
 const char* AssimpModelLoader::getMeshDiffuseMap(const unsigned int &index)
@@ -183,105 +183,16 @@ const char* AssimpModelLoader::getMeshDiffuseMap(const unsigned int &index)
     return meshes[index].diffuseMap.c_str();
 }
 
+const bool AssimpModelLoader::getMeshIsSpecularMapLoaded(const unsigned int &index)
+{
+    if (index >= getNumMeshes())
+        return false;
+    return !meshes[index].specularMap.empty();
+}
+
 const char* AssimpModelLoader::getMeshSpecularMap(const unsigned int &index)
 {
     if (index >= getNumMeshes())
         return 0;
     return meshes[index].specularMap.c_str();
-}
-
-#include "AssimpModelLoaderCInterface.h"
-
-const void* initAssimpModelLoader(const char *path)
-{
-    // Create instance of AssimpModelLoader
-    AssimpModelLoader *loader = new AssimpModelLoader();
-    
-    // Load the model
-    loader->loadAssimpModel(path);
-    
-    // Return a void pointer to loader
-    return (void *)loader;
-}
-
-void deinitAssimpModelLoader(const void *loader)
-{
-    // Cast void pointer, loader to AssimpModelLoader type
-    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
-    
-    if(ptrLoader)
-        delete ptrLoader;
-}
-
-const unsigned int getNumMeshes(const void *loader)
-{
-    // Cast void pointer, loader to AssimpModelLoader type
-    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
-    
-    // Return the float array retrieved from AssimpModelLoader
-    return ptrLoader->getNumMeshes();
-}
-
-const unsigned int getNumVerticesInMesh(const void *loader, const unsigned int index)
-{
-    // Cast void pointer, loader to AssimpModelLoader type
-    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
-    
-    // Return the float array retrieved from AssimpModelLoader
-    return ptrLoader->getNumVerticesInMesh(index);
-}
-
-
-const unsigned int getNumIndicesInMesh(const void *loader, const unsigned int index)
-{
-    // Cast void pointer, loader to AssimpModelLoader type
-    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
-    
-    // Return the float array retrieved from AssimpModelLoader
-    return ptrLoader->getNumIndicesInMesh(index);
-}
-
-const float* getMeshVertices(const void *loader, const unsigned int index)
-{
-    // Cast void pointer, loader to AssimpModelLoader type
-    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
-    
-    // Return the float array retrieved from AssimpModelLoader
-    return ptrLoader->getMeshVertices(index);
-}
-
-const unsigned int* getMeshIndices(const void *loader, const unsigned int index)
-{
-    // Cast void pointer, loader to AssimpModelLoader type
-    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
-    
-    // Return the unsigned int array retrieved from AssimpModelLoader
-    return ptrLoader->getMeshIndices(index);
-}
-
-const int getMeshIsTexturesLoaded(const void *loader, const unsigned int &index)
-{
-    // Cast void pointer, loader to AssimpModelLoader type
-    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
-    
-    // Return the bool retrieved from AssimpModelLoader
-    return ptrLoader->getMeshIsTexturesLoaded(index);
-}
-
-const char* getMeshDiffuseMap(const void *loader, const unsigned int &index)
-{
-    // Cast void pointer, loader to AssimpModelLoader type
-    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
-    
-    // Return the char array retrieved from AssimpModelLoader
-    return ptrLoader->getMeshDiffuseMap(index);
-}
-
-const char* getMeshSpecularMap(const void *loader, const unsigned int &index)
-{
-    // Cast void pointer, loader to AssimpModelLoader type
-    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
-    
-    // Return the char array retrieved from AssimpModelLoader
-    return ptrLoader->getMeshSpecularMap(index);
 }

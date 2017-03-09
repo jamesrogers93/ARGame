@@ -30,6 +30,9 @@
 /*! Stops the camera feed and marker tracking. */
 - (void) stop;
 
+/*! Set viewport for the camera feed. */
+- (void) setViewport;
+
 /*!  Draws the camera feed to the screen using OpenGL ES2. */
 - (void) draw;
 
@@ -39,6 +42,12 @@
 /*! The camera view matrix retrived from the tracked marker. 
  If multiple markers are found, the marker that has the most confidence will be used. If no markers are found, this will be an identity matrix. */
 @property (readonly) GLKMatrix4 camPose;
+
+/*! The width of the camera video */
+@property (readonly) int camWidth;
+
+/*! The height of the camera video */
+@property (readonly) int camHeight;
 
 @end
 

@@ -25,7 +25,6 @@ struct CMesh
     std::vector<unsigned int> indices;
     
     std::string diffuseMap, specularMap;
-    bool isTextureLoaded = false;
     
     CMesh(std::vector<float> vertices, std::vector<unsigned int> indices)
     {
@@ -33,11 +32,14 @@ struct CMesh
         this->indices = indices;
     }
     
-    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::string diffuseMap, std::string specularMap) : CMesh(vertices, indices)
+    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::string diffuseMap) : CMesh(vertices, indices)
     {
         this->diffuseMap = diffuseMap;
+    }
+    
+    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::string diffuseMap, std::string specularMap) : CMesh(vertices, indices, diffuseMap)
+    {
         this->specularMap = specularMap;
-        this->isTextureLoaded = true;
     }
 };
 
@@ -88,12 +90,12 @@ public:
      */
     const unsigned int* getMeshIndices(const unsigned int &index);
     
-    /**  Returns a bool indicating if textures have been loaded for a mesh.
+    /**  Returns a bool indicating if a diffuse map has been loaded for a mesh.
      *
      *  @param index Index of the mesh in the meshes array.
-     *  @return Indication if texture maps have been loaded.
+     *  @return Indication if a diffuse map has been loaded.
      */
-    const bool getMeshIsTexturesLoaded(const unsigned int &index);
+    const bool getMeshIsDiffuseMapLoaded(const unsigned int &index);
     
     /**  Gets the path of a diffuse map in a mesh.
      *
@@ -101,6 +103,13 @@ public:
      *  @return The path to a diffuse map.
      */
     const char* getMeshDiffuseMap(const unsigned int &index);
+    
+    /**  Returns a bool indicating if a specular map has been loaded for a mesh.
+     *
+     *  @param index Index of the mesh in the meshes array.
+     *  @return Indication if a specular map has been loaded.
+     */
+    const bool getMeshIsSpecularMapLoaded(const unsigned int &index);
     
     /**  Gets the path of a specular map in a mesh.
      *
