@@ -19,7 +19,7 @@ class Model
     }
     
     // Draws the model, and thus all its meshes
-    public func draw(_ effect: GLKBaseEffect?)
+    public func draw(_ effect: Effect)
     {
         for i in 0..<self.meshes.count
         {
