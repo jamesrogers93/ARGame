@@ -51,8 +51,9 @@ class Object
         self.updateModel()
     }
     
-    public func draw(_ effect: GLKBaseEffect?)
+    public func draw(_ effect: Effect)
     {
+        effect.setModel(self.model)
         self.GLmodel.draw(effect)
     }
 }

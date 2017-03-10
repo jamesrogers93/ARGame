@@ -74,22 +74,15 @@ struct Vertex
         }
     }
     
-    public func draw(_ effect: GLKBaseEffect?)
+    public func draw(_ effect: Effect)
     {
-        // Bind diffuse texture
-        if(self.diffuseTexture.name != 0)
-        {
-            glBindTexture(self.diffuseTexture.target, self.diffuseTexture.name);
-            effect?.texture2d1.enabled = GLboolean(GL_TRUE)
-            effect?.texture2d1.name = self.diffuseTexture.name
-        }
+        // Prepare Effect
+        effect.setTexture0(diffuseTexture.name)
+        effect.setTexture1(specularTexture.name)
+        effect.prepareToDraw()
         
         // Bind vertex array for drawing
         glBindVertexArrayOES(VAO)
-        
-        // Render the object with GLKit
-        // Prepare the GLKit shader
-        effect?.prepareToDraw()
         
         // Draw the mesh
         glDrawElements(GLenum(GL_TRIANGLES), GLsizei(indices.count), GLenum(GL_UNSIGNED_INT), BUFFER_OFFSET(0))
@@ -132,16 +125,16 @@ struct Vertex
         // Set the vertex attribute pointers
         
         // Vertex Positions
-        glEnableVertexAttribArray(GLuint(GLKVertexAttrib.position.rawValue))
-        glVertexAttribPointer(GLuint(GLKVertexAttrib.position.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(0))
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.position.rawValue))
+        glVertexAttribPointer(GLuint(ShaderVertexAttrib.position.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(0))
 
         // Vertex Normals
-        glEnableVertexAttribArray(GLuint(GLKVertexAttrib.normal.rawValue))
-        glVertexAttribPointer(GLuint(GLKVertexAttrib.normal.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size))
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.normal.rawValue))
+        glVertexAttribPointer(GLuint(ShaderVertexAttrib.normal.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size))
         
         // Texture Coordinates
-        glEnableVertexAttribArray(GLuint(GLKVertexAttrib.texCoord0.rawValue))
-        glVertexAttribPointer(GLuint(GLKVertexAttrib.texCoord0.rawValue), 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size * 2))
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.texCoord.rawValue))
+        glVertexAttribPointer(GLuint(ShaderVertexAttrib.texCoord.rawValue), 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size * 2))
         
         glBindVertexArrayOES(0);
     }

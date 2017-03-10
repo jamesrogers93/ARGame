@@ -16,7 +16,12 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
 class GameViewController: GLKViewController {
     
     var context: EAGLContext? = nil
-    var effect: GLKBaseEffect? = nil
+    
+    // Shaders
+    /// GLKit shader
+    //var effect: GLKBaseEffect? = nil
+    /// OpenGLES Shader
+    var effect: Effect? = nil
     
     var obj: Object? = nil
     
@@ -72,12 +77,6 @@ class GameViewController: GLKViewController {
         self.arHandler.stop()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
-    {
-        // Update the projection matrix
-        self.setupProjectionMatrix(size.width, size.height)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -98,32 +97,23 @@ class GameViewController: GLKViewController {
         // Set current GL context
         EAGLContext.setCurrent(self.context)
         
-        // Set up renderer
-        self.effect = GLKBaseEffect()   // Init renderer
-        self.effect!.light0.enabled = GLboolean(GL_TRUE)    // Add light
-        self.effect!.light0.diffuseColor = GLKVector4Make(1.0, 1.0, 1.0, 1.0)   // Set light colour
+        // Set GLKit Shader
+        //self.effect = GLKBaseEffect()   // Init renderer
+        //self.effect!.light0.enabled = GLboolean(GL_TRUE)    // Add light
+        //self.effect!.light0.diffuseColor = GLKVector4Make(1.0, 1.0, 1.0, 1.0)   // Set light colour
+        
+        // Set my OpenGLES Effect
+        self.effect = EffectBasic()
         
         // Allow depth testing
         glEnable(GLenum(GL_DEPTH_TEST))
-        
-        // Setup the projection matrix
-        self.setupProjectionMatrix(self.view.bounds.size.width, self.view.bounds.size.height)
-
-    }
-    
-    func setupProjectionMatrix(_ width:CGFloat, _ height:CGFloat)
-    {
-        // Set up projection matrix
-        let aspect = fabsf(Float(width / height))
-        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 0.1, 100.0)
-        self.effect?.transform.projectionMatrix = projectionMatrix
     }
     
     func tearDownGL()
     {
         EAGLContext.setCurrent(self.context)
         
-        // Delete renderer
+        // Delete Effect
         self.effect = nil
     }
     
@@ -133,10 +123,11 @@ class GameViewController: GLKViewController {
     func update()
     {
         // Update the projection matrix
-        self.effect?.transform.projectionMatrix = self.arHandler.camProjection
+        self.effect?.setProjection(self.arHandler.camProjection)
         
         // Update model in renderer
-        self.effect?.transform.modelviewMatrix = GLKMatrix4Multiply(self.arHandler.camPose, (self.obj?.getModel())!)
+        //self.effect?.transform.modelviewMatrix = GLKMatrix4Multiply(self.arHandler.camPose, (self.obj?.getModel())!)
+        self.effect?.setView(self.arHandler.camPose)
         
         self.obj?.translate(GLKVector3Make(0.0, 0.0, 0.0))
         //self.obj?.rotate(rotation, GLKVector3Make(1.0, 0.0, 0.0))
@@ -155,11 +146,10 @@ class GameViewController: GLKViewController {
         //glViewport(-105, 0, 851, 1136);
         self.arHandler.setViewport()
         
-        
         // Draw the camera view
         self.arHandler.draw()
         
         // Draw the object
-        self.obj?.draw(self.effect)
+        self.obj?.draw(self.effect!)
     }
 }
