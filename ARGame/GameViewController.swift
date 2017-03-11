@@ -103,7 +103,8 @@ class GameViewController: GLKViewController {
         //self.effect!.light0.diffuseColor = GLKVector4Make(1.0, 1.0, 1.0, 1.0)   // Set light colour
         
         // Set my OpenGLES Effect
-        self.effect = EffectBasic()
+        //self.effect = EffectBasic()
+        self.effect = EffectMaterial()
         
         // Allow depth testing
         glEnable(GLenum(GL_DEPTH_TEST))

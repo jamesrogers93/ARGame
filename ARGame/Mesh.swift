@@ -33,6 +33,7 @@ struct Vertex
     
     private var vertices: Array<Vertex>
     private var indices: Array<GLuint>
+    private var numIndices: GLsizei = 0
     
     private var VAO: GLuint = 0
     private var VBO: GLuint = 0
@@ -45,6 +46,7 @@ struct Vertex
     {
         self.vertices = vertices
         self.indices = indices
+        self.numIndices = GLsizei(indices.count)
         
         super.init()
         
@@ -85,7 +87,7 @@ struct Vertex
         glBindVertexArrayOES(VAO)
         
         // Draw the mesh
-        glDrawElements(GLenum(GL_TRIANGLES), GLsizei(indices.count), GLenum(GL_UNSIGNED_INT), BUFFER_OFFSET(0))
+        glDrawElements(GLenum(GL_TRIANGLES), self.numIndices, GLenum(GL_UNSIGNED_INT), BUFFER_OFFSET(0))
         
         // Unbind vertex array
         glBindVertexArrayOES(0)

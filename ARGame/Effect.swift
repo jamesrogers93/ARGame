@@ -10,14 +10,14 @@ import Foundation
 
 class Effect
 {
-    private var shader:Shader!
+    internal var shader:Shader!
     
-    private var projection:GLKMatrix4 = GLKMatrix4Identity
-    private var view:GLKMatrix4 = GLKMatrix4Identity
-    private var model:GLKMatrix4 = GLKMatrix4Identity
-    private var colour: GLKVector4 = GLKVector4Make(0.0, 0.0, 0.0, 0.0)
-    private var texture0: GLuint = 0
-    private var texture1: GLuint = 0
+    internal var projection:GLKMatrix4 = GLKMatrix4Identity
+    internal var view:GLKMatrix4 = GLKMatrix4Identity
+    internal var model:GLKMatrix4 = GLKMatrix4Identity
+    internal var colour: GLKVector4 = GLKVector4Make(0.0, 0.0, 0.0, 0.0)
+    internal var texture0: GLuint = 0
+    internal var texture1: GLuint = 0
     
     internal init(_ vertex: String, _ fragment: String, _ vertexAttribs: [(GLint, String)], _ uniformNames:[String])
     {
@@ -63,33 +63,6 @@ class Effect
     internal func prepareToDraw()
     {
         self.shader.useProgram()
-        
-        // Compute model view matrix
-        let modelViewMatrix = GLKMatrix4Multiply(self.view, self.model)
-        var modelViewProjectionMatrix = GLKMatrix4Multiply(self.projection, modelViewMatrix)
-        
-        // Set up the modelViewProjection matrix in the shader
-        withUnsafePointer(to: &modelViewProjectionMatrix, {
-            $0.withMemoryRebound(to: Float.self, capacity: 16, {
-                glUniformMatrix4fv(self.shader.getUniformLocation("modelViewProjectionMatrix"), 1, 0, $0)
-            })
-        })
-        
-        // Set up the colour in the shader
-        withUnsafePointer(to: &colour, {
-            $0.withMemoryRebound(to: Float.self, capacity: 4, {
-                glUniform4fv(self.shader.getUniformLocation("colour"), 1, $0)
-            })
-        })
-        
-        // Set up the texture in the shader
-        glActiveTexture(GLenum(GL_TEXTURE0))
-        glUniform1f(self.shader.getUniformLocation("texture0"), 0)
-        glBindTexture(GLenum(GL_TEXTURE_2D), self.texture0)
-        
-        glActiveTexture(GLenum(GL_TEXTURE1))
-        glUniform1f(self.shader.getUniformLocation("texture1"), 0)
-        glBindTexture(GLenum(GL_TEXTURE_2D), self.texture1)
     }
 }
 

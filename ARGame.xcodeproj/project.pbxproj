@@ -39,10 +39,13 @@
 		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
 		1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */; };
 		1AC181221E71DF7B008C07F3 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC181211E71DF7B008C07F3 /* Shader.swift */; };
-		1AC181681E72ACC3008C07F3 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181661E72ACC3008C07F3 /* Shader.fsh */; };
-		1AC181691E72ACC3008C07F3 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181671E72ACC3008C07F3 /* Shader.vsh */; };
 		1AC1816C1E72C1AE008C07F3 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1816B1E72C1AD008C07F3 /* Effect.swift */; };
 		1AC181701E734D4E008C07F3 /* EffectBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1816F1E734D4E008C07F3 /* EffectBasic.swift */; };
+		1AC181731E735597008C07F3 /* EffectMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC181721E735597008C07F3 /* EffectMaterial.swift */; };
+		1AC181761E7355E0008C07F3 /* ShaderBasic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181741E7355E0008C07F3 /* ShaderBasic.fsh */; };
+		1AC181771E7355E0008C07F3 /* ShaderBasic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181751E7355E0008C07F3 /* ShaderBasic.vsh */; };
+		1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */; };
+		1AC1817B1E7356D0008C07F3 /* ShaderMaterial.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */; };
 		1ADFA8B81E64C05900588345 /* AssimpModelLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */; };
 		1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B91E64CAB600588345 /* nanosuit.obj */; };
 		1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */; };
@@ -137,10 +140,13 @@
 		1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModelLoaderCInterface.h; sourceTree = "<group>"; };
 		1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; path = "Assets_AR/camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; sourceTree = "<group>"; };
 		1AC181211E71DF7B008C07F3 /* Shader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
-		1AC181661E72ACC3008C07F3 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
-		1AC181671E72ACC3008C07F3 /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		1AC1816B1E72C1AD008C07F3 /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		1AC1816F1E734D4E008C07F3 /* EffectBasic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectBasic.swift; sourceTree = "<group>"; };
+		1AC181721E735597008C07F3 /* EffectMaterial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectMaterial.swift; sourceTree = "<group>"; };
+		1AC181741E7355E0008C07F3 /* ShaderBasic.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderBasic.fsh; path = Shaders/ShaderBasic.fsh; sourceTree = "<group>"; };
+		1AC181751E7355E0008C07F3 /* ShaderBasic.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderBasic.vsh; path = Shaders/ShaderBasic.vsh; sourceTree = "<group>"; };
+		1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMaterial.fsh; path = Shaders/ShaderMaterial.fsh; sourceTree = "<group>"; };
+		1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMaterial.vsh; path = Shaders/ShaderMaterial.vsh; sourceTree = "<group>"; };
 		1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpModelLoaderCInterface.cpp; sourceTree = "<group>"; };
 		1ADFA8B91E64CAB600588345 /* nanosuit.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nanosuit.obj; path = Assets/Nanosuit/nanosuit.obj; sourceTree = "<group>"; };
 		1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nanosuit.mtl; path = Assets/Nanosuit/nanosuit.mtl; sourceTree = "<group>"; };
@@ -351,8 +357,10 @@
 		1AC181611E72AA68008C07F3 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				1AC181671E72ACC3008C07F3 /* Shader.vsh */,
-				1AC181661E72ACC3008C07F3 /* Shader.fsh */,
+				1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */,
+				1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */,
+				1AC181751E7355E0008C07F3 /* ShaderBasic.vsh */,
+				1AC181741E7355E0008C07F3 /* ShaderBasic.fsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -363,6 +371,7 @@
 				1AC181211E71DF7B008C07F3 /* Shader.swift */,
 				1AC1816B1E72C1AD008C07F3 /* Effect.swift */,
 				1AC1816F1E734D4E008C07F3 /* EffectBasic.swift */,
+				1AC181721E735597008C07F3 /* EffectMaterial.swift */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -510,8 +519,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AC181691E72ACC3008C07F3 /* Shader.vsh in Resources */,
-				1AC181681E72ACC3008C07F3 /* Shader.fsh in Resources */,
 				1AEFE7481E65A12700698808 /* box.mtl in Resources */,
 				1ADFA8D41E64DE9600588345 /* leg_dif.png in Resources */,
 				1ADFA8CF1E64DE9600588345 /* glass_dif.png in Resources */,
@@ -519,11 +526,14 @@
 				1ADFA8D51E64DE9600588345 /* leg_showroom_spec.png in Resources */,
 				1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */,
 				1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */,
+				1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */,
+				1AC181771E7355E0008C07F3 /* ShaderBasic.vsh in Resources */,
 				1A5B67071E5C4045000463E3 /* robot.mtl in Resources */,
 				1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */,
 				1ADFA8D11E64DE9600588345 /* hand_showroom_spec.png in Resources */,
 				1A5B67081E5C4046000463E3 /* robot.obj in Resources */,
 				1AEFE74B1E65A12700698808 /* container2_specular.png in Resources */,
+				1AC181761E7355E0008C07F3 /* ShaderBasic.fsh in Resources */,
 				1AEFE74A1E65A12700698808 /* container2.png in Resources */,
 				1A17880B1E640D950087DE26 /* camera_para.dat in Resources */,
 				1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */,
@@ -540,6 +550,7 @@
 				1ADFA8D21E64DE9600588345 /* helmet_diff.png in Resources */,
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,
 				1AEFE7491E65A12700698808 /* box.obj in Resources */,
+				1AC1817B1E7356D0008C07F3 /* ShaderMaterial.vsh in Resources */,
 				1ADFA8D01E64DE9600588345 /* hand_dif.png in Resources */,
 				1ADFA8CB1E64DE9600588345 /* arm_showroom_spec.png in Resources */,
 			);
@@ -569,6 +580,7 @@
 				1AC1816C1E72C1AE008C07F3 /* Effect.swift in Sources */,
 				1AC181221E71DF7B008C07F3 /* Shader.swift in Sources */,
 				1A755C251E59CD1300E2FFBC /* Model.swift in Sources */,
+				1AC181731E735597008C07F3 /* EffectMaterial.swift in Sources */,
 				1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */,
 				1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */,
 				1A44DCF91E5601C80036E753 /* Object.swift in Sources */,
