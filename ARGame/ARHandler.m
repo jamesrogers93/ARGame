@@ -40,9 +40,6 @@
     ARGL_CONTEXT_SETTINGS_REF arglContextSettings;
     GLKMatrix4 camLens;
     
-    // Device details
-    int screenWidth, screenHeight;
-    
     // Viewport details
     float left, bottom, width, height;
 }
@@ -87,10 +84,6 @@
         bottom = -((height - screenHeight) / 2);
         left = 0.0;
     }
-    
-    
-    
-    left = bottom = 0.0;
 }
 
 - (void) setViewport
