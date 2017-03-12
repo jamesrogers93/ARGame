@@ -53,29 +53,6 @@ struct Vertex
         self.setupMesh()
     }
     
-    deinit
-    {
-        // Delete buffers
-        glDeleteBuffers(1, &self.VBO)
-        glDeleteBuffers(1, &self.EBO)
-        glDeleteVertexArraysOES(1, &self.VAO)
-        
-        //Delete textures
-        var id: GLuint = 0
-        
-        if(self.diffuseTexture.name != 0)
-        {
-            id = self.diffuseTexture.name
-            glDeleteTextures(1, &id)
-        }
-        
-        if(self.specularTexture.name != 0)
-        {
-            id = self.specularTexture.name
-            glDeleteTextures(1, &id)
-        }
-    }
-    
     public func draw(_ effect: Effect)
     {
         // Prepare Effect
@@ -139,5 +116,28 @@ struct Vertex
         glVertexAttribPointer(GLuint(ShaderVertexAttrib.texCoord.rawValue), 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size * 2))
         
         glBindVertexArrayOES(0);
+    }
+    
+    public func destroy()
+    {
+        // Delete buffers
+        glDeleteBuffers(1, &self.VBO)
+        glDeleteBuffers(1, &self.EBO)
+        glDeleteVertexArraysOES(1, &self.VAO)
+        
+        //Delete textures
+        var id: GLuint = 0
+        
+        if(self.diffuseTexture.name != 0)
+        {
+            id = self.diffuseTexture.name
+            glDeleteTextures(1, &id)
+        }
+        
+        if(self.specularTexture.name != 0)
+        {
+            id = self.specularTexture.name
+            glDeleteTextures(1, &id)
+        }
     }
 }

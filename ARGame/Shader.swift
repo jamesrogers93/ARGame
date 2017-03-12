@@ -135,9 +135,11 @@ class Shader
     private static func compileShader(_ shader: inout GLuint, type: GLenum, file: String) -> Bool {
         var status: GLint = 0
         var source: UnsafePointer<Int8>
-        do {
+        do
+        {
             source = try NSString(contentsOfFile: file, encoding: String.Encoding.utf8.rawValue).utf8String!
-        } catch {
+        } catch
+        {
             print("Failed to load vertex shader")
             return false
         }
@@ -148,7 +150,8 @@ class Shader
         glCompileShader(shader)
         
         glGetShaderiv(shader, GLenum(GL_COMPILE_STATUS), &status)
-        if status == 0 {
+        if status == 0
+        {
             glDeleteShader(shader)
             return false
         }
@@ -160,7 +163,8 @@ class Shader
         glLinkProgram(prog)
         
         glGetProgramiv(prog, GLenum(GL_LINK_STATUS), &status)
-        if status == 0 {
+        if status == 0
+        {
             return false
         }
         
@@ -173,7 +177,8 @@ class Shader
         
         glValidateProgram(prog)
         glGetProgramiv(prog, GLenum(GL_INFO_LOG_LENGTH), &logLength)
-        if logLength > 0 {
+        if logLength > 0
+        {
             var log: [GLchar] = [GLchar](repeating: 0, count: Int(logLength))
             glGetProgramInfoLog(prog, logLength, &logLength, &log)
             print("Program validate log: \n\(log)")
@@ -181,9 +186,18 @@ class Shader
         
         glGetProgramiv(prog, GLenum(GL_VALIDATE_STATUS), &status)
         var returnVal = true
-        if status == 0 {
+        if status == 0
+        {
             returnVal = false
         }
         return returnVal
+    }
+    
+    public func destroy()
+    {
+        if self.program != 0
+        {
+            glDeleteProgram(self.program)
+        }
     }
 }

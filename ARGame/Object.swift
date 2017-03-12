@@ -56,6 +56,11 @@ class Object
         effect.setModel(self.model)
         self.GLmodel.draw(effect)
     }
+    
+    public func destroy()
+    {
+        self.GLmodel.destroy()
+    }
 }
 
 

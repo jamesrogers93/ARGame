@@ -27,5 +27,11 @@ class Model
         }
     }
     
-    
+    public func destroy()
+    {
+        for i in 0..<self.meshes.count
+        {
+            self.meshes[i].destroy();
+        }
+    }
 }

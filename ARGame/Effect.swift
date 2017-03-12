@@ -64,6 +64,14 @@ class Effect
     {
         self.shader.useProgram()
     }
+    
+    public func destroy()
+    {
+        if(self.shader != nil)
+        {
+            self.shader.destroy()
+        }
+    }
 }
 
 

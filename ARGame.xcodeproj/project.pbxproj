@@ -211,6 +211,16 @@
 			name = Assets_AR;
 			sourceTree = "<group>";
 		};
+		1A3669601E756B3500C7C53E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1A44DCF81E5601C80036E753 /* Object.swift */,
+				1A755C241E59CD1300E2FFBC /* Model.swift */,
+				1A755C1B1E57B46500E2FFBC /* Mesh.swift */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
 		1A44DCB41E55F34C0036E753 = {
 			isa = PBXGroup;
 			children = (
@@ -280,12 +290,10 @@
 		1A44DCF71E5601920036E753 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1A3669601E756B3500C7C53E /* Entity */,
 				1AC1816A1E72C159008C07F3 /* Graphics */,
 				1A4F60701E5CC42000B4C602 /* AR */,
 				1A755C261E59E06A00E2FFBC /* ModelLoader */,
-				1A44DCF81E5601C80036E753 /* Object.swift */,
-				1A755C241E59CD1300E2FFBC /* Model.swift */,
-				1A755C1B1E57B46500E2FFBC /* Mesh.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
