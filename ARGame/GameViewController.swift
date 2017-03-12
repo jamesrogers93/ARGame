@@ -9,11 +9,13 @@
 import GLKit
 import OpenGLES
 
-func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
+func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer?
+{
     return UnsafeRawPointer(bitPattern: i)
 }
 
-class GameViewController: GLKViewController {
+class GameViewController: GLKViewController
+{
     
     var context: EAGLContext? = nil
     
@@ -31,7 +33,8 @@ class GameViewController: GLKViewController {
     {
         self.tearDownGL()
         
-        if EAGLContext.current() === self.context {
+        if EAGLContext.current() === self.context
+        {
             EAGLContext.setCurrent(nil)
         }
     }
@@ -42,7 +45,8 @@ class GameViewController: GLKViewController {
         
         self.context = EAGLContext(api: .openGLES2)
         
-        if !(self.context != nil) {
+        if !(self.context != nil)
+        {
             print("Failed to create ES context")
         }
         
@@ -70,22 +74,26 @@ class GameViewController: GLKViewController {
         glViewport(0,0, self.arHandler.camWidth, self.arHandler.camHeight)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool)
+    {
         super.viewWillDisappear(animated)
         
         // Stop the AR handler
         self.arHandler.stop()
     }
     
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         
-        if self.isViewLoaded && (self.view.window != nil) {
+        if self.isViewLoaded && (self.view.window != nil)
+        {
             self.view = nil
             
             self.tearDownGL()
             
-            if EAGLContext.current() === self.context {
+            if EAGLContext.current() === self.context
+            {
                 EAGLContext.setCurrent(nil)
             }
             self.context = nil
@@ -115,7 +123,12 @@ class GameViewController: GLKViewController {
         EAGLContext.setCurrent(self.context)
         
         // Delete Effect
+        self.effect?.destroy()
         self.effect = nil
+        
+        // Delete object
+        self.obj?.destroy()
+        self.obj = nil
     }
     
     var rotation: Float = 0.0
