@@ -17,6 +17,10 @@ enum ShaderVertexAttrib: GLint
     case position
     case normal
     case texCoord
+    case bone0
+    case bone1
+    case bone2
+    case bone3
 }
 
 /**

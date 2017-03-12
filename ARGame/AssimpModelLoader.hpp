@@ -19,25 +19,41 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+struct CBone
+{
+    std::string name;
+    
+    std::vector<unsigned int> vertexIds;
+    std::vector<float> weights;
+    float offsetMatrix[16];
+    
+    CBone(std::string name, std::vector<unsigned int> vertexIds, std::vector<float> weights, float *offsetMatrix)
+        : name(name), vertexIds(vertexIds), weights(weights)
+    {
+        memcpy(this->offsetMatrix, offsetMatrix, sizeof(this->offsetMatrix));
+    }
+};
+
 struct CMesh
 {
     std::vector<float> vertices;
     std::vector<unsigned int> indices;
+    std::vector<CBone> bones;
     
     std::string diffuseMap, specularMap;
     
-    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices)
-    {
-        this->vertices = vertices;
-        this->indices = indices;
-    }
+    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::vector<CBone> bones = std::vector<CBone>())
+        : vertices(vertices), indices(indices), bones(bones)
+    {}
     
-    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::string diffuseMap) : CMesh(vertices, indices)
+    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::string diffuseMap)
+        : CMesh(vertices, indices)
     {
         this->diffuseMap = diffuseMap;
     }
     
-    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::string diffuseMap, std::string specularMap) : CMesh(vertices, indices, diffuseMap)
+    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::string diffuseMap, std::string specularMap)
+        : CMesh(vertices, indices, diffuseMap)
     {
         this->specularMap = specularMap;
     }
@@ -52,9 +68,8 @@ public:
     /**  Loads a model using the Assimp library.
      *
      *  @param path File path to the model to be loaded.
-     *  @return A vector of meshes loaded.
      */
-    std::vector<CMesh> loadAssimpModel(std::string path);
+    void loadAssimpModel(std::string path);
     
     /**  Returns the number of meshes.
      *
@@ -76,6 +91,13 @@ public:
      */
     const unsigned int getNumIndicesInMesh(const unsigned int &index);
     
+    /**  Returns the number of bones in a specified mesh.
+     *
+     *  @param index Index of the mesh in the meshes array.
+     *  @return Number of bones in the mesh.
+     */
+    const unsigned int getNumBonesInMesh(const unsigned int &index);
+    
     /**  Returns an array of vertices in a specificed mesh.
      *
      *  @param index Index of the mesh in the meshes array.
@@ -89,6 +111,54 @@ public:
      *  @return An array of indices in the mesh.
      */
     const unsigned int* getMeshIndices(const unsigned int &index);
+    
+    /**  Returns a char array of a specified bone name in a mesh.
+     *
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return A char array of the bone name.
+     */
+    const char* getMeshBoneName(const unsigned int &meshIndex, const unsigned int &boneIndex);
+    
+    /**  Returns the number of vertex ids in specified bone name in a mesh.
+     *
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return The number of vertex ids in the bone.
+     */
+    const unsigned int getNumMeshBoneVertexIds(const unsigned int &meshIndex, const unsigned int &boneIndex);
+    
+    /**  Returns the vertex ids of a specified bone in a mesh.
+     *
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return An unsigned int array of vertex ids.
+     */
+    const unsigned int* getMeshBoneVertexIds(const unsigned int &meshIndex, const unsigned int &boneIndex);
+    
+    /**  Returns the number of weights in specified bone name in a mesh.
+     *
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return The number of weights in the bone.
+     */
+    const unsigned int getNumMeshBoneWeights(const unsigned int &meshIndex, const unsigned int &boneIndex);
+    
+    /**  Returns the weights of a specified bone in a mesh.
+     *
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return A float array of the weights.
+     */
+    const float* getMeshBoneWeights(const unsigned int &meshIndex, const unsigned int &boneIndex);
+    
+    /**  Returns the offset matrix4x4 of a specified bone in a mesh.
+     *
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return A 16 element float array of the offset matrix.
+     */
+    const float* getMeshBoneOffsetMatrix(const unsigned int &meshIndex, const unsigned int &boneIndex);
     
     /**  Returns a bool indicating if a diffuse map has been loaded for a mesh.
      *

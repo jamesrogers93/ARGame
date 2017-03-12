@@ -16,14 +16,15 @@ class ModelLoader
      
      - parameters:
         - resource: Name of the resource to be loaded.
+        - type: The type of object to be loaded eg. obj.
      
      - returns:
      The loaded model.
      */
-    static public func loadObjModelFromFile(_ resource: String) -> Model
+    static public func loadStaticModelFromFile(_ resource: String, _ type: String) -> Model
     {
         // Find obj path of resource
-        let objPath = Bundle.main.path(forResource: resource, ofType: "obj")
+        let objPath = Bundle.main.path(forResource: resource, ofType: type)
         
         // Convert path to C string
         let cpath = objPath?.cString(using: .utf8)

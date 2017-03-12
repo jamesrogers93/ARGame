@@ -9,9 +9,9 @@
 
 #import "ARHandler.h"
 
-#define VIEW_SCALEFACTOR        1.0f
+#define VIEW_SCALEFACTOR        10.0f            // Now 1 unit is the width of the marker
 #define VIEW_DISTANCE_MIN        5.0f          // Objects closer to the camera than this will not be displayed.
-#define VIEW_DISTANCE_MAX        2000.0f        // Objects further away from the camera than this will not be displayed.
+#define VIEW_DISTANCE_MAX        20000.0f        // Objects further away from the camera than this will not be displayed.
 
 
 @implementation ARHandler

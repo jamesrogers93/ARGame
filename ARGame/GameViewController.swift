@@ -57,7 +57,8 @@ class GameViewController: GLKViewController
         self.setupGL()
         
         // Create object with model
-        self.obj = Object(ModelLoader.loadObjModelFromFile("box"))
+        //self.obj = Object(ModelLoader.loadStaticModelFromFile("box", "obj"))
+        self.obj = Object(ModelLoader.loadStaticModelFromFile("Beta", "fbx"))
         
         // Initalise the AR handler
         self.arHandler.onViewLoad()
@@ -113,6 +114,7 @@ class GameViewController: GLKViewController
         // Set my OpenGLES Effect
         //self.effect = EffectBasic()
         self.effect = EffectMaterial()
+        //self.effect?.setColour(GLKVector4Make(1.0, 0.0, 0.0, 1.0))
         
         // Allow depth testing
         glEnable(GLenum(GL_DEPTH_TEST))

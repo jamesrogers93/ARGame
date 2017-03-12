@@ -32,6 +32,7 @@
 		1A5B67081E5C4046000463E3 /* robot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67061E5C4045000463E3 /* robot.obj */; };
 		1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */; };
 		1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */; };
+		1A725D381E75BF7F00322D6A /* Beta.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A725D371E75BF7F00322D6A /* Beta.fbx */; };
 		1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C1B1E57B46500E2FFBC /* Mesh.swift */; };
 		1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C221E59C95F00E2FFBC /* libassimp-fat.a */; };
 		1A755C251E59CD1300E2FFBC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C241E59CD1300E2FFBC /* Model.swift */; };
@@ -128,6 +129,7 @@
 		1A6BA3EB1E5E225500D136D5 /* libAR2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAR2.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libAR2.a"; sourceTree = "<group>"; };
 		1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		1A6BA3F81E5E280900D136D5 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		1A725D371E75BF7F00322D6A /* Beta.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = Beta.fbx; path = Assets/Animated/Beta.fbx; sourceTree = "<group>"; };
 		1A755C1B1E57B46500E2FFBC /* Mesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
 		1A755C1E1E58441200E2FFBC /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		1A755C201E592D7300E2FFBC /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimp.a; path = ../Dependencies/assimp/lib/iOS/x86_64/libassimp.a; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		1A5B66FC1E5BACF4000463E3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				1A725D361E75BF6600322D6A /* Animation */,
 				1AEFE7431E65A11000698808 /* Box */,
 				1ADFA8BD1E64DE6E00588345 /* Nanosuit */,
 				1A5B67051E5C4045000463E3 /* robot.mtl */,
@@ -320,6 +323,14 @@
 				1A5B66FE1E5BAD06000463E3 /* monkey.obj */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		1A725D361E75BF6600322D6A /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				1A725D371E75BF7F00322D6A /* Beta.fbx */,
+			);
+			name = Animation;
 			sourceTree = "<group>";
 		};
 		1A755C1D1E58441100E2FFBC /* Frameworks */ = {
@@ -540,6 +551,7 @@
 				1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */,
 				1ADFA8D11E64DE9600588345 /* hand_showroom_spec.png in Resources */,
 				1A5B67081E5C4046000463E3 /* robot.obj in Resources */,
+				1A725D381E75BF7F00322D6A /* Beta.fbx in Resources */,
 				1AEFE74B1E65A12700698808 /* container2_specular.png in Resources */,
 				1AC181761E7355E0008C07F3 /* ShaderBasic.fsh in Resources */,
 				1AEFE74A1E65A12700698808 /* container2.png in Resources */,
