@@ -53,6 +53,14 @@ extern "C" {
      */
     const unsigned int mlGetNumIndicesInMesh(const void *loader, const unsigned int index);
     
+    /**  Returns the number of bones in a specified mesh contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the mesh in the meshes array.
+     *  @return Number of bones in the mesh.
+     */
+    const unsigned int mlGetNumBonesInMesh(const void *loader, const unsigned int index);
+    
     /**  Returns an array of vertices in a mesh contained in an AssimpModelLoader instance.
      *
      *  @param loader A void pointer to the AssimpModelLoader instance.
@@ -68,6 +76,60 @@ extern "C" {
      *  @return An array of indices in the mesh.
      */
     const unsigned int* mlGetMeshIndices(const void *loader, const unsigned int index);
+    
+    /**  Returns a char array of a specified bone name in a mesh contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return A char array of the bone name.
+     */
+    const char* mlGetMeshBoneName(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex);
+    
+    /**  Returns the number of vertex ids in specified bone name in a mesh contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return The number of vertex ids in the bone.
+     */
+    const unsigned int mlGetNumMeshBoneVertexIds(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex);
+    
+    /**  Returns the vertex ids of a specified bone in a mesh contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return An unsigned int array of vertex ids.
+     */
+    const unsigned int* mlGetMeshBoneVertexIds(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex);
+    
+    /**  Returns the number of weights in specified bone name in a mesh contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return The number of weights in the bone.
+     */
+    const unsigned int mlGetNumMeshBoneWeights(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex);
+    
+    /**  Returns the weights of a specified bone in a mesh contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return A float array of the weights.
+     */
+    const float* mlGetMeshBoneWeights(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex);
+    
+    /**  Returns the offset matrix4x4 of a specified bone in a mesh contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param meshIndex Index of the mesh in the meshes array.
+     *  @param boneIndex Index of the bone in the mesh.
+     *  @return A 16 element float array of the offset matrix.
+     */
+    const float* mlGetMeshBoneOffsetMatrix(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex);
     
     /**  Returns 0 or 1 indicating if a diffuse has been loaded for a mesh
      *

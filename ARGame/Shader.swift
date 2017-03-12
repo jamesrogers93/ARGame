@@ -9,29 +9,67 @@
 import Foundation
 import GLKit
 
+/**
+ Specifies the vertex attribute locations.
+ */
 enum ShaderVertexAttrib: GLint
 {
     case position
     case normal
     case texCoord
+    case bone0
+    case bone1
+    case bone2
+    case bone3
 }
 
+/**
+ Holds and maintains an OpenGL shader program
+ */
 class Shader
 {
+    /**
+     The shader program.
+     */
     private var program:GLuint = 0
+    
+    /**
+     A tuple array which holds the name and location of shader uniforms.
+     */
     private var uniforms: [(String, GLint)]
     
+    /**
+     Initalise a Shader with a shader program and array of shader uniforms.
+     
+     - paramters:
+        - program: The program id
+        - uniforms: A tuple array which holds the name and location of shader uniforms.
+     */
     private init(_ program:GLuint, _ uniforms:[(String, GLint)])
     {
         self.program = program
         self.uniforms = uniforms
     }
     
+    /**
+     Set the program as the active program.
+     */
     public func useProgram()
     {
         glUseProgram(self.program)
     }
     
+    /**
+     Gets the location of a uniform
+     
+     - parameters:
+        - name: The name of the uniform.
+     
+     - returns:
+     The location of the uniform location.
+     
+     -1 will be returned if the location is not found.
+     */
     public func getUniformLocation(_ name:String) -> GLint
     {
         for i in 0..<self.uniforms.count
@@ -45,6 +83,20 @@ class Shader
         return -1
     }
     
+    /**
+     loads a shader program into OpenGL.
+     
+     - parameters:
+        - vertex: The filename of the vertex shader.
+        - fragment: The filename of the fragment shader.
+        - vertexAttribs: A tuple array of the vertex attributes, a GLint which indicates the vertex attribute location and a string to indicate the name of the attribute.
+        - uniformNames: An array with holds the names shader uniforms.
+     
+     - returns:
+     An optional instance of type Shader.
+     
+     This function loads, creates and returns an instance of type Shader. If nil is returned, the shader failed to load.
+     */
     public static func loadShader(_ vertex: String, _ fragment: String, _ vertexAttribs: [(GLint, String)], _ uniformNames:[String]) -> Shader?
     {
         var program: GLuint = 0
@@ -193,6 +245,9 @@ class Shader
         return returnVal
     }
     
+    /**
+     Deletes the shader program from OpenGL.
+     */
     public func destroy()
     {
         if self.program != 0

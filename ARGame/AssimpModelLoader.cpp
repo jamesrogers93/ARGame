@@ -8,7 +8,7 @@
 
 #include "AssimpModelLoader.hpp"
 
-std::vector<CMesh> AssimpModelLoader::loadAssimpModel(std::string path)
+void AssimpModelLoader::loadAssimpModel(std::string path)
 {
     // Read file via ASSIMP
     Assimp::Importer importer = Assimp::Importer();
@@ -18,15 +18,14 @@ std::vector<CMesh> AssimpModelLoader::loadAssimpModel(std::string path)
     if(!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
     {
         std::cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
-        return std::vector<CMesh>();
+        return;
     }
+    
     // Retrieve the directory path of the filepath
     this->directory = path.substr(0, path.find_last_of('/'));
     
     // Process ASSIMP's root node recursively
     this->processNode(scene->mRootNode, scene);
-    
-    return meshes;
 }
 
 void AssimpModelLoader::processNode(aiNode *node, const aiScene *scene)
@@ -49,12 +48,8 @@ void AssimpModelLoader::processNode(aiNode *node, const aiScene *scene)
 
 CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
 {
-    // Data to fill
+    // Load vertices
     std::vector<float> vertices;
-    std::vector<unsigned int> indices;
-    //std::vector<Texture> textures;
-    
-    // Walk through each of the mesh's vertices
     for(size_t i = 0; i < mesh->mNumVertices; i++)
     {
         // Positions
@@ -84,7 +79,8 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
         vertices.push_back(v);
     }
     
-    // Now wak through each of the mesh's faces (a face is a mesh its triangle) and retrieve the corresponding vertex indices.
+    // Load indices
+    std::vector<unsigned int> indices;
     for(size_t i = 0; i < mesh->mNumFaces; i++)
     {
         aiFace face = mesh->mFaces[i];
@@ -93,6 +89,7 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
             indices.push_back(face.mIndices[j]);
     }
     
+    // Load materials
     if(mesh->mMaterialIndex > 0)
     {
         aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
@@ -108,8 +105,45 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
             return CMesh(vertices, indices, diffuseMap, specularMap);
     }
     
+    // Load bones
+    std::vector<CBone> bones;
+    if(mesh->HasBones())
+    {
+        for(size_t i = 0; i < mesh->mNumBones; i++)
+        {
+            // Get bone name
+            std::string name = mesh->mBones[i]->mName.data;
+            
+            // Get bone offset matrix
+            float offsetMatrix[16];
+            offsetMatrix[0]  = mesh->mBones[i]->mOffsetMatrix.a1; offsetMatrix[1]  = mesh->mBones[i]->mOffsetMatrix.a2;
+            offsetMatrix[2]  = mesh->mBones[i]->mOffsetMatrix.a3; offsetMatrix[3]  = mesh->mBones[i]->mOffsetMatrix.a4;
+            
+            offsetMatrix[4]  = mesh->mBones[i]->mOffsetMatrix.b1; offsetMatrix[5]  = mesh->mBones[i]->mOffsetMatrix.b2;
+            offsetMatrix[6]  = mesh->mBones[i]->mOffsetMatrix.b3; offsetMatrix[7]  = mesh->mBones[i]->mOffsetMatrix.b4;
+            
+            offsetMatrix[8]  = mesh->mBones[i]->mOffsetMatrix.c1;  offsetMatrix[9] = mesh->mBones[i]->mOffsetMatrix.c2;
+            offsetMatrix[10] = mesh->mBones[i]->mOffsetMatrix.c3; offsetMatrix[11] = mesh->mBones[i]->mOffsetMatrix.c4;
+            
+            offsetMatrix[12] = mesh->mBones[i]->mOffsetMatrix.d1; offsetMatrix[13] = mesh->mBones[i]->mOffsetMatrix.d2;
+            offsetMatrix[14] = mesh->mBones[i]->mOffsetMatrix.d3; offsetMatrix[15] = mesh->mBones[i]->mOffsetMatrix.d4;
+            
+            
+            // Get weights associated with bone
+            std::vector<unsigned int> vertexIds;
+            std::vector<float> weights;
+            for(size_t j = 0; j < mesh->mBones[i]->mNumWeights; j++)
+            {
+                vertexIds.push_back(mesh->mBones[i]->mWeights[j].mVertexId);
+                weights.push_back(mesh->mBones[i]->mWeights[j].mWeight);
+            }
+            
+            bones.push_back(CBone(name, vertexIds, weights, offsetMatrix));
+        }
+    }
+    
     // Return a mesh object created from the extracted mesh data
-    return CMesh(vertices, indices);
+    return CMesh(vertices, indices, bones);
 }
 
 // Checks all material textures of a given type and loads the textures if they're not loaded yet.
@@ -154,6 +188,14 @@ const unsigned int AssimpModelLoader::getNumIndicesInMesh(const unsigned int &in
     return (unsigned int)meshes[index].indices.size();
 }
 
+const unsigned int AssimpModelLoader::getNumBonesInMesh(const unsigned int &index)
+{
+    if(index >= getNumMeshes())
+        return 0;
+    
+    return (unsigned int)meshes[index].bones.size();
+}
+
 const float* AssimpModelLoader::getMeshVertices(const unsigned int &index)
 {
     if(index >= getNumMeshes())
@@ -167,6 +209,72 @@ const unsigned int* AssimpModelLoader::getMeshIndices(const unsigned int &index)
     if(index >= getNumMeshes())
         return 0;
     return meshes[index].indices.data();
+}
+
+const char* AssimpModelLoader::getMeshBoneName(const unsigned int &meshIndex, const unsigned int &boneIndex)
+{
+    if(meshIndex >= getNumMeshes())
+        return 0;
+    
+    if(boneIndex >= getNumBonesInMesh(meshIndex))
+        return 0;
+    
+    return meshes[meshIndex].bones[boneIndex].name.c_str();
+}
+
+const unsigned int AssimpModelLoader::getNumMeshBoneVertexIds(const unsigned int &meshIndex, const unsigned int &boneIndex)
+{
+    if(meshIndex >= getNumMeshes())
+        return 0;
+    
+    if(boneIndex >= getNumBonesInMesh(meshIndex))
+        return 0;
+    
+    return (unsigned int)meshes[meshIndex].bones[boneIndex].vertexIds.size();
+}
+
+const unsigned int* AssimpModelLoader::getMeshBoneVertexIds(const unsigned int &meshIndex, const unsigned int &boneIndex)
+{
+    if(meshIndex >= getNumMeshes())
+        return 0;
+    
+    if(boneIndex >= getNumBonesInMesh(meshIndex))
+        return 0;
+    
+    return meshes[meshIndex].bones[boneIndex].vertexIds.data();
+}
+
+const unsigned int AssimpModelLoader::getNumMeshBoneWeights(const unsigned int &meshIndex, const unsigned int &boneIndex)
+{
+    if(meshIndex >= getNumMeshes())
+        return 0;
+    
+    if(boneIndex >= getNumBonesInMesh(meshIndex))
+        return 0;
+    
+    return (unsigned int)meshes[meshIndex].bones[boneIndex].weights.size();
+}
+
+const float* AssimpModelLoader::getMeshBoneWeights(const unsigned int &meshIndex, const unsigned int &boneIndex)
+{
+    if(meshIndex >= getNumMeshes())
+        return 0;
+    
+    if(boneIndex >= getNumBonesInMesh(meshIndex))
+        return 0;
+    
+    return meshes[meshIndex].bones[boneIndex].weights.data();
+}
+
+const float* AssimpModelLoader::getMeshBoneOffsetMatrix(const unsigned int &meshIndex, const unsigned int &boneIndex)
+{
+    if(meshIndex >= getNumMeshes())
+        return 0;
+    
+    if(boneIndex >= getNumBonesInMesh(meshIndex))
+        return 0;
+    
+    return meshes[meshIndex].bones[boneIndex].offsetMatrix;
 }
 
 const bool AssimpModelLoader::getMeshIsDiffuseMapLoaded(const unsigned int &index)

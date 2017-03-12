@@ -48,14 +48,22 @@ const unsigned int mlGetNumVerticesInMesh(const void *loader, const unsigned int
     return ptrLoader->getNumVerticesInMesh(index);
 }
 
-
 const unsigned int mlGetNumIndicesInMesh(const void *loader, const unsigned int index)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
     
-    // Return the float array retrieved from AssimpModelLoader
+    // Return the value retrieved from AssimpModelLoader
     return ptrLoader->getNumIndicesInMesh(index);
+}
+
+const unsigned int mlGetNumBonesInMesh(const void *loader, const unsigned int index)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getNumBonesInMesh(index);
 }
 
 const float* mlGetMeshVertices(const void *loader, const unsigned int index)
@@ -74,6 +82,60 @@ const unsigned int* mlGetMeshIndices(const void *loader, const unsigned int inde
     
     // Return the unsigned int array retrieved from AssimpModelLoader
     return ptrLoader->getMeshIndices(index);
+}
+
+const char* mlGetMeshBoneName(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the char array retrieved from AssimpModelLoader
+    return ptrLoader->getMeshBoneName(meshIndex, boneIndex);
+}
+
+const unsigned int mlGetNumMeshBoneVertexIds(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getNumMeshBoneVertexIds(meshIndex, boneIndex);
+}
+
+const unsigned int* mlGetMeshBoneVertexIds(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getMeshBoneVertexIds(meshIndex, boneIndex);
+}
+
+const unsigned int mlGetNumMeshBoneWeights(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getNumMeshBoneWeights(meshIndex, boneIndex);
+}
+
+const float* mlGetMeshBoneWeights(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getMeshBoneWeights(meshIndex, boneIndex);
+}
+
+const float* mlGetMeshBoneOffsetMatrix(const void *loader, const unsigned int meshIndex, const unsigned int boneIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getMeshBoneOffsetMatrix(meshIndex, boneIndex);
 }
 
 const int mlGetMeshIsDiffuseMapLoaded(const void *loader, const unsigned int index)
