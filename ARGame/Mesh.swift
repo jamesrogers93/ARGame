@@ -28,20 +28,59 @@ struct Vertex
     }
 };
 
+/**
+Maintains OpenGL geometry and textures
+ */
 @objc class Mesh : NSObject
 {
     
+    /**
+     An array of vertex data.
+     */
     private var vertices: Array<Vertex>
+    
+    /**
+     An array of vertex index data.
+     */
     private var indices: Array<GLuint>
+    
+    /**
+     The number of indices in the vertex index array.
+     */
     private var numIndices: GLsizei = 0
     
+    /**
+     The Vertex Array Object.
+     */
     private var VAO: GLuint = 0
+    
+    /**
+     The Vertex Buffer Object.
+     */
     private var VBO: GLuint = 0
+    
+    /**
+     The Element Buffer Object.
+     */
     private var EBO: GLuint = 0
     
+    /**
+     The diffuse texture.
+     */
     private var diffuseTexture: GLKTextureInfo = GLKTextureInfo()
+    
+    /**
+     The specular texture.
+     */
     private var specularTexture: GLKTextureInfo = GLKTextureInfo()
     
+    /**
+     Initalse a Mesh with an aray of vertices and indices.
+     
+     - parameters:
+        - vertices: The vertices array of type Vertex.
+        - indices: The indices array of type GLuint
+     */
     init(_ vertices: Array<Vertex>, _ indices: Array<GLuint>)
     {
         self.vertices = vertices
@@ -53,6 +92,14 @@ struct Vertex
         self.setupMesh()
     }
     
+    /**
+     Draws the geometry using the passed Effect.
+     
+     - parameters:
+        - effect: The effect to draw the geometry.
+     
+     This function puts the contents of the mesh in the Effect.
+     */
     public func draw(_ effect: Effect)
     {
         // Prepare Effect
@@ -70,16 +117,31 @@ struct Vertex
         glBindVertexArrayOES(0)
     }
     
+    /**
+     Sets the diffuse texture.
+     
+     - parameters:
+        - diffuse: The diffuse texture of type GLKTextureInfo.
+     */
     public func setDiffuseTexture(_ diffuse: GLKTextureInfo)
     {
         self.diffuseTexture = diffuse;
     }
     
+    /**
+     Sets the specular texture.
+     
+     - parameters:
+        - specular: The specular texture of type GLKTextureInfo.
+     */
     public func setSpecularTexture(_ specular: GLKTextureInfo)
     {
         self.specularTexture = specular;
     }
     
+    /**
+     Loads the VAO, VBO and EBO with the contents of the vertex and indices array
+     */
     private func setupMesh()
     {
 
@@ -118,6 +180,9 @@ struct Vertex
         glBindVertexArrayOES(0);
     }
     
+    /**
+     Destroys the VAO, VBO and EBO in OpenGL.
+     */
     public func destroy()
     {
         // Delete buffers

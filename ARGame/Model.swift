@@ -9,16 +9,27 @@
 import Foundation
 import GLKit
 
+/**
+ Maintains an array of Meshes that are associated with each other.
+ */
 class Model
 {
     private var meshes: Array<Mesh> = Array()
     
+    /**
+     Initalise a Model with an array of Meshes.
+     */
     init(_ meshes: Array<Mesh>)
     {
         self.meshes = meshes
     }
     
-    // Draws the model, and thus all its meshes
+    /**
+     Draws the meshes in the Model.
+     
+     - parameters:
+        - effect: The effect to draw the meshes.
+     */
     public func draw(_ effect: Effect)
     {
         for i in 0..<self.meshes.count
@@ -27,6 +38,9 @@ class Model
         }
     }
     
+    /**
+     Destroys the meshes.
+     */
     public func destroy()
     {
         for i in 0..<self.meshes.count

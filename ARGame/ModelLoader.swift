@@ -11,10 +11,14 @@ import SceneKit
 
 class ModelLoader
 {
-    /**  Loads a model from file using the Assimp library.
-     *
-     *  @param resource Name of the resource to be loaded.
-     *  @return The loaded model.
+    /**
+     Loads a model from file using the Assimp library.
+     
+     - parameters:
+        - resource: Name of the resource to be loaded.
+     
+     - returns:
+     The loaded model.
      */
     static public func loadObjModelFromFile(_ resource: String) -> Model
     {
