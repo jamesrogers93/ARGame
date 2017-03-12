@@ -48,9 +48,9 @@
 
 - (void) draw
 {
-    glDisable(GL_DEPTH_TEST);
     arglDispImage(arglContextSettings);
-    glEnable(GL_DEPTH_TEST);
+
+    glStateCacheEnableDepthTest();
     
     glStateCacheFlush();
 }
