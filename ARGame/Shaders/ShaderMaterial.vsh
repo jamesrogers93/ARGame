@@ -17,15 +17,17 @@ uniform mat4 modelMatrix;
 uniform mat3 normalMatrix;
 
 // Out variables
-varying lowp vec2 TexCoord;
-varying lowp vec3 Normal;
-varying lowp vec3 FragPos;
+varying mediump vec2 TexCoord;
+varying mediump vec3 Normal;
+varying mediump vec3 FragPos;
 
 void main()
 {
     TexCoord = texCoord;
     
-    Normal = normalMatrix * normal;
+    //Normal = normalMatrix * normal;
+    Normal = normal;
+    //Normal = mat3(transpose(inverse(modelMatrix))) * normal;
 
     FragPos = vec3(modelMatrix * position);
     

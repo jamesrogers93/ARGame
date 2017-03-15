@@ -173,3 +173,30 @@ const char* mlGetMeshSpecularMap(const void *loader, const unsigned int index)
     // Return the char array retrieved from AssimpModelLoader
     return ptrLoader->getMeshSpecularMap(index);
 }
+
+const float* mlGetMeshDiffuseCol(const void *loader, const unsigned int index)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the char array retrieved from AssimpModelLoader
+    return ptrLoader->getMeshDiffuseCol(index);
+}
+
+const float* mlGetMeshSpecularCol(const void *loader, const unsigned int index)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the char array retrieved from AssimpModelLoader
+    return ptrLoader->getMeshSpecularCol(index);
+}
+
+const float mlGetMeshShininess(const void *loader, const unsigned int index)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the char array retrieved from AssimpModelLoader
+    return ptrLoader->getMeshShininess(index);
+}

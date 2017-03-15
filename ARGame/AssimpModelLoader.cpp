@@ -89,20 +89,42 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
             indices.push_back(face.mIndices[j]);
     }
     
-    // Load materials
-    if(mesh->mMaterialIndex > 0)
+    // Load material
+    CMaterial material;
+    if(mesh->mMaterialIndex >= 0)
     {
-        aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
-
-        // Diffuse map
-        std::string diffuseMap = this->loadMaterialTexture(material, aiTextureType_DIFFUSE);
+        aiMaterial* assimp_material = scene->mMaterials[mesh->mMaterialIndex];
         
-        // Specular map
-        std::string specularMap = this->loadMaterialTexture(material, aiTextureType_SPECULAR);
+        // Diffuse Colour
+        aiColor4D diffuseColTemp;
+        assimp_material->Get(AI_MATKEY_COLOR_DIFFUSE, diffuseColTemp);
+        float diffuseCol[4] = {diffuseColTemp[0], diffuseColTemp[1], diffuseColTemp[2], diffuseColTemp[3]};
+        
+        // Specular Colour
+        aiColor4D specularColTemp;
+        assimp_material->Get(AI_MATKEY_COLOR_SPECULAR, specularColTemp);
+        float specularCol[4] = {specularColTemp[0], specularColTemp[1], specularColTemp[2], specularColTemp[3]};
+
+        // Diffuse texture
+        std::string diffuseTex = this->loadMaterialTexture(assimp_material, aiTextureType_DIFFUSE);
+        
+        // Specular texture
+        std::string specularTex = this->loadMaterialTexture(assimp_material, aiTextureType_SPECULAR);
+        
+        // Shinnines
+        float shininess;
+        assimp_material->Get(AI_MATKEY_SHININESS, shininess);
+        
+        // Initalise material with assimp material data
+        material = CMaterial(diffuseTex, specularTex, diffuseCol, specularCol, shininess);
         
         // Return mesh with texture maps if they exist
-        if(!diffuseMap.empty() && !specularMap.empty())
-            return CMesh(vertices, indices, diffuseMap, specularMap);
+        //if(!diffuseMap.empty() && !specularMap.empty())
+        //    return CMesh(vertices, indices, diffuseMap, specularMap);
+    }
+    else
+    {
+        material = CMaterial();
     }
     
     // Load bones
@@ -143,7 +165,7 @@ CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
     }
     
     // Return a mesh object created from the extracted mesh data
-    return CMesh(vertices, indices, bones);
+    return CMesh(vertices, indices, material, bones);
 }
 
 // Checks all material textures of a given type and loads the textures if they're not loaded yet.
@@ -165,7 +187,6 @@ std::string AssimpModelLoader::loadMaterialTexture(aiMaterial* mat, aiTextureTyp
     // Return empty string
     return std::string();
 }
-
 
 const unsigned int AssimpModelLoader::getNumMeshes()
 {
@@ -281,26 +302,49 @@ const bool AssimpModelLoader::getMeshIsDiffuseMapLoaded(const unsigned int &inde
 {
     if (index >= getNumMeshes())
         return false;
-    return !meshes[index].diffuseMap.empty();
+    return !meshes[index].material.diffuseTex.empty();
 }
 
 const char* AssimpModelLoader::getMeshDiffuseMap(const unsigned int &index)
 {
     if (index >= getNumMeshes())
         return 0;
-    return meshes[index].diffuseMap.c_str();
+    return meshes[index].material.diffuseTex.c_str();
 }
 
 const bool AssimpModelLoader::getMeshIsSpecularMapLoaded(const unsigned int &index)
 {
     if (index >= getNumMeshes())
         return false;
-    return !meshes[index].specularMap.empty();
+    return !meshes[index].material.specularTex.empty();
 }
 
 const char* AssimpModelLoader::getMeshSpecularMap(const unsigned int &index)
 {
     if (index >= getNumMeshes())
         return 0;
-    return meshes[index].specularMap.c_str();
+    return meshes[index].material.specularTex.c_str();
+}
+
+const float* AssimpModelLoader::getMeshDiffuseCol(const unsigned int &index)
+{
+    if (index >= getNumMeshes())
+        return 0;
+    return meshes[index].material.diffuseCol;
+}
+
+const float* AssimpModelLoader::getMeshSpecularCol(const unsigned int &index)
+{
+    if (index >= getNumMeshes())
+        return 0;
+    
+    return meshes[index].material.specularCol;
+}
+
+const float AssimpModelLoader::getMeshShininess(const unsigned int &index)
+{
+    if (index >= getNumMeshes())
+        return 0;
+    
+    return meshes[index].material.shininess;
 }

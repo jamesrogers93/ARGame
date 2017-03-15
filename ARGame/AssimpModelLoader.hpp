@@ -34,28 +34,32 @@ struct CBone
     }
 };
 
+struct CMaterial
+{
+    std::string diffuseTex = "", specularTex = "";
+    float diffuseCol[4] = {0.0f}, specularCol[4] = {0.0f};
+    float shininess;
+    
+    CMaterial(){}
+    CMaterial(std::string diffuseTex, std::string specularTex, float *diffuseCol, float *specularCol, float shininess)
+    : diffuseTex(diffuseTex), specularTex(specularTex), shininess(shininess)
+    {
+        memcpy(this->diffuseCol, diffuseCol, sizeof(this->diffuseCol));
+        memcpy(this->specularCol, specularCol, sizeof(this->specularCol));
+    }
+};
+
 struct CMesh
 {
     std::vector<float> vertices;
     std::vector<unsigned int> indices;
     std::vector<CBone> bones;
     
-    std::string diffuseMap, specularMap;
+    CMaterial material;
     
-    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::vector<CBone> bones = std::vector<CBone>())
-        : vertices(vertices), indices(indices), bones(bones)
-    {}
-    
-    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::string diffuseMap)
-        : CMesh(vertices, indices)
+    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, CMaterial material = CMaterial(), std::vector<CBone> bones = std::vector<CBone>())
+        : vertices(vertices), indices(indices), material(material), bones(bones)
     {
-        this->diffuseMap = diffuseMap;
-    }
-    
-    CMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::string diffuseMap, std::string specularMap)
-        : CMesh(vertices, indices, diffuseMap)
-    {
-        this->specularMap = specularMap;
     }
 };
 
@@ -187,6 +191,27 @@ public:
      *  @return The path to a specular map.
      */
     const char* getMeshSpecularMap(const unsigned int &index);
+    
+    /**  Gets the vector4 of a diffuse colour in a mesh.
+     *
+     *  @param index Index of the mesh in the meshes array.
+     *  @return The vector4 of a diffuse colour.
+     */
+    const float* getMeshDiffuseCol(const unsigned int &index);
+    
+    /**  Gets the vector4 of a specular colour in a mesh.
+     *
+     *  @param index Index of the mesh in the meshes array.
+     *  @return The vector4 of a specular colour.
+     */
+    const float* getMeshSpecularCol(const unsigned int &index);
+    
+    /**  Gets the shininess of a mesh.
+     *
+     *  @param index Index of the mesh in the meshes array.
+     *  @return The shininess value of the mesh.
+     */
+    const float getMeshShininess(const unsigned int &index);
     
 private:
     

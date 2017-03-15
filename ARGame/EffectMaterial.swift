@@ -10,6 +10,9 @@ import Foundation
 
 class EffectMaterial : Effect
 {
+    private var colourDiffuse: GLKVector4 = GLKVector4Make(0.0, 0.0, 0.0, 0.0)
+    private var colourSpecular: GLKVector4 = GLKVector4Make(0.0, 0.0, 0.0, 0.0)
+    private var shininess: GLfloat = 0.0
     
     public init()
     {
@@ -19,13 +22,15 @@ class EffectMaterial : Effect
         
         let vertAttribs: [(GLint, String)] = [(ShaderVertexAttrib.position.rawValue, "position"),
                                               (ShaderVertexAttrib.normal.rawValue,   "normal"),
-                                              (ShaderVertexAttrib.texCoord.rawValue, "texCoord")];
+                                              (ShaderVertexAttrib.texCoord.rawValue, "texCoord")]
         
         let uniformNames:[String] = ["projectionMatrix", "viewMatrix", "modelMatrix",
                                      "normalMatrix",
                                      "viewPosition",
                                      "colour",
-                                     "textureDiff", "textureSpec"]
+                                     "textureDiff", "textureSpec",
+                                     "colourDiff", "colourSpec",
+                                     "shininess"]
         
         super.init(vertName, fragName, vertAttribs, uniformNames)
     }
@@ -92,5 +97,41 @@ class EffectMaterial : Effect
         glUniform1f(self.shader.getUniformLocation("textureSpec"), 0)
         glBindTexture(GLenum(GL_TEXTURE_2D), self.texture1)
         
+        // Set up the colours in the shader
+        withUnsafePointer(to: &self.colourDiffuse, {
+            $0.withMemoryRebound(to: Float.self, capacity: 4, {
+                glUniform4fv(self.shader.getUniformLocation("colourDiff"), 1, $0)
+            })
+        })
+        
+        withUnsafePointer(to: &self.colourSpecular, {
+            $0.withMemoryRebound(to: Float.self, capacity: 4, {
+                glUniform4fv(self.shader.getUniformLocation("colourSpec"), 1, $0)
+            })
+        })
+        
+        // Set up the shininess
+        glUniform1f(self.shader.getUniformLocation("shininess"), self.shininess)
+        
+        //withUnsafePointer(to: &self.shininess, {
+        //    $0.withMemoryRebound(to: GLfloat.self, capacity: 1, {
+        //        glUniform1f(self.shader.getUniformLocation("shininess"), $0)
+        //    })
+        //})
+    }
+    
+    public func setColourDiffuse(_ colourDiff: GLKVector4)
+    {
+        self.colourDiffuse = colourDiff
+    }
+    
+    public func setColourSpecular(_ colourSpec: GLKVector4)
+    {
+        self.colourSpecular = colourSpec
+    }
+    
+    public func setShininess(_ shininess: GLfloat)
+    {
+        self.shininess = shininess
     }
 }
