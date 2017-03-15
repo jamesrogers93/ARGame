@@ -163,6 +163,30 @@ extern "C" {
      */
     const char* mlGetMeshSpecularMap(const void *loader, const unsigned int index);
     
+    /**  Gets the vector4 of a diffuse colour in a mesh contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the mesh in the meshes array.
+     *  @return The vector4 of a diffuse colour.
+     */
+    const float* mlGetMeshDiffuseCol(const void *loader, const unsigned int index);
+    
+    /**  Gets the vector4 of a specular colour in a mesh contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the mesh in the meshes array.
+     *  @return The vector4 of a specular colour.
+     */
+    const float* mlGetMeshSpecularCol(const void *loader, const unsigned int index);
+    
+    /**  Gets the shininess of a mesh contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the mesh in the meshes array.
+     *  @return The shininess value of the mesh.
+     */
+    const float mlGetMeshShininess(const void *loader, const unsigned int index);
+    
     
 #ifdef __cplusplus
 }

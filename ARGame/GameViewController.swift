@@ -23,7 +23,7 @@ class GameViewController: GLKViewController
     /// GLKit shader
     //var effect: GLKBaseEffect? = nil
     /// OpenGLES Shader
-    var effect: Effect? = nil
+    var effect: EffectMaterial? = nil
     
     var obj: Object? = nil
     

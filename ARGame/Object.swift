@@ -120,7 +120,7 @@ class Object
      
      This function automatically places the contents of the object in the effect.
      */
-    public func draw(_ effect: Effect)
+    public func draw(_ effect: EffectMaterial)
     {
         effect.setModel(self.model)
         self.GLmodel.draw(effect)

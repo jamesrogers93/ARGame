@@ -16,9 +16,7 @@ struct Vertex
     var texCoord: GLKVector2 = GLKVector2Make(0.0, 0.0)
     
     init()
-    {
-        
-    }
+    {}
     
     init(_ position: GLKVector3, _ normal: GLKVector3, _ texCoord: GLKVector2)
     {
@@ -27,6 +25,46 @@ struct Vertex
         self.texCoord = texCoord
     }
 };
+
+struct Material
+{
+    /**
+     The diffuse texture.
+     */
+    var diffuseTexture: GLKTextureInfo = GLKTextureInfo()
+    
+    /**
+     The specular texture.
+     */
+    var specularTexture: GLKTextureInfo = GLKTextureInfo()
+    
+    /**
+     The diffuse colour.
+     */
+    var diffuseColour: GLKVector4 = GLKVector4()
+    
+    /**
+     The specular colour.
+     */
+    var specularColour: GLKVector4 = GLKVector4()
+    
+    /**
+     The shininess factor.
+     */
+    var shininess: Float = 0.0
+    
+    init()
+    {}
+    
+    init(_ diffuseTexture: GLKTextureInfo, _ specularTexture: GLKTextureInfo, _ diffuseColour: GLKVector4, _ specularColour: GLKVector4, _ shininess: Float)
+    {
+        self.diffuseTexture = diffuseTexture
+        self.specularTexture = specularTexture
+        self.diffuseColour = diffuseColour
+        self.specularColour = specularColour
+        self.shininess = shininess
+    }
+}
 
 /**
 Maintains OpenGL geometry and textures
@@ -65,14 +103,9 @@ Maintains OpenGL geometry and textures
     private var EBO: GLuint = 0
     
     /**
-     The diffuse texture.
+     The material.
      */
-    private var diffuseTexture: GLKTextureInfo = GLKTextureInfo()
-    
-    /**
-     The specular texture.
-     */
-    private var specularTexture: GLKTextureInfo = GLKTextureInfo()
+    private var material: Material = Material()
     
     /**
      Initalse a Mesh with an aray of vertices and indices.
@@ -100,11 +133,14 @@ Maintains OpenGL geometry and textures
      
      This function puts the contents of the mesh in the Effect.
      */
-    public func draw(_ effect: Effect)
+    public func draw(_ effect: EffectMaterial)
     {
         // Prepare Effect
-        effect.setTexture0(diffuseTexture.name)
-        effect.setTexture1(specularTexture.name)
+        effect.setTexture0(self.material.diffuseTexture.name)
+        effect.setTexture1(self.material.specularTexture.name)
+        effect.setColourDiffuse(self.material.diffuseColour)
+        effect.setColourSpecular(self.material.specularColour)
+        effect.setShininess(self.material.shininess)
         effect.prepareToDraw()
         
         // Bind vertex array for drawing
@@ -118,25 +154,14 @@ Maintains OpenGL geometry and textures
     }
     
     /**
-     Sets the diffuse texture.
+     Sets the material.
      
      - parameters:
-        - diffuse: The diffuse texture of type GLKTextureInfo.
+        - material: The material of type Material.
      */
-    public func setDiffuseTexture(_ diffuse: GLKTextureInfo)
+    public func setMaterial(_ material: Material)
     {
-        self.diffuseTexture = diffuse;
-    }
-    
-    /**
-     Sets the specular texture.
-     
-     - parameters:
-        - specular: The specular texture of type GLKTextureInfo.
-     */
-    public func setSpecularTexture(_ specular: GLKTextureInfo)
-    {
-        self.specularTexture = specular;
+        self.material = material;
     }
     
     /**
@@ -181,7 +206,7 @@ Maintains OpenGL geometry and textures
     }
     
     /**
-     Destroys the VAO, VBO and EBO in OpenGL.
+     Destroys the VAO, VBO, EBO and material textures in OpenGL.
      */
     public func destroy()
     {
@@ -193,15 +218,15 @@ Maintains OpenGL geometry and textures
         //Delete textures
         var id: GLuint = 0
         
-        if(self.diffuseTexture.name != 0)
+        if(self.material.diffuseTexture.name != 0)
         {
-            id = self.diffuseTexture.name
+            id = self.material.diffuseTexture.name
             glDeleteTextures(1, &id)
         }
         
-        if(self.specularTexture.name != 0)
+        if(self.material.specularTexture.name != 0)
         {
-            id = self.specularTexture.name
+            id = self.material.specularTexture.name
             glDeleteTextures(1, &id)
         }
     }

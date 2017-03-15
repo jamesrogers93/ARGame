@@ -30,7 +30,7 @@ class Model
      - parameters:
         - effect: The effect to draw the meshes.
      */
-    public func draw(_ effect: Effect)
+    public func draw(_ effect: EffectMaterial)
     {
         for i in 0..<self.meshes.count
         {

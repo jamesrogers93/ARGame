@@ -81,15 +81,11 @@ class ModelLoader
             // Load Material data
             //
             
-            var diffuseTexture: GLKTextureInfo? = nil
-            var specularTexture: GLKTextureInfo? = nil
-
+            // Diffuse texture
+            var diffuseTexture: GLKTextureInfo = GLKTextureInfo()
             var diffTexName: String? = nil
-            var specTexName: String? = nil
-            
             let opt:[String: NSNumber] = [GLKTextureLoaderGenerateMipmaps:false]
             
-            // Diffuse map
             let isDiffuseLoaded: Bool = Int(mlGetMeshIsDiffuseMapLoaded(loader, i)) != 0
             
             if(isDiffuseLoaded)
@@ -111,15 +107,19 @@ class ModelLoader
                     diffuseTexture = try GLKTextureLoader.texture(withContentsOfFile: path!, options: opt)
                     
                     // Add texture to the mesh
-                    mesh.setDiffuseTexture(diffuseTexture!)
+                    //mesh.setDiffuseTexture(diffuseTexture!)
                 }catch
                 {
+                    
                     print("Could not load diffuse texture for model: \(resource)")
                 }
                 
             }
             
-            // Specular map
+            // Specular texture
+            var specularTexture: GLKTextureInfo = GLKTextureInfo()
+            var specTexName: String? = nil
+            
             let isSpecularLoaded: Bool = Int(mlGetMeshIsSpecularMapLoaded(loader, i)) != 0
             if(isSpecularLoaded)
             {
@@ -140,12 +140,29 @@ class ModelLoader
                     specularTexture = try GLKTextureLoader.texture(withContentsOfFile: path!, options: opt)
                     
                     // Add texture to the mesh
-                    mesh.setSpecularTexture(specularTexture!)
+                    //mesh.setSpecularTexture(specularTexture!)
                 }catch
                 {
                     print("Could not load specular texture for model: \(resource)")
                 }
             }
+            
+            // Diffuse colour
+            let diffCol = Array(UnsafeBufferPointer(start: mlGetMeshDiffuseCol(loader, i), count: 4))
+            let diffuseColour:GLKVector4 = GLKVector4Make(diffCol[0], diffCol[1], diffCol[2], diffCol[3])
+            print("Diffuse Colour R: \(diffCol[0]) G: \(diffCol[1]) B: \(diffCol[2]) A: \(diffCol[3])")
+            
+            
+            // Specular colour
+            let specCol = Array(UnsafeBufferPointer(start: mlGetMeshSpecularCol(loader, i), count: 4))
+            let specularColour:GLKVector4 = GLKVector4Make(specCol[0], specCol[1], specCol[2], specCol[3])
+            print("Specular Colour R: \(specCol[0]) G: \(specCol[1]) B: \(specCol[2]) A: \(specCol[3])")
+            
+            // Shininess
+            let shininess: Float = Float(mlGetMeshShininess(loader, i))
+            
+            let material: Material = Material(diffuseTexture, specularTexture, diffuseColour, specularColour, shininess)
+            mesh.setMaterial(material)
             
             //
             //   Mesh Loading complete
