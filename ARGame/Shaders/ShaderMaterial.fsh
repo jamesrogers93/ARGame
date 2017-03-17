@@ -39,6 +39,7 @@ void main()
     mediump vec3 halfwayDir = normalize(lightDir + viewDir);
     mediump float specularStrength = pow(max(dot(normal, halfwayDir), 0.0), shininess);
     
+    // Calculate colours
     mediump vec4 ambient = (colourDiff + diffuseTex) * ambientStrength;
     mediump vec4 diffuse = (colourDiff + diffuseTex) * diffuseStrength;
     mediump vec4 specular = (colourSpec + texture2D(textureSpec, TexCoord)) * specularStrength;

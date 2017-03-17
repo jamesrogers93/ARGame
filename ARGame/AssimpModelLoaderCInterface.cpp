@@ -9,13 +9,25 @@
 #include "AssimpModelLoaderCInterface.h"
 #include "AssimpModelLoader.hpp"
 
-const void* mlLoadAssimpModel(const char *path)
+const void* mlLoadStaticAssimpModel(const char *path)
 {
     // Create instance of AssimpModelLoader
     AssimpModelLoader *loader = new AssimpModelLoader();
     
     // Load the model
-    loader->loadAssimpModel(path);
+    loader->loadStaticAssimpModel(path);
+    
+    // Return a void pointer to loader
+    return (void *)loader;
+}
+
+const void* mlLoadAnimatedAssimpModel(const char *path)
+{
+    // Create instance of AssimpModelLoader
+    AssimpModelLoader *loader = new AssimpModelLoader();
+    
+    // Load the model
+    loader->loadAnimatedAssimpModel(path);
     
     // Return a void pointer to loader
     return (void *)loader;
@@ -35,8 +47,17 @@ const unsigned int mlGetNumMeshes(const void *loader)
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
     
-    // Return the float array retrieved from AssimpModelLoader
+    // Return the number of meshes in the AssimpModelLoader
     return ptrLoader->getNumMeshes();
+}
+
+const unsigned int mlGetNumAnimations(const void *loader)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the number of animations in the AssimpModelLoader
+    return ptrLoader->getNumAnimations();
 }
 
 const unsigned int mlGetNumVerticesInMesh(const void *loader, const unsigned int index)
@@ -64,6 +85,42 @@ const unsigned int mlGetNumBonesInMesh(const void *loader, const unsigned int in
     
     // Return the value retrieved from AssimpModelLoader
     return ptrLoader->getNumBonesInMesh(index);
+}
+
+const unsigned int mlGetNumChannelsInAnimation(const void *loader, const unsigned int index)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getNumChannelsInAnimation(index);
+}
+
+const unsigned int mlGetNumPositionsInChannel(const void *loader, const unsigned int index, const unsigned int channelIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getNumPositionsInChannel(index, channelIndex);
+}
+
+const unsigned int mlGetNumScalesInChannel(const void *loader, const unsigned int index, const unsigned int channelIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getNumScalesInChannel(index, channelIndex);
+}
+
+const unsigned int mlGetNumRotationsInChannel(const void *loader, const unsigned int index, const unsigned int channelIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getNumRotationsInChannel(index, channelIndex);
 }
 
 const float* mlGetMeshVertices(const void *loader, const unsigned int index)
@@ -200,3 +257,53 @@ const float mlGetMeshShininess(const void *loader, const unsigned int index)
     // Return the char array retrieved from AssimpModelLoader
     return ptrLoader->getMeshShininess(index);
 }
+
+const double mlGetAnimationDuration(const void *loader, const unsigned int index)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getAnimationDuration(index);
+}
+
+const double mlGetAnimationTicksPerSecond(const void *loader, const unsigned int index)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getAnimationTicksPerSecond(index);
+}
+
+const float* mlGetAnimationChannelPositions(const void *loader, const unsigned int index, unsigned int channelIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getAnimationChannelPositions(index, channelIndex);
+}
+
+const float* mlGetAnimationChannelScales(const void *loader, const unsigned int index, unsigned int channelIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getAnimationChannelScales(index, channelIndex);
+}
+
+const float* mlGetAnimationChannelRotations(const void *loader, const unsigned int index, unsigned int channelIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getAnimationChannelRotations(index, channelIndex);
+}
+
+
+
+
+

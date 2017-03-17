@@ -17,12 +17,19 @@ extern "C" {
     //  C - C++ Interface methods
     //
     
-    /**  Constructs an instance of AssimpModelLoader and loads a model.
+    /**  Constructs an instance of AssimpModelLoader and loads a static model.
      *
      *  @param path  A path which points to the model to be loaded.
      *  @return A void pointer to the instance of the AssimpModelLoader.
      */
-    const void* mlLoadAssimpModel(const char *path);
+    const void* mlLoadStaticAssimpModel(const char *path);
+    
+    /**  Constructs an instance of AssimpModelLoader and loads an animated model.
+     *
+     *  @param path  A path which points to the model to be loaded.
+     *  @return A void pointer to the instance of the AssimpModelLoader.
+     */
+    const void* mlLoadAnimatedAssimpModel(const char *path);
     
     /**  Destructs an instance of AssimpModelLoader.
      *
@@ -36,6 +43,13 @@ extern "C" {
       *  @return Number of meshes in the instance passed, loader.
       */
     const unsigned int mlGetNumMeshes(const void *loader);
+    
+    /**  Returns the number of animations in an AssimpModelLoader.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @return Number of animations in the instance passed, loader.
+     */
+    const unsigned int mlGetNumAnimations(const void *loader);
     
     /**  Returns the number of vertices in a mesh contained in an AssimpModelLoader instance.
      *
@@ -60,6 +74,41 @@ extern "C" {
      *  @return Number of bones in the mesh.
      */
     const unsigned int mlGetNumBonesInMesh(const void *loader, const unsigned int index);
+    
+    /**  Returns the number of channels in a specified animation contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the animation in the animations array.
+     *  @return The number of channels in the animation.
+     */
+    const unsigned int mlGetNumChannelsInAnimation(const void *loader, const unsigned int index);
+    
+    /**  Returns the number of positions in a channel in a specified animation contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The number of positions in a channel. Note: Since each element is stored seperatly, the number this method returns should be divided by 3 to retrive the number of position vectors.
+     */
+    const unsigned int mlGetNumPositionsInChannel(const void *loader, const unsigned int index, const unsigned int channelIndex);
+    
+    /**  Returns the number of scales in a channel in a specified animation contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance 
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The number of scales in the animation. Note: Since each element is stored seperatly, the number this method returns should be divided by 3 to retrive the number of scale vectors.
+     */
+    const unsigned int mlGetNumScalesInChannel(const void *loader, const unsigned int index, const unsigned int channelIndex);
+    
+    /**  Returns the number of rotations in a specified animation contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The number of rotations in the animation. Note: Since each element is stored seperatly, the number this method returns should be divided by 9 to retrive the number of rotation matrices.
+     */
+    const unsigned int mlGetNumRotationsInChannel(const void *loader, const unsigned int index, const unsigned int channelIndex);
     
     /**  Returns an array of vertices in a mesh contained in an AssimpModelLoader instance.
      *
@@ -186,6 +235,49 @@ extern "C" {
      *  @return The shininess value of the mesh.
      */
     const float mlGetMeshShininess(const void *loader, const unsigned int index);
+    
+    /**  Gets the duration of an animation contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the animation in the animations array.
+     *  @return The duration of the animation.
+     */
+    const double mlGetAnimationDuration(const void *loader, const unsigned int index);
+    
+    /**  Gets the ticks per second of an animation contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the animation in the animations array.
+     *  @return The ticks per second of the animation.
+     */
+    const double mlGetAnimationTicksPerSecond(const void *loader, const unsigned int index);
+    
+    /**  Gets the positions in an animation channel contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The positions of the animation channel. Note: Every three contiguos elements are an xyz position vector.
+     */
+    const float* mlGetAnimationChannelPositions(const void *loader, const unsigned int index, unsigned int channelIndex);
+    
+    /**  Gets the scales in an animation channel contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The scales of the animation channel. Note: Every three contiguos elements are an xyz scale vector.
+     */
+    const float* mlGetAnimationChannelScales(const void *loader, const unsigned int index, unsigned int channelIndex);
+    
+    /**  Gets the positions an animation channel contained in an AssimpModelLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The rotations of the animation channel. Note: Every 9 contiguos elements are an 3x3 rotation matrix.
+     */
+    const float* mlGetAnimationChannelRotations(const void *loader, const unsigned int index, unsigned int channelIndex);
     
     
 #ifdef __cplusplus

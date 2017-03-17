@@ -12,7 +12,7 @@ import SceneKit
 class ModelLoader
 {
     /**
-     Loads a model from file using the Assimp library.
+     Loads a static model from file using the Assimp library.
      
      - parameters:
         - resource: Name of the resource to be loaded.
@@ -30,8 +30,61 @@ class ModelLoader
         let cpath = objPath?.cString(using: .utf8)
         
         // Load model using C code
-        let loader = UnsafeRawPointer(mlLoadAssimpModel(cpath))
+        let loader = UnsafeRawPointer(mlLoadStaticAssimpModel(cpath))
         
+        // Extract the meshes from the assimp loader
+        let meshes: Array<Mesh> = extractMeshesFromLoader(loader!)
+        
+        // Destroy assimp model
+        mlDestroyAssimpModelLoader(loader)
+        
+        return Model(meshes);
+    }
+    
+    /**
+     Loads a animated model from file using the Assimp library.
+     
+     - parameters:
+     - resource: Name of the resource to be loaded.
+     - type: The type of object to be loaded eg. fbx.
+     
+     - returns:
+     The loaded model.
+     */
+    static public func loadAnimatedModelFromFile(_ resource: String, _ type: String) -> Model
+    {
+        // Find obj path of resource
+        let objPath = Bundle.main.path(forResource: resource, ofType: type)
+        
+        // Convert path to C string
+        let cpath = objPath?.cString(using: .utf8)
+        
+        // Load model using C code
+        let loader = UnsafeRawPointer(mlLoadAnimatedAssimpModel(cpath))
+        
+        // Extract the meshes from the assimp loader
+        let meshes: Array<Mesh> = extractMeshesFromLoader(loader!)
+        
+        // Extract the animations from the assimp loader
+        let animations: Array<Animation> = extractAnimationsFromLoader(loader!)
+        
+        // Destroy assimp model
+        mlDestroyAssimpModelLoader(loader)
+        
+        return Model(meshes);
+    }
+    
+    /**
+     Extracts a mesh array from the assimp loader class.
+     
+     - parameters:
+        - loader: An unsafe pointer to the C++ AssimpModelLoader object.
+     
+     - returns:
+     A Mesh array.
+     */
+    static private func extractMeshesFromLoader(_ loader:UnsafeRawPointer) -> Array<Mesh>
+    {
         // Get number of meshes loaded
         let numMeshes: UInt32 = mlGetNumMeshes(loader)
         
@@ -43,7 +96,7 @@ class ModelLoader
         {
             //
             // Load Vertex data
-            // 
+            //
             
             // Get vertex data from mesh
             var vertices:Array<Vertex> = Array()
@@ -111,7 +164,7 @@ class ModelLoader
                 }catch
                 {
                     
-                    print("Could not load diffuse texture for model: \(resource)")
+                    print("Could not load diffuse texture for model")
                 }
                 
             }
@@ -143,7 +196,7 @@ class ModelLoader
                     //mesh.setSpecularTexture(specularTexture!)
                 }catch
                 {
-                    print("Could not load specular texture for model: \(resource)")
+                    print("Could not load specular texture for model")
                 }
             }
             
@@ -171,10 +224,36 @@ class ModelLoader
             // Add mesh to new mesh array
             meshes.append(mesh)
         }
+
+        return meshes
+    }
+    
+    /**
+     Extracts a animation array from the assimp loader class.
+     
+     - parameters:
+     - loader: An unsafe pointer to the C++ AssimpModelLoader object.
+     
+     - returns:
+     A Animation array.
+     */
+    static private func extractAnimationsFromLoader(_ loader:UnsafeRawPointer) -> Array<Animation>
+    {
+        // Get number of animations loaded
+        let numAnimations: UInt32 = mlGetNumAnimations(loader)
         
-        // Destroy assimp model
-        mlDestroyAssimpModelLoader(loader)
+        // Instantiate animations array to fill
+        var animations: Array<Animation> = Array()
         
-        return Model(meshes);
+        // Loop over all animations
+        for i in 0..<numAnimations
+        {
+            //
+            // Load animation duration
+            //
+            var duration:Double = mlGetAnimationDuration(loader, i)
+        }
+        
+        return animations
     }
 }

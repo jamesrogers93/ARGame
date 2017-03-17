@@ -19,6 +19,38 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+struct CAnimationChannel
+{
+    std::vector<float> positions;
+    std::vector<float> scales;
+    std::vector<float> rotations;
+    
+    CAnimationChannel(){}
+    
+    CAnimationChannel(std::vector<float> positions, std::vector<float> scales, std::vector<float> rotations)
+    {
+        this->positions = positions;
+        this->scales = scales;
+        this->rotations = rotations;
+    }
+};
+
+struct CAnimation
+{
+    double duration;
+    double ticksPerSecond;
+    std::vector<CAnimationChannel> channels;
+    
+    CAnimation() {}
+    
+    CAnimation(double duration, double ticksPerSecond, std::vector<CAnimationChannel> channels)
+    {
+        this->duration = duration;
+        this->ticksPerSecond = ticksPerSecond;
+        this->channels = channels;
+    }
+};
+
 struct CBone
 {
     std::string name;
@@ -69,11 +101,17 @@ public:
     
     AssimpModelLoader(){}
     
-    /**  Loads a model using the Assimp library.
+    /**  Loads a static model using the Assimp library.
      *
      *  @param path File path to the model to be loaded.
      */
-    void loadAssimpModel(std::string path);
+    void loadStaticAssimpModel(std::string path);
+    
+    /**  Loads an animated model using the Assimp library.
+     *
+     *  @param path File path to the model to be loaded.
+     */
+    void loadAnimatedAssimpModel(std::string path);
     
     /**  Returns the number of meshes.
      *
@@ -81,10 +119,16 @@ public:
      */
     const unsigned int getNumMeshes();
     
+    /**  Returns the number of animations.
+     *
+     *  @return Number of animations.
+     */
+    const unsigned int getNumAnimations();
+    
     /**  Returns the number of vertices in a specified mesh.
      *
      *  @param index Index of the mesh in the meshes array.
-     *  @return Number of vertices in the mesh.
+     *  @return Number of vertices in the mesh. Note: Since each element is stored seperatly, the number this method returns should be divided by 9 to retrive the number of vertex vectors.
      */
     const unsigned int getNumVerticesInMesh(const unsigned int &index);
     
@@ -101,6 +145,37 @@ public:
      *  @return Number of bones in the mesh.
      */
     const unsigned int getNumBonesInMesh(const unsigned int &index);
+    
+    /**  Returns the number of channels in a specified animation.
+     *
+     *  @param index Index of the animation in the animations array.
+     *  @return The number of channels in the animation.
+     */
+    const unsigned int getNumChannelsInAnimation(const unsigned int &index);
+    
+    /**  Returns the number of positions in a channel in a specified animation.
+     *
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The number of positions in a channel. Note: Since each element is stored seperatly, the number this method returns should be divided by 3 to retrive the number of position vectors.
+     */
+    const unsigned int getNumPositionsInChannel(const unsigned int &index, const unsigned int &channelIndex);
+    
+    /**  Returns the number of scales in a channel in a specified animation.
+     *
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The number of scales in the animation. Note: Since each element is stored seperatly, the number this method returns should be divided by 3 to retrive the number of scale vectors.
+     */
+    const unsigned int getNumScalesInChannel(const unsigned int &index, const unsigned int &channelIndex);
+    
+    /**  Returns the number of rotations in a specified animation.
+     *
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The number of rotations in the animation. Note: Since each element is stored seperatly, the number this method returns should be divided by 9 to retrive the number of rotation matrices.
+     */
+    const unsigned int getNumRotationsInChannel(const unsigned int &index, const unsigned int &channelIndex);
     
     /**  Returns an array of vertices in a specificed mesh.
      *
@@ -213,9 +288,48 @@ public:
      */
     const float getMeshShininess(const unsigned int &index);
     
+    /**  Gets the duration of an animation.
+     *
+     *  @param index Index of the animation in the animations array.
+     *  @return The duration of the animation.
+     */
+    const double getAnimationDuration(const unsigned int &index);
+    
+    /**  Gets the ticks per second of an animation.
+     *
+     *  @param index Index of the animation in the animations array.
+     *  @return The ticks per second of the animation.
+     */
+    const double getAnimationTicksPerSecond(const unsigned int &index);
+    
+    /**  Gets the positions in an animation channel.
+     *
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The positions of the animation channel. Note: Every three contiguos elements are an xyz position vector.
+     */
+    const float* getAnimationChannelPositions(const unsigned int &index, unsigned int &channelIndex);
+    
+    /**  Gets the scales in an animation channel.
+     *
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The scales of the animation channel. Note: Every three contiguos elements are an xyz scale vector.
+     */
+    const float* getAnimationChannelScales(const unsigned int &index, unsigned int &channelIndex);
+    
+    /**  Gets the positions an animation channel.
+     *
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The rotations of the animation channel. Note: Every 9 contiguos elements are an 3x3 rotation matrix.
+     */
+    const float* getAnimationChannelRotations(const unsigned int &index, unsigned int &channelIndex);
+    
 private:
     
     std::vector<CMesh> meshes;
+    std::vector<CAnimation> animations;
     std::string directory;
     
     /**  Processes all of the nodes in the Assimp hierarchy.
@@ -223,7 +337,7 @@ private:
      *  @param node A pointer to the node to be processed.
      *  @param scene A pointer to the assimp scene.
      */
-    void processNode(aiNode* node, const aiScene* scene);
+    void processNode(aiNode* node, const aiScene* scene, const bool &loadBones);
     
     /**  Loads the mesh from an Assimp node.
      *
@@ -231,7 +345,7 @@ private:
      *  @param scene A pointer to the assimp scene.
      *  @return The loaded mesh.
      */
-    CMesh processMesh(aiMesh* mesh, const aiScene* scene);
+    CMesh processMesh(aiMesh* mesh, const aiScene* scene, const bool &loadBones);
     
     /**  Loads a specified material from an Assimp mesh.
      *
@@ -240,6 +354,14 @@ private:
      *  @return File path to the texture map.
      */
     std::string loadMaterialTexture(aiMaterial* mat, aiTextureType type);
+    
+    /**  Loads an animation in Assimp.
+     *
+     *  @param animation A pointer to the animation to be processed.
+     *  @param scene A pointer to the assimp scene.
+     */
+    void processAnimation(aiAnimation* animation, const aiScene* scene);
+    
 };
 
 #endif /* AssimpModelLoader_hpp */
