@@ -12,6 +12,8 @@
 		1A1788081E637A400087DE26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1788071E637A400087DE26 /* QuartzCore.framework */; };
 		1A17880B1E640D950087DE26 /* camera_para.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880A1E640D950087DE26 /* camera_para.dat */; };
 		1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880C1E640D9E0087DE26 /* hiro.patt */; };
+		1A3A9B9A1E81676A00A555D9 /* sword_and_shield_idle.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */; };
+		1A3A9B9C1E81768A00A555D9 /* ModelAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9B9B1E81768A00A555D9 /* ModelAnimated.swift */; };
 		1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC01E55F34C0036E753 /* AppDelegate.swift */; };
 		1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC61E55F34C0036E753 /* GameViewController.swift */; };
 		1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCC81E55F34C0036E753 /* Main.storyboard */; };
@@ -93,6 +95,8 @@
 		1A1788071E637A400087DE26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A17880A1E640D950087DE26 /* camera_para.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = camera_para.dat; path = Assets_AR/camera_para.dat; sourceTree = "<group>"; };
 		1A17880C1E640D9E0087DE26 /* hiro.patt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hiro.patt; path = Assets_AR/hiro.patt; sourceTree = "<group>"; };
+		1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = sword_and_shield_idle.fbx; path = Assets/Animated/idle/sword_and_shield_idle.fbx; sourceTree = "<group>"; };
+		1A3A9B9B1E81768A00A555D9 /* ModelAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelAnimated.swift; sourceTree = "<group>"; };
 		1A44DCBD1E55F34C0036E753 /* ARGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A44DCC01E55F34C0036E753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A44DCC61E55F34C0036E753 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 				1A66079F1E7A807D00FAF78B /* AnimationSet.swift */,
 				1A755C1B1E57B46500E2FFBC /* Mesh.swift */,
 				1A755C241E59CD1300E2FFBC /* Model.swift */,
+				1A3A9B9B1E81768A00A555D9 /* ModelAnimated.swift */,
 				1A44DCF81E5601C80036E753 /* Object.swift */,
 			);
 			name = Entity;
@@ -350,6 +355,7 @@
 		1A725D361E75BF6600322D6A /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */,
 				1A725D371E75BF7F00322D6A /* Beta.fbx */,
 			);
 			name = Animation;
@@ -593,6 +599,7 @@
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,
 				1AEFE7491E65A12700698808 /* box.obj in Resources */,
 				1AC1817B1E7356D0008C07F3 /* ShaderMaterial.vsh in Resources */,
+				1A3A9B9A1E81676A00A555D9 /* sword_and_shield_idle.fbx in Resources */,
 				1ADFA8D01E64DE9600588345 /* hand_dif.png in Resources */,
 				1ADFA8CB1E64DE9600588345 /* arm_showroom_spec.png in Resources */,
 			);
@@ -624,6 +631,7 @@
 				1A755C251E59CD1300E2FFBC /* Model.swift in Sources */,
 				1A6607A21E7A808D00FAF78B /* Animation.swift in Sources */,
 				1AC181731E735597008C07F3 /* EffectMaterial.swift in Sources */,
+				1A3A9B9C1E81768A00A555D9 /* ModelAnimated.swift in Sources */,
 				1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */,
 				1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */,
 				1A44DCF91E5601C80036E753 /* Object.swift in Sources */,

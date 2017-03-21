@@ -219,13 +219,20 @@ std::string AssimpModelLoader::loadMaterialTexture(aiMaterial* mat, aiTextureTyp
 
 void AssimpModelLoader::processAnimation(aiAnimation* animation, const aiScene* scene)
 {
+    // Load animation duration
     double duration = animation->mDuration;
     
+    // Load animation ticks per seocnd
     double ticksPerSecond = animation->mTicksPerSecond;
     
+    // Load channels from animation
     std::vector<CAnimationChannel> channels;
     for(int i = 0; i < animation->mNumChannels; i++)
     {
+        // Get channel name
+        std::string name = animation->mChannels[i]->mNodeName.data;
+        
+        // Get channel positions
         std::vector<float> positions;
         for(int j = 0; j < animation->mChannels[i]->mNumPositionKeys; j++)
         {
@@ -235,6 +242,7 @@ void AssimpModelLoader::processAnimation(aiAnimation* animation, const aiScene* 
             positions.push_back(v[2]);
         }
         
+        // Get channel scales
         std::vector<float> scales;
         for(int j = 0; j < animation->mChannels[i]->mNumScalingKeys; j++)
         {
@@ -244,6 +252,7 @@ void AssimpModelLoader::processAnimation(aiAnimation* animation, const aiScene* 
             scales.push_back(v[2]);
         }
         
+        // Get channel rotations
         std::vector<float> rotations;
         for(int j = 0; j < animation->mChannels[i]->mNumRotationKeys; j++)
         {
@@ -253,9 +262,11 @@ void AssimpModelLoader::processAnimation(aiAnimation* animation, const aiScene* 
             rotations.push_back(v.c1); rotations.push_back(v.c2); rotations.push_back(v.c3);
         }
         
-        channels.push_back(CAnimationChannel(positions, scales, rotations));
+        // Insert channel into vector
+        channels.push_back(CAnimationChannel(name, positions, scales, rotations));
     }
     
+    // Insert animation into vector
     this->animations.push_back(CAnimation(duration, ticksPerSecond, channels));
 }
 
@@ -482,12 +493,23 @@ const double AssimpModelLoader::getAnimationTicksPerSecond(const unsigned int &i
     return animations[index].ticksPerSecond;
 }
 
+const char* AssimpModelLoader::getAnimationChannelName(const unsigned int &index, unsigned int &channelIndex)
+{
+    if(index >= getNumAnimations())
+        return 0;
+    
+    if(channelIndex >= getNumChannelsInAnimation(index))
+        return 0;
+    
+    return animations[index].channels[channelIndex].name.c_str();
+}
+
 const float* AssimpModelLoader::getAnimationChannelPositions(const unsigned int &index, unsigned int &channelIndex)
 {
     if(index >= getNumAnimations())
         return 0;
     
-    if(channelIndex >= getNumMeshes())
+    if(channelIndex >= getNumChannelsInAnimation(index))
         return 0;
     
     return animations[index].channels[channelIndex].positions.data();
@@ -498,7 +520,7 @@ const float* AssimpModelLoader::getAnimationChannelScales(const unsigned int &in
     if(index >= getNumAnimations())
         return 0;
     
-    if(channelIndex >= getNumMeshes())
+    if(channelIndex >= getNumChannelsInAnimation(index))
         return 0;
     
     return animations[index].channels[channelIndex].scales.data();
@@ -509,7 +531,7 @@ const float* AssimpModelLoader::getAnimationChannelRotations(const unsigned int 
     if(index >= getNumAnimations())
         return 0;
     
-    if(channelIndex >= getNumMeshes())
+    if(channelIndex >= getNumChannelsInAnimation(index))
         return 0;
     
     return animations[index].channels[channelIndex].rotations.data();

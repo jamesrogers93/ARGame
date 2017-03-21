@@ -252,6 +252,15 @@ extern "C" {
      */
     const double mlGetAnimationTicksPerSecond(const void *loader, const unsigned int index);
     
+    /**  Gets the name of a animation channel in an AssimpLoader instance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The name of the animation channel.
+     */
+    const char* mlGetAnimationChannelName(const void *loader, const unsigned int index, unsigned int channelIndex);
+    
     /**  Gets the positions in an animation channel contained in an AssimpModelLoader instance.
      *
      *  @param loader A void pointer to the AssimpModelLoader instance.
@@ -270,7 +279,7 @@ extern "C" {
      */
     const float* mlGetAnimationChannelScales(const void *loader, const unsigned int index, unsigned int channelIndex);
     
-    /**  Gets the positions an animation channel contained in an AssimpModelLoader instance.
+    /**  Gets the quaternion rotations in an animation channel contained in an AssimpModelLoader instance.
      *
      *  @param loader A void pointer to the AssimpModelLoader instance.
      *  @param index Index of the animation in the animations array.

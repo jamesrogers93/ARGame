@@ -14,7 +14,7 @@ import GLKit
  */
 class Model
 {
-    private var meshes: Array<Mesh> = Array()
+    internal var meshes: Array<Mesh> = Array()
     
     /**
      Initalise a Model with an array of Meshes.

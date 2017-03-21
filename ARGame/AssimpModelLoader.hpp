@@ -21,14 +21,16 @@
 
 struct CAnimationChannel
 {
+    std::string name;
     std::vector<float> positions;
     std::vector<float> scales;
     std::vector<float> rotations;
     
     CAnimationChannel(){}
     
-    CAnimationChannel(std::vector<float> positions, std::vector<float> scales, std::vector<float> rotations)
+    CAnimationChannel(std::string name, std::vector<float> positions, std::vector<float> scales, std::vector<float> rotations)
     {
+        this->name = name;
         this->positions = positions;
         this->scales = scales;
         this->rotations = rotations;
@@ -302,6 +304,14 @@ public:
      */
     const double getAnimationTicksPerSecond(const unsigned int &index);
     
+    /**  Gets the name of a animation channel.
+     *
+     *  @param index Index of the animation in the animations array.
+     *  @param channelIndex Index of the channel in the animation.
+     *  @return The name of the animation channel.
+     */
+    const char* getAnimationChannelName(const unsigned int &index, unsigned int &channelIndex);
+    
     /**  Gets the positions in an animation channel.
      *
      *  @param index Index of the animation in the animations array.
@@ -318,11 +328,11 @@ public:
      */
     const float* getAnimationChannelScales(const unsigned int &index, unsigned int &channelIndex);
     
-    /**  Gets the positions an animation channel.
+    /**  Gets the quaternion rotations in an animation channel.
      *
      *  @param index Index of the animation in the animations array.
      *  @param channelIndex Index of the channel in the animation.
-     *  @return The rotations of the animation channel. Note: Every 9 contiguos elements are an 3x3 rotation matrix.
+     *  @return The rotations of the animation channel. Note: Every 9 contiguos elements are a 3x3 rotation matrix.
      */
     const float* getAnimationChannelRotations(const unsigned int &index, unsigned int &channelIndex);
     

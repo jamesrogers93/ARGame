@@ -49,9 +49,9 @@ class ModelLoader
      - type: The type of object to be loaded eg. fbx.
      
      - returns:
-     The loaded model.
+     The loaded animated model.
      */
-    static public func loadAnimatedModelFromFile(_ resource: String, _ type: String) -> Model
+    static public func loadAnimatedModelFromFile(_ resource: String, _ type: String) -> ModelAnimated
     {
         // Find obj path of resource
         let objPath = Bundle.main.path(forResource: resource, ofType: type)
@@ -71,7 +71,7 @@ class ModelLoader
         // Destroy assimp model
         mlDestroyAssimpModelLoader(loader)
         
-        return Model(meshes);
+        return ModelAnimated(meshes, animations);
     }
     
     /**
@@ -232,18 +232,18 @@ class ModelLoader
      Extracts a animation array from the assimp loader class.
      
      - parameters:
-     - loader: An unsafe pointer to the C++ AssimpModelLoader object.
+        - loader: An unsafe pointer to the C++ AssimpModelLoader object.
      
      - returns:
      A Animation array.
      */
     static private func extractAnimationsFromLoader(_ loader:UnsafeRawPointer) -> Array<Animation>
     {
-        // Get number of animations loaded
-        let numAnimations: UInt32 = mlGetNumAnimations(loader)
-        
         // Instantiate animations array to fill
         var animations: Array<Animation> = Array()
+        
+        // Get number of animations loaded
+        let numAnimations: UInt32 = mlGetNumAnimations(loader)
         
         // Loop over all animations
         for i in 0..<numAnimations
@@ -251,7 +251,60 @@ class ModelLoader
             //
             // Load animation duration
             //
-            var duration:Double = mlGetAnimationDuration(loader, i)
+            let duration: Double = mlGetAnimationDuration(loader, i)
+            
+            //
+            // Load animation ticks per second
+            //
+            let ticksPerSecond: Double = mlGetAnimationTicksPerSecond(loader, i)
+            
+            // 
+            // Load animation channels
+            //
+            var channels: Array<AnimationChannel> = Array()
+            let numChannels: UInt32 = mlGetNumChannelsInAnimation(loader, i)
+            
+            for j in 0..<numChannels
+            {
+                // Load channel name
+                let name: String = String(cString: mlGetAnimationChannelName(loader, i, j))
+                
+                // load channel positions
+                var positions:Array<GLKVector3> = Array()
+                let numPositions: Int = Int(mlGetNumPositionsInChannel(loader, i, j))
+                var cPositions = Array(UnsafeBufferPointer(start: mlGetAnimationChannelPositions(loader, i, j), count: numPositions))
+                
+                for k in stride(from: 0, to: numPositions, by: 3)
+                {
+                    positions.append(GLKVector3Make(cPositions[k], cPositions[k+1], cPositions[k+2]))
+                }
+                
+                // load channel positions
+                var scales:Array<GLKVector3> = Array()
+                let numScales: Int = Int(mlGetNumScalesInChannel(loader, i, j))
+                var cScales = Array(UnsafeBufferPointer(start: mlGetAnimationChannelScales(loader, i, j), count: numScales))
+                
+                for k in stride(from: 0, to: numScales, by: 3)
+                {
+                    scales.append(GLKVector3Make(cScales[k], cScales[k+1], cScales[k+2]))
+                }
+                
+                // load channel rotations
+                var rotations:Array<GLKMatrix3> = Array()
+                let numRotations: Int = Int(mlGetNumRotationsInChannel(loader, i, j))
+                var cRotations = Array(UnsafeBufferPointer(start: mlGetAnimationChannelRotations(loader, i, j), count: numRotations))
+                
+                for k in stride(from: 0, to: numRotations, by: 9)
+                {
+                    rotations.append(GLKMatrix3Make(cRotations[k], cRotations[k+1], cRotations[k+2], cRotations[k+3], cRotations[k+4], cRotations[k+5], cRotations[k+6], cRotations[k+7], cRotations[k+8]))
+                }
+                
+                // Insert channel into channels
+                channels.append(AnimationChannel(name, positions, scales, rotations))
+            }
+            
+            // Insert animation into animations
+            animations.append(Animation(duration, ticksPerSecond, channels))
         }
         
         return animations

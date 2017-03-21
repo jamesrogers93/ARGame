@@ -276,6 +276,15 @@ const double mlGetAnimationTicksPerSecond(const void *loader, const unsigned int
     return ptrLoader->getAnimationTicksPerSecond(index);
 }
 
+const char* mlGetAnimationChannelName(const void *loader, const unsigned int index, unsigned int channelIndex)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getAnimationChannelName(index, channelIndex);
+}
+
 const float* mlGetAnimationChannelPositions(const void *loader, const unsigned int index, unsigned int channelIndex)
 {
     // Cast void pointer, loader to AssimpModelLoader type
