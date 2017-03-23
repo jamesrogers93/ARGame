@@ -1,18 +1,17 @@
 //
-//  Object.swift
+//  ObjectAnimated.swift
 //  ARGame
 //
-//  Created by James Rogers on 16/02/2017.
+//  Created by James Rogers on 21/03/2017.
 //  Copyright © 2017 James Rogers. All rights reserved.
 //
 
 import Foundation
-import GLKit
 
 /**
- Holds a Model and applies transformations to it.
+ Holds a static Model and applies transformations to it.
  */
-class Object
+class ObjectAnimated
 {
     /**
      The transformation model matrix.
@@ -37,15 +36,15 @@ class Object
     /**
      The model which contains the geometry.
      */
-    private var GLmodel:Model
+    private var GLmodel:ModelAnimated
     
     /**
      Initalise an object with a model.
      
      - parameters:
-        - GLmodel: An instance of the type Model.
+     - GLmodel: An instance of the type Model.
      */
-    init(_ GLmodel: Model)
+    init(_ GLmodel: ModelAnimated)
     {
         self.GLmodel = GLmodel
     }
@@ -73,7 +72,7 @@ class Object
      Translates contents of the object.
      
      - parameters:
-        - translation: A GLKVector3 instance which defines the translation on each xyz axis.
+     - translation: A GLKVector3 instance which defines the translation on each xyz axis.
      
      This methods automatically updates the model matrix using the updateModel() method.
      */
@@ -87,8 +86,8 @@ class Object
      Rotates the contents object.
      
      - parameters:
-        - rotation: The number of degrees to translate the object.
-        - axis: A GLKVector3 instance which defines the rotation on each xyz axis.
+     - rotation: The number of degrees to translate the object.
+     - axis: A GLKVector3 instance which defines the rotation on each xyz axis.
      
      This methods automatically updates the model matrix using the updateModel() method.
      */
@@ -102,7 +101,7 @@ class Object
      Scales the contents object.
      
      - parameters:
-        - scale: A GLKVector3 instance which defines the scale on each xyz axis.
+     - scale: A GLKVector3 instance which defines the scale on each xyz axis.
      
      This methods automatically updates the model matrix using the updateModel() method.
      */
@@ -116,7 +115,7 @@ class Object
      Draws the contents of the object.
      
      - parameters:
-        - effect: The effect to draw the contents.
+     - effect: The effect to draw the contents.
      
      This function automatically places the contents of the object in the effect.
      */
@@ -134,11 +133,3 @@ class Object
         self.GLmodel.destroy()
     }
 }
-
-
-
-
-
-
-
-

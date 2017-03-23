@@ -14,6 +14,10 @@
 		1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880C1E640D9E0087DE26 /* hiro.patt */; };
 		1A3A9B9A1E81676A00A555D9 /* sword_and_shield_idle.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */; };
 		1A3A9B9C1E81768A00A555D9 /* ModelAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9B9B1E81768A00A555D9 /* ModelAnimated.swift */; };
+		1A3A9BA01E817D3600A555D9 /* MeshAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9B9F1E817D3600A555D9 /* MeshAnimated.swift */; };
+		1A3A9BA21E817D4300A555D9 /* ObjectAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9BA11E817D4300A555D9 /* ObjectAnimated.swift */; };
+		1A435D5B1E83BB6F00D44433 /* VertexData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5A1E83BB6F00D44433 /* VertexData.swift */; };
+		1A435D5D1E83BBC000D44433 /* MaterialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5C1E83BBC000D44433 /* MaterialData.swift */; };
 		1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC01E55F34C0036E753 /* AppDelegate.swift */; };
 		1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC61E55F34C0036E753 /* GameViewController.swift */; };
 		1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCC81E55F34C0036E753 /* Main.storyboard */; };
@@ -23,7 +27,7 @@
 		1A44DCE51E55F34C0036E753 /* ARGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCE41E55F34C0036E753 /* ARGameUITests.swift */; };
 		1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF21E55F87E0036E753 /* MainMenuController.swift */; };
 		1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF51E55FEC40036E753 /* ModelLoader.swift */; };
-		1A44DCF91E5601C80036E753 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF81E5601C80036E753 /* Object.swift */; };
+		1A44DCF91E5601C80036E753 /* ObjectStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF81E5601C80036E753 /* ObjectStatic.swift */; };
 		1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4F606E1E5CBE7400B4C602 /* libAR.a */; };
 		1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F60711E5CCFA700B4C602 /* ARHandler.m */; };
 		1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B66FD1E5BAD06000463E3 /* monkey.mtl */; };
@@ -32,16 +36,13 @@
 		1A5B67041E5BADCE000463E3 /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67021E5BADCE000463E3 /* cube.obj */; };
 		1A5B67071E5C4045000463E3 /* robot.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67051E5C4045000463E3 /* robot.mtl */; };
 		1A5B67081E5C4046000463E3 /* robot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67061E5C4045000463E3 /* robot.obj */; };
-		1A66079E1E7A7FCF00FAF78B /* AnimationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A66079D1E7A7FCF00FAF78B /* AnimationLoader.swift */; };
-		1A6607A01E7A807D00FAF78B /* AnimationSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A66079F1E7A807D00FAF78B /* AnimationSet.swift */; };
 		1A6607A21E7A808D00FAF78B /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6607A11E7A808D00FAF78B /* Animation.swift */; };
-		1A6607A51E7A829E00FAF78B /* AssimpAnimationLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6607A31E7A829E00FAF78B /* AssimpAnimationLoader.cpp */; };
 		1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */; };
 		1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */; };
 		1A725D381E75BF7F00322D6A /* Beta.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A725D371E75BF7F00322D6A /* Beta.fbx */; };
-		1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C1B1E57B46500E2FFBC /* Mesh.swift */; };
+		1A755C1C1E57B46500E2FFBC /* MeshStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C1B1E57B46500E2FFBC /* MeshStatic.swift */; };
 		1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C221E59C95F00E2FFBC /* libassimp-fat.a */; };
-		1A755C251E59CD1300E2FFBC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C241E59CD1300E2FFBC /* Model.swift */; };
+		1A755C251E59CD1300E2FFBC /* ModelStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C241E59CD1300E2FFBC /* ModelStatic.swift */; };
 		1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */; };
 		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
 		1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */; };
@@ -97,6 +98,10 @@
 		1A17880C1E640D9E0087DE26 /* hiro.patt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hiro.patt; path = Assets_AR/hiro.patt; sourceTree = "<group>"; };
 		1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = sword_and_shield_idle.fbx; path = Assets/Animated/idle/sword_and_shield_idle.fbx; sourceTree = "<group>"; };
 		1A3A9B9B1E81768A00A555D9 /* ModelAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelAnimated.swift; sourceTree = "<group>"; };
+		1A3A9B9F1E817D3600A555D9 /* MeshAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshAnimated.swift; sourceTree = "<group>"; };
+		1A3A9BA11E817D4300A555D9 /* ObjectAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAnimated.swift; sourceTree = "<group>"; };
+		1A435D5A1E83BB6F00D44433 /* VertexData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexData.swift; sourceTree = "<group>"; };
+		1A435D5C1E83BBC000D44433 /* MaterialData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialData.swift; sourceTree = "<group>"; };
 		1A44DCBD1E55F34C0036E753 /* ARGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A44DCC01E55F34C0036E753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A44DCC61E55F34C0036E753 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +117,7 @@
 		1A44DCE61E55F34C0036E753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A44DCF21E55F87E0036E753 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		1A44DCF51E55FEC40036E753 /* ModelLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
-		1A44DCF81E5601C80036E753 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		1A44DCF81E5601C80036E753 /* ObjectStatic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectStatic.swift; sourceTree = "<group>"; };
 		1A4F606E1E5CBE7400B4C602 /* libAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAR.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libAR.a"; sourceTree = "<group>"; };
 		1A4F60711E5CCFA700B4C602 /* ARHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARHandler.m; sourceTree = "<group>"; };
 		1A4F60731E5CCFC100B4C602 /* ARHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARHandler.h; sourceTree = "<group>"; };
@@ -124,11 +129,7 @@
 		1A5B67021E5BADCE000463E3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = Assets/cube.obj; sourceTree = "<group>"; };
 		1A5B67051E5C4045000463E3 /* robot.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = robot.mtl; path = Assets/robot.mtl; sourceTree = "<group>"; };
 		1A5B67061E5C4045000463E3 /* robot.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = robot.obj; path = Assets/robot.obj; sourceTree = "<group>"; };
-		1A66079D1E7A7FCF00FAF78B /* AnimationLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationLoader.swift; sourceTree = "<group>"; };
-		1A66079F1E7A807D00FAF78B /* AnimationSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationSet.swift; sourceTree = "<group>"; };
 		1A6607A11E7A808D00FAF78B /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
-		1A6607A31E7A829E00FAF78B /* AssimpAnimationLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpAnimationLoader.cpp; sourceTree = "<group>"; };
-		1A6607A41E7A829E00FAF78B /* AssimpAnimationLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AssimpAnimationLoader.hpp; sourceTree = "<group>"; };
 		1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARvideo.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARvideo.a"; sourceTree = "<group>"; };
 		1A6BA3E11E5E223800D136D5 /* libARgsub_es2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARgsub_es2.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARgsub_es2.a"; sourceTree = "<group>"; };
 		1A6BA3E31E5E225500D136D5 /* libARICP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARICP.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARICP.a"; sourceTree = "<group>"; };
@@ -143,11 +144,11 @@
 		1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		1A6BA3F81E5E280900D136D5 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		1A725D371E75BF7F00322D6A /* Beta.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = Beta.fbx; path = Assets/Animated/Beta.fbx; sourceTree = "<group>"; };
-		1A755C1B1E57B46500E2FFBC /* Mesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
+		1A755C1B1E57B46500E2FFBC /* MeshStatic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshStatic.swift; sourceTree = "<group>"; };
 		1A755C1E1E58441200E2FFBC /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		1A755C201E592D7300E2FFBC /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimp.a; path = ../Dependencies/assimp/lib/iOS/x86_64/libassimp.a; sourceTree = "<group>"; };
 		1A755C221E59C95F00E2FFBC /* libassimp-fat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libassimp-fat.a"; path = "../Dependencies/assimp/lib/iOS/libassimp-fat.a"; sourceTree = "<group>"; };
-		1A755C241E59CD1300E2FFBC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1A755C241E59CD1300E2FFBC /* ModelStatic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelStatic.swift; sourceTree = "<group>"; };
 		1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpModelLoader.cpp; sourceTree = "<group>"; };
 		1A755C291E59E0A100E2FFBC /* AssimpModelLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AssimpModelLoader.hpp; sourceTree = "<group>"; };
 		1A755C2B1E5A08D300E2FFBC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -229,14 +230,33 @@
 		1A3669601E756B3500C7C53E /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				1A6607A11E7A808D00FAF78B /* Animation.swift */,
-				1A66079F1E7A807D00FAF78B /* AnimationSet.swift */,
-				1A755C1B1E57B46500E2FFBC /* Mesh.swift */,
-				1A755C241E59CD1300E2FFBC /* Model.swift */,
-				1A3A9B9B1E81768A00A555D9 /* ModelAnimated.swift */,
-				1A44DCF81E5601C80036E753 /* Object.swift */,
+				1A3A9B9E1E817ADF00A555D9 /* Animated */,
+				1A3A9B9D1E817AD900A555D9 /* Static */,
+				1A435D5A1E83BB6F00D44433 /* VertexData.swift */,
+				1A435D5C1E83BBC000D44433 /* MaterialData.swift */,
 			);
 			name = Entity;
+			sourceTree = "<group>";
+		};
+		1A3A9B9D1E817AD900A555D9 /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				1A755C1B1E57B46500E2FFBC /* MeshStatic.swift */,
+				1A755C241E59CD1300E2FFBC /* ModelStatic.swift */,
+				1A44DCF81E5601C80036E753 /* ObjectStatic.swift */,
+			);
+			name = Static;
+			sourceTree = "<group>";
+		};
+		1A3A9B9E1E817ADF00A555D9 /* Animated */ = {
+			isa = PBXGroup;
+			children = (
+				1A6607A11E7A808D00FAF78B /* Animation.swift */,
+				1A3A9B9F1E817D3600A555D9 /* MeshAnimated.swift */,
+				1A3A9B9B1E81768A00A555D9 /* ModelAnimated.swift */,
+				1A3A9BA11E817D4300A555D9 /* ObjectAnimated.swift */,
+			);
+			name = Animated;
 			sourceTree = "<group>";
 		};
 		1A44DCB41E55F34C0036E753 = {
@@ -308,7 +328,6 @@
 		1A44DCF71E5601920036E753 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1A66079C1E7A7F3600FAF78B /* AnimationLoader */,
 				1A4F60701E5CC42000B4C602 /* AR */,
 				1A3669601E756B3500C7C53E /* Entity */,
 				1AC1816A1E72C159008C07F3 /* Graphics */,
@@ -340,16 +359,6 @@
 				1A5B66FE1E5BAD06000463E3 /* monkey.obj */,
 			);
 			name = Assets;
-			sourceTree = "<group>";
-		};
-		1A66079C1E7A7F3600FAF78B /* AnimationLoader */ = {
-			isa = PBXGroup;
-			children = (
-				1A66079D1E7A7FCF00FAF78B /* AnimationLoader.swift */,
-				1A6607A41E7A829E00FAF78B /* AssimpAnimationLoader.hpp */,
-				1A6607A31E7A829E00FAF78B /* AssimpAnimationLoader.cpp */,
-			);
-			name = AnimationLoader;
 			sourceTree = "<group>";
 		};
 		1A725D361E75BF6600322D6A /* Animation */ = {
@@ -628,23 +637,24 @@
 			files = (
 				1AC1816C1E72C1AE008C07F3 /* Effect.swift in Sources */,
 				1AC181221E71DF7B008C07F3 /* Shader.swift in Sources */,
-				1A755C251E59CD1300E2FFBC /* Model.swift in Sources */,
+				1A755C251E59CD1300E2FFBC /* ModelStatic.swift in Sources */,
 				1A6607A21E7A808D00FAF78B /* Animation.swift in Sources */,
 				1AC181731E735597008C07F3 /* EffectMaterial.swift in Sources */,
 				1A3A9B9C1E81768A00A555D9 /* ModelAnimated.swift in Sources */,
 				1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */,
-				1A755C1C1E57B46500E2FFBC /* Mesh.swift in Sources */,
-				1A44DCF91E5601C80036E753 /* Object.swift in Sources */,
+				1A755C1C1E57B46500E2FFBC /* MeshStatic.swift in Sources */,
+				1A44DCF91E5601C80036E753 /* ObjectStatic.swift in Sources */,
+				1A3A9BA21E817D4300A555D9 /* ObjectAnimated.swift in Sources */,
 				1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */,
-				1A66079E1E7A7FCF00FAF78B /* AnimationLoader.swift in Sources */,
-				1A6607A01E7A807D00FAF78B /* AnimationSet.swift in Sources */,
 				1AC181701E734D4E008C07F3 /* EffectBasic.swift in Sources */,
-				1A6607A51E7A829E00FAF78B /* AssimpAnimationLoader.cpp in Sources */,
 				1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */,
 				1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */,
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,
 				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
+				1A3A9BA01E817D3600A555D9 /* MeshAnimated.swift in Sources */,
 				1ADFA8B81E64C05900588345 /* AssimpModelLoaderCInterface.cpp in Sources */,
+				1A435D5D1E83BBC000D44433 /* MaterialData.swift in Sources */,
+				1A435D5B1E83BB6F00D44433 /* VertexData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

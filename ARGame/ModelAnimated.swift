@@ -8,18 +8,44 @@
 
 import Foundation
 
-class ModelAnimated: Model {
+class ModelAnimated
+{
     
-    private var animations: Array<Animation>
+    private var meshes: Array<MeshAnimated> = Array()
+    private var animations: Array<Animation> = Array()
     
     /**
      Initalise a Animated Model with an array of Meshes and animations.
      */
-    init(_ _meshes: Array<Mesh>, _ _animations: Array<Animation>)
+    init(_ _meshes: Array<MeshAnimated>, _ _animations: Array<Animation>)
     {
         self.animations = _animations
+        self.meshes = _meshes
         
-        super.init(_meshes)
-        
+    }
+    
+    /**
+     Draws the animated meshes in the Model.
+     
+     - parameters:
+     - effect: The effect to draw the meshes.
+     */
+    public func draw(_ effect: EffectMaterial)
+    {
+        for i in 0..<self.meshes.count
+        {
+            self.meshes[i].draw(effect);
+        }
+    }
+    
+    /**
+     Destroys the animated meshes.
+     */
+    public func destroy()
+    {
+        for i in 0..<self.meshes.count
+        {
+            self.meshes[i].destroy();
+        }
     }
 }
