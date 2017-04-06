@@ -66,12 +66,15 @@ class ModelLoader
         let meshes: Array<MeshAnimated> = extractAnimatedMeshesFromLoader(loader!)
         
         // Extract the animations from the assimp loader
-        let animations: Array<Animation> = extractAnimationsFromLoader(loader!)
+        let animations: Array<AnimationSequence> = extractAnimationsFromLoader(loader!)
+        
+        // Extract the skeleton from the assimp loader
+        let skeleton: Skeleton = extractSkeletonFromLoader(loader!)
         
         // Destroy assimp model
         mlDestroyAssimpModelLoader(loader)
         
-        return ModelAnimated(meshes, animations);
+        return ModelAnimated(meshes, animations, skeleton)
     }
     
     /**
@@ -364,6 +367,7 @@ class ModelLoader
             //
             // Create Mesh
             //
+            
             let mesh:MeshAnimated = MeshAnimated(vertices, indices, bones)
             
             //
@@ -473,10 +477,10 @@ class ModelLoader
      - returns:
      A Animation array.
      */
-    static private func extractAnimationsFromLoader(_ loader:UnsafeRawPointer) -> Array<Animation>
+    static private func extractAnimationsFromLoader(_ loader:UnsafeRawPointer) -> Array<AnimationSequence>
     {
         // Instantiate animations array to fill
-        var animations: Array<Animation> = Array()
+        var animations: Array<AnimationSequence> = Array()
         
         // Get number of animations loaded
         let numAnimations: UInt32 = mlGetNumAnimations(loader)
@@ -487,17 +491,17 @@ class ModelLoader
             //
             // Load animation duration
             //
-            let duration: Double = mlGetAnimationDuration(loader, i)
+            let duration: Float = mlGetAnimationDuration(loader, i)
             
             //
             // Load animation ticks per second
             //
-            let ticksPerSecond: Double = mlGetAnimationTicksPerSecond(loader, i)
+            let ticksPerSecond: Float = mlGetAnimationTicksPerSecond(loader, i)
             
             // 
             // Load animation channels
             //
-            var channels: Array<AnimationChannel> = Array()
+            var channels = [String: AnimationChannel]()
             let numChannels: UInt32 = mlGetNumChannelsInAnimation(loader, i)
             
             for j in 0..<numChannels
@@ -532,17 +536,85 @@ class ModelLoader
                 
                 for k in stride(from: 0, to: numRotations, by: 9)
                 {
-                    rotations.append(GLKMatrix3Make(cRotations[k], cRotations[k+1], cRotations[k+2], cRotations[k+3], cRotations[k+4], cRotations[k+5], cRotations[k+6], cRotations[k+7], cRotations[k+8]))
+                    var rot: GLKMatrix3 = GLKMatrix3Make(cRotations[k], cRotations[k+3], cRotations[k+6],
+                                                         cRotations[k+1], cRotations[k+4], cRotations[k+7],
+                                                         cRotations[k+2], cRotations[k+5], cRotations[k+8])
+                    
+                    // Transpose matrix to change from assimps row major to GLKits column major
+                    rot = GLKMatrix3Transpose(rot)
+                    
+                    // Put rotation matrix in array
+                    rotations.append(rot)
                 }
                 
                 // Insert channel into channels
-                channels.append(AnimationChannel(name, positions, scales, rotations))
+                channels[name] = AnimationChannel(positions, scales, rotations)
+                //channels.append(AnimationChannel(name, positions, scales, rotations))
             }
             
             // Insert animation into animations
-            animations.append(Animation(duration, ticksPerSecond, channels))
+            animations.append(AnimationSequence(Animation(duration, ticksPerSecond, channels)))
         }
         
         return animations
+    }
+    
+    /**
+     Extracts a skeleton heirarchy from the assimp loader class.
+     
+     - parameters:
+        - loader: An unsafe pointer to the C++ AssimpModelLoader object.
+     
+     - returns:
+    A Skeleton object.
+     */
+    static private func extractSkeletonFromLoader(_ loader:UnsafeRawPointer) -> Skeleton
+    {
+        
+        let rootNode: String = String(cString: mlGetNodeRoot(loader))
+        var skeleton: Skeleton = Skeleton(rootNode, Array<Skeleton>())
+        
+        var nodesToProcess: Array<String> = Array()
+        nodesToProcess.append(rootNode)
+        
+        while(!nodesToProcess.isEmpty)
+        {
+            // Process next node
+            
+            // Get name of last node
+            let name = nodesToProcess[nodesToProcess.count-1]
+            
+            // Remove node from nodesToProcess
+            nodesToProcess.remove(at: nodesToProcess.count-1)
+            
+            // Get children (if any) of node
+            let childrenStr: String = String(cString: mlGetNodeChildren(loader, name))
+            
+            if !childrenStr.isEmpty
+            {
+                var childrenStrArr: Array<String> = Array()
+                
+                // Seperate children and store in array
+                childrenStrArr = childrenStr.components(separatedBy: "~")
+                
+                // Add children to nodestoProcess array
+                nodesToProcess.append(contentsOf: childrenStrArr)
+                
+                // Convert children string array to array of skeletons
+                var children:Array<Skeleton> = Array()
+                for i in 0..<childrenStrArr.count
+                {
+                    children.append(Skeleton(childrenStrArr[i]))
+                }
+                
+                // Insert 'children' at node 'name' in skeleton
+                if !skeleton.insertChildrenAt(name, children)
+                {
+                    print("Error: couldn't find child")
+                }
+            }
+        }
+        
+        return skeleton
     }
 }

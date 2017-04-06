@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Bone
+struct Bone
 {
     var name: String = ""
     var offset: GLKMatrix4 = GLKMatrix4Identity
@@ -59,7 +59,12 @@ class Bone
     /**
      The Bones
     */
-    private var bones: Array<Bone> = Array()
+    internal var bones: Array<Bone> = Array()
+    
+    /**
+     The Bone access data structure
+    */
+    private var boneIndex: [String: Int] = [String: Int]()
     
     /**
      The material.
@@ -82,6 +87,7 @@ class Bone
         
         super.init()
         
+        self.setupBoneAccess()
         self.setupMesh()
     }
     
@@ -93,7 +99,7 @@ class Bone
      
      This function puts the contents of the mesh in the Effect.
      */
-    public func draw(_ effect: EffectMaterial)
+    public func draw(_ effect: EffectMatAnim)
     {
         // Prepare Effect
         effect.setTexture0(self.material.diffuseTexture.name)
@@ -101,6 +107,24 @@ class Bone
         effect.setColourDiffuse(self.material.diffuseColour)
         effect.setColourSpecular(self.material.specularColour)
         effect.setShininess(self.material.shininess)
+        
+        var boneTransforms: Array<GLKMatrix4> = Array()
+        for i in 0..<self.bones.count
+        {
+            // Test matrix is correct in column major order
+            /*print(self.bones[i].transform[0], self.bones[i].transform[4], self.bones[i].transform[8], self.bones[i].transform[12])
+            print(self.bones[i].transform[1], self.bones[i].transform[5], self.bones[i].transform[9], self.bones[i].transform[13])
+            print(self.bones[i].transform[2], self.bones[i].transform[6], self.bones[i].transform[10], self.bones[i].transform[14])
+            print(self.bones[i].transform[3], self.bones[i].transform[7], self.bones[i].transform[11], self.bones[i].transform[15])*/
+            boneTransforms.append(self.bones[i].transform)
+        }
+        
+        // DEBUG //
+        //boneTransforms[0] = GLKMatrix4Translate(GLKMatrix4Identity, 0.0, 0.0, 500.0)
+        // END DEBUG //
+        
+        effect.setBones(boneTransforms)
+        
         effect.prepareToDraw()
         
         // Bind vertex array for drawing
@@ -171,6 +195,95 @@ class Bone
         glVertexAttribPointer(GLuint(ShaderVertexAttrib.boneWeight.rawValue), 4, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<VertexAnimated>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size * 2 + MemoryLayout<GLKVector2>.size + MemoryLayout<Vector4i>.size))
         
         glBindVertexArrayOES(0);
+    }
+    
+    private func setupBoneAccess()
+    {
+        for i in 0..<self.bones.count
+        {
+            self.boneIndex[self.bones[i].name] = i
+        }
+    }
+    
+    public func animate(_ animation: AnimationSequence, _ skeleton: Skeleton)
+    {
+        self.processSkeletonHierarchy(animation, skeleton, GLKMatrix4Identity)
+    }
+    
+    private func processSkeletonHierarchy(_ animation:AnimationSequence, _ skeleton: Skeleton, _ parentTransformation: GLKMatrix4)
+    {
+        
+        var nodeTransformation: GLKMatrix4 = GLKMatrix4Identity
+        
+        // Get animation channel from dictonary O(1) access complexity
+        let channel = animation.getChannel(skeleton.name)
+        
+        if channel != nil
+        {
+            // Do transformation stuff
+            
+            // Get the position, scale and rotation data from the channel
+            let position: GLKVector3
+            if (channel?.positions.count)! > animation.getFrame()
+            {
+                position = (channel?.positions[animation.getFrame()])!
+            }
+            else
+            {
+                position = GLKVector3Make(0.0, 0.0, 0.0)
+            }
+            
+            let scale: GLKVector3
+            if (channel?.scalings.count)! > animation.getFrame()
+            {
+                scale = (channel?.scalings[animation.getFrame()])!
+            }
+            else
+            {
+                scale = GLKVector3Make(0.0, 0.0, 0.0)
+            }
+            
+            let rotation: GLKMatrix3
+            if (channel?.rotations.count)! > animation.getFrame()
+            {
+                rotation = (channel?.rotations[animation.getFrame()])!
+            }
+            else
+            {
+                rotation = GLKMatrix3Identity
+            }
+            
+            // Put into matricies
+            let tranMat: GLKMatrix4 = GLKMatrix4TranslateWithVector3(GLKMatrix4Identity, position)
+            let scalMat: GLKMatrix4 = GLKMatrix4ScaleWithVector3(GLKMatrix4Identity, scale)
+            let rotMat: GLKMatrix4 = GLKMatrix4Make(
+                rotation[0], rotation[3], rotation[6], 0.0,
+                rotation[1], rotation[4], rotation[7], 0.0,
+                rotation[2], rotation[5], rotation[8], 0.0,
+                0.0,         0.0,         0.0,         1.0)
+            
+            // Transform bone
+            nodeTransformation = GLKMatrix4Multiply(GLKMatrix4Multiply(tranMat, rotMat), scalMat)
+
+        }
+        
+        // Find global transformation
+        let globalTransformation: GLKMatrix4 = GLKMatrix4Multiply(parentTransformation, nodeTransformation)
+        
+        // Get bone index from dictonary O(1) access complexity
+        if let index = self.boneIndex[skeleton.name]
+        {
+            // Apply transformation if bone exists
+            self.bones[index].transform = GLKMatrix4Multiply(globalTransformation, self.bones[index].offset)
+            //self.bones[index].transform =  globalTransformation
+        }
+        
+        // Recursively process the remaining child nodes
+        for i in 0..<skeleton.children.count
+        {
+            self.processSkeletonHierarchy(animation, skeleton.children[i], globalTransformation)
+        }
+        
     }
     
     /**

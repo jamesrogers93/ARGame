@@ -42,7 +42,7 @@ class ObjectAnimated
      Initalise an object with a model.
      
      - parameters:
-     - GLmodel: An instance of the type Model.
+        - GLmodel: An instance of the type Model.
      */
     init(_ GLmodel: ModelAnimated)
     {
@@ -72,7 +72,7 @@ class ObjectAnimated
      Translates contents of the object.
      
      - parameters:
-     - translation: A GLKVector3 instance which defines the translation on each xyz axis.
+        - translation: A GLKVector3 instance which defines the translation on each xyz axis.
      
      This methods automatically updates the model matrix using the updateModel() method.
      */
@@ -86,8 +86,8 @@ class ObjectAnimated
      Rotates the contents object.
      
      - parameters:
-     - rotation: The number of degrees to translate the object.
-     - axis: A GLKVector3 instance which defines the rotation on each xyz axis.
+        - rotation: The number of degrees to translate the object.
+        - axis: A GLKVector3 instance which defines the rotation on each xyz axis.
      
      This methods automatically updates the model matrix using the updateModel() method.
      */
@@ -101,7 +101,7 @@ class ObjectAnimated
      Scales the contents object.
      
      - parameters:
-     - scale: A GLKVector3 instance which defines the scale on each xyz axis.
+        - scale: A GLKVector3 instance which defines the scale on each xyz axis.
      
      This methods automatically updates the model matrix using the updateModel() method.
      */
@@ -115,14 +115,25 @@ class ObjectAnimated
      Draws the contents of the object.
      
      - parameters:
-     - effect: The effect to draw the contents.
+        - effect: The effect to draw the contents.
      
      This function automatically places the contents of the object in the effect.
      */
-    public func draw(_ effect: EffectMaterial)
+    public func draw(_ effect: EffectMatAnim)
     {
         effect.setModel(self.model)
         self.GLmodel.draw(effect)
+    }
+    
+    /**
+     Animates a model.
+     
+     - parameters:
+        - time: The time in seconds
+    */
+    public func animateModel(_ time: Float)
+    {
+        self.GLmodel.animate()
     }
     
     /**

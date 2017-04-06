@@ -12,6 +12,9 @@
 		1A1788081E637A400087DE26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1788071E637A400087DE26 /* QuartzCore.framework */; };
 		1A17880B1E640D950087DE26 /* camera_para.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880A1E640D950087DE26 /* camera_para.dat */; };
 		1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880C1E640D9E0087DE26 /* hiro.patt */; };
+		1A3036281E8566B500484367 /* EffectMatAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3036271E8566B500484367 /* EffectMatAnim.swift */; };
+		1A30362B1E856B1D00484367 /* ShaderMatAnim.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A3036291E856B1D00484367 /* ShaderMatAnim.fsh */; };
+		1A30362C1E856B1D00484367 /* ShaderMatAnim.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A30362A1E856B1D00484367 /* ShaderMatAnim.vsh */; };
 		1A3A9B9A1E81676A00A555D9 /* sword_and_shield_idle.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */; };
 		1A3A9B9C1E81768A00A555D9 /* ModelAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9B9B1E81768A00A555D9 /* ModelAnimated.swift */; };
 		1A3A9BA01E817D3600A555D9 /* MeshAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9B9F1E817D3600A555D9 /* MeshAnimated.swift */; };
@@ -69,6 +72,7 @@
 		1ADFA8D31E64DE9600588345 /* helmet_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C71E64DE9600588345 /* helmet_showroom_spec.png */; };
 		1ADFA8D41E64DE9600588345 /* leg_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C81E64DE9600588345 /* leg_dif.png */; };
 		1ADFA8D51E64DE9600588345 /* leg_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C91E64DE9600588345 /* leg_showroom_spec.png */; };
+		1AE317931E93C49900972BC2 /* SkeletonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE317921E93C49900972BC2 /* SkeletonData.swift */; };
 		1AEFE7481E65A12700698808 /* box.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7441E65A12700698808 /* box.mtl */; };
 		1AEFE7491E65A12700698808 /* box.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7451E65A12700698808 /* box.obj */; };
 		1AEFE74A1E65A12700698808 /* container2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7461E65A12700698808 /* container2.png */; };
@@ -96,6 +100,9 @@
 		1A1788071E637A400087DE26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A17880A1E640D950087DE26 /* camera_para.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = camera_para.dat; path = Assets_AR/camera_para.dat; sourceTree = "<group>"; };
 		1A17880C1E640D9E0087DE26 /* hiro.patt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hiro.patt; path = Assets_AR/hiro.patt; sourceTree = "<group>"; };
+		1A3036271E8566B500484367 /* EffectMatAnim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectMatAnim.swift; sourceTree = "<group>"; };
+		1A3036291E856B1D00484367 /* ShaderMatAnim.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMatAnim.fsh; path = Shaders/ShaderMatAnim.fsh; sourceTree = "<group>"; };
+		1A30362A1E856B1D00484367 /* ShaderMatAnim.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMatAnim.vsh; path = Shaders/ShaderMatAnim.vsh; sourceTree = "<group>"; };
 		1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = sword_and_shield_idle.fbx; path = Assets/Animated/idle/sword_and_shield_idle.fbx; sourceTree = "<group>"; };
 		1A3A9B9B1E81768A00A555D9 /* ModelAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelAnimated.swift; sourceTree = "<group>"; };
 		1A3A9B9F1E817D3600A555D9 /* MeshAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshAnimated.swift; sourceTree = "<group>"; };
@@ -178,6 +185,7 @@
 		1ADFA8C71E64DE9600588345 /* helmet_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = helmet_showroom_spec.png; path = Assets/Nanosuit/helmet_showroom_spec.png; sourceTree = "<group>"; };
 		1ADFA8C81E64DE9600588345 /* leg_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leg_dif.png; path = Assets/Nanosuit/leg_dif.png; sourceTree = "<group>"; };
 		1ADFA8C91E64DE9600588345 /* leg_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leg_showroom_spec.png; path = Assets/Nanosuit/leg_showroom_spec.png; sourceTree = "<group>"; };
+		1AE317921E93C49900972BC2 /* SkeletonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonData.swift; sourceTree = "<group>"; };
 		1AEFE7441E65A12700698808 /* box.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = box.mtl; path = Assets/Box/box.mtl; sourceTree = "<group>"; };
 		1AEFE7451E65A12700698808 /* box.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = box.obj; path = Assets/Box/box.obj; sourceTree = "<group>"; };
 		1AEFE7461E65A12700698808 /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = container2.png; path = Assets/Box/container2.png; sourceTree = "<group>"; };
@@ -234,6 +242,7 @@
 				1A3A9B9D1E817AD900A555D9 /* Static */,
 				1A435D5A1E83BB6F00D44433 /* VertexData.swift */,
 				1A435D5C1E83BBC000D44433 /* MaterialData.swift */,
+				1AE317921E93C49900972BC2 /* SkeletonData.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -413,10 +422,12 @@
 		1AC181611E72AA68008C07F3 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */,
-				1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */,
 				1AC181751E7355E0008C07F3 /* ShaderBasic.vsh */,
 				1AC181741E7355E0008C07F3 /* ShaderBasic.fsh */,
+				1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */,
+				1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */,
+				1A30362A1E856B1D00484367 /* ShaderMatAnim.vsh */,
+				1A3036291E856B1D00484367 /* ShaderMatAnim.fsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -428,6 +439,7 @@
 				1AC1816B1E72C1AD008C07F3 /* Effect.swift */,
 				1AC1816F1E734D4E008C07F3 /* EffectBasic.swift */,
 				1AC181721E735597008C07F3 /* EffectMaterial.swift */,
+				1A3036271E8566B500484367 /* EffectMatAnim.swift */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -583,6 +595,7 @@
 				1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */,
 				1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */,
 				1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */,
+				1A30362C1E856B1D00484367 /* ShaderMatAnim.vsh in Resources */,
 				1AC181771E7355E0008C07F3 /* ShaderBasic.vsh in Resources */,
 				1A5B67071E5C4045000463E3 /* robot.mtl in Resources */,
 				1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */,
@@ -603,6 +616,7 @@
 				1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */,
 				1ADFA8CE1E64DE9600588345 /* glass_ddn.png in Resources */,
 				1ADFA8CA1E64DE9600588345 /* arm_dif.png in Resources */,
+				1A30362B1E856B1D00484367 /* ShaderMatAnim.fsh in Resources */,
 				1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */,
 				1ADFA8D21E64DE9600588345 /* helmet_diff.png in Resources */,
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,
@@ -642,8 +656,10 @@
 				1AC181731E735597008C07F3 /* EffectMaterial.swift in Sources */,
 				1A3A9B9C1E81768A00A555D9 /* ModelAnimated.swift in Sources */,
 				1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */,
+				1AE317931E93C49900972BC2 /* SkeletonData.swift in Sources */,
 				1A755C1C1E57B46500E2FFBC /* MeshStatic.swift in Sources */,
 				1A44DCF91E5601C80036E753 /* ObjectStatic.swift in Sources */,
+				1A3036281E8566B500484367 /* EffectMatAnim.swift in Sources */,
 				1A3A9BA21E817D4300A555D9 /* ObjectAnimated.swift in Sources */,
 				1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */,
 				1AC181701E734D4E008C07F3 /* EffectBasic.swift in Sources */,

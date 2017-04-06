@@ -258,7 +258,7 @@ const float mlGetMeshShininess(const void *loader, const unsigned int index)
     return ptrLoader->getMeshShininess(index);
 }
 
-const double mlGetAnimationDuration(const void *loader, const unsigned int index)
+const float mlGetAnimationDuration(const void *loader, const unsigned int index)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
@@ -267,7 +267,7 @@ const double mlGetAnimationDuration(const void *loader, const unsigned int index
     return ptrLoader->getAnimationDuration(index);
 }
 
-const double mlGetAnimationTicksPerSecond(const void *loader, const unsigned int index)
+const float mlGetAnimationTicksPerSecond(const void *loader, const unsigned int index)
 {
     // Cast void pointer, loader to AssimpModelLoader type
     AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
@@ -312,6 +312,23 @@ const float* mlGetAnimationChannelRotations(const void *loader, const unsigned i
     return ptrLoader->getAnimationChannelRotations(index, channelIndex);
 }
 
+const char* mlGetNodeRoot(const void *loader)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getNodeRoot();
+}
+
+const char* mlGetNodeChildren(const void *loader, const char *name)
+{
+    // Cast void pointer, loader to AssimpModelLoader type
+    AssimpModelLoader *ptrLoader = (AssimpModelLoader *)loader;
+    
+    // Return the value retrieved from AssimpModelLoader
+    return ptrLoader->getNodeChildren(name);
+}
 
 
 

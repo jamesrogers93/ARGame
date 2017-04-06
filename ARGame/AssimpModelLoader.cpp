@@ -44,6 +44,9 @@ void AssimpModelLoader::loadAnimatedAssimpModel(std::string path)
     // Retrieve the directory path of the filepath
     this->directory = path.substr(0, path.find_last_of('/'));
     
+    this->parentNode.name = scene->mRootNode->mName.data;
+    //aiMatrix4x4 test = scene->mRootNode->mTransformation.Inverse();
+    
     // Process ASSIMP's root node recursively
     this->processNode(scene->mRootNode, scene, true);
     
@@ -56,6 +59,14 @@ void AssimpModelLoader::loadAnimatedAssimpModel(std::string path)
 
 void AssimpModelLoader::processNode(aiNode *node, const aiScene *scene, const bool &loadBones)
 {
+    // Fill the copy of the node hierarchy
+    //CNode->name = node->mName.data;
+    //CNode->numChildren = node->mNumChildren;
+    //CNode->children = (CNodeHierarchy *)malloc(sizeof(CNodeHierarchy) * CNode->numChildren);
+    
+
+    
+    
     // Process each mesh located at the current node
     for(size_t i = 0; i < node->mNumMeshes; i++)
     {
@@ -65,11 +76,23 @@ void AssimpModelLoader::processNode(aiNode *node, const aiScene *scene, const bo
         this->meshes.push_back(this->processMesh(mesh, scene, loadBones));
     }
     
+    
+    std::stringstream ss;
+    
     // After we've processed all of the meshes (if any) we then recursively process each of the children nodes
     for(size_t i = 0; i < node->mNumChildren; i++)
     {
+        //CNode->children[i] = CNodeHierarchy();
         this->processNode(node->mChildren[i], scene, loadBones);
+        
+        // Store all children in string seperated by a tilda ~
+        ss << node->mChildren[i]->mName.data;
+        if(i != node->mNumChildren-1)
+            ss << "~";
+        
     }
+    
+    this->parentNode.skeleton[node->mName.data] = ss.str();
 }
 
 CMesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene, const bool &loadBones)
@@ -220,10 +243,10 @@ std::string AssimpModelLoader::loadMaterialTexture(aiMaterial* mat, aiTextureTyp
 void AssimpModelLoader::processAnimation(aiAnimation* animation, const aiScene* scene)
 {
     // Load animation duration
-    double duration = animation->mDuration;
+    float duration = (float)animation->mDuration;
     
     // Load animation ticks per seocnd
-    double ticksPerSecond = animation->mTicksPerSecond;
+    float ticksPerSecond = (float)animation->mTicksPerSecond;
     
     // Load channels from animation
     std::vector<CAnimationChannel> channels;
@@ -257,9 +280,14 @@ void AssimpModelLoader::processAnimation(aiAnimation* animation, const aiScene* 
         for(int j = 0; j < animation->mChannels[i]->mNumRotationKeys; j++)
         {
             aiMatrix3x3 v = animation->mChannels[i]->mRotationKeys[j].mValue.GetMatrix();
+            //v.Inverse(); // This fixes reverse rotations?
             rotations.push_back(v.a1); rotations.push_back(v.a2); rotations.push_back(v.a3);
             rotations.push_back(v.b1); rotations.push_back(v.b2); rotations.push_back(v.b3);
             rotations.push_back(v.c1); rotations.push_back(v.c2); rotations.push_back(v.c3);
+            
+            //rotations.push_back(v.a1); rotations.push_back(v.b1); rotations.push_back(v.c1);
+            //rotations.push_back(v.a2); rotations.push_back(v.b2); rotations.push_back(v.c2);
+            //rotations.push_back(v.a3); rotations.push_back(v.b3); rotations.push_back(v.c3);
         }
         
         // Insert channel into vector
@@ -477,7 +505,7 @@ const float AssimpModelLoader::getMeshShininess(const unsigned int &index)
     return meshes[index].material.shininess;
 }
 
-const double AssimpModelLoader::getAnimationDuration(const unsigned int &index)
+const float AssimpModelLoader::getAnimationDuration(const unsigned int &index)
 {
     if(index >= getNumAnimations())
         return 0;
@@ -485,7 +513,7 @@ const double AssimpModelLoader::getAnimationDuration(const unsigned int &index)
     return animations[index].duration;
 }
 
-const double AssimpModelLoader::getAnimationTicksPerSecond(const unsigned int &index)
+const float AssimpModelLoader::getAnimationTicksPerSecond(const unsigned int &index)
 {
     if(index >= getNumAnimations())
         return 0;
@@ -537,6 +565,26 @@ const float* AssimpModelLoader::getAnimationChannelRotations(const unsigned int 
     return animations[index].channels[channelIndex].rotations.data();
 }
 
+const char* AssimpModelLoader::getNodeRoot()
+{
+    return this->parentNode.name.data();
+}
+
+const char* AssimpModelLoader::getNodeChildren(const char *name)
+{
+    std::string nameStr = std::string(name);
+    
+    if (this->parentNode.skeleton.find(nameStr) == this->parentNode.skeleton.end())
+    {
+        // Not found
+        return 0;
+    }
+    else
+    {
+        // found
+        return this->parentNode.skeleton[nameStr].data();
+    }
+}
 
 
 

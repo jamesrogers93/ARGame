@@ -242,7 +242,7 @@ extern "C" {
      *  @param index Index of the animation in the animations array.
      *  @return The duration of the animation.
      */
-    const double mlGetAnimationDuration(const void *loader, const unsigned int index);
+    const float mlGetAnimationDuration(const void *loader, const unsigned int index);
     
     /**  Gets the ticks per second of an animation contained in an AssimpModelLoader instance.
      *
@@ -250,7 +250,7 @@ extern "C" {
      *  @param index Index of the animation in the animations array.
      *  @return The ticks per second of the animation.
      */
-    const double mlGetAnimationTicksPerSecond(const void *loader, const unsigned int index);
+    const float mlGetAnimationTicksPerSecond(const void *loader, const unsigned int index);
     
     /**  Gets the name of a animation channel in an AssimpLoader instance.
      *
@@ -284,9 +284,24 @@ extern "C" {
      *  @param loader A void pointer to the AssimpModelLoader instance.
      *  @param index Index of the animation in the animations array.
      *  @param channelIndex Index of the channel in the animation.
-     *  @return The rotations of the animation channel. Note: Every 9 contiguos elements are an 3x3 rotation matrix.
+     *  @return The rotations of the animation channel. Note: Every 9 contiguos elements are a row major 3x3 rotation matrix.
      */
     const float* mlGetAnimationChannelRotations(const void *loader, const unsigned int index, unsigned int channelIndex);
+    
+    /**  Gets the name of the root skeleton node contained in an AssimpLoaderInstance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @return The char array of the name.
+     */
+    const char* mlGetNodeRoot(const void *loader);
+    
+    /**  Gets the children names of the parent node contained in an AssimpLoaderInstance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param name The name of the node we want to retrieve the children from.
+     *  @return The char array of the children names. Eahc child name will be seperated with a tilda. 0 will be returned if the node has no children.
+     */
+    const char* mlGetNodeChildren(const void *loader, const char *name);
     
     
 #ifdef __cplusplus

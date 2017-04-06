@@ -1,14 +1,16 @@
 //
-//  ShaderMaterial.fsh
+//  ShaderMatAnim.fsh
 //  ARGame
 //
-//  Created by James Rogers on 09/03/2017.
+//  Created by James Rogers on 24/04/2017.
 //  Copyright © 2017 James Rogers. All rights reserved.
 //
 
-varying mediump vec2 TexCoord;
-varying mediump vec3 Normal;
-varying mediump vec3 FragPos;
+#version 300 es
+
+in mediump vec2 TexCoord;
+in mediump vec3 Normal;
+in mediump vec3 FragPos;
 
 uniform mediump vec3 viewPosition;
 
@@ -19,6 +21,7 @@ uniform mediump vec4 colourDiff;
 uniform mediump vec4 colourSpec;
 uniform mediump float shininess;
 
+out mediump vec4 frag_colour;
 
 void main()
 {
@@ -27,7 +30,10 @@ void main()
     mediump vec3 lightDir = normalize(lightPosition - FragPos);
     mediump vec3 viewDir  = normalize(viewPosition  - FragPos);
     mediump vec3 normal = normalize(Normal);
-    mediump vec4 diffuseTex = texture2D(textureDiff, TexCoord);
+    
+    // Get texture colours
+    mediump vec4 textureDiff = texture(textureDiff, TexCoord);
+    mediump vec4 textureSpec = texture(textureSpec, TexCoord);
     
     // Ambient
     mediump float ambientStrength = 0.1;
@@ -40,14 +46,14 @@ void main()
     mediump float specularStrength = pow(max(dot(normal, halfwayDir), 0.0), shininess);
     
     // Calculate colours
-    mediump vec4 ambient = (colourDiff + diffuseTex) * ambientStrength;
-    mediump vec4 diffuse = (colourDiff + diffuseTex) * diffuseStrength;
-    mediump vec4 specular = (colourSpec + texture2D(textureSpec, TexCoord)) * specularStrength;
+    mediump vec4 ambient = (colourDiff + textureDiff) * ambientStrength;
+    mediump vec4 diffuse = (colourDiff + textureDiff) * diffuseStrength;
+    mediump vec4 specular = (colourSpec + textureSpec) * specularStrength;
     
-    gl_FragColor = ambient + diffuse + specular + colour;
+    frag_colour = ambient + diffuse + specular + colour;
     
-    //gl_FragColor = ambient;
-    //gl_FragColor = diffuse;
-    //gl_FragColor = specular;
-    //gl_FragColor = colour;
+    //frag_colour = ambient;
+    //frag_colour = diffuse;
+    //frag_colour = specular;
+    //frag_colour = colour;
 }

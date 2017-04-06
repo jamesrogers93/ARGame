@@ -11,13 +11,27 @@
 
 // STL
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <vector>
+#include <queue>
+#include <map>
 
 // Assimp
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
+
+struct CNodeHierarchy
+{
+    std::string name;
+    
+    std::map<std::string, std::string> skeleton;
+    
+    CNodeHierarchy()
+    {}
+    
+};
 
 struct CAnimationChannel
 {
@@ -39,13 +53,13 @@ struct CAnimationChannel
 
 struct CAnimation
 {
-    double duration;
-    double ticksPerSecond;
+    float duration;
+    float ticksPerSecond;
     std::vector<CAnimationChannel> channels;
     
     CAnimation() {}
     
-    CAnimation(double duration, double ticksPerSecond, std::vector<CAnimationChannel> channels)
+    CAnimation(float duration, float ticksPerSecond, std::vector<CAnimationChannel> channels)
     {
         this->duration = duration;
         this->ticksPerSecond = ticksPerSecond;
@@ -295,14 +309,14 @@ public:
      *  @param index Index of the animation in the animations array.
      *  @return The duration of the animation.
      */
-    const double getAnimationDuration(const unsigned int &index);
+    const float getAnimationDuration(const unsigned int &index);
     
     /**  Gets the ticks per second of an animation.
      *
      *  @param index Index of the animation in the animations array.
      *  @return The ticks per second of the animation.
      */
-    const double getAnimationTicksPerSecond(const unsigned int &index);
+    const float getAnimationTicksPerSecond(const unsigned int &index);
     
     /**  Gets the name of a animation channel.
      *
@@ -336,23 +350,38 @@ public:
      */
     const float* getAnimationChannelRotations(const unsigned int &index, unsigned int &channelIndex);
     
+    /**  Gets the name of the parent node.
+     *
+     *  @return The char array of the name.
+     */
+    const char* getNodeRoot();
+    
+    /**  Gets the entire heirarchy of the node tree.
+     *
+     *  @return The char array of the heirarchy.
+     */
+    const char* getNodeChildren(const char *name);
+    
 private:
     
     std::vector<CMesh> meshes;
     std::vector<CAnimation> animations;
+    CNodeHierarchy parentNode;
     std::string directory;
     
     /**  Processes all of the nodes in the Assimp hierarchy.
      *
      *  @param node A pointer to the node to be processed.
      *  @param scene A pointer to the assimp scene.
+     *  @param loadBones Indicates whether to load in bone data.
      */
-    void processNode(aiNode* node, const aiScene* scene, const bool &loadBones);
+    void processNode(aiNode *node, const aiScene* scene, const bool &loadBones);
     
     /**  Loads the mesh from an Assimp node.
      *
      *  @param mesh A pointer to the Assimp mesh in a node.
      *  @param scene A pointer to the assimp scene.
+     *  @param loadBones Indicates whether to load in bone data.
      *  @return The loaded mesh.
      */
     CMesh processMesh(aiMesh* mesh, const aiScene* scene, const bool &loadBones);

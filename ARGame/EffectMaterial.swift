@@ -10,9 +10,9 @@ import Foundation
 
 class EffectMaterial : Effect
 {
-    private var colourDiffuse: GLKVector4 = GLKVector4Make(0.0, 0.0, 0.0, 0.0)
-    private var colourSpecular: GLKVector4 = GLKVector4Make(0.0, 0.0, 0.0, 0.0)
-    private var shininess: GLfloat = 0.0
+    internal var colourDiffuse: GLKVector4 = GLKVector4Make(0.0, 0.0, 0.0, 0.0)
+    internal var colourSpecular: GLKVector4 = GLKVector4Make(0.0, 0.0, 0.0, 0.0)
+    internal var shininess: GLfloat = 0.0
     
     public init()
     {
@@ -33,6 +33,11 @@ class EffectMaterial : Effect
                                      "shininess"]
         
         super.init(vertName, fragName, vertAttribs, uniformNames)
+    }
+    
+    internal override init(_ _vertName: String, _ _fragName: String, _ _vertAttribs: [(GLint, String)], _ _uniformNames: [String])
+    {
+        super.init(_vertName, _fragName, _vertAttribs, _uniformNames)
     }
     
     public override func prepareToDraw()
@@ -79,7 +84,7 @@ class EffectMaterial : Effect
             })
         })
         
-        print("x: \(viewPosition.x), y: \(viewPosition.y), z: \(viewPosition.z)")
+        //print("x: \(viewPosition.x), y: \(viewPosition.y), z: \(viewPosition.z)")
         
         // Set up the colour in the shader
         withUnsafePointer(to: &colour, {

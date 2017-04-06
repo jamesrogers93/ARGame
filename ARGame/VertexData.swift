@@ -108,12 +108,16 @@ struct Vector4f
 
 struct Vertex
 {
-    var position: GLKVector3 = GLKVector3Make(0.0, 0.0, 0.0)
-    var normal: GLKVector3 = GLKVector3Make(0.0, 0.0, 0.0)
-    var texCoord: GLKVector2 = GLKVector2Make(0.0, 0.0)
+    var position: GLKVector3
+    var normal: GLKVector3
+    var texCoord: GLKVector2
     
     init()
-    {}
+    {
+        self.position = GLKVector3Make(0.0, 0.0, 0.0)
+        self.normal = GLKVector3Make(0.0, 0.0, 0.0)
+        self.texCoord = GLKVector2Make(0.0, 0.0)
+    }
     
     init(_ position: GLKVector3, _ normal: GLKVector3, _ texCoord: GLKVector2)
     {
@@ -125,15 +129,21 @@ struct Vertex
 
 struct VertexAnimated
 {
-    var position: GLKVector3 = GLKVector3Make(0.0, 0.0, 0.0)
-    var normal: GLKVector3 = GLKVector3Make(0.0, 0.0, 0.0)
-    var texCoord: GLKVector2 = GLKVector2Make(0.0, 0.0)
-    var boneIds: Vector4i = Vector4i(0, 0, 0, 0)
-    var boneWeights: Vector4f = Vector4f(0.0, 0.0, 0.0, 0.0)
+    var position: GLKVector3
+    var normal: GLKVector3
+    var texCoord: GLKVector2
+    var boneIds: Vector4i
+    var boneWeights: Vector4f
     
     
     init()
-    {}
+    {
+        self.position = GLKVector3Make(0.0, 0.0, 0.0)
+        self.normal = GLKVector3Make(0.0, 0.0, 0.0)
+        self.texCoord = GLKVector2Make(0.0, 0.0)
+        self.boneIds = Vector4i(0)
+        self.boneWeights = Vector4f(0.0)
+    }
     
     init(_ _position: GLKVector3, _ _normal: GLKVector3, _ _texCoord: GLKVector2, _ _boneIds: Vector4i, _ _boneWeights: Vector4f)
     {
@@ -144,7 +154,7 @@ struct VertexAnimated
         self.boneWeights = _boneWeights
     }
     
-    init(_ _vertex: Vertex, _ _boneIds: Vector4i = Vector4i(0), _ _boneWeights: Vector4f = Vector4f(0.0, 0.0, 0.0, 0.0))
+    init(_ _vertex: Vertex, _ _boneIds: Vector4i = Vector4i(0), _ _boneWeights: Vector4f = Vector4f(0.0))
     {
         self.init(_vertex.position, _vertex.normal, _vertex.texCoord, _boneIds, _boneWeights)
     }
