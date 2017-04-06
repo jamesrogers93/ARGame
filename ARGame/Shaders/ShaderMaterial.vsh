@@ -1,5 +1,5 @@
 //
-//  Shader.vsh
+//  ShaderMaterial.vsh
 //  ARGame
 //
 //  Created by James Rogers on 09/03/2017.
@@ -25,8 +25,8 @@ void main()
 {
     TexCoord = texCoord;
     
-    //Normal = normalMatrix * normal;
-    Normal = normal;
+    Normal = normalMatrix * normal;
+    //Normal = normal;
     //Normal = mat3(transpose(inverse(modelMatrix))) * normal;
 
     FragPos = vec3(modelMatrix * position);

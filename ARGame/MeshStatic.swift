@@ -9,67 +9,10 @@
 import Foundation
 import GLKit
 
-struct Vertex
-{
-    var position: GLKVector3 = GLKVector3Make(0.0, 0.0, 0.0)
-    var normal: GLKVector3 = GLKVector3Make(0.0, 0.0, 0.0)
-    var texCoord: GLKVector2 = GLKVector2Make(0.0, 0.0)
-    
-    init()
-    {}
-    
-    init(_ position: GLKVector3, _ normal: GLKVector3, _ texCoord: GLKVector2)
-    {
-        self.position = position
-        self.normal = normal
-        self.texCoord = texCoord
-    }
-};
-
-struct Material
-{
-    /**
-     The diffuse texture.
-     */
-    var diffuseTexture: GLKTextureInfo = GLKTextureInfo()
-    
-    /**
-     The specular texture.
-     */
-    var specularTexture: GLKTextureInfo = GLKTextureInfo()
-    
-    /**
-     The diffuse colour.
-     */
-    var diffuseColour: GLKVector4 = GLKVector4()
-    
-    /**
-     The specular colour.
-     */
-    var specularColour: GLKVector4 = GLKVector4()
-    
-    /**
-     The shininess factor.
-     */
-    var shininess: Float = 0.0
-    
-    init()
-    {}
-    
-    init(_ diffuseTexture: GLKTextureInfo, _ specularTexture: GLKTextureInfo, _ diffuseColour: GLKVector4, _ specularColour: GLKVector4, _ shininess: Float)
-    {
-        self.diffuseTexture = diffuseTexture
-        self.specularTexture = specularTexture
-        self.diffuseColour = diffuseColour
-        self.specularColour = specularColour
-        self.shininess = shininess
-    }
-}
-
 /**
 Maintains OpenGL geometry and textures
  */
-@objc class Mesh : NSObject
+@objc class MeshStatic : NSObject
 {
     
     /**

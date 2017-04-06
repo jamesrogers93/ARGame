@@ -12,14 +12,14 @@ import GLKit
 /**
  Maintains an array of Meshes that are associated with each other.
  */
-class Model
+class ModelStatic
 {
-    private var meshes: Array<Mesh> = Array()
+    private var meshes: Array<MeshStatic> = Array()
     
     /**
      Initalise a Model with an array of Meshes.
      */
-    init(_ meshes: Array<Mesh>)
+    init(_ meshes: Array<MeshStatic>)
     {
         self.meshes = meshes
     }

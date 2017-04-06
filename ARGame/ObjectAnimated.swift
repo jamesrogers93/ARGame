@@ -1,18 +1,17 @@
 //
-//  Object.swift
+//  ObjectAnimated.swift
 //  ARGame
 //
-//  Created by James Rogers on 16/02/2017.
+//  Created by James Rogers on 21/03/2017.
 //  Copyright © 2017 James Rogers. All rights reserved.
 //
 
 import Foundation
-import GLKit
 
 /**
- Holds a Model and applies transformations to it.
+ Holds a static Model and applies transformations to it.
  */
-class Object
+class ObjectAnimated
 {
     /**
      The transformation model matrix.
@@ -37,7 +36,7 @@ class Object
     /**
      The model which contains the geometry.
      */
-    private var GLmodel:Model
+    private var GLmodel:ModelAnimated
     
     /**
      Initalise an object with a model.
@@ -45,7 +44,7 @@ class Object
      - parameters:
         - GLmodel: An instance of the type Model.
      */
-    init(_ GLmodel: Model)
+    init(_ GLmodel: ModelAnimated)
     {
         self.GLmodel = GLmodel
     }
@@ -120,10 +119,21 @@ class Object
      
      This function automatically places the contents of the object in the effect.
      */
-    public func draw(_ effect: EffectMaterial)
+    public func draw(_ effect: EffectMatAnim)
     {
         effect.setModel(self.model)
         self.GLmodel.draw(effect)
+    }
+    
+    /**
+     Animates a model.
+     
+     - parameters:
+        - time: The time in seconds
+    */
+    public func animateModel(_ time: Float)
+    {
+        self.GLmodel.animate()
     }
     
     /**
@@ -134,11 +144,3 @@ class Object
         self.GLmodel.destroy()
     }
 }
-
-
-
-
-
-
-
-

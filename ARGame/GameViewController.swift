@@ -20,12 +20,12 @@ class GameViewController: GLKViewController
     var context: EAGLContext? = nil
     
     // Shaders
-    /// GLKit shader
-    //var effect: GLKBaseEffect? = nil
     /// OpenGLES Shader
-    var effect: EffectMaterial? = nil
+    //var effect: EffectMaterial? = nil
+    var effect2:EffectMatAnim? = nil
     
-    var obj: Object? = nil
+    //var obj: ObjectStatic? = nil
+    var obj2: ObjectAnimated? = nil
     
     var arHandler: ARHandler = ARHandler()
     
@@ -43,7 +43,7 @@ class GameViewController: GLKViewController
     {
         super.viewDidLoad()
         
-        self.context = EAGLContext(api: .openGLES2)
+        self.context = EAGLContext(api: .openGLES3)
         
         if !(self.context != nil)
         {
@@ -58,7 +58,8 @@ class GameViewController: GLKViewController
         
         // Create object with model
         //self.obj = Object(ModelLoader.loadStaticModelFromFile("box", "obj"))
-        self.obj = Object(ModelLoader.loadStaticModelFromFile("Beta", "fbx"))
+        //self.obj = ObjectStatic(ModelLoader.loadStaticModelFromFile("sword_and_shield_idle", "fbx"))
+        self.obj2 = ObjectAnimated(ModelLoader.loadAnimatedModelFromFile("sword_and_shield_idle", "fbx"))
         
         // Initalise the AR handler
         self.arHandler.onViewLoad()
@@ -113,7 +114,8 @@ class GameViewController: GLKViewController
         
         // Set my OpenGLES Effect
         //self.effect = EffectBasic()
-        self.effect = EffectMaterial()
+        //self.effect = EffectMaterial()
+        self.effect2 = EffectMatAnim()
         //self.effect?.setColour(GLKVector4Make(1.0, 0.0, 0.0, 1.0))
         
         // Allow depth testing
@@ -125,12 +127,18 @@ class GameViewController: GLKViewController
         EAGLContext.setCurrent(self.context)
         
         // Delete Effect
-        self.effect?.destroy()
-        self.effect = nil
+        //self.effect?.destroy()
+        //self.effect = nil
+        
+        self.effect2?.destroy()
+        self.effect2 = nil
         
         // Delete object
-        self.obj?.destroy()
-        self.obj = nil
+        //self.obj?.destroy()
+        //self.obj = nil
+        
+        self.obj2?.destroy()
+        self.obj2 = nil
     }
     
     var rotation: Float = 0.0
@@ -139,17 +147,22 @@ class GameViewController: GLKViewController
     func update()
     {
         // Update the projection matrix
-        self.effect?.setProjection(self.arHandler.camProjection)
+        //self.effect?.setProjection(self.arHandler.camProjection)
+        self.effect2?.setProjection(self.arHandler.camProjection)
         
-        // Update model in renderer
-        //self.effect?.transform.modelviewMatrix = GLKMatrix4Multiply(self.arHandler.camPose, (self.obj?.getModel())!)
-        self.effect?.setView(self.arHandler.camPose)
+        // Update the camera view
+        //self.effect?.setView(self.arHandler.camPose)
+        self.effect2?.setView(self.arHandler.camPose)
         
-        self.obj?.translate(GLKVector3Make(0.0, 0.0, 0.0))
+        //self.obj?.translate(GLKVector3Make(0.0, 0.0, -500.0))
         //self.obj?.rotate(rotation, GLKVector3Make(1.0, 0.0, 0.0))
-        self.obj?.scale(GLKVector3Make(10.0, 10.0, 10.0))
+        //self.obj?.scale(GLKVector3Make(10.0, 10.0, 10.0))
+        self.obj2?.scale(GLKVector3Make(10.0, 10.0, 10.0))
         //rotation+=0.01
         //print(rotation)
+        
+        // Animate
+        self.obj2?.animateModel(1.0)
     }
     
     // Draw OpenGL content here
@@ -166,6 +179,7 @@ class GameViewController: GLKViewController
         self.arHandler.draw()
         
         // Draw the object
-        self.obj?.draw(self.effect!)
+        //self.obj?.draw(self.effect!)
+        self.obj2?.draw(self.effect2!)
     }
 }
