@@ -21,6 +21,10 @@
 		1A3A9BA21E817D4300A555D9 /* ObjectAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9BA11E817D4300A555D9 /* ObjectAnimated.swift */; };
 		1A435D5B1E83BB6F00D44433 /* VertexData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5A1E83BB6F00D44433 /* VertexData.swift */; };
 		1A435D5D1E83BBC000D44433 /* MaterialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5C1E83BBC000D44433 /* MaterialData.swift */; };
+		1A4492591E9695E300C27B4B /* jogging.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A4492581E9695E300C27B4B /* jogging.fbx */; };
+		1A44925B1E969A5200C27B4B /* leg_sweep.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A44925A1E969A5200C27B4B /* leg_sweep.fbx */; };
+		1A44925D1E96A9B900C27B4B /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44925C1E96A9B900C27B4B /* Entity.swift */; };
+		1A4492611E96AA5800C27B4B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4492601E96AA5800C27B4B /* Model.swift */; };
 		1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC01E55F34C0036E753 /* AppDelegate.swift */; };
 		1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC61E55F34C0036E753 /* GameViewController.swift */; };
 		1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCC81E55F34C0036E753 /* Main.storyboard */; };
@@ -109,6 +113,10 @@
 		1A3A9BA11E817D4300A555D9 /* ObjectAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAnimated.swift; sourceTree = "<group>"; };
 		1A435D5A1E83BB6F00D44433 /* VertexData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexData.swift; sourceTree = "<group>"; };
 		1A435D5C1E83BBC000D44433 /* MaterialData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialData.swift; sourceTree = "<group>"; };
+		1A4492581E9695E300C27B4B /* jogging.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = jogging.fbx; path = Assets/Animated/running/jogging.fbx; sourceTree = "<group>"; };
+		1A44925A1E969A5200C27B4B /* leg_sweep.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = leg_sweep.fbx; path = Assets/Animated/kick/leg_sweep.fbx; sourceTree = "<group>"; };
+		1A44925C1E96A9B900C27B4B /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		1A4492601E96AA5800C27B4B /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1A44DCBD1E55F34C0036E753 /* ARGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A44DCC01E55F34C0036E753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A44DCC61E55F34C0036E753 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +251,8 @@
 				1A435D5A1E83BB6F00D44433 /* VertexData.swift */,
 				1A435D5C1E83BBC000D44433 /* MaterialData.swift */,
 				1AE317921E93C49900972BC2 /* SkeletonData.swift */,
+				1A44925C1E96A9B900C27B4B /* Entity.swift */,
+				1A4492601E96AA5800C27B4B /* Model.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -373,6 +383,8 @@
 		1A725D361E75BF6600322D6A /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				1A44925A1E969A5200C27B4B /* leg_sweep.fbx */,
+				1A4492581E9695E300C27B4B /* jogging.fbx */,
 				1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */,
 				1A725D371E75BF7F00322D6A /* Beta.fbx */,
 			);
@@ -601,6 +613,7 @@
 				1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */,
 				1ADFA8D11E64DE9600588345 /* hand_showroom_spec.png in Resources */,
 				1A5B67081E5C4046000463E3 /* robot.obj in Resources */,
+				1A44925B1E969A5200C27B4B /* leg_sweep.fbx in Resources */,
 				1A725D381E75BF7F00322D6A /* Beta.fbx in Resources */,
 				1AEFE74B1E65A12700698808 /* container2_specular.png in Resources */,
 				1AC181761E7355E0008C07F3 /* ShaderBasic.fsh in Resources */,
@@ -608,6 +621,7 @@
 				1A17880B1E640D950087DE26 /* camera_para.dat in Resources */,
 				1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */,
 				1ADFA8CC1E64DE9600588345 /* body_dif.png in Resources */,
+				1A4492591E9695E300C27B4B /* jogging.fbx in Resources */,
 				1ADFA8CD1E64DE9600588345 /* body_showroom_spec.png in Resources */,
 				1A44DCCC1E55F34C0036E753 /* Assets.xcassets in Resources */,
 				1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */,
@@ -659,10 +673,12 @@
 				1AE317931E93C49900972BC2 /* SkeletonData.swift in Sources */,
 				1A755C1C1E57B46500E2FFBC /* MeshStatic.swift in Sources */,
 				1A44DCF91E5601C80036E753 /* ObjectStatic.swift in Sources */,
+				1A44925D1E96A9B900C27B4B /* Entity.swift in Sources */,
 				1A3036281E8566B500484367 /* EffectMatAnim.swift in Sources */,
 				1A3A9BA21E817D4300A555D9 /* ObjectAnimated.swift in Sources */,
 				1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */,
 				1AC181701E734D4E008C07F3 /* EffectBasic.swift in Sources */,
+				1A4492611E96AA5800C27B4B /* Model.swift in Sources */,
 				1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */,
 				1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */,
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,

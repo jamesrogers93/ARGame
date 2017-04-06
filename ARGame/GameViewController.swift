@@ -59,7 +59,8 @@ class GameViewController: GLKViewController
         // Create object with model
         //self.obj = Object(ModelLoader.loadStaticModelFromFile("box", "obj"))
         //self.obj = ObjectStatic(ModelLoader.loadStaticModelFromFile("sword_and_shield_idle", "fbx"))
-        self.obj2 = ObjectAnimated(ModelLoader.loadAnimatedModelFromFile("sword_and_shield_idle", "fbx"))
+        //self.obj2 = ObjectAnimated(ModelLoader.loadAnimatedModelFromFile("sword_and_shield_idle", "fbx"))
+        self.obj2 = ObjectAnimated(ModelLoader.loadAnimatedModelFromFile("leg_sweep", "fbx"))
         
         // Initalise the AR handler
         self.arHandler.onViewLoad()

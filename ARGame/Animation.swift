@@ -77,11 +77,9 @@ class AnimationSequence
         {
             // Reset the animation
             self.start()
-                
         }
         else
         {
-            //self.previousTime = time
                 
             // Calculate animation frame
             let timeInTicks: Float = timef * self.animation.ticksPerSecond
