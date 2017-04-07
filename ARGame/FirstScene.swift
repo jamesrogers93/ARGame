@@ -29,11 +29,6 @@ class FirstScene : Scene
             print("Could not add Animation: \(animation.0) to scene")
         }
         
-        let animationController = AnimationPlayBack(animation.1)
-        animationController.loop()
-        if !super.addAnimationController(("player1_breathing_idle", animationController))
-        {
-            print("Could not add AnimationController: player1_breathing_idle to scene")
-        }
+        entity.1.glModel.animationController.loop(animation)
     }
 }

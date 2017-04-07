@@ -54,6 +54,7 @@ class ModelAnimated
     
     private var meshes: Array<MeshAnimated> = Array()
     private var skeleton: Skeleton = Skeleton()
+    private var _animationController: AnimationPlayBack = AnimationPlayBack()
     
     /**
      Initalise a Animated Model with an array of Meshes and animations.
@@ -102,6 +103,19 @@ class ModelAnimated
         for i in 0..<self.meshes.count
         {
             self.meshes[i].destroy();
+        }
+    }
+    
+    public var animationController: AnimationPlayBack
+    {
+        get
+        {
+            return self._animationController
+        }
+        
+        set
+        {
+            self._animationController = newValue
         }
     }
 }
