@@ -34,7 +34,8 @@ class Shader
     /**
      A tuple array which holds the name and location of shader uniforms.
      */
-    private var uniforms: [(String, GLint)]
+    //private var uniforms: [(String, GLint)]
+    private var uniforms: [String: GLint]
     
     /**
      Initalise a Shader with a shader program and array of shader uniforms.
@@ -43,10 +44,10 @@ class Shader
         - program: The program id
         - uniforms: A tuple array which holds the name and location of shader uniforms.
      */
-    private init(_ program:GLuint, _ uniforms:[(String, GLint)])
+    private init(_ program:GLuint, _ _uniforms:[String: GLint])
     {
         self.program = program
-        self.uniforms = uniforms
+        self.uniforms = _uniforms
     }
     
     /**
@@ -68,17 +69,9 @@ class Shader
      
      -1 will be returned if the location is not found.
      */
-    public func getUniformLocation(_ name:String) -> GLint
+    public func getUniformLocation(_ name:String) -> GLint?
     {
-        for i in 0..<self.uniforms.count
-        {
-            if(self.uniforms[i].0 == name)
-            {
-                return self.uniforms[i].1
-            }
-        }
-        
-        return -1
+        return self.uniforms[name]
     }
     
     /**
@@ -160,11 +153,10 @@ class Shader
         
         // Get uniform locations.
         let numUniforms:Int = uniformNames.count
-        var uniforms:[(String, GLint)] = [(String, GLint)](repeating:("", 0), count: numUniforms)
+        var uniforms:[String: GLint] = [String: GLint]()
         for i in 0..<numUniforms
         {
-            uniforms[i].0 = uniformNames[i]
-            uniforms[i].1 = glGetUniformLocation(program, uniforms[i].0)
+            uniforms[uniformNames[i]] = glGetUniformLocation(program, uniformNames[i])
         }
         
         // Release vertex and fragment shaders.

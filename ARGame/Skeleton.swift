@@ -56,3 +56,16 @@ struct Skeleton
         return false
     }
 }
+
+struct Bone
+{
+    var name: String = ""
+    var offset: GLKMatrix4 = GLKMatrix4Identity
+    var transform: GLKMatrix4 = GLKMatrix4Identity
+    
+    init(_ _name: String, _ _offset: GLKMatrix4)
+    {
+        self.name = _name
+        self.offset = _offset
+    }
+}

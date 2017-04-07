@@ -46,17 +46,14 @@ class EffectMatAnim : EffectMaterial
         // Put bones in the shader
         for i in 0..<bones.count
         {
-            // Test matrix is correct in column major order
-            //print(bones[i][0], bones[i][4], bones[i][8], bones[i][12])
-            //print(bones[i][1], bones[i][5], bones[i][9], bones[i][13])
-            //print(bones[i][2], bones[i][6], bones[i][10], bones[i][14])
-            //print(bones[i][3], bones[i][7], bones[i][11], bones[i][15])
-            
-            withUnsafePointer(to: &self.bones[i], {
-                $0.withMemoryRebound(to: Float.self, capacity: 16, {
-                    glUniformMatrix4fv(self.shader.getUniformLocation("bones[\(i)]"), 1, 0, $0)
+            if let loc = self.shader.getUniformLocation("bones[\(i)]")
+            {
+                withUnsafePointer(to: &self.bones[i], {
+                    $0.withMemoryRebound(to: Float.self, capacity: 16, {
+                        glUniformMatrix4fv(loc, 1, 0, $0)
+                    })
                 })
-            })
+            }
         }
     }
     

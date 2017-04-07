@@ -25,7 +25,7 @@ class GameViewController: GLKViewController
     var effect2:EffectMatAnim? = nil
     
     //var obj: ObjectStatic? = nil
-    var obj2: ObjectAnimated? = nil
+    var obj2: EntityAnimated? = nil
     
     var arHandler: ARHandler = ARHandler()
     
@@ -60,7 +60,7 @@ class GameViewController: GLKViewController
         //self.obj = Object(ModelLoader.loadStaticModelFromFile("box", "obj"))
         //self.obj = ObjectStatic(ModelLoader.loadStaticModelFromFile("sword_and_shield_idle", "fbx"))
         //self.obj2 = ObjectAnimated(ModelLoader.loadAnimatedModelFromFile("sword_and_shield_idle", "fbx"))
-        self.obj2 = ObjectAnimated(ModelLoader.loadAnimatedModelFromFile("leg_sweep", "fbx"))
+        self.obj2 = EntityAnimated(ModelLoader.loadAnimatedModelFromFile("leg_sweep", "fbx"))
         
         // Initalise the AR handler
         self.arHandler.onViewLoad()
@@ -138,7 +138,7 @@ class GameViewController: GLKViewController
         //self.obj?.destroy()
         //self.obj = nil
         
-        self.obj2?.destroy()
+        self.obj2?.glModel.destroy()
         self.obj2 = nil
     }
     
@@ -148,22 +148,14 @@ class GameViewController: GLKViewController
     func update()
     {
         // Update the projection matrix
-        //self.effect?.setProjection(self.arHandler.camProjection)
         self.effect2?.setProjection(self.arHandler.camProjection)
         
         // Update the camera view
-        //self.effect?.setView(self.arHandler.camPose)
         self.effect2?.setView(self.arHandler.camPose)
-        
-        //self.obj?.translate(GLKVector3Make(0.0, 0.0, -500.0))
-        //self.obj?.rotate(rotation, GLKVector3Make(1.0, 0.0, 0.0))
-        //self.obj?.scale(GLKVector3Make(10.0, 10.0, 10.0))
         self.obj2?.scale(GLKVector3Make(10.0, 10.0, 10.0))
-        //rotation+=0.01
-        //print(rotation)
         
         // Animate
-        self.obj2?.animateModel(1.0)
+        self.obj2?.glModel.animate()
     }
     
     // Draw OpenGL content here
@@ -180,7 +172,7 @@ class GameViewController: GLKViewController
         self.arHandler.draw()
         
         // Draw the object
-        //self.obj?.draw(self.effect!)
-        self.obj2?.draw(self.effect2!)
+        self.effect2?.setModel((self.obj2?.model)!)
+        self.obj2?.glModel.draw(self.effect2!)
     }
 }

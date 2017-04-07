@@ -30,20 +30,15 @@ out mediump vec3 FragPos;
 
 void main()
 {
-    ivec4 test = ivec4(0,0,0,0);
-    
     TexCoord = texCoord;
-    
-    //Normal = normalMatrix * normal;
-    Normal = normal;
-    //Normal = mat3(transpose(inverse(modelMatrix))) * normal;
     
     mat4 BoneTransform = bones[boneIDs[0]] * boneWeights[0];
     BoneTransform += bones[boneIDs[1]] * boneWeights[1];
     BoneTransform += bones[boneIDs[2]] * boneWeights[2];
     BoneTransform += bones[boneIDs[3]] * boneWeights[3];
     
-    //Normal = BoneTransform * vec4(normal, 0.0);
+    Normal = vec3(modelMatrix * BoneTransform * vec4(normal, 0.0));
+
     FragPos = vec3(modelMatrix * position);
     
     gl_Position = projectionMatrix * viewMatrix * modelMatrix * BoneTransform * position;
