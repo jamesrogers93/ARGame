@@ -15,14 +15,13 @@
 		1A3036281E8566B500484367 /* EffectMatAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3036271E8566B500484367 /* EffectMatAnim.swift */; };
 		1A30362B1E856B1D00484367 /* ShaderMatAnim.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A3036291E856B1D00484367 /* ShaderMatAnim.fsh */; };
 		1A30362C1E856B1D00484367 /* ShaderMatAnim.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A30362A1E856B1D00484367 /* ShaderMatAnim.vsh */; };
-		1A3A9B9A1E81676A00A555D9 /* sword_and_shield_idle.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */; };
 		1A435D5B1E83BB6F00D44433 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5A1E83BB6F00D44433 /* Vertex.swift */; };
 		1A435D5D1E83BBC000D44433 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5C1E83BBC000D44433 /* Material.swift */; };
-		1A4492591E9695E300C27B4B /* jogging.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A4492581E9695E300C27B4B /* jogging.fbx */; };
-		1A44925B1E969A5200C27B4B /* leg_sweep.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A44925A1E969A5200C27B4B /* leg_sweep.fbx */; };
 		1A44925D1E96A9B900C27B4B /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44925C1E96A9B900C27B4B /* Entity.swift */; };
 		1A44926F1E9787BD00C27B4B /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44926E1E9787BD00C27B4B /* Mesh.swift */; };
 		1A4492751E978CC600C27B4B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4492741E978CC600C27B4B /* Model.swift */; };
+		1A4492781E9790B000C27B4B /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4492771E9790B000C27B4B /* Scene.swift */; };
+		1A44927A1E979F5C00C27B4B /* FirstScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4492791E979F5B00C27B4B /* FirstScene.swift */; };
 		1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC01E55F34C0036E753 /* AppDelegate.swift */; };
 		1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCC61E55F34C0036E753 /* GameViewController.swift */; };
 		1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A44DCC81E55F34C0036E753 /* Main.storyboard */; };
@@ -43,10 +42,11 @@
 		1A6607A21E7A808D00FAF78B /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6607A11E7A808D00FAF78B /* Animation.swift */; };
 		1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */; };
 		1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */; };
-		1A725D381E75BF7F00322D6A /* Beta.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A725D371E75BF7F00322D6A /* Beta.fbx */; };
 		1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C221E59C95F00E2FFBC /* libassimp-fat.a */; };
-		1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */; };
+		1A755C2A1E59E0A100E2FFBC /* AssimpLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C281E59E0A100E2FFBC /* AssimpLoader.cpp */; };
 		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
+		1A99B23B1E980C9000E2831B /* Beta.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B23A1E980C9000E2831B /* Beta.fbx */; };
+		1A99B23D1E980E2E00E2831B /* breathing_idle.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B23C1E980E2E00E2831B /* breathing_idle.fbx */; };
 		1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */; };
 		1AC181221E71DF7B008C07F3 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC181211E71DF7B008C07F3 /* Shader.swift */; };
 		1AC1816C1E72C1AE008C07F3 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1816B1E72C1AD008C07F3 /* Effect.swift */; };
@@ -56,7 +56,7 @@
 		1AC181771E7355E0008C07F3 /* ShaderBasic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181751E7355E0008C07F3 /* ShaderBasic.vsh */; };
 		1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */; };
 		1AC1817B1E7356D0008C07F3 /* ShaderMaterial.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */; };
-		1ADFA8B81E64C05900588345 /* AssimpModelLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */; };
+		1ADFA8B81E64C05900588345 /* AssimpLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B71E64C05900588345 /* AssimpLoaderCInterface.cpp */; };
 		1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B91E64CAB600588345 /* nanosuit.obj */; };
 		1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */; };
 		1ADFA8CA1E64DE9600588345 /* arm_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8BE1E64DE9600588345 /* arm_dif.png */; };
@@ -72,6 +72,7 @@
 		1ADFA8D41E64DE9600588345 /* leg_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C81E64DE9600588345 /* leg_dif.png */; };
 		1ADFA8D51E64DE9600588345 /* leg_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C91E64DE9600588345 /* leg_showroom_spec.png */; };
 		1AE317931E93C49900972BC2 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE317921E93C49900972BC2 /* Skeleton.swift */; };
+		1AE8748F1E97ED39009F1D4A /* AnimationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */; };
 		1AEFE7481E65A12700698808 /* box.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7441E65A12700698808 /* box.mtl */; };
 		1AEFE7491E65A12700698808 /* box.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7451E65A12700698808 /* box.obj */; };
 		1AEFE74A1E65A12700698808 /* container2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7461E65A12700698808 /* container2.png */; };
@@ -102,14 +103,13 @@
 		1A3036271E8566B500484367 /* EffectMatAnim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectMatAnim.swift; sourceTree = "<group>"; };
 		1A3036291E856B1D00484367 /* ShaderMatAnim.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMatAnim.fsh; path = Shaders/ShaderMatAnim.fsh; sourceTree = "<group>"; };
 		1A30362A1E856B1D00484367 /* ShaderMatAnim.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMatAnim.vsh; path = Shaders/ShaderMatAnim.vsh; sourceTree = "<group>"; };
-		1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = sword_and_shield_idle.fbx; path = Assets/Animated/idle/sword_and_shield_idle.fbx; sourceTree = "<group>"; };
 		1A435D5A1E83BB6F00D44433 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		1A435D5C1E83BBC000D44433 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
-		1A4492581E9695E300C27B4B /* jogging.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = jogging.fbx; path = Assets/Animated/running/jogging.fbx; sourceTree = "<group>"; };
-		1A44925A1E969A5200C27B4B /* leg_sweep.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = leg_sweep.fbx; path = Assets/Animated/kick/leg_sweep.fbx; sourceTree = "<group>"; };
 		1A44925C1E96A9B900C27B4B /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		1A44926E1E9787BD00C27B4B /* Mesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
 		1A4492741E978CC600C27B4B /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1A4492771E9790B000C27B4B /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		1A4492791E979F5B00C27B4B /* FirstScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstScene.swift; sourceTree = "<group>"; };
 		1A44DCBD1E55F34C0036E753 /* ARGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A44DCC01E55F34C0036E753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A44DCC61E55F34C0036E753 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -150,15 +150,16 @@
 		1A6BA3EB1E5E225500D136D5 /* libAR2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAR2.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libAR2.a"; sourceTree = "<group>"; };
 		1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		1A6BA3F81E5E280900D136D5 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
-		1A725D371E75BF7F00322D6A /* Beta.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = Beta.fbx; path = Assets/Animated/Beta.fbx; sourceTree = "<group>"; };
 		1A755C1E1E58441200E2FFBC /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		1A755C201E592D7300E2FFBC /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimp.a; path = ../Dependencies/assimp/lib/iOS/x86_64/libassimp.a; sourceTree = "<group>"; };
 		1A755C221E59C95F00E2FFBC /* libassimp-fat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libassimp-fat.a"; path = "../Dependencies/assimp/lib/iOS/libassimp-fat.a"; sourceTree = "<group>"; };
-		1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpModelLoader.cpp; sourceTree = "<group>"; };
-		1A755C291E59E0A100E2FFBC /* AssimpModelLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AssimpModelLoader.hpp; sourceTree = "<group>"; };
+		1A755C281E59E0A100E2FFBC /* AssimpLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpLoader.cpp; sourceTree = "<group>"; };
+		1A755C291E59E0A100E2FFBC /* AssimpLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AssimpLoader.hpp; sourceTree = "<group>"; };
 		1A755C2B1E5A08D300E2FFBC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1A755C2D1E5A163800E2FFBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModelLoaderCInterface.h; sourceTree = "<group>"; };
+		1A755C311E5AFC3800E2FFBC /* AssimpLoaderCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpLoaderCInterface.h; sourceTree = "<group>"; };
+		1A99B23A1E980C9000E2831B /* Beta.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = Beta.fbx; path = Assets/Characters/Beta.fbx; sourceTree = "<group>"; };
+		1A99B23C1E980E2E00E2831B /* breathing_idle.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = breathing_idle.fbx; path = Assets/Animations/breathing_idle.fbx; sourceTree = "<group>"; };
 		1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; path = "Assets_AR/camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; sourceTree = "<group>"; };
 		1AC181211E71DF7B008C07F3 /* Shader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
 		1AC1816B1E72C1AD008C07F3 /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
@@ -168,7 +169,7 @@
 		1AC181751E7355E0008C07F3 /* ShaderBasic.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderBasic.vsh; path = Shaders/ShaderBasic.vsh; sourceTree = "<group>"; };
 		1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMaterial.fsh; path = Shaders/ShaderMaterial.fsh; sourceTree = "<group>"; };
 		1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMaterial.vsh; path = Shaders/ShaderMaterial.vsh; sourceTree = "<group>"; };
-		1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpModelLoaderCInterface.cpp; sourceTree = "<group>"; };
+		1ADFA8B71E64C05900588345 /* AssimpLoaderCInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpLoaderCInterface.cpp; sourceTree = "<group>"; };
 		1ADFA8B91E64CAB600588345 /* nanosuit.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nanosuit.obj; path = Assets/Nanosuit/nanosuit.obj; sourceTree = "<group>"; };
 		1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nanosuit.mtl; path = Assets/Nanosuit/nanosuit.mtl; sourceTree = "<group>"; };
 		1ADFA8BE1E64DE9600588345 /* arm_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arm_dif.png; path = Assets/Nanosuit/arm_dif.png; sourceTree = "<group>"; };
@@ -184,6 +185,7 @@
 		1ADFA8C81E64DE9600588345 /* leg_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leg_dif.png; path = Assets/Nanosuit/leg_dif.png; sourceTree = "<group>"; };
 		1ADFA8C91E64DE9600588345 /* leg_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leg_showroom_spec.png; path = Assets/Nanosuit/leg_showroom_spec.png; sourceTree = "<group>"; };
 		1AE317921E93C49900972BC2 /* Skeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
+		1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationLoader.swift; sourceTree = "<group>"; };
 		1AEFE7441E65A12700698808 /* box.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = box.mtl; path = Assets/Box/box.mtl; sourceTree = "<group>"; };
 		1AEFE7451E65A12700698808 /* box.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = box.obj; path = Assets/Box/box.obj; sourceTree = "<group>"; };
 		1AEFE7461E65A12700698808 /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = container2.png; path = Assets/Box/container2.png; sourceTree = "<group>"; };
@@ -245,6 +247,15 @@
 				1A6607A11E7A808D00FAF78B /* Animation.swift */,
 			);
 			name = Entity;
+			sourceTree = "<group>";
+		};
+		1A4492761E97908B00C27B4B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				1A4492771E9790B000C27B4B /* Scene.swift */,
+				1A4492791E979F5B00C27B4B /* FirstScene.swift */,
+			);
+			name = Scene;
 			sourceTree = "<group>";
 		};
 		1A44DCB41E55F34C0036E753 = {
@@ -319,7 +330,8 @@
 				1A4F60701E5CC42000B4C602 /* AR */,
 				1A3669601E756B3500C7C53E /* Entity */,
 				1AC1816A1E72C159008C07F3 /* Graphics */,
-				1A755C261E59E06A00E2FFBC /* ModelLoader */,
+				1A755C261E59E06A00E2FFBC /* FileLoading */,
+				1A4492761E97908B00C27B4B /* Scene */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -336,7 +348,8 @@
 		1A5B66FC1E5BACF4000463E3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				1A725D361E75BF6600322D6A /* Animation */,
+				1A99B2391E980BBA00E2831B /* Characters */,
+				1A725D361E75BF6600322D6A /* Animations */,
 				1AEFE7431E65A11000698808 /* Box */,
 				1ADFA8BD1E64DE6E00588345 /* Nanosuit */,
 				1A5B67051E5C4045000463E3 /* robot.mtl */,
@@ -349,15 +362,12 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
-		1A725D361E75BF6600322D6A /* Animation */ = {
+		1A725D361E75BF6600322D6A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				1A44925A1E969A5200C27B4B /* leg_sweep.fbx */,
-				1A4492581E9695E300C27B4B /* jogging.fbx */,
-				1A3A9B991E81676A00A555D9 /* sword_and_shield_idle.fbx */,
-				1A725D371E75BF7F00322D6A /* Beta.fbx */,
+				1A99B23C1E980E2E00E2831B /* breathing_idle.fbx */,
 			);
-			name = Animation;
+			name = Animations;
 			sourceTree = "<group>";
 		};
 		1A755C1D1E58441100E2FFBC /* Frameworks */ = {
@@ -388,16 +398,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1A755C261E59E06A00E2FFBC /* ModelLoader */ = {
+		1A755C261E59E06A00E2FFBC /* FileLoading */ = {
 			isa = PBXGroup;
 			children = (
+				1AE874901E97F294009F1D4A /* Assimp */,
 				1A44DCF51E55FEC40036E753 /* ModelLoader.swift */,
-				1A755C291E59E0A100E2FFBC /* AssimpModelLoader.hpp */,
-				1A755C281E59E0A100E2FFBC /* AssimpModelLoader.cpp */,
-				1A755C311E5AFC3800E2FFBC /* AssimpModelLoaderCInterface.h */,
-				1ADFA8B71E64C05900588345 /* AssimpModelLoaderCInterface.cpp */,
+				1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */,
 			);
-			name = ModelLoader;
+			name = FileLoading;
+			sourceTree = "<group>";
+		};
+		1A99B2391E980BBA00E2831B /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				1A99B23A1E980C9000E2831B /* Beta.fbx */,
+			);
+			name = Characters;
 			sourceTree = "<group>";
 		};
 		1AC181611E72AA68008C07F3 /* Shaders */ = {
@@ -444,6 +460,17 @@
 				1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */,
 			);
 			name = Nanosuit;
+			sourceTree = "<group>";
+		};
+		1AE874901E97F294009F1D4A /* Assimp */ = {
+			isa = PBXGroup;
+			children = (
+				1A755C291E59E0A100E2FFBC /* AssimpLoader.hpp */,
+				1A755C281E59E0A100E2FFBC /* AssimpLoader.cpp */,
+				1A755C311E5AFC3800E2FFBC /* AssimpLoaderCInterface.h */,
+				1ADFA8B71E64C05900588345 /* AssimpLoaderCInterface.cpp */,
+			);
+			name = Assimp;
 			sourceTree = "<group>";
 		};
 		1AEFE7431E65A11000698808 /* Box */ = {
@@ -582,17 +609,15 @@
 				1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */,
 				1ADFA8D11E64DE9600588345 /* hand_showroom_spec.png in Resources */,
 				1A5B67081E5C4046000463E3 /* robot.obj in Resources */,
-				1A44925B1E969A5200C27B4B /* leg_sweep.fbx in Resources */,
-				1A725D381E75BF7F00322D6A /* Beta.fbx in Resources */,
 				1AEFE74B1E65A12700698808 /* container2_specular.png in Resources */,
 				1AC181761E7355E0008C07F3 /* ShaderBasic.fsh in Resources */,
 				1AEFE74A1E65A12700698808 /* container2.png in Resources */,
 				1A17880B1E640D950087DE26 /* camera_para.dat in Resources */,
 				1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */,
 				1ADFA8CC1E64DE9600588345 /* body_dif.png in Resources */,
-				1A4492591E9695E300C27B4B /* jogging.fbx in Resources */,
 				1ADFA8CD1E64DE9600588345 /* body_showroom_spec.png in Resources */,
 				1A44DCCC1E55F34C0036E753 /* Assets.xcassets in Resources */,
+				1A99B23B1E980C9000E2831B /* Beta.fbx in Resources */,
 				1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */,
 				1A5B67041E5BADCE000463E3 /* cube.obj in Resources */,
 				1A44DCCF1E55F34C0036E753 /* LaunchScreen.storyboard in Resources */,
@@ -603,9 +628,9 @@
 				1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */,
 				1ADFA8D21E64DE9600588345 /* helmet_diff.png in Resources */,
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,
+				1A99B23D1E980E2E00E2831B /* breathing_idle.fbx in Resources */,
 				1AEFE7491E65A12700698808 /* box.obj in Resources */,
 				1AC1817B1E7356D0008C07F3 /* ShaderMaterial.vsh in Resources */,
-				1A3A9B9A1E81676A00A555D9 /* sword_and_shield_idle.fbx in Resources */,
 				1ADFA8D01E64DE9600588345 /* hand_dif.png in Resources */,
 				1ADFA8CB1E64DE9600588345 /* arm_showroom_spec.png in Resources */,
 			);
@@ -633,6 +658,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A4492751E978CC600C27B4B /* Model.swift in Sources */,
+				1A44927A1E979F5C00C27B4B /* FirstScene.swift in Sources */,
 				1AC1816C1E72C1AE008C07F3 /* Effect.swift in Sources */,
 				1AC181221E71DF7B008C07F3 /* Shader.swift in Sources */,
 				1A6607A21E7A808D00FAF78B /* Animation.swift in Sources */,
@@ -641,14 +667,16 @@
 				1AE317931E93C49900972BC2 /* Skeleton.swift in Sources */,
 				1A44925D1E96A9B900C27B4B /* Entity.swift in Sources */,
 				1A3036281E8566B500484367 /* EffectMatAnim.swift in Sources */,
-				1A755C2A1E59E0A100E2FFBC /* AssimpModelLoader.cpp in Sources */,
+				1A755C2A1E59E0A100E2FFBC /* AssimpLoader.cpp in Sources */,
+				1AE8748F1E97ED39009F1D4A /* AnimationLoader.swift in Sources */,
 				1AC181701E734D4E008C07F3 /* EffectBasic.swift in Sources */,
 				1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */,
+				1A4492781E9790B000C27B4B /* Scene.swift in Sources */,
 				1A44DCC71E55F34C0036E753 /* GameViewController.swift in Sources */,
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,
 				1A44926F1E9787BD00C27B4B /* Mesh.swift in Sources */,
 				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
-				1ADFA8B81E64C05900588345 /* AssimpModelLoaderCInterface.cpp in Sources */,
+				1ADFA8B81E64C05900588345 /* AssimpLoaderCInterface.cpp in Sources */,
 				1A435D5D1E83BBC000D44433 /* Material.swift in Sources */,
 				1A435D5B1E83BB6F00D44433 /* Vertex.swift in Sources */,
 			);

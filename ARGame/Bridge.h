@@ -9,8 +9,8 @@
 #ifndef Bridge_h
 #define Bridge_h
 
-// Assimp Model Loader C Interface
-#include "AssimpModelLoaderCInterface.h"
+// Assimp Loader C Interface
+#include "AssimpLoaderCInterface.h"
 
 // ARToolKit
 #import "ARHandler.h"

@@ -19,13 +19,7 @@ class GameViewController: GLKViewController
     
     var context: EAGLContext? = nil
     
-    // Shaders
-    /// OpenGLES Shader
-    //var effect: EffectMaterial? = nil
-    var effect2:EffectMatAnim? = nil
-    
-    //var obj: ObjectStatic? = nil
-    var obj2: EntityAnimated? = nil
+    let scene: FirstScene = FirstScene()
     
     var arHandler: ARHandler = ARHandler()
     
@@ -55,12 +49,8 @@ class GameViewController: GLKViewController
         view.drawableDepthFormat = .format24
         
         self.setupGL()
-        
-        // Create object with model
-        //self.obj = Object(ModelLoader.loadStaticModelFromFile("box", "obj"))
-        //self.obj = ObjectStatic(ModelLoader.loadStaticModelFromFile("sword_and_shield_idle", "fbx"))
-        //self.obj2 = ObjectAnimated(ModelLoader.loadAnimatedModelFromFile("sword_and_shield_idle", "fbx"))
-        self.obj2 = EntityAnimated(ModelLoader.loadAnimatedModelFromFile("leg_sweep", "fbx"))
+
+        self.scene.initaliseScene()
         
         // Initalise the AR handler
         self.arHandler.onViewLoad()
@@ -100,6 +90,8 @@ class GameViewController: GLKViewController
                 EAGLContext.setCurrent(nil)
             }
             self.context = nil
+            
+            self.scene.destroyScene()
         }
     }
     
@@ -107,17 +99,6 @@ class GameViewController: GLKViewController
     {
         // Set current GL context
         EAGLContext.setCurrent(self.context)
-        
-        // Set GLKit Shader
-        //self.effect = GLKBaseEffect()   // Init renderer
-        //self.effect!.light0.enabled = GLboolean(GL_TRUE)    // Add light
-        //self.effect!.light0.diffuseColor = GLKVector4Make(1.0, 1.0, 1.0, 1.0)   // Set light colour
-        
-        // Set my OpenGLES Effect
-        //self.effect = EffectBasic()
-        //self.effect = EffectMaterial()
-        self.effect2 = EffectMatAnim()
-        //self.effect?.setColour(GLKVector4Make(1.0, 0.0, 0.0, 1.0))
         
         // Allow depth testing
         glEnable(GLenum(GL_DEPTH_TEST))
@@ -127,19 +108,7 @@ class GameViewController: GLKViewController
     {
         EAGLContext.setCurrent(self.context)
         
-        // Delete Effect
-        //self.effect?.destroy()
-        //self.effect = nil
-        
-        self.effect2?.destroy()
-        self.effect2 = nil
-        
-        // Delete object
-        //self.obj?.destroy()
-        //self.obj = nil
-        
-        self.obj2?.glModel.destroy()
-        self.obj2 = nil
+        self.scene.destroyScene()
     }
     
     var rotation: Float = 0.0
@@ -147,15 +116,38 @@ class GameViewController: GLKViewController
     // Update view in here
     func update()
     {
-        // Update the projection matrix
-        self.effect2?.setProjection(self.arHandler.camProjection)
         
-        // Update the camera view
-        self.effect2?.setView(self.arHandler.camPose)
-        self.obj2?.scale(GLKVector3Make(10.0, 10.0, 10.0))
-        
-        // Animate
-        self.obj2?.glModel.animate()
+        if self.arHandler.running
+        {
+            
+            // Update the projection matrix and camera view
+            if self.scene.effectMaterial != nil
+            {
+                self.scene.effectMaterial?.setProjection(self.arHandler.camProjection)
+                self.scene.effectMaterial?.setView(self.arHandler.camPose)
+            }
+            
+            if self.scene.effectMaterialAnimated != nil
+            {
+                self.scene.effectMaterialAnimated?.setProjection(self.arHandler.camProjection)
+                self.scene.effectMaterialAnimated?.setView(self.arHandler.camPose)
+            }
+            
+            if let entity = self.scene.getEntityAnimated("player1")
+            {
+                if let animation = self.scene.getAnimation("breathing_idle")
+                {
+                    if let controller = self.scene.getAnimationController("player1_breathing_idle")
+                    {
+                        let frame = controller.getFrame()
+                        if frame >= 0
+                        {
+                            entity.glModel.animate(animation, frame)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     // Draw OpenGL content here
@@ -164,15 +156,15 @@ class GameViewController: GLKViewController
         glClearColor(0.65, 0.65, 0.65, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT) | GLbitfield(GL_DEPTH_BUFFER_BIT))
         
-        // Update viewport here?
-        //glViewport(-105, 0, 851, 1136);
-        self.arHandler.setViewport()
+        if self.arHandler.running
+        {
+            self.arHandler.setViewport()
         
-        // Draw the camera view
-        self.arHandler.draw()
+            // Draw the camera view
+            self.arHandler.draw()
         
-        // Draw the object
-        self.effect2?.setModel((self.obj2?.model)!)
-        self.obj2?.glModel.draw(self.effect2!)
+            // Draw the object
+            self.scene.render()
+        }
     }
 }

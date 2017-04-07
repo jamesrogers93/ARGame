@@ -33,8 +33,14 @@
 /*! Set viewport for the camera feed. */
 - (void) setViewport;
 
-/*!  Draws the camera feed to the screen using OpenGL ES2. */
+/*!  Draws the camera feed to the screen. */
 - (void) draw;
+
+/*! Sets the camera pose scale. */
+- (void) setScale:(float)s;
+
+/*! Returns the camera pose scale. */
+- (float) getScale;
 
 /*! Camera projection calculated from the screen size and camera lens. */
 @property (readonly) GLKMatrix4 camProjection;
@@ -48,6 +54,9 @@
 
 /*! The height of the camera video */
 @property (readonly) int camHeight;
+
+/*! The property that inidicates the camera and tracking process is running  */
+@property (readonly) BOOL running;
 
 @end
 

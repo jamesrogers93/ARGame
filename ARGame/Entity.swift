@@ -108,7 +108,7 @@ class EntityStatic : Entity
     /**
      The OpenGL geometry
      */
-    private let glModel: ModelStatic
+    private let _glModel: ModelStatic
     
     /**
      Initalise an object with a model.
@@ -116,13 +116,25 @@ class EntityStatic : Entity
      - parameters:
         - glModel: An instance of the type Model.
      */
-    public init(_ _glModel: ModelStatic)
+    public init(_ glModel: ModelStatic)
     {
-        self.glModel = _glModel
+        self._glModel = glModel
         
         super.init()
     }
     
+    /**
+     Accesses the ModelStatic instance
+     
+     - returns:
+     The ModelStatic instance
+    */
+    var glModel: ModelStatic {
+        get
+        {
+            return self._glModel
+        }
+    }
 }
 
 
@@ -132,13 +144,6 @@ class EntityAnimated : Entity
      The OpenGL geometry
      */
     private let _glModel: ModelAnimated
-    
-    var glModel: ModelAnimated {
-        get
-        {
-            return self._glModel
-        }
-    }
     
     /**
      Initalise an object with a model.
@@ -151,5 +156,18 @@ class EntityAnimated : Entity
         self._glModel = glModel
         
         super.init()
+    }
+    
+    /**
+     Accesses the ModelAnimated instance
+     
+     - returns:
+     The ModelAnimated instance
+     */
+    var glModel: ModelAnimated {
+        get
+        {
+            return self._glModel
+        }
     }
 }
