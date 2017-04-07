@@ -36,7 +36,7 @@ class ModelLoader
         let meshes: Array<MeshStatic> = extractStaticMeshesFromLoader(loader!)
         
         // Destroy assimp model
-        mlDestroyAssimpModelLoader(loader)
+        mlDestroyAssimpLoader(loader)
         
         return ModelStatic(meshes);
     }
@@ -53,11 +53,11 @@ class ModelLoader
      */
     static public func loadAnimatedModelFromFile(_ resource: String, _ type: String) -> ModelAnimated
     {
-        // Find obj path of resource
-        let objPath = Bundle.main.path(forResource: resource, ofType: type)
+        // Find path of resource
+        let path = Bundle.main.path(forResource: resource, ofType: type)
         
         // Convert path to C string
-        let cpath = objPath?.cString(using: .utf8)
+        let cpath = path?.cString(using: .utf8)
         
         // Load model using C code
         let loader = UnsafeRawPointer(mlLoadAnimatedAssimpModel(cpath))
@@ -65,16 +65,13 @@ class ModelLoader
         // Extract the meshes from the assimp loader
         let meshes: Array<MeshAnimated> = extractAnimatedMeshesFromLoader(loader!)
         
-        // Extract the animations from the assimp loader
-        let animations: Array<AnimationSequence> = extractAnimationsFromLoader(loader!)
-        
         // Extract the skeleton from the assimp loader
         let skeleton: Skeleton = extractSkeletonFromLoader(loader!)
         
         // Destroy assimp model
-        mlDestroyAssimpModelLoader(loader)
+        mlDestroyAssimpLoader(loader)
         
-        return ModelAnimated(meshes, animations, skeleton)
+        return ModelAnimated(meshes, skeleton)
     }
     
     /**
@@ -305,13 +302,6 @@ class ModelLoader
                 // Transpose matrix to move from row major to colum major
                 offset = GLKMatrix4Transpose(offset)
                 
-                // Test matrix is correct in column major order
-                //print(offset[0], offset[4], offset[8], offset[12])
-                //print(offset[1], offset[5], offset[9], offset[13])
-                //print(offset[2], offset[6], offset[10], offset[14])
-                //print(offset[3], offset[7], offset[11], offset[15])
-
-                
                 // Add bone to bone array
                 bones.append(Bone(name, offset))
                 
@@ -466,97 +456,6 @@ class ModelLoader
         }
         
         return meshes
-    }
-    
-    /**
-     Extracts a animation array from the assimp loader class.
-     
-     - parameters:
-        - loader: An unsafe pointer to the C++ AssimpModelLoader object.
-     
-     - returns:
-     A Animation array.
-     */
-    static private func extractAnimationsFromLoader(_ loader:UnsafeRawPointer) -> Array<AnimationSequence>
-    {
-        // Instantiate animations array to fill
-        var animations: Array<AnimationSequence> = Array()
-        
-        // Get number of animations loaded
-        let numAnimations: UInt32 = mlGetNumAnimations(loader)
-        
-        // Loop over all animations
-        for i in 0..<numAnimations
-        {
-            //
-            // Load animation duration
-            //
-            let duration: Float = mlGetAnimationDuration(loader, i)
-            
-            //
-            // Load animation ticks per second
-            //
-            let ticksPerSecond: Float = mlGetAnimationTicksPerSecond(loader, i)
-            
-            // 
-            // Load animation channels
-            //
-            var channels = [String: AnimationChannel]()
-            let numChannels: UInt32 = mlGetNumChannelsInAnimation(loader, i)
-            
-            for j in 0..<numChannels
-            {
-                // Load channel name
-                let name: String = String(cString: mlGetAnimationChannelName(loader, i, j))
-                
-                // load channel positions
-                var positions:Array<GLKVector3> = Array()
-                let numPositions: Int = Int(mlGetNumPositionsInChannel(loader, i, j))
-                var cPositions = Array(UnsafeBufferPointer(start: mlGetAnimationChannelPositions(loader, i, j), count: numPositions))
-                
-                for k in stride(from: 0, to: numPositions, by: 3)
-                {
-                    positions.append(GLKVector3Make(cPositions[k], cPositions[k+1], cPositions[k+2]))
-                }
-                
-                // load channel positions
-                var scales:Array<GLKVector3> = Array()
-                let numScales: Int = Int(mlGetNumScalesInChannel(loader, i, j))
-                var cScales = Array(UnsafeBufferPointer(start: mlGetAnimationChannelScales(loader, i, j), count: numScales))
-                
-                for k in stride(from: 0, to: numScales, by: 3)
-                {
-                    scales.append(GLKVector3Make(cScales[k], cScales[k+1], cScales[k+2]))
-                }
-                
-                // load channel rotations
-                var rotations:Array<GLKMatrix3> = Array()
-                let numRotations: Int = Int(mlGetNumRotationsInChannel(loader, i, j))
-                var cRotations = Array(UnsafeBufferPointer(start: mlGetAnimationChannelRotations(loader, i, j), count: numRotations))
-                
-                for k in stride(from: 0, to: numRotations, by: 9)
-                {
-                    var rot: GLKMatrix3 = GLKMatrix3Make(cRotations[k], cRotations[k+3], cRotations[k+6],
-                                                         cRotations[k+1], cRotations[k+4], cRotations[k+7],
-                                                         cRotations[k+2], cRotations[k+5], cRotations[k+8])
-                    
-                    // Transpose matrix to change from assimps row major to GLKits column major
-                    rot = GLKMatrix3Transpose(rot)
-                    
-                    // Put rotation matrix in array
-                    rotations.append(rot)
-                }
-                
-                // Insert channel into channels
-                channels[name] = AnimationChannel(positions, scales, rotations)
-                //channels.append(AnimationChannel(name, positions, scales, rotations))
-            }
-            
-            // Insert animation into animations
-            animations.append(AnimationSequence(Animation(duration, ticksPerSecond, channels)))
-        }
-        
-        return animations
     }
     
     /**

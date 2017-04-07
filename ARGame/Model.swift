@@ -53,16 +53,13 @@ class ModelAnimated
 {
     
     private var meshes: Array<MeshAnimated> = Array()
-    private var animations: Array<AnimationSequence> = Array()
-    private var currentAnimation: Int = 0
     private var skeleton: Skeleton = Skeleton()
     
     /**
      Initalise a Animated Model with an array of Meshes and animations.
      */
-    init(_ _meshes: Array<MeshAnimated>, _ _animations: Array<AnimationSequence>, _ _skeleton: Skeleton)
+    init(_ _meshes: Array<MeshAnimated>, _ _skeleton: Skeleton)
     {
-        self.animations = _animations
         self.meshes = _meshes
         self.skeleton = _skeleton
         
@@ -88,15 +85,12 @@ class ModelAnimated
      - parameters:
         - time: The time in seconds.
      */
-    public func animate()
+    public func animate(_ animation: Animation, _ animationFrame: Int)
     {
-        self.animations[self.currentAnimation].update()
-        
         // Loop over meshes
         for i in 0..<self.meshes.count
         {
-            
-            self.meshes[i].animate(self.animations[self.currentAnimation], self.skeleton)
+            self.meshes[i].animate(animation, animationFrame, self.skeleton)
         }
     }
     

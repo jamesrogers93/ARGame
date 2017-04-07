@@ -324,18 +324,18 @@ class MeshAnimated : Mesh
         }
     }
     
-    public func animate(_ animation: AnimationSequence, _ skeleton: Skeleton)
+    public func animate(_ animation: Animation, _ animationFrame: Int, _ skeleton: Skeleton)
     {
-        self.processSkeletonHierarchy(animation, skeleton, GLKMatrix4Identity)
+        self.processSkeletonHierarchy(animation, animationFrame, skeleton, GLKMatrix4Identity)
     }
     
-    private func processSkeletonHierarchy(_ animation:AnimationSequence, _ skeleton: Skeleton, _ parentTransformation: GLKMatrix4)
+    private func processSkeletonHierarchy(_ animation:Animation, _ animationFrame: Int, _ skeleton: Skeleton, _ parentTransformation: GLKMatrix4)
     {
         
         var nodeTransformation: GLKMatrix4 = GLKMatrix4Identity
         
         // Get animation channel from dictonary O(1) access complexity
-        let channel = animation.getChannel(skeleton.name)
+        let channel = animation.channels[skeleton.name]
         
         if channel != nil
         {
@@ -343,9 +343,9 @@ class MeshAnimated : Mesh
             
             // Get the position, scale and rotation data from the channel
             let position: GLKVector3
-            if (channel?.positions.count)! > animation.getFrame()
+            if (channel?.positions.count)! > animationFrame
             {
-                position = (channel?.positions[animation.getFrame()])!
+                position = (channel?.positions[animationFrame])!
             }
             else
             {
@@ -353,9 +353,9 @@ class MeshAnimated : Mesh
             }
             
             let scale: GLKVector3
-            if (channel?.scalings.count)! > animation.getFrame()
+            if (channel?.scalings.count)! > animationFrame
             {
-                scale = (channel?.scalings[animation.getFrame()])!
+                scale = (channel?.scalings[animationFrame])!
             }
             else
             {
@@ -363,9 +363,9 @@ class MeshAnimated : Mesh
             }
             
             let rotation: GLKMatrix3
-            if (channel?.rotations.count)! > animation.getFrame()
+            if (channel?.rotations.count)! > animationFrame
             {
-                rotation = (channel?.rotations[animation.getFrame()])!
+                rotation = (channel?.rotations[animationFrame])!
             }
             else
             {
@@ -400,7 +400,7 @@ class MeshAnimated : Mesh
         // Recursively process the remaining child nodes
         for i in 0..<skeleton.children.count
         {
-            self.processSkeletonHierarchy(animation, skeleton.children[i], globalTransformation)
+            self.processSkeletonHierarchy(animation, animationFrame, skeleton.children[i], globalTransformation)
         }
         
     }

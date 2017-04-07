@@ -26,9 +26,9 @@ struct AnimationChannel
 
 struct Animation
 {
-    var duration:Float = 0.0
-    var ticksPerSecond:Float = 0.0
-    var channels:[String: AnimationChannel] = [String: AnimationChannel]()
+    var duration: Float = 0.0
+    var ticksPerSecond: Float = 0.0
+    var channels: [String: AnimationChannel] = [String: AnimationChannel]()
     
     init(){}
     
@@ -40,61 +40,94 @@ struct Animation
     }
 }
 
-class AnimationSequence
+class AnimationPlayBack
 {
-    private var animation: Animation
     private var animationFrame: Int
+    private var animationDuration: Float
+    private var animationTicksPerSecond: Float
     private var previousTime: TimeInterval
-    private var restart: Bool
+    private var isPlay: Bool
+    private var isLoop: Bool
     
     init(_ _animation: Animation)
     {
-        self.animation = _animation
         self.animationFrame = 0
+        self.animationDuration = _animation.duration
+        self.animationTicksPerSecond = _animation.ticksPerSecond
         self.previousTime = 0.0
-        self.restart = true
+        self.isPlay = false
+        self.isLoop = false
     }
     
-    public func start()
+    public func play()
     {
+        self.restart(false)
+    }
+    
+    public func loop()
+    {
+        self.restart(true)
+    }
+    
+    private func restart(_ _loop: Bool)
+    {
+        self.isPlay = true
+        self.isLoop = _loop
+        
         self.animationFrame = 0
         self.previousTime = NSDate().timeIntervalSince1970
-        self.restart = false
     }
     
-    public func update()
+    public func stop()
     {
-        if self.restart
+        self.isPlay = false
+    }
+    
+    private func update()
+    {
+        if self.isPlay
         {
-            self.start()
-        }
-        
-        // Calculate time
-        let time: TimeInterval = NSDate().timeIntervalSince1970 - self.previousTime
-        let timef: Float = Float(time)
+            // Calculate time
+            let time: TimeInterval = NSDate().timeIntervalSince1970 - self.previousTime
+            let timef: Float = Float(time)
             
-        if timef > (self.animation.duration / self.animation.ticksPerSecond)
-        {
-            // Reset the animation
-            self.start()
-        }
-        else
-        {
+            if timef > (self.animationDuration / self.animationTicksPerSecond)
+            {
                 
-            // Calculate animation frame
-            let timeInTicks: Float = timef * self.animation.ticksPerSecond
+                if self.isLoop
+                {
+                    // Reset the animation
+                    self.loop()
+                }
+                else
+                {
+                    // Stop the animation
+                    self.stop()
+                }
+            }
+            else
+            {
+                
+                // Calculate animation frame
+                let timeInTicks: Float = timef * self.animationTicksPerSecond
         
-            self.animationFrame = Int(timeInTicks)
+                self.animationFrame = Int(timeInTicks)
+            }
         }
-    }
-    
-    public func getChannel(_ name: String) -> AnimationChannel?
-    {
-        return self.animation.channels[name]
     }
     
     public func getFrame() -> Int
     {
-        return self.animationFrame
+        self.update()
+        
+        if self.isPlay
+        {
+            return self.animationFrame
+        }
+        else
+        {
+            return -1
+        }
+        
     }
 }

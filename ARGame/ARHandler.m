@@ -9,7 +9,7 @@
 
 #import "ARHandler.h"
 
-#define VIEW_SCALEFACTOR        10.0f            // Now 1 unit is the width of the marker
+#define VIEW_SCALEFACTOR        5.0f            // 1 unit is the width of the marker
 #define VIEW_DISTANCE_MIN        5.0f          // Objects closer to the camera than this will not be displayed.
 #define VIEW_DISTANCE_MAX        20000.0f        // Objects further away from the camera than this will not be displayed.
 
@@ -17,7 +17,7 @@
 @implementation ARHandler
 {
     // Loop handlers
-    BOOL            running;
+    //BOOL            running;
     BOOL            videoPaused;
     
     // Video acquisition
@@ -39,12 +39,13 @@
     ARParamLT      *gCparamLT;
     ARGL_CONTEXT_SETTINGS_REF arglContextSettings;
     GLKMatrix4 camLens;
+    float scale;
     
     // Viewport details
     float left, bottom, width, height;
 }
 
-@synthesize camProjection, camPose, camWidth, camHeight;
+@synthesize camProjection, camPose, camWidth, camHeight, running;
 
 - (void) draw
 {
@@ -91,6 +92,16 @@
     glViewport(left, bottom, width, height);
 }
 
+- (void) setScale:(float)s
+{
+    scale = s;
+}
+
+- (float) getScale
+{
+    return scale;
+}
+
 - (void) onViewLoad
 {
     // Loop handlers
@@ -106,9 +117,11 @@
     
     // Transform matrix
     gAR3DHandle = NULL;
+    scale = VIEW_SCALEFACTOR;
     
     // Camera
     gCparamLT = NULL;
+    
 }
 
 - (void)startRunLoop
@@ -378,7 +391,7 @@ static void startCallback(void *userData)
             }
             float modelview[16]; // We have a new pose, so set that.
 #ifdef ARDOUBLE_IS_FLOAT
-            arglCameraViewRHf(gPatt_trans, modelview, VIEW_SCALEFACTOR);
+            arglCameraViewRHf(gPatt_trans, modelview, scale);
 #else
             float patt_transf[3][4];
             int r, c;
