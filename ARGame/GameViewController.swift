@@ -133,25 +133,15 @@ class GameViewController: GLKViewController
                 self.scene.effectMaterialAnimated?.setView(self.arHandler.camPose)
             }
             
+            self.scene.updateAnimations()
+            
             if let entity = self.scene.getEntityAnimated("player1")
             {
-                entity.translate(GLKVector3Make(0.0, 0.0, -100.0))
-                if entity.glModel.animationController.isPlaying
+                if !entity.glModel.animationController.isPlaying
                 {
-                    if let animation = self.scene.getAnimation(entity.glModel.animationController.animation)
+                    if let animation = self.scene.getAnimation("beta_elbow_punch")
                     {
-                        let frame = entity.glModel.animationController.frame
-                        if frame >= 0
-                        {
-                            entity.glModel.animate(animation, frame)
-                        }
-                    }
-                }
-                else
-                {
-                    if let animation = self.scene.getAnimation("warming_up")
-                    {
-                        entity.glModel.animationController.loop(("warming_up", animation))
+                        entity.glModel.animationController.loop(("beta_elbow_punch", animation))
                     }
                 }
             }

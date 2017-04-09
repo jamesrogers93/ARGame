@@ -266,7 +266,56 @@ class ModelLoader
                     
                     if(!weightInserted)
                     {
-                        print("Problem, vertex relys on more bones than can handle")
+                        print("Restricting vertex: \(id) bone weights to 4")
+                        
+                        // Find least significant existing bone weight
+                        var least: Float = 1.0
+                        var pos: Int = 0
+                        for l in 0..<4
+                        {
+                            if least > vertices[id].boneWeights[l]
+                            {
+                                least = vertices[id].boneWeights[l]
+                                pos = l
+                            }
+                        }
+                        
+                        // If the least significant bone weight is less significant than the new weight, replace them and
+                        // normalise weights so they equal 1
+                        if least < weight
+                        {
+                            vertices[id].boneWeights[pos] = weight
+                            vertices[id].boneIds[pos] = GLint(j)
+                            
+                            // Sort
+                            for l in 0..<3
+                            {
+                                if vertices[id].boneIds[l] > vertices[id].boneIds[l+1]
+                                {
+                                    // Swap
+                                    let id_t = vertices[id].boneIds[l]
+                                    let weight_t = vertices[id].boneWeights[l]
+                                    
+                                    vertices[id].boneIds[l] = vertices[id].boneIds[l+1]
+                                    vertices[id].boneWeights[l] = vertices[id].boneWeights[l+1]
+                                    
+                                    vertices[id].boneIds[l+1] = id_t
+                                    vertices[id].boneWeights[l+1] = weight_t
+                                }
+                            }
+                            
+                            // Normalise
+                            var sum: Float = 0.0
+                            for l in 0..<4
+                            {
+                                sum += vertices[id].boneWeights[l]
+                            }
+                            
+                            for l in 0..<4
+                            {
+                                vertices[id].boneWeights[l] /= sum
+                            }
+                        }
                     }
                 }
             }
@@ -371,31 +420,38 @@ class ModelLoader
             
             // Cut extension off of tex name
             let index = diffTexName?.range(of: ".", options: .backwards)?.lowerBound
-            let diffTexName2 = diffTexName?.substring(to: index!)
-            let diffTexExt = diffTexName?.substring(from: (diffTexName?.index(after: index!))!)
-            
-            if diffTexName2 != nil
+            if index != nil
             {
-                diffuseTexture = diffTexName2!
+                let diffTexName2 = diffTexName?.substring(to: index!)
+                let diffTexExt = diffTexName?.substring(from: (diffTexName?.index(after: index!))!)
                 
-                if TexturePool.textures[diffuseTexture] == nil
+                if diffTexName2 != nil
                 {
-                    // Get resource path
-                    let path = Bundle.main.path(forResource: diffTexName2, ofType: diffTexExt)
+                    diffuseTexture = diffTexName2!
                     
-                    do
+                    if TexturePool.textures[diffuseTexture] == nil
                     {
-                        // Load texture
-                        TexturePool.textures[diffuseTexture] = try GLKTextureLoader.texture(withContentsOfFile: path!,   options: opt)
+                        // Get resource path
+                        let path = Bundle.main.path(forResource: diffTexName2, ofType: diffTexExt)
+                    
+                        do
+                        {
+                            // Load texture
+                            TexturePool.textures[diffuseTexture] = try GLKTextureLoader.texture(withContentsOfFile: path!,   options: opt)
                         
-                        glEnable(GLenum(GL_TEXTURE_2D));
-                        glTexParameterf(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_S), GLfloat(GL_REPEAT));
-                    }catch
-                    {
-                        print("Could not load diffuse texture for model")
-                        isDiffuseLoaded = false
+                            glEnable(GLenum(GL_TEXTURE_2D));
+                            glTexParameterf(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_S), GLfloat(GL_REPEAT));
+                        }catch
+                        {
+                            print("Could not load diffuse texture for model")
+                            isDiffuseLoaded = false
+                        }
                     }
                 }
+            }
+            else
+            {
+                isDiffuseLoaded = false
             }
         }
         
@@ -411,32 +467,39 @@ class ModelLoader
             
             // Cut extension off of tex name
             let index = specTexName?.range(of: ".", options: .backwards)?.lowerBound
-            let specTexName2 = specTexName?.substring(to: index!)
-            let specTexExt = specTexName?.substring(from: (specTexName?.index(after: index!))!)
-            
-            if specTexName2 != nil
+            if index != nil
             {
-                specularTexture = specTexName2!
-                
-                if TexturePool.textures[specularTexture] == nil
-                {
-                    
-                    // Get resource path
-                    let path = Bundle.main.path(forResource: specTexName2, ofType: specTexExt)
+                let specTexName2 = specTexName?.substring(to: index!)
+                let specTexExt = specTexName?.substring(from: (specTexName?.index(after: index!))!)
             
-                    do
-                    {
-                        // Load texture
-                        TexturePool.textures[specularTexture] = try GLKTextureLoader.texture(withContentsOfFile: path!, options: opt)
+                if specTexName2 != nil
+                {
+                    specularTexture = specTexName2!
                 
-                        glEnable(GLenum(GL_TEXTURE_2D));
-                        glTexParameterf(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_S), GLfloat(GL_REPEAT));
-                    }catch
+                    if TexturePool.textures[specularTexture] == nil
                     {
-                        print("Could not load specular texture for model")
-                        isSpecularLoaded = false
+                    
+                        // Get resource path
+                        let path = Bundle.main.path(forResource: specTexName2, ofType: specTexExt)
+            
+                        do
+                        {
+                            // Load texture
+                            TexturePool.textures[specularTexture] = try GLKTextureLoader.texture(withContentsOfFile: path!, options: opt)
+                
+                            glEnable(GLenum(GL_TEXTURE_2D));
+                            glTexParameterf(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_S), GLfloat(GL_REPEAT));
+                        }catch
+                        {
+                            print("Could not load specular texture for model")
+                            isSpecularLoaded = false
+                        }
                     }
                 }
+            }
+            else
+            {
+                isSpecularLoaded = false
             }
         }
         

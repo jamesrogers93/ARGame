@@ -117,4 +117,23 @@ class Scene
         }
     }
     
+    public func updateAnimations()
+    {
+        // Animate the entites
+        for (_, entity) in self.entitesAnimated
+        {
+            // If the animation is playing, update it
+            if entity.glModel.animationController.isPlaying
+            {
+                if let animation = self.getAnimation(entity.glModel.animationController.animation)
+                {
+                    let frame = entity.glModel.animationController.frame
+                    if frame >= 0
+                    {
+                        entity.glModel.animate(animation, frame)
+                    }
+                }
+            }
+        }
+    }
 }

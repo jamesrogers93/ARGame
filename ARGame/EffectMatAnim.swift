@@ -10,6 +10,8 @@ import Foundation
 
 class EffectMatAnim : EffectMaterial
 {
+    public static let MAX_BONES: Int = 60
+    
     private var bones: Array<GLKMatrix4> = Array()
     
     public override init()
@@ -32,7 +34,7 @@ class EffectMatAnim : EffectMaterial
                                      "isTextureDiff", "isTextureSpec",
                                      "colourDiff", "colourSpec",
                                      "shininess"]
-        for i in 0..<50
+        for i in 0..<EffectMatAnim.MAX_BONES
         {
             uniformNames.append("bones[\(i)]")
         }
@@ -60,7 +62,7 @@ class EffectMatAnim : EffectMaterial
     
     public func setBones(_ _bones: Array<GLKMatrix4>)
     {
-        if _bones.count > 60
+        if _bones.count > EffectMatAnim.MAX_BONES
         {
             print("Unsupported number of bones")
             return

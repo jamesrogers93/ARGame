@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		1A05A47C1E9A31AB003B8104 /* TexturePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A47B1E9A31AB003B8104 /* TexturePool.swift */; };
+		1A05A4851E9A62BC003B8104 /* maria_warming_up.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4841E9A62BC003B8104 /* maria_warming_up.fbx */; };
+		1A05A48D1E9A674B003B8104 /* beta_breathing_idle.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A48B1E9A674B003B8104 /* beta_breathing_idle.fbx */; };
+		1A05A48E1E9A674B003B8104 /* beta_warming_up.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A48C1E9A674B003B8104 /* beta_warming_up.fbx */; };
+		1A05A4901E9A6767003B8104 /* beta.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A48F1E9A6767003B8104 /* beta.fbx */; };
+		1A05A4951E9A6773003B8104 /* maria_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4911E9A6773003B8104 /* maria_diffuse.png */; };
+		1A05A4961E9A6773003B8104 /* maria_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4921E9A6773003B8104 /* maria_specular.png */; };
+		1A05A4971E9A6773003B8104 /* maria1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4931E9A6773003B8104 /* maria1.fbx */; };
+		1A05A4981E9A6773003B8104 /* maria2.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4941E9A6773003B8104 /* maria2.fbx */; };
+		1A05A49A1E9A677D003B8104 /* vampire.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4991E9A677D003B8104 /* vampire.fbx */; };
+		1A05A49C1E9A67F0003B8104 /* vampire2.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A49B1E9A67EF003B8104 /* vampire2.fbx */; };
+		1A05A49F1E9A6987003B8104 /* vampire_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A49D1E9A6987003B8104 /* vampire_diffuse.png */; };
+		1A05A4A01E9A6987003B8104 /* vampire_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A49E1E9A6987003B8104 /* vampire_specular.png */; };
+		1A05A4A21E9A7AC8003B8104 /* maria.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4A11E9A7AC8003B8104 /* maria.fbx */; };
+		1A05A4A61E9A826C003B8104 /* beta_elbow_punch.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4A51E9A826B003B8104 /* beta_elbow_punch.fbx */; };
 		1A1788051E637A270087DE26 /* libARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E11E5E223800D136D5 /* libARgsub_es2.a */; };
 		1A1788061E637A270087DE26 /* libARICP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E31E5E225500D136D5 /* libARICP.a */; };
 		1A1788081E637A400087DE26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1788071E637A400087DE26 /* QuartzCore.framework */; };
@@ -45,13 +59,6 @@
 		1A755C231E59C95F00E2FFBC /* libassimp-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C221E59C95F00E2FFBC /* libassimp-fat.a */; };
 		1A755C2A1E59E0A100E2FFBC /* AssimpLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A755C281E59E0A100E2FFBC /* AssimpLoader.cpp */; };
 		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
-		1A99B23B1E980C9000E2831B /* Beta.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B23A1E980C9000E2831B /* Beta.fbx */; };
-		1A99B23D1E980E2E00E2831B /* breathing_idle.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B23C1E980E2E00E2831B /* breathing_idle.fbx */; };
-		1A99B23F1E981B9F00E2831B /* warming_up.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B23E1E981B9F00E2831B /* warming_up.fbx */; };
-		1A99B2411E99514200E2831B /* Maria.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B2401E99514200E2831B /* Maria.fbx */; };
-		1A99B2431E9958BE00E2831B /* Maria1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B2421E9958BE00E2831B /* Maria1.fbx */; };
-		1A99B2471E99598F00E2831B /* maria_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B2451E99598F00E2831B /* maria_diffuse.png */; };
-		1A99B2481E99598F00E2831B /* maria_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B2461E99598F00E2831B /* maria_specular.png */; };
 		1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */; };
 		1AC181221E71DF7B008C07F3 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC181211E71DF7B008C07F3 /* Shader.swift */; };
 		1AC1816C1E72C1AE008C07F3 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1816B1E72C1AD008C07F3 /* Effect.swift */; };
@@ -103,6 +110,20 @@
 
 /* Begin PBXFileReference section */
 		1A05A47B1E9A31AB003B8104 /* TexturePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexturePool.swift; sourceTree = "<group>"; };
+		1A05A4841E9A62BC003B8104 /* maria_warming_up.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria_warming_up.fbx; path = Assets/Animations/Maria/maria_warming_up.fbx; sourceTree = "<group>"; };
+		1A05A48B1E9A674B003B8104 /* beta_breathing_idle.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = beta_breathing_idle.fbx; path = Assets/Animations/Beta/beta_breathing_idle.fbx; sourceTree = "<group>"; };
+		1A05A48C1E9A674B003B8104 /* beta_warming_up.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = beta_warming_up.fbx; path = Assets/Animations/Beta/beta_warming_up.fbx; sourceTree = "<group>"; };
+		1A05A48F1E9A6767003B8104 /* beta.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = beta.fbx; path = Assets/Characters/Beta/beta.fbx; sourceTree = "<group>"; };
+		1A05A4911E9A6773003B8104 /* maria_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maria_diffuse.png; path = Assets/Characters/Maria/maria_diffuse.png; sourceTree = "<group>"; };
+		1A05A4921E9A6773003B8104 /* maria_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maria_specular.png; path = Assets/Characters/Maria/maria_specular.png; sourceTree = "<group>"; };
+		1A05A4931E9A6773003B8104 /* maria1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria1.fbx; path = Assets/Characters/Maria/maria1.fbx; sourceTree = "<group>"; };
+		1A05A4941E9A6773003B8104 /* maria2.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria2.fbx; path = Assets/Characters/Maria/maria2.fbx; sourceTree = "<group>"; };
+		1A05A4991E9A677D003B8104 /* vampire.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = vampire.fbx; path = Assets/Characters/Vampire/vampire.fbx; sourceTree = "<group>"; };
+		1A05A49B1E9A67EF003B8104 /* vampire2.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = vampire2.fbx; path = Assets/Characters/Vampire/vampire2.fbx; sourceTree = "<group>"; };
+		1A05A49D1E9A6987003B8104 /* vampire_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vampire_diffuse.png; path = Assets/Characters/Vampire/vampire_diffuse.png; sourceTree = "<group>"; };
+		1A05A49E1E9A6987003B8104 /* vampire_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vampire_specular.png; path = Assets/Characters/Vampire/vampire_specular.png; sourceTree = "<group>"; };
+		1A05A4A11E9A7AC8003B8104 /* maria.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria.fbx; path = Assets/Characters/Maria/maria.fbx; sourceTree = "<group>"; };
+		1A05A4A51E9A826B003B8104 /* beta_elbow_punch.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = beta_elbow_punch.fbx; path = Assets/Animations/Beta/beta_elbow_punch.fbx; sourceTree = "<group>"; };
 		1A1788071E637A400087DE26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A17880A1E640D950087DE26 /* camera_para.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = camera_para.dat; path = Assets_AR/camera_para.dat; sourceTree = "<group>"; };
 		1A17880C1E640D9E0087DE26 /* hiro.patt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hiro.patt; path = Assets_AR/hiro.patt; sourceTree = "<group>"; };
@@ -163,13 +184,6 @@
 		1A755C2B1E5A08D300E2FFBC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1A755C2D1E5A163800E2FFBC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		1A755C311E5AFC3800E2FFBC /* AssimpLoaderCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpLoaderCInterface.h; sourceTree = "<group>"; };
-		1A99B23A1E980C9000E2831B /* Beta.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = Beta.fbx; path = Assets/Characters/Beta.fbx; sourceTree = "<group>"; };
-		1A99B23C1E980E2E00E2831B /* breathing_idle.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = breathing_idle.fbx; path = Assets/Animations/breathing_idle.fbx; sourceTree = "<group>"; };
-		1A99B23E1E981B9F00E2831B /* warming_up.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = warming_up.fbx; path = Assets/Animations/warming_up.fbx; sourceTree = "<group>"; };
-		1A99B2401E99514200E2831B /* Maria.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = Maria.fbx; path = Assets/Characters/Maria.fbx; sourceTree = "<group>"; };
-		1A99B2421E9958BE00E2831B /* Maria1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = Maria1.fbx; path = Assets/Characters/Maria1.fbx; sourceTree = "<group>"; };
-		1A99B2451E99598F00E2831B /* maria_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maria_diffuse.png; path = Assets/Characters/maria_diffuse.png; sourceTree = "<group>"; };
-		1A99B2461E99598F00E2831B /* maria_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maria_specular.png; path = Assets/Characters/maria_specular.png; sourceTree = "<group>"; };
 		1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; path = "Assets_AR/camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; sourceTree = "<group>"; };
 		1AC181211E71DF7B008C07F3 /* Shader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
 		1AC1816B1E72C1AD008C07F3 /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
@@ -235,6 +249,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A05A47D1E9A5379003B8104 /* Maria */ = {
+			isa = PBXGroup;
+			children = (
+				1A05A4841E9A62BC003B8104 /* maria_warming_up.fbx */,
+			);
+			name = Maria;
+			sourceTree = "<group>";
+		};
+		1A05A4861E9A6639003B8104 /* Vampire */ = {
+			isa = PBXGroup;
+			children = (
+				1A05A49D1E9A6987003B8104 /* vampire_diffuse.png */,
+				1A05A49E1E9A6987003B8104 /* vampire_specular.png */,
+				1A05A49B1E9A67EF003B8104 /* vampire2.fbx */,
+				1A05A4991E9A677D003B8104 /* vampire.fbx */,
+			);
+			name = Vampire;
+			sourceTree = "<group>";
+		};
+		1A05A4891E9A6737003B8104 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				1A05A48F1E9A6767003B8104 /* beta.fbx */,
+			);
+			name = Beta;
+			sourceTree = "<group>";
+		};
+		1A05A48A1E9A673E003B8104 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				1A05A4A51E9A826B003B8104 /* beta_elbow_punch.fbx */,
+				1A05A48B1E9A674B003B8104 /* beta_breathing_idle.fbx */,
+				1A05A48C1E9A674B003B8104 /* beta_warming_up.fbx */,
+			);
+			name = Beta;
+			sourceTree = "<group>";
+		};
 		1A1788091E640D010087DE26 /* Assets_AR */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,8 +426,8 @@
 		1A725D361E75BF6600322D6A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				1A99B23E1E981B9F00E2831B /* warming_up.fbx */,
-				1A99B23C1E980E2E00E2831B /* breathing_idle.fbx */,
+				1A05A48A1E9A673E003B8104 /* Beta */,
+				1A05A47D1E9A5379003B8104 /* Maria */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -422,8 +473,9 @@
 		1A99B2391E980BBA00E2831B /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				1A05A4891E9A6737003B8104 /* Beta */,
+				1A05A4861E9A6639003B8104 /* Vampire */,
 				1A99B2441E99597B00E2831B /* Maria */,
-				1A99B23A1E980C9000E2831B /* Beta.fbx */,
 			);
 			name = Characters;
 			sourceTree = "<group>";
@@ -431,10 +483,11 @@
 		1A99B2441E99597B00E2831B /* Maria */ = {
 			isa = PBXGroup;
 			children = (
-				1A99B2451E99598F00E2831B /* maria_diffuse.png */,
-				1A99B2461E99598F00E2831B /* maria_specular.png */,
-				1A99B2421E9958BE00E2831B /* Maria1.fbx */,
-				1A99B2401E99514200E2831B /* Maria.fbx */,
+				1A05A4911E9A6773003B8104 /* maria_diffuse.png */,
+				1A05A4921E9A6773003B8104 /* maria_specular.png */,
+				1A05A4A11E9A7AC8003B8104 /* maria.fbx */,
+				1A05A4931E9A6773003B8104 /* maria1.fbx */,
+				1A05A4941E9A6773003B8104 /* maria2.fbx */,
 			);
 			name = Maria;
 			sourceTree = "<group>";
@@ -619,43 +672,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AEFE7481E65A12700698808 /* box.mtl in Resources */,
-				1A99B2411E99514200E2831B /* Maria.fbx in Resources */,
 				1ADFA8D41E64DE9600588345 /* leg_dif.png in Resources */,
+				1A05A4901E9A6767003B8104 /* beta.fbx in Resources */,
 				1ADFA8CF1E64DE9600588345 /* glass_dif.png in Resources */,
 				1ADFA8D31E64DE9600588345 /* helmet_showroom_spec.png in Resources */,
-				1A99B23F1E981B9F00E2831B /* warming_up.fbx in Resources */,
+				1A05A48E1E9A674B003B8104 /* beta_warming_up.fbx in Resources */,
+				1A05A49A1E9A677D003B8104 /* vampire.fbx in Resources */,
 				1ADFA8D51E64DE9600588345 /* leg_showroom_spec.png in Resources */,
-				1A99B2471E99598F00E2831B /* maria_diffuse.png in Resources */,
 				1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */,
 				1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */,
+				1A05A4A21E9A7AC8003B8104 /* maria.fbx in Resources */,
 				1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */,
 				1A30362C1E856B1D00484367 /* ShaderAnimation.vsh in Resources */,
 				1AC181771E7355E0008C07F3 /* ShaderBasic.vsh in Resources */,
+				1A05A4851E9A62BC003B8104 /* maria_warming_up.fbx in Resources */,
 				1A5B67071E5C4045000463E3 /* robot.mtl in Resources */,
 				1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */,
+				1A05A4A61E9A826C003B8104 /* beta_elbow_punch.fbx in Resources */,
 				1ADFA8D11E64DE9600588345 /* hand_showroom_spec.png in Resources */,
 				1A5B67081E5C4046000463E3 /* robot.obj in Resources */,
 				1AEFE74B1E65A12700698808 /* container2_specular.png in Resources */,
 				1AC181761E7355E0008C07F3 /* ShaderBasic.fsh in Resources */,
 				1AEFE74A1E65A12700698808 /* container2.png in Resources */,
 				1A17880B1E640D950087DE26 /* camera_para.dat in Resources */,
-				1A99B2481E99598F00E2831B /* maria_specular.png in Resources */,
 				1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */,
 				1ADFA8CC1E64DE9600588345 /* body_dif.png in Resources */,
 				1ADFA8CD1E64DE9600588345 /* body_showroom_spec.png in Resources */,
 				1A44DCCC1E55F34C0036E753 /* Assets.xcassets in Resources */,
-				1A99B23B1E980C9000E2831B /* Beta.fbx in Resources */,
+				1A05A4971E9A6773003B8104 /* maria1.fbx in Resources */,
 				1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */,
 				1A5B67041E5BADCE000463E3 /* cube.obj in Resources */,
 				1A44DCCF1E55F34C0036E753 /* LaunchScreen.storyboard in Resources */,
 				1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */,
+				1A05A49F1E9A6987003B8104 /* vampire_diffuse.png in Resources */,
 				1ADFA8CE1E64DE9600588345 /* glass_ddn.png in Resources */,
+				1A05A4981E9A6773003B8104 /* maria2.fbx in Resources */,
+				1A05A49C1E9A67F0003B8104 /* vampire2.fbx in Resources */,
 				1ADFA8CA1E64DE9600588345 /* arm_dif.png in Resources */,
-				1A99B2431E9958BE00E2831B /* Maria1.fbx in Resources */,
 				1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */,
 				1ADFA8D21E64DE9600588345 /* helmet_diff.png in Resources */,
+				1A05A4951E9A6773003B8104 /* maria_diffuse.png in Resources */,
+				1A05A4961E9A6773003B8104 /* maria_specular.png in Resources */,
+				1A05A4A01E9A6987003B8104 /* vampire_specular.png in Resources */,
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,
-				1A99B23D1E980E2E00E2831B /* breathing_idle.fbx in Resources */,
+				1A05A48D1E9A674B003B8104 /* beta_breathing_idle.fbx in Resources */,
 				1AEFE7491E65A12700698808 /* box.obj in Resources */,
 				1AC1817B1E7356D0008C07F3 /* ShaderMaterial.vsh in Resources */,
 				1ADFA8D01E64DE9600588345 /* hand_dif.png in Resources */,
