@@ -18,6 +18,8 @@ class Effect
     internal var colour: GLKVector4 = GLKVector4Make(0.0, 0.0, 0.0, 0.0)
     internal var texture0: GLuint = 0
     internal var texture1: GLuint = 0
+    internal var isTexture0Loaded: Bool = false
+    internal var isTexture1Loaded: Bool = false
     
     internal init(_ vertex: String, _ fragment: String, _ vertexAttribs: [(GLint, String)], _ uniformNames:[String])
     {
@@ -58,6 +60,16 @@ class Effect
     public func setTexture1(_ texture: GLuint)
     {
         self.texture1 = texture
+    }
+    
+    public func setIsTexture0Loaded(_ loaded: Bool)
+    {
+        self.isTexture0Loaded = loaded
+    }
+    
+    public func setIsTexture1Loaded(_ loaded: Bool)
+    {
+        self.isTexture1Loaded = loaded
     }
     
     internal func prepareToDraw()

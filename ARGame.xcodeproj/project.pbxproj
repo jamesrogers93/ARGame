@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A05A47C1E9A31AB003B8104 /* TexturePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A47B1E9A31AB003B8104 /* TexturePool.swift */; };
 		1A1788051E637A270087DE26 /* libARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E11E5E223800D136D5 /* libARgsub_es2.a */; };
 		1A1788061E637A270087DE26 /* libARICP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E31E5E225500D136D5 /* libARICP.a */; };
 		1A1788081E637A400087DE26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1788071E637A400087DE26 /* QuartzCore.framework */; };
 		1A17880B1E640D950087DE26 /* camera_para.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880A1E640D950087DE26 /* camera_para.dat */; };
 		1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880C1E640D9E0087DE26 /* hiro.patt */; };
 		1A3036281E8566B500484367 /* EffectMatAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3036271E8566B500484367 /* EffectMatAnim.swift */; };
-		1A30362B1E856B1D00484367 /* ShaderMatAnim.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A3036291E856B1D00484367 /* ShaderMatAnim.fsh */; };
-		1A30362C1E856B1D00484367 /* ShaderMatAnim.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A30362A1E856B1D00484367 /* ShaderMatAnim.vsh */; };
+		1A30362C1E856B1D00484367 /* ShaderAnimation.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A30362A1E856B1D00484367 /* ShaderAnimation.vsh */; };
 		1A435D5B1E83BB6F00D44433 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5A1E83BB6F00D44433 /* Vertex.swift */; };
 		1A435D5D1E83BBC000D44433 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5C1E83BBC000D44433 /* Material.swift */; };
 		1A44925D1E96A9B900C27B4B /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44925C1E96A9B900C27B4B /* Entity.swift */; };
@@ -47,6 +47,11 @@
 		1A755C2E1E5A163800E2FFBC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A755C2D1E5A163800E2FFBC /* libz.tbd */; };
 		1A99B23B1E980C9000E2831B /* Beta.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B23A1E980C9000E2831B /* Beta.fbx */; };
 		1A99B23D1E980E2E00E2831B /* breathing_idle.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B23C1E980E2E00E2831B /* breathing_idle.fbx */; };
+		1A99B23F1E981B9F00E2831B /* warming_up.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B23E1E981B9F00E2831B /* warming_up.fbx */; };
+		1A99B2411E99514200E2831B /* Maria.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B2401E99514200E2831B /* Maria.fbx */; };
+		1A99B2431E9958BE00E2831B /* Maria1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B2421E9958BE00E2831B /* Maria1.fbx */; };
+		1A99B2471E99598F00E2831B /* maria_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B2451E99598F00E2831B /* maria_diffuse.png */; };
+		1A99B2481E99598F00E2831B /* maria_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A99B2461E99598F00E2831B /* maria_specular.png */; };
 		1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */; };
 		1AC181221E71DF7B008C07F3 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC181211E71DF7B008C07F3 /* Shader.swift */; };
 		1AC1816C1E72C1AE008C07F3 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1816B1E72C1AD008C07F3 /* Effect.swift */; };
@@ -97,12 +102,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A05A47B1E9A31AB003B8104 /* TexturePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexturePool.swift; sourceTree = "<group>"; };
 		1A1788071E637A400087DE26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A17880A1E640D950087DE26 /* camera_para.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = camera_para.dat; path = Assets_AR/camera_para.dat; sourceTree = "<group>"; };
 		1A17880C1E640D9E0087DE26 /* hiro.patt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hiro.patt; path = Assets_AR/hiro.patt; sourceTree = "<group>"; };
 		1A3036271E8566B500484367 /* EffectMatAnim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectMatAnim.swift; sourceTree = "<group>"; };
-		1A3036291E856B1D00484367 /* ShaderMatAnim.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMatAnim.fsh; path = Shaders/ShaderMatAnim.fsh; sourceTree = "<group>"; };
-		1A30362A1E856B1D00484367 /* ShaderMatAnim.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMatAnim.vsh; path = Shaders/ShaderMatAnim.vsh; sourceTree = "<group>"; };
+		1A30362A1E856B1D00484367 /* ShaderAnimation.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderAnimation.vsh; path = Shaders/ShaderAnimation.vsh; sourceTree = "<group>"; };
 		1A435D5A1E83BB6F00D44433 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		1A435D5C1E83BBC000D44433 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		1A44925C1E96A9B900C27B4B /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
@@ -160,6 +165,11 @@
 		1A755C311E5AFC3800E2FFBC /* AssimpLoaderCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpLoaderCInterface.h; sourceTree = "<group>"; };
 		1A99B23A1E980C9000E2831B /* Beta.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = Beta.fbx; path = Assets/Characters/Beta.fbx; sourceTree = "<group>"; };
 		1A99B23C1E980E2E00E2831B /* breathing_idle.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = breathing_idle.fbx; path = Assets/Animations/breathing_idle.fbx; sourceTree = "<group>"; };
+		1A99B23E1E981B9F00E2831B /* warming_up.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = warming_up.fbx; path = Assets/Animations/warming_up.fbx; sourceTree = "<group>"; };
+		1A99B2401E99514200E2831B /* Maria.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = Maria.fbx; path = Assets/Characters/Maria.fbx; sourceTree = "<group>"; };
+		1A99B2421E9958BE00E2831B /* Maria1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = Maria1.fbx; path = Assets/Characters/Maria1.fbx; sourceTree = "<group>"; };
+		1A99B2451E99598F00E2831B /* maria_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maria_diffuse.png; path = Assets/Characters/maria_diffuse.png; sourceTree = "<group>"; };
+		1A99B2461E99598F00E2831B /* maria_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maria_specular.png; path = Assets/Characters/maria_specular.png; sourceTree = "<group>"; };
 		1AA85D641E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; path = "Assets_AR/camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat"; sourceTree = "<group>"; };
 		1AC181211E71DF7B008C07F3 /* Shader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
 		1AC1816B1E72C1AD008C07F3 /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
@@ -365,6 +375,7 @@
 		1A725D361E75BF6600322D6A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				1A99B23E1E981B9F00E2831B /* warming_up.fbx */,
 				1A99B23C1E980E2E00E2831B /* breathing_idle.fbx */,
 			);
 			name = Animations;
@@ -411,9 +422,21 @@
 		1A99B2391E980BBA00E2831B /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				1A99B2441E99597B00E2831B /* Maria */,
 				1A99B23A1E980C9000E2831B /* Beta.fbx */,
 			);
 			name = Characters;
+			sourceTree = "<group>";
+		};
+		1A99B2441E99597B00E2831B /* Maria */ = {
+			isa = PBXGroup;
+			children = (
+				1A99B2451E99598F00E2831B /* maria_diffuse.png */,
+				1A99B2461E99598F00E2831B /* maria_specular.png */,
+				1A99B2421E9958BE00E2831B /* Maria1.fbx */,
+				1A99B2401E99514200E2831B /* Maria.fbx */,
+			);
+			name = Maria;
 			sourceTree = "<group>";
 		};
 		1AC181611E72AA68008C07F3 /* Shaders */ = {
@@ -423,8 +446,7 @@
 				1AC181741E7355E0008C07F3 /* ShaderBasic.fsh */,
 				1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */,
 				1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */,
-				1A30362A1E856B1D00484367 /* ShaderMatAnim.vsh */,
-				1A3036291E856B1D00484367 /* ShaderMatAnim.fsh */,
+				1A30362A1E856B1D00484367 /* ShaderAnimation.vsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -437,6 +459,7 @@
 				1AC1816F1E734D4E008C07F3 /* EffectBasic.swift */,
 				1AC181721E735597008C07F3 /* EffectMaterial.swift */,
 				1A3036271E8566B500484367 /* EffectMatAnim.swift */,
+				1A05A47B1E9A31AB003B8104 /* TexturePool.swift */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -596,14 +619,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AEFE7481E65A12700698808 /* box.mtl in Resources */,
+				1A99B2411E99514200E2831B /* Maria.fbx in Resources */,
 				1ADFA8D41E64DE9600588345 /* leg_dif.png in Resources */,
 				1ADFA8CF1E64DE9600588345 /* glass_dif.png in Resources */,
 				1ADFA8D31E64DE9600588345 /* helmet_showroom_spec.png in Resources */,
+				1A99B23F1E981B9F00E2831B /* warming_up.fbx in Resources */,
 				1ADFA8D51E64DE9600588345 /* leg_showroom_spec.png in Resources */,
+				1A99B2471E99598F00E2831B /* maria_diffuse.png in Resources */,
 				1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */,
 				1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */,
 				1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */,
-				1A30362C1E856B1D00484367 /* ShaderMatAnim.vsh in Resources */,
+				1A30362C1E856B1D00484367 /* ShaderAnimation.vsh in Resources */,
 				1AC181771E7355E0008C07F3 /* ShaderBasic.vsh in Resources */,
 				1A5B67071E5C4045000463E3 /* robot.mtl in Resources */,
 				1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */,
@@ -613,6 +639,7 @@
 				1AC181761E7355E0008C07F3 /* ShaderBasic.fsh in Resources */,
 				1AEFE74A1E65A12700698808 /* container2.png in Resources */,
 				1A17880B1E640D950087DE26 /* camera_para.dat in Resources */,
+				1A99B2481E99598F00E2831B /* maria_specular.png in Resources */,
 				1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */,
 				1ADFA8CC1E64DE9600588345 /* body_dif.png in Resources */,
 				1ADFA8CD1E64DE9600588345 /* body_showroom_spec.png in Resources */,
@@ -624,7 +651,7 @@
 				1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */,
 				1ADFA8CE1E64DE9600588345 /* glass_ddn.png in Resources */,
 				1ADFA8CA1E64DE9600588345 /* arm_dif.png in Resources */,
-				1A30362B1E856B1D00484367 /* ShaderMatAnim.fsh in Resources */,
+				1A99B2431E9958BE00E2831B /* Maria1.fbx in Resources */,
 				1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */,
 				1ADFA8D21E64DE9600588345 /* helmet_diff.png in Resources */,
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,
@@ -676,6 +703,7 @@
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,
 				1A44926F1E9787BD00C27B4B /* Mesh.swift in Sources */,
 				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
+				1A05A47C1E9A31AB003B8104 /* TexturePool.swift in Sources */,
 				1ADFA8B81E64C05900588345 /* AssimpLoaderCInterface.cpp in Sources */,
 				1A435D5D1E83BBC000D44433 /* Material.swift in Sources */,
 				1A435D5B1E83BB6F00D44433 /* Vertex.swift in Sources */,

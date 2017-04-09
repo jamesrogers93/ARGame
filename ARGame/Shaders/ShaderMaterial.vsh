@@ -6,9 +6,11 @@
 //  Copyright © 2017 James Rogers. All rights reserved.
 //
 
-attribute vec4 position;
-attribute vec3 normal;
-attribute vec2 texCoord;
+#version 300 es
+
+in vec4 position;
+in vec3 normal;
+in vec2 texCoord;
 
 uniform mat4 projectionMatrix;
 uniform mat4 viewMatrix;
@@ -17,9 +19,9 @@ uniform mat4 modelMatrix;
 uniform mat3 normalMatrix;
 
 // Out variables
-varying mediump vec2 TexCoord;
-varying mediump vec3 Normal;
-varying mediump vec3 FragPos;
+out mediump vec2 TexCoord;
+out mediump vec3 Normal;
+out mediump vec3 FragPos;
 
 void main()
 {

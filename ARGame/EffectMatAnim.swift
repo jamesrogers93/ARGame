@@ -15,8 +15,8 @@ class EffectMatAnim : EffectMaterial
     public override init()
     {
         // Set shader parameters
-        let vertName: String = "ShaderMatAnim"
-        let fragName: String = "ShaderMatAnim"
+        let vertName: String = "ShaderAnimation"
+        let fragName: String = "ShaderMaterial"
         
         let vertAttribs: [(GLint, String)] = [(ShaderVertexAttrib.position.rawValue,   "position"),
                                               (ShaderVertexAttrib.normal.rawValue,     "normal"),
@@ -29,6 +29,7 @@ class EffectMatAnim : EffectMaterial
                                      "viewPosition",
                                      "colour",
                                      "textureDiff", "textureSpec",
+                                     "isTextureDiff", "isTextureSpec",
                                      "colourDiff", "colourSpec",
                                      "shininess"]
         for i in 0..<50
@@ -59,7 +60,7 @@ class EffectMatAnim : EffectMaterial
     
     public func setBones(_ _bones: Array<GLKMatrix4>)
     {
-        if _bones.count > 50
+        if _bones.count > 60
         {
             print("Unsupported number of bones")
             return

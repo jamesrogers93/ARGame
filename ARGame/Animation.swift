@@ -73,14 +73,7 @@ class AnimationPlayBack
         {
             self.update()
         
-            if self.isPlay
-            {
-                return self.animationFrame
-            }
-            else
-            {
-                return -1
-            }
+            return self.animationFrame
         }
     }
     
@@ -89,6 +82,14 @@ class AnimationPlayBack
         get
         {
             return self.animationName
+        }
+    }
+    
+    public var isPlaying:Bool
+    {
+        get
+        {
+            return self.isPlay
         }
     }
     
