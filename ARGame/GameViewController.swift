@@ -135,15 +135,23 @@ class GameViewController: GLKViewController
             
             if let entity = self.scene.getEntityAnimated("player1")
             {
-                if let animation = self.scene.getAnimation("breathing_idle")
+                entity.translate(GLKVector3Make(0.0, 0.0, -100.0))
+                if entity.glModel.animationController.isPlaying
                 {
-                    if let controller = self.scene.getAnimationController("player1_breathing_idle")
+                    if let animation = self.scene.getAnimation(entity.glModel.animationController.animation)
                     {
-                        let frame = controller.getFrame()
+                        let frame = entity.glModel.animationController.frame
                         if frame >= 0
                         {
                             entity.glModel.animate(animation, frame)
                         }
+                    }
+                }
+                else
+                {
+                    if let animation = self.scene.getAnimation("warming_up")
+                    {
+                        entity.glModel.animationController.loop(("warming_up", animation))
                     }
                 }
             }

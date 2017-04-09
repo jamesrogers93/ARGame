@@ -13,12 +13,12 @@ struct Material
     /**
      The diffuse texture.
      */
-    var diffuseTexture: GLKTextureInfo = GLKTextureInfo()
+    var diffuseTexture: (Bool, String) = (false, "")
     
     /**
      The specular texture.
      */
-    var specularTexture: GLKTextureInfo = GLKTextureInfo()
+    var specularTexture: (Bool, String) = (false, "")
     
     /**
      The diffuse colour.
@@ -38,7 +38,7 @@ struct Material
     init()
     {}
     
-    init(_ diffuseTexture: GLKTextureInfo, _ specularTexture: GLKTextureInfo, _ diffuseColour: GLKVector4, _ specularColour: GLKVector4, _ shininess: Float)
+    init(_ diffuseTexture: (Bool, String), _ specularTexture: (Bool, String), _ diffuseColour: GLKVector4, _ specularColour: GLKVector4, _ shininess: Float)
     {
         self.diffuseTexture = diffuseTexture
         self.specularTexture = specularTexture

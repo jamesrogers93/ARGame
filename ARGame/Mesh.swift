@@ -85,8 +85,18 @@ class MeshStatic : Mesh
     public func draw(_ effect: EffectMaterial)
     {
         // Prepare Effect
-        effect.setTexture0(self.material.diffuseTexture.name)
-        effect.setTexture1(self.material.specularTexture.name)
+        if self.material.diffuseTexture.0
+        {
+            effect.setTexture0((TexturePool.textures[self.material.diffuseTexture.1]?.name)!)
+        }
+        effect.setIsTexture0Loaded(self.material.diffuseTexture.0)
+        
+        if self.material.specularTexture.0
+        {
+            effect.setTexture1((TexturePool.textures[self.material.specularTexture.1]?.name)!)
+        }
+        effect.setIsTexture1Loaded(self.material.specularTexture.0)
+        
         effect.setColourDiffuse(self.material.diffuseColour)
         effect.setColourSpecular(self.material.specularColour)
         effect.setShininess(self.material.shininess)
@@ -165,19 +175,19 @@ class MeshStatic : Mesh
         glDeleteVertexArraysOES(1, &self.VAO)
         
         //Delete textures
-        var id: GLuint = 0
+        //var id: GLuint = 0
         
-        if(self.material.diffuseTexture.name != 0)
+        /*if(self.material.diffuseTexture.1.name != 0)
         {
-            id = self.material.diffuseTexture.name
+            id = self.material.diffuseTexture.1.name
             glDeleteTextures(1, &id)
         }
         
-        if(self.material.specularTexture.name != 0)
+        if(self.material.specularTexture.1.name != 0)
         {
-            id = self.material.specularTexture.name
+            id = self.material.specularTexture.1.name
             glDeleteTextures(1, &id)
-        }
+        }*/
     }
 }
 
@@ -230,8 +240,18 @@ class MeshAnimated : Mesh
     public func draw(_ effect: EffectMatAnim)
     {
         // Prepare Effect
-        effect.setTexture0(self.material.diffuseTexture.name)
-        effect.setTexture1(self.material.specularTexture.name)
+        if self.material.diffuseTexture.0
+        {
+            effect.setTexture0((TexturePool.textures[self.material.diffuseTexture.1]?.name)!)
+        }
+        effect.setIsTexture0Loaded(self.material.diffuseTexture.0)
+        
+        if self.material.specularTexture.0
+        {
+            effect.setTexture1((TexturePool.textures[self.material.specularTexture.1]?.name)!)
+        }
+        effect.setIsTexture1Loaded(self.material.specularTexture.0)
+        
         effect.setColourDiffuse(self.material.diffuseColour)
         effect.setColourSpecular(self.material.specularColour)
         effect.setShininess(self.material.shininess)
@@ -416,18 +436,18 @@ class MeshAnimated : Mesh
         glDeleteVertexArraysOES(1, &self.VAO)
         
         //Delete textures
-        var id: GLuint = 0
+        /*var id: GLuint = 0
         
-        if(self.material.diffuseTexture.name != 0)
+        if(self.material.diffuseTexture.1.name != 0)
         {
-            id = self.material.diffuseTexture.name
+            id = self.material.diffuseTexture.1.name
             glDeleteTextures(1, &id)
         }
         
-        if(self.material.specularTexture.name != 0)
+        if(self.material.specularTexture.1.name != 0)
         {
-            id = self.material.specularTexture.name
+            id = self.material.specularTexture.1.name
             glDeleteTextures(1, &id)
-        }
+        }*/
     }
 }

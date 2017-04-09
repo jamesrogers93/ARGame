@@ -42,31 +42,55 @@ struct Animation
 
 class AnimationPlayBack
 {
-    private var animationFrame: Int
-    private var animationDuration: Float
-    private var animationTicksPerSecond: Float
-    private var previousTime: TimeInterval
-    private var isPlay: Bool
-    private var isLoop: Bool
+    private var animationName: String = ""
+    private var animationFrame: Int = 0
+    private var animationDuration: Float = 0.0
+    private var animationTicksPerSecond: Float = 0.0
+    private var previousTime: TimeInterval = 0.0
+    private var isPlay: Bool = false
+    private var isLoop: Bool = false
     
-    init(_ _animation: Animation)
+    public func play(_ animation:(String, Animation))
     {
-        self.animationFrame = 0
-        self.animationDuration = _animation.duration
-        self.animationTicksPerSecond = _animation.ticksPerSecond
-        self.previousTime = 0.0
-        self.isPlay = false
-        self.isLoop = false
-    }
-    
-    public func play()
-    {
+        self.initalise(animation)
         self.restart(false)
     }
     
-    public func loop()
+    public func loop(_ animation:(String, Animation))
     {
+        self.initalise(animation)
         self.restart(true)
+    }
+    
+    public func stop()
+    {
+        self.isPlay = false
+    }
+    
+    public var frame:Int
+    {
+        get
+        {
+            self.update()
+        
+            return self.animationFrame
+        }
+    }
+    
+    public var animation:String
+    {
+        get
+        {
+            return self.animationName
+        }
+    }
+    
+    public var isPlaying:Bool
+    {
+        get
+        {
+            return self.isPlay
+        }
     }
     
     private func restart(_ _loop: Bool)
@@ -76,11 +100,6 @@ class AnimationPlayBack
         
         self.animationFrame = 0
         self.previousTime = NSDate().timeIntervalSince1970
-    }
-    
-    public func stop()
-    {
-        self.isPlay = false
     }
     
     private func update()
@@ -97,7 +116,7 @@ class AnimationPlayBack
                 if self.isLoop
                 {
                     // Reset the animation
-                    self.loop()
+                    self.restart(true)
                 }
                 else
                 {
@@ -116,18 +135,14 @@ class AnimationPlayBack
         }
     }
     
-    public func getFrame() -> Int
+    private func initalise(_ animation:(String, Animation))
     {
-        self.update()
-        
-        if self.isPlay
-        {
-            return self.animationFrame
-        }
-        else
-        {
-            return -1
-        }
-        
+        self.animationName = animation.0
+        self.animationFrame = 0
+        self.animationDuration = animation.1.duration
+        self.animationTicksPerSecond = animation.1.ticksPerSecond
+        self.previousTime = 0.0
+        self.isPlay = false
+        self.isLoop = false
     }
 }

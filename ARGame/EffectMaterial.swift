@@ -29,6 +29,7 @@ class EffectMaterial : Effect
                                      "viewPosition",
                                      "colour",
                                      "textureDiff", "textureSpec",
+                                     "isTextureDiff", "isTextureSpec",
                                      "colourDiff", "colourSpec",
                                      "shininess"]
         
@@ -124,6 +125,16 @@ class EffectMaterial : Effect
             glActiveTexture(GLenum(GL_TEXTURE1))
             glUniform1f(loc, 0)
             glBindTexture(GLenum(GL_TEXTURE_2D), self.texture1)
+        }
+        
+        if let loc = self.shader.getUniformLocation("isTextureDiff")
+        {
+            glUniform1i(loc, self.isTexture0Loaded ? 1 : 0)
+        }
+        
+        if let loc = self.shader.getUniformLocation("isTextureSpec")
+        {
+            glUniform1i(loc, self.isTexture1Loaded ? 1 : 0)
         }
         
         // Set up the colours in the shader
