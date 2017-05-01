@@ -12,6 +12,9 @@
 // Assimp Loader C Interface
 #include "AssimpLoaderCInterface.h"
 
+// FBX Loacer C Interface
+#include "FBXLoaderCInterface.h"
+
 // ARToolKit
 #import "ARHandler.h"
 

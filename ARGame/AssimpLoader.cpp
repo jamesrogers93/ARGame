@@ -262,6 +262,8 @@ void AssimpLoader::processAnimation(aiAnimation* animation, const aiScene* scene
     {
         // Get channel name
         std::string name = animation->mChannels[i]->mNodeName.data;
+        std::string delimiter = "_$";
+        name = name.substr(0, name.find(delimiter));
         
         // Get channel positions
         std::vector<float> positions;

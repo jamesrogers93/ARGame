@@ -1,0 +1,7 @@
+﻿<?xml version="1.0"?>
+<Entity name="beta" type="animated">
+    <Model name="beta" type="fbx"/>
+    <Translation x="-30.0" y="0.0" z="0.0"/>
+    <Scale       x="0.45" y="0.45" z="0.45"/>
+    <Rotation    x="0.0" y="0.0" z="0.0" w="0.0"/>
+</Entity>

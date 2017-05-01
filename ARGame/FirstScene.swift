@@ -15,30 +15,27 @@ class FirstScene : Scene
         super.effectMaterial = EffectMaterial()
         super.effectMaterialAnimated = EffectMatAnim()
         
-        let entity1 = ("player2", EntityAnimated(ModelLoader.loadAnimatedModelFromFile("Maria1", "fbx")))
+        let entityLoader = EntityLoader()
+        entityLoader.loadEntityFromFile("ganfaul", self);
+        entityLoader.loadEntityFromFile("beta", self);
         
-        addEntityAnimated(entity1)
         
-        let entity = ("player1", EntityAnimated(ModelLoader.loadAnimatedModelFromFile("Beta", "fbx")))
-        
-        if !super.addEntityAnimated(entity)
-        {
-            print("Could not add Entity: \(entity.0) to scene")
-        }
-        
-        let animation1 = ("breathing_idle", AnimationLoader.loadAnimationFromFile("breathing_idle", "fbx")!)
-        let animation2 = ("warming_up", AnimationLoader.loadAnimationFromFile("warming_up", "fbx")!)
-
+        let animation1 = ("beta_breathing_idle", AnimationLoader.loadAnimationFromFile("beta_breathing_idle", "fbx")!)
         if !super.addAnimation(animation1)
         {
             print("Could not add Animation: \(animation1.0) to scene")
         }
         
+        self.entitesAnimated["beta"]?.glModel.animationController.loop(animation1)
+        
+        
+        /*let animation2 = ("maria_breathing_idle", AnimationLoader.loadAnimationFromFile("maria_breathing_idle2", "fbx")!)
         if !super.addAnimation(animation2)
         {
             print("Could not add Animation: \(animation2.0) to scene")
         }
         
-        entity.1.glModel.animationController.play(animation1)
+        self.entitesAnimated["maria"]?.glModel.animationController.loop(animation2)*/
+        
     }
 }

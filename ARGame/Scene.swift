@@ -93,6 +93,21 @@ class Scene
         return self.animations[name]
     }
     
+    public func isEntityAnimatedExist(_ name: String) -> Bool
+    {
+        return self.entitesAnimated[name] != nil
+    }
+    
+    public func isEntityStaticExist(_ name: String) -> Bool
+    {
+        return self.entitesStatic[name] != nil
+    }
+    
+    public func isAnimationExist(_ name: String) -> Bool
+    {
+        return self.animations[name] != nil
+    }
+    
     public func render()
     {
     
@@ -117,4 +132,23 @@ class Scene
         }
     }
     
+    public func updateAnimations()
+    {
+        // Animate the entites
+        for (_, entity) in self.entitesAnimated
+        {
+            // If the animation is playing, update it
+            if entity.glModel.animationController.isPlaying
+            {
+                if let animation = self.getAnimation(entity.glModel.animationController.animation)
+                {
+                    let frame = entity.glModel.animationController.frame
+                    if frame >= 0
+                    {
+                        entity.glModel.animate(animation, frame)
+                    }
+                }
+            }
+        }
+    }
 }
