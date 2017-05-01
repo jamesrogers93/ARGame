@@ -93,6 +93,21 @@ class Scene
         return self.animations[name]
     }
     
+    public func isEntityAnimatedExist(_ name: String) -> Bool
+    {
+        return self.entitesAnimated[name] != nil
+    }
+    
+    public func isEntityStaticExist(_ name: String) -> Bool
+    {
+        return self.entitesStatic[name] != nil
+    }
+    
+    public func isAnimationExist(_ name: String) -> Bool
+    {
+        return self.animations[name] != nil
+    }
+    
     public func render()
     {
     

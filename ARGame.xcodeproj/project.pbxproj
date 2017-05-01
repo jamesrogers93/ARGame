@@ -14,19 +14,40 @@
 		1A05A4901E9A6767003B8104 /* beta.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A48F1E9A6767003B8104 /* beta.fbx */; };
 		1A05A4951E9A6773003B8104 /* maria_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4911E9A6773003B8104 /* maria_diffuse.png */; };
 		1A05A4961E9A6773003B8104 /* maria_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4921E9A6773003B8104 /* maria_specular.png */; };
-		1A05A4971E9A6773003B8104 /* maria1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4931E9A6773003B8104 /* maria1.fbx */; };
-		1A05A4981E9A6773003B8104 /* maria2.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4941E9A6773003B8104 /* maria2.fbx */; };
-		1A05A49A1E9A677D003B8104 /* vampire.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4991E9A677D003B8104 /* vampire.fbx */; };
-		1A05A49C1E9A67F0003B8104 /* vampire2.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A49B1E9A67EF003B8104 /* vampire2.fbx */; };
 		1A05A49F1E9A6987003B8104 /* vampire_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A49D1E9A6987003B8104 /* vampire_diffuse.png */; };
 		1A05A4A01E9A6987003B8104 /* vampire_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A49E1E9A6987003B8104 /* vampire_specular.png */; };
-		1A05A4A21E9A7AC8003B8104 /* maria.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4A11E9A7AC8003B8104 /* maria.fbx */; };
 		1A05A4A61E9A826C003B8104 /* beta_elbow_punch.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4A51E9A826B003B8104 /* beta_elbow_punch.fbx */; };
+		1A05A4A81E9A8E37003B8104 /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A05A4A71E9A8E37003B8104 /* libfbxsdk.a */; };
+		1A05A4AC1E9A9158003B8104 /* FBXLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A4AB1E9A9158003B8104 /* FBXLoader.cpp */; };
+		1A05A4AF1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A4AD1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp */; };
 		1A1788051E637A270087DE26 /* libARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E11E5E223800D136D5 /* libARgsub_es2.a */; };
 		1A1788061E637A270087DE26 /* libARICP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E31E5E225500D136D5 /* libARICP.a */; };
 		1A1788081E637A400087DE26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1788071E637A400087DE26 /* QuartzCore.framework */; };
 		1A17880B1E640D950087DE26 /* camera_para.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880A1E640D950087DE26 /* camera_para.dat */; };
 		1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880C1E640D9E0087DE26 /* hiro.patt */; };
+		1A22E5DD1EB38ECF0013D588 /* EntityLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A22E5DC1EB38ECF0013D588 /* EntityLoader.swift */; };
+		1A22E5E81EB638CB0013D588 /* maria.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5E71EB638CB0013D588 /* maria.fbx */; };
+		1A22E5EE1EB6BFC10013D588 /* vampire.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5ED1EB6BFC10013D588 /* vampire.fbx */; };
+		1A22E5F31EB72C2F0013D588 /* maria.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5F11EB72C2F0013D588 /* maria.xml */; };
+		1A22E5F41EB72C2F0013D588 /* vampire.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5F21EB72C2F0013D588 /* vampire.xml */; };
+		1A22E5F61EB735AC0013D588 /* beta.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5F51EB735AC0013D588 /* beta.xml */; };
+		1A22E5F81EB739850013D588 /* maria_breathing_idle.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5F71EB739850013D588 /* maria_breathing_idle.fbx */; };
+		1A22E5FA1EB73C770013D588 /* maria_breathing_idle2.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5F91EB73C770013D588 /* maria_breathing_idle2.fbx */; };
+		1A22E5FE1EB73F740013D588 /* pumpkin_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5FC1EB73F740013D588 /* pumpkin_diffuse.png */; };
+		1A22E5FF1EB73F740013D588 /* pumpkin.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5FD1EB73F740013D588 /* pumpkin.fbx */; };
+		1A22E6011EB73FA30013D588 /* pumpkin.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6001EB73FA30013D588 /* pumpkin.xml */; };
+		1A22E6061EB744F40013D588 /* ely_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6031EB744F40013D588 /* ely_diffuse.png */; };
+		1A22E6071EB744F40013D588 /* ely_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6041EB744F40013D588 /* ely_specular.png */; };
+		1A22E6081EB744F40013D588 /* ely.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6051EB744F40013D588 /* ely.fbx */; };
+		1A22E60A1EB745060013D588 /* ely.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6091EB745060013D588 /* ely.xml */; };
+		1A22E60F1EB746500013D588 /* vanguard_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E60C1EB746500013D588 /* vanguard_diffuse.png */; };
+		1A22E6101EB746500013D588 /* vanguard_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E60D1EB746500013D588 /* vanguard_specular.png */; };
+		1A22E6111EB746500013D588 /* vanguard.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E60E1EB746500013D588 /* vanguard.fbx */; };
+		1A22E6131EB746690013D588 /* vanguard.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6121EB746690013D588 /* vanguard.xml */; };
+		1A22E6161EB748990013D588 /* ganfaul.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6151EB748990013D588 /* ganfaul.xml */; };
+		1A22E61A1EB748AF0013D588 /* ganfaul_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6171EB748AF0013D588 /* ganfaul_diffuse.png */; };
+		1A22E61B1EB748AF0013D588 /* ganfaul_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6181EB748AF0013D588 /* ganfaul_specular.png */; };
+		1A22E61C1EB748AF0013D588 /* ganfaul.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6191EB748AF0013D588 /* ganfaul.fbx */; };
 		1A3036281E8566B500484367 /* EffectMatAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3036271E8566B500484367 /* EffectMatAnim.swift */; };
 		1A30362C1E856B1D00484367 /* ShaderAnimation.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A30362A1E856B1D00484367 /* ShaderAnimation.vsh */; };
 		1A435D5B1E83BB6F00D44433 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5A1E83BB6F00D44433 /* Vertex.swift */; };
@@ -47,12 +68,6 @@
 		1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF51E55FEC40036E753 /* ModelLoader.swift */; };
 		1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4F606E1E5CBE7400B4C602 /* libAR.a */; };
 		1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F60711E5CCFA700B4C602 /* ARHandler.m */; };
-		1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B66FD1E5BAD06000463E3 /* monkey.mtl */; };
-		1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B66FE1E5BAD06000463E3 /* monkey.obj */; };
-		1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67011E5BADCE000463E3 /* cube.mtl */; };
-		1A5B67041E5BADCE000463E3 /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67021E5BADCE000463E3 /* cube.obj */; };
-		1A5B67071E5C4045000463E3 /* robot.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67051E5C4045000463E3 /* robot.mtl */; };
-		1A5B67081E5C4046000463E3 /* robot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B67061E5C4045000463E3 /* robot.obj */; };
 		1A6607A21E7A808D00FAF78B /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6607A11E7A808D00FAF78B /* Animation.swift */; };
 		1A6BA3F61E5E22B700D136D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */; };
 		1A6BA3F71E5E22E600D136D5 /* libARvideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */; };
@@ -69,26 +84,8 @@
 		1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */; };
 		1AC1817B1E7356D0008C07F3 /* ShaderMaterial.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */; };
 		1ADFA8B81E64C05900588345 /* AssimpLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B71E64C05900588345 /* AssimpLoaderCInterface.cpp */; };
-		1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B91E64CAB600588345 /* nanosuit.obj */; };
-		1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */; };
-		1ADFA8CA1E64DE9600588345 /* arm_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8BE1E64DE9600588345 /* arm_dif.png */; };
-		1ADFA8CB1E64DE9600588345 /* arm_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8BF1E64DE9600588345 /* arm_showroom_spec.png */; };
-		1ADFA8CC1E64DE9600588345 /* body_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C01E64DE9600588345 /* body_dif.png */; };
-		1ADFA8CD1E64DE9600588345 /* body_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C11E64DE9600588345 /* body_showroom_spec.png */; };
-		1ADFA8CE1E64DE9600588345 /* glass_ddn.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C21E64DE9600588345 /* glass_ddn.png */; };
-		1ADFA8CF1E64DE9600588345 /* glass_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C31E64DE9600588345 /* glass_dif.png */; };
-		1ADFA8D01E64DE9600588345 /* hand_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C41E64DE9600588345 /* hand_dif.png */; };
-		1ADFA8D11E64DE9600588345 /* hand_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C51E64DE9600588345 /* hand_showroom_spec.png */; };
-		1ADFA8D21E64DE9600588345 /* helmet_diff.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C61E64DE9600588345 /* helmet_diff.png */; };
-		1ADFA8D31E64DE9600588345 /* helmet_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C71E64DE9600588345 /* helmet_showroom_spec.png */; };
-		1ADFA8D41E64DE9600588345 /* leg_dif.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C81E64DE9600588345 /* leg_dif.png */; };
-		1ADFA8D51E64DE9600588345 /* leg_showroom_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFA8C91E64DE9600588345 /* leg_showroom_spec.png */; };
 		1AE317931E93C49900972BC2 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE317921E93C49900972BC2 /* Skeleton.swift */; };
 		1AE8748F1E97ED39009F1D4A /* AnimationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */; };
-		1AEFE7481E65A12700698808 /* box.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7441E65A12700698808 /* box.mtl */; };
-		1AEFE7491E65A12700698808 /* box.obj in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7451E65A12700698808 /* box.obj */; };
-		1AEFE74A1E65A12700698808 /* container2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7461E65A12700698808 /* container2.png */; };
-		1AEFE74B1E65A12700698808 /* container2_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AEFE7471E65A12700698808 /* container2_specular.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,17 +113,40 @@
 		1A05A48F1E9A6767003B8104 /* beta.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = beta.fbx; path = Assets/Characters/Beta/beta.fbx; sourceTree = "<group>"; };
 		1A05A4911E9A6773003B8104 /* maria_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maria_diffuse.png; path = Assets/Characters/Maria/maria_diffuse.png; sourceTree = "<group>"; };
 		1A05A4921E9A6773003B8104 /* maria_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maria_specular.png; path = Assets/Characters/Maria/maria_specular.png; sourceTree = "<group>"; };
-		1A05A4931E9A6773003B8104 /* maria1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria1.fbx; path = Assets/Characters/Maria/maria1.fbx; sourceTree = "<group>"; };
-		1A05A4941E9A6773003B8104 /* maria2.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria2.fbx; path = Assets/Characters/Maria/maria2.fbx; sourceTree = "<group>"; };
-		1A05A4991E9A677D003B8104 /* vampire.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = vampire.fbx; path = Assets/Characters/Vampire/vampire.fbx; sourceTree = "<group>"; };
-		1A05A49B1E9A67EF003B8104 /* vampire2.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = vampire2.fbx; path = Assets/Characters/Vampire/vampire2.fbx; sourceTree = "<group>"; };
 		1A05A49D1E9A6987003B8104 /* vampire_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vampire_diffuse.png; path = Assets/Characters/Vampire/vampire_diffuse.png; sourceTree = "<group>"; };
 		1A05A49E1E9A6987003B8104 /* vampire_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vampire_specular.png; path = Assets/Characters/Vampire/vampire_specular.png; sourceTree = "<group>"; };
-		1A05A4A11E9A7AC8003B8104 /* maria.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria.fbx; path = Assets/Characters/Maria/maria.fbx; sourceTree = "<group>"; };
 		1A05A4A51E9A826B003B8104 /* beta_elbow_punch.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = beta_elbow_punch.fbx; path = Assets/Animations/Beta/beta_elbow_punch.fbx; sourceTree = "<group>"; };
+		1A05A4A71E9A8E37003B8104 /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../../../../../../../Applications/Autodesk/FBX SDK/2017.1/lib/ios-armv7/release/libfbxsdk.a"; sourceTree = "<group>"; };
+		1A05A4AA1E9A913E003B8104 /* FBXLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FBXLoader.hpp; sourceTree = "<group>"; };
+		1A05A4AB1E9A9158003B8104 /* FBXLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FBXLoader.cpp; sourceTree = "<group>"; };
+		1A05A4AD1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FBXLoaderCInterface.cpp; sourceTree = "<group>"; };
+		1A05A4AE1E9ABAD2003B8104 /* FBXLoaderCInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBXLoaderCInterface.h; sourceTree = "<group>"; };
 		1A1788071E637A400087DE26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A17880A1E640D950087DE26 /* camera_para.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = camera_para.dat; path = Assets_AR/camera_para.dat; sourceTree = "<group>"; };
 		1A17880C1E640D9E0087DE26 /* hiro.patt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hiro.patt; path = Assets_AR/hiro.patt; sourceTree = "<group>"; };
+		1A22E5DC1EB38ECF0013D588 /* EntityLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityLoader.swift; sourceTree = "<group>"; };
+		1A22E5E71EB638CB0013D588 /* maria.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria.fbx; path = Assets/Characters/Maria/maria.fbx; sourceTree = "<group>"; };
+		1A22E5ED1EB6BFC10013D588 /* vampire.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = vampire.fbx; path = Assets/Characters/Vampire/vampire.fbx; sourceTree = "<group>"; };
+		1A22E5F11EB72C2F0013D588 /* maria.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = maria.xml; path = Assets/Character_Presets/maria.xml; sourceTree = "<group>"; };
+		1A22E5F21EB72C2F0013D588 /* vampire.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vampire.xml; path = Assets/Character_Presets/vampire.xml; sourceTree = "<group>"; };
+		1A22E5F51EB735AC0013D588 /* beta.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = beta.xml; path = Assets/Character_Presets/beta.xml; sourceTree = "<group>"; };
+		1A22E5F71EB739850013D588 /* maria_breathing_idle.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria_breathing_idle.fbx; path = Assets/Animations/Maria/maria_breathing_idle.fbx; sourceTree = "<group>"; };
+		1A22E5F91EB73C770013D588 /* maria_breathing_idle2.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria_breathing_idle2.fbx; path = Assets/Animations/Maria/maria_breathing_idle2.fbx; sourceTree = "<group>"; };
+		1A22E5FC1EB73F740013D588 /* pumpkin_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pumpkin_diffuse.png; path = Assets/Characters/Pumpkin/pumpkin_diffuse.png; sourceTree = "<group>"; };
+		1A22E5FD1EB73F740013D588 /* pumpkin.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = pumpkin.fbx; path = Assets/Characters/Pumpkin/pumpkin.fbx; sourceTree = "<group>"; };
+		1A22E6001EB73FA30013D588 /* pumpkin.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = pumpkin.xml; path = Assets/Character_Presets/pumpkin.xml; sourceTree = "<group>"; };
+		1A22E6031EB744F40013D588 /* ely_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ely_diffuse.png; path = Assets/Characters/Ely/ely_diffuse.png; sourceTree = "<group>"; };
+		1A22E6041EB744F40013D588 /* ely_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ely_specular.png; path = Assets/Characters/Ely/ely_specular.png; sourceTree = "<group>"; };
+		1A22E6051EB744F40013D588 /* ely.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = ely.fbx; path = Assets/Characters/Ely/ely.fbx; sourceTree = "<group>"; };
+		1A22E6091EB745060013D588 /* ely.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = ely.xml; path = Assets/Character_Presets/ely.xml; sourceTree = "<group>"; };
+		1A22E60C1EB746500013D588 /* vanguard_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vanguard_diffuse.png; path = Assets/Characters/Vanguard/vanguard_diffuse.png; sourceTree = "<group>"; };
+		1A22E60D1EB746500013D588 /* vanguard_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vanguard_specular.png; path = Assets/Characters/Vanguard/vanguard_specular.png; sourceTree = "<group>"; };
+		1A22E60E1EB746500013D588 /* vanguard.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = vanguard.fbx; path = Assets/Characters/Vanguard/vanguard.fbx; sourceTree = "<group>"; };
+		1A22E6121EB746690013D588 /* vanguard.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vanguard.xml; path = Assets/Character_Presets/vanguard.xml; sourceTree = "<group>"; };
+		1A22E6151EB748990013D588 /* ganfaul.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = ganfaul.xml; path = Assets/Character_Presets/ganfaul.xml; sourceTree = "<group>"; };
+		1A22E6171EB748AF0013D588 /* ganfaul_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ganfaul_diffuse.png; path = Assets/Characters/Ganfaul/ganfaul_diffuse.png; sourceTree = "<group>"; };
+		1A22E6181EB748AF0013D588 /* ganfaul_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ganfaul_specular.png; path = Assets/Characters/Ganfaul/ganfaul_specular.png; sourceTree = "<group>"; };
+		1A22E6191EB748AF0013D588 /* ganfaul.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = ganfaul.fbx; path = Assets/Characters/Ganfaul/ganfaul.fbx; sourceTree = "<group>"; };
 		1A3036271E8566B500484367 /* EffectMatAnim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectMatAnim.swift; sourceTree = "<group>"; };
 		1A30362A1E856B1D00484367 /* ShaderAnimation.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderAnimation.vsh; path = Shaders/ShaderAnimation.vsh; sourceTree = "<group>"; };
 		1A435D5A1E83BB6F00D44433 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
@@ -156,12 +176,6 @@
 		1A4F60731E5CCFC100B4C602 /* ARHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARHandler.h; sourceTree = "<group>"; };
 		1A5B66F81E5BA82D000463E3 /* cube.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.mtl; path = ARGame/cube.mtl; sourceTree = "<group>"; };
 		1A5B66F91E5BA82D000463E3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = ARGame/cube.obj; sourceTree = "<group>"; };
-		1A5B66FD1E5BAD06000463E3 /* monkey.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = monkey.mtl; path = Assets/monkey.mtl; sourceTree = "<group>"; };
-		1A5B66FE1E5BAD06000463E3 /* monkey.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = monkey.obj; path = Assets/monkey.obj; sourceTree = "<group>"; };
-		1A5B67011E5BADCE000463E3 /* cube.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.mtl; path = Assets/cube.mtl; sourceTree = "<group>"; };
-		1A5B67021E5BADCE000463E3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = Assets/cube.obj; sourceTree = "<group>"; };
-		1A5B67051E5C4045000463E3 /* robot.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = robot.mtl; path = Assets/robot.mtl; sourceTree = "<group>"; };
-		1A5B67061E5C4045000463E3 /* robot.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = robot.obj; path = Assets/robot.obj; sourceTree = "<group>"; };
 		1A6607A11E7A808D00FAF78B /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		1A6BA3DF1E5E21FE00D136D5 /* libARvideo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARvideo.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARvideo.a"; sourceTree = "<group>"; };
 		1A6BA3E11E5E223800D136D5 /* libARgsub_es2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libARgsub_es2.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libARgsub_es2.a"; sourceTree = "<group>"; };
@@ -194,26 +208,8 @@
 		1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMaterial.fsh; path = Shaders/ShaderMaterial.fsh; sourceTree = "<group>"; };
 		1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMaterial.vsh; path = Shaders/ShaderMaterial.vsh; sourceTree = "<group>"; };
 		1ADFA8B71E64C05900588345 /* AssimpLoaderCInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpLoaderCInterface.cpp; sourceTree = "<group>"; };
-		1ADFA8B91E64CAB600588345 /* nanosuit.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nanosuit.obj; path = Assets/Nanosuit/nanosuit.obj; sourceTree = "<group>"; };
-		1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nanosuit.mtl; path = Assets/Nanosuit/nanosuit.mtl; sourceTree = "<group>"; };
-		1ADFA8BE1E64DE9600588345 /* arm_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arm_dif.png; path = Assets/Nanosuit/arm_dif.png; sourceTree = "<group>"; };
-		1ADFA8BF1E64DE9600588345 /* arm_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arm_showroom_spec.png; path = Assets/Nanosuit/arm_showroom_spec.png; sourceTree = "<group>"; };
-		1ADFA8C01E64DE9600588345 /* body_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = body_dif.png; path = Assets/Nanosuit/body_dif.png; sourceTree = "<group>"; };
-		1ADFA8C11E64DE9600588345 /* body_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = body_showroom_spec.png; path = Assets/Nanosuit/body_showroom_spec.png; sourceTree = "<group>"; };
-		1ADFA8C21E64DE9600588345 /* glass_ddn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glass_ddn.png; path = Assets/Nanosuit/glass_ddn.png; sourceTree = "<group>"; };
-		1ADFA8C31E64DE9600588345 /* glass_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glass_dif.png; path = Assets/Nanosuit/glass_dif.png; sourceTree = "<group>"; };
-		1ADFA8C41E64DE9600588345 /* hand_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hand_dif.png; path = Assets/Nanosuit/hand_dif.png; sourceTree = "<group>"; };
-		1ADFA8C51E64DE9600588345 /* hand_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hand_showroom_spec.png; path = Assets/Nanosuit/hand_showroom_spec.png; sourceTree = "<group>"; };
-		1ADFA8C61E64DE9600588345 /* helmet_diff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = helmet_diff.png; path = Assets/Nanosuit/helmet_diff.png; sourceTree = "<group>"; };
-		1ADFA8C71E64DE9600588345 /* helmet_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = helmet_showroom_spec.png; path = Assets/Nanosuit/helmet_showroom_spec.png; sourceTree = "<group>"; };
-		1ADFA8C81E64DE9600588345 /* leg_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leg_dif.png; path = Assets/Nanosuit/leg_dif.png; sourceTree = "<group>"; };
-		1ADFA8C91E64DE9600588345 /* leg_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leg_showroom_spec.png; path = Assets/Nanosuit/leg_showroom_spec.png; sourceTree = "<group>"; };
 		1AE317921E93C49900972BC2 /* Skeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
 		1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationLoader.swift; sourceTree = "<group>"; };
-		1AEFE7441E65A12700698808 /* box.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = box.mtl; path = Assets/Box/box.mtl; sourceTree = "<group>"; };
-		1AEFE7451E65A12700698808 /* box.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = box.obj; path = Assets/Box/box.obj; sourceTree = "<group>"; };
-		1AEFE7461E65A12700698808 /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = container2.png; path = Assets/Box/container2.png; sourceTree = "<group>"; };
-		1AEFE7471E65A12700698808 /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = container2_specular.png; path = Assets/Box/container2_specular.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A05A4A81E9A8E37003B8104 /* libfbxsdk.a in Frameworks */,
 				1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */,
 				1A1788061E637A270087DE26 /* libARICP.a in Frameworks */,
 				1A1788051E637A270087DE26 /* libARgsub_es2.a in Frameworks */,
@@ -253,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				1A05A4841E9A62BC003B8104 /* maria_warming_up.fbx */,
+				1A22E5F71EB739850013D588 /* maria_breathing_idle.fbx */,
+				1A22E5F91EB73C770013D588 /* maria_breathing_idle2.fbx */,
 			);
 			name = Maria;
 			sourceTree = "<group>";
@@ -260,10 +259,9 @@
 		1A05A4861E9A6639003B8104 /* Vampire */ = {
 			isa = PBXGroup;
 			children = (
+				1A22E5ED1EB6BFC10013D588 /* vampire.fbx */,
 				1A05A49D1E9A6987003B8104 /* vampire_diffuse.png */,
 				1A05A49E1E9A6987003B8104 /* vampire_specular.png */,
-				1A05A49B1E9A67EF003B8104 /* vampire2.fbx */,
-				1A05A4991E9A677D003B8104 /* vampire.fbx */,
 			);
 			name = Vampire;
 			sourceTree = "<group>";
@@ -286,6 +284,17 @@
 			name = Beta;
 			sourceTree = "<group>";
 		};
+		1A05A4A91E9A9115003B8104 /* FBX */ = {
+			isa = PBXGroup;
+			children = (
+				1A05A4AA1E9A913E003B8104 /* FBXLoader.hpp */,
+				1A05A4AB1E9A9158003B8104 /* FBXLoader.cpp */,
+				1A05A4AE1E9ABAD2003B8104 /* FBXLoaderCInterface.h */,
+				1A05A4AD1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp */,
+			);
+			name = FBX;
+			sourceTree = "<group>";
+		};
 		1A1788091E640D010087DE26 /* Assets_AR */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +303,87 @@
 				1A17880A1E640D950087DE26 /* camera_para.dat */,
 			);
 			name = Assets_AR;
+			sourceTree = "<group>";
+		};
+		1A22E5DE1EB3D3500013D588 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				1A4F60701E5CC42000B4C602 /* AR */,
+				1A3669601E756B3500C7C53E /* Entity */,
+				1A755C261E59E06A00E2FFBC /* FileLoading */,
+				1AC1816A1E72C159008C07F3 /* Graphics */,
+				1A4492761E97908B00C27B4B /* Scene */,
+			);
+			name = Engine;
+			sourceTree = "<group>";
+		};
+		1A22E5DF1EB3D3DC0013D588 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				1A22E5E01EB3D3F30013D588 /* Scenes */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		1A22E5E01EB3D3F30013D588 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				1A4492791E979F5B00C27B4B /* FirstScene.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		1A22E5E21EB3EADB0013D588 /* Character_Preset */ = {
+			isa = PBXGroup;
+			children = (
+				1A22E5F51EB735AC0013D588 /* beta.xml */,
+				1A22E6091EB745060013D588 /* ely.xml */,
+				1A22E6151EB748990013D588 /* ganfaul.xml */,
+				1A22E5F11EB72C2F0013D588 /* maria.xml */,
+				1A22E5F21EB72C2F0013D588 /* vampire.xml */,
+				1A22E6001EB73FA30013D588 /* pumpkin.xml */,
+				1A22E6121EB746690013D588 /* vanguard.xml */,
+			);
+			name = Character_Preset;
+			sourceTree = "<group>";
+		};
+		1A22E5FB1EB73F620013D588 /* Pumpkin */ = {
+			isa = PBXGroup;
+			children = (
+				1A22E5FD1EB73F740013D588 /* pumpkin.fbx */,
+				1A22E5FC1EB73F740013D588 /* pumpkin_diffuse.png */,
+			);
+			name = Pumpkin;
+			sourceTree = "<group>";
+		};
+		1A22E6021EB744E60013D588 /* Ely */ = {
+			isa = PBXGroup;
+			children = (
+				1A22E6031EB744F40013D588 /* ely_diffuse.png */,
+				1A22E6041EB744F40013D588 /* ely_specular.png */,
+				1A22E6051EB744F40013D588 /* ely.fbx */,
+			);
+			name = Ely;
+			sourceTree = "<group>";
+		};
+		1A22E60B1EB7463F0013D588 /* Vanguard */ = {
+			isa = PBXGroup;
+			children = (
+				1A22E60C1EB746500013D588 /* vanguard_diffuse.png */,
+				1A22E60D1EB746500013D588 /* vanguard_specular.png */,
+				1A22E60E1EB746500013D588 /* vanguard.fbx */,
+			);
+			name = Vanguard;
+			sourceTree = "<group>";
+		};
+		1A22E6141EB748740013D588 /* Ganfaul */ = {
+			isa = PBXGroup;
+			children = (
+				1A22E6171EB748AF0013D588 /* ganfaul_diffuse.png */,
+				1A22E6181EB748AF0013D588 /* ganfaul_specular.png */,
+				1A22E6191EB748AF0013D588 /* ganfaul.fbx */,
+			);
+			name = Ganfaul;
 			sourceTree = "<group>";
 		};
 		1A3669601E756B3500C7C53E /* Entity */ = {
@@ -314,7 +404,6 @@
 			isa = PBXGroup;
 			children = (
 				1A4492771E9790B000C27B4B /* Scene.swift */,
-				1A4492791E979F5B00C27B4B /* FirstScene.swift */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -388,11 +477,8 @@
 		1A44DCF71E5601920036E753 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1A4F60701E5CC42000B4C602 /* AR */,
-				1A3669601E756B3500C7C53E /* Entity */,
-				1AC1816A1E72C159008C07F3 /* Graphics */,
-				1A755C261E59E06A00E2FFBC /* FileLoading */,
-				1A4492761E97908B00C27B4B /* Scene */,
+				1A22E5DE1EB3D3500013D588 /* Engine */,
+				1A22E5DF1EB3D3DC0013D588 /* Game */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -409,16 +495,9 @@
 		1A5B66FC1E5BACF4000463E3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				1A22E5E21EB3EADB0013D588 /* Character_Preset */,
 				1A99B2391E980BBA00E2831B /* Characters */,
 				1A725D361E75BF6600322D6A /* Animations */,
-				1AEFE7431E65A11000698808 /* Box */,
-				1ADFA8BD1E64DE6E00588345 /* Nanosuit */,
-				1A5B67051E5C4045000463E3 /* robot.mtl */,
-				1A5B67061E5C4045000463E3 /* robot.obj */,
-				1A5B67011E5BADCE000463E3 /* cube.mtl */,
-				1A5B67021E5BADCE000463E3 /* cube.obj */,
-				1A5B66FD1E5BAD06000463E3 /* monkey.mtl */,
-				1A5B66FE1E5BAD06000463E3 /* monkey.obj */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -435,6 +514,7 @@
 		1A755C1D1E58441100E2FFBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A05A4A71E9A8E37003B8104 /* libfbxsdk.a */,
 				1A1788071E637A400087DE26 /* QuartzCore.framework */,
 				1A6BA3F51E5E22B700D136D5 /* Accelerate.framework */,
 				1A6BA3E31E5E225500D136D5 /* libARICP.a */,
@@ -463,9 +543,11 @@
 		1A755C261E59E06A00E2FFBC /* FileLoading */ = {
 			isa = PBXGroup;
 			children = (
+				1A05A4A91E9A9115003B8104 /* FBX */,
 				1AE874901E97F294009F1D4A /* Assimp */,
 				1A44DCF51E55FEC40036E753 /* ModelLoader.swift */,
 				1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */,
+				1A22E5DC1EB38ECF0013D588 /* EntityLoader.swift */,
 			);
 			name = FileLoading;
 			sourceTree = "<group>";
@@ -473,6 +555,10 @@
 		1A99B2391E980BBA00E2831B /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				1A22E6141EB748740013D588 /* Ganfaul */,
+				1A22E60B1EB7463F0013D588 /* Vanguard */,
+				1A22E6021EB744E60013D588 /* Ely */,
+				1A22E5FB1EB73F620013D588 /* Pumpkin */,
 				1A05A4891E9A6737003B8104 /* Beta */,
 				1A05A4861E9A6639003B8104 /* Vampire */,
 				1A99B2441E99597B00E2831B /* Maria */,
@@ -483,11 +569,9 @@
 		1A99B2441E99597B00E2831B /* Maria */ = {
 			isa = PBXGroup;
 			children = (
+				1A22E5E71EB638CB0013D588 /* maria.fbx */,
 				1A05A4911E9A6773003B8104 /* maria_diffuse.png */,
 				1A05A4921E9A6773003B8104 /* maria_specular.png */,
-				1A05A4A11E9A7AC8003B8104 /* maria.fbx */,
-				1A05A4931E9A6773003B8104 /* maria1.fbx */,
-				1A05A4941E9A6773003B8104 /* maria2.fbx */,
 			);
 			name = Maria;
 			sourceTree = "<group>";
@@ -517,27 +601,6 @@
 			name = Graphics;
 			sourceTree = "<group>";
 		};
-		1ADFA8BD1E64DE6E00588345 /* Nanosuit */ = {
-			isa = PBXGroup;
-			children = (
-				1ADFA8BE1E64DE9600588345 /* arm_dif.png */,
-				1ADFA8BF1E64DE9600588345 /* arm_showroom_spec.png */,
-				1ADFA8C01E64DE9600588345 /* body_dif.png */,
-				1ADFA8C11E64DE9600588345 /* body_showroom_spec.png */,
-				1ADFA8C21E64DE9600588345 /* glass_ddn.png */,
-				1ADFA8C31E64DE9600588345 /* glass_dif.png */,
-				1ADFA8C41E64DE9600588345 /* hand_dif.png */,
-				1ADFA8C51E64DE9600588345 /* hand_showroom_spec.png */,
-				1ADFA8C61E64DE9600588345 /* helmet_diff.png */,
-				1ADFA8C71E64DE9600588345 /* helmet_showroom_spec.png */,
-				1ADFA8C81E64DE9600588345 /* leg_dif.png */,
-				1ADFA8C91E64DE9600588345 /* leg_showroom_spec.png */,
-				1ADFA8B91E64CAB600588345 /* nanosuit.obj */,
-				1ADFA8BB1E64CADA00588345 /* nanosuit.mtl */,
-			);
-			name = Nanosuit;
-			sourceTree = "<group>";
-		};
 		1AE874901E97F294009F1D4A /* Assimp */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,17 +610,6 @@
 				1ADFA8B71E64C05900588345 /* AssimpLoaderCInterface.cpp */,
 			);
 			name = Assimp;
-			sourceTree = "<group>";
-		};
-		1AEFE7431E65A11000698808 /* Box */ = {
-			isa = PBXGroup;
-			children = (
-				1AEFE7441E65A12700698808 /* box.mtl */,
-				1AEFE7451E65A12700698808 /* box.obj */,
-				1AEFE7461E65A12700698808 /* container2.png */,
-				1AEFE7471E65A12700698808 /* container2_specular.png */,
-			);
-			name = Box;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -671,55 +723,48 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AEFE7481E65A12700698808 /* box.mtl in Resources */,
-				1ADFA8D41E64DE9600588345 /* leg_dif.png in Resources */,
 				1A05A4901E9A6767003B8104 /* beta.fbx in Resources */,
-				1ADFA8CF1E64DE9600588345 /* glass_dif.png in Resources */,
-				1ADFA8D31E64DE9600588345 /* helmet_showroom_spec.png in Resources */,
+				1A22E5EE1EB6BFC10013D588 /* vampire.fbx in Resources */,
 				1A05A48E1E9A674B003B8104 /* beta_warming_up.fbx in Resources */,
-				1A05A49A1E9A677D003B8104 /* vampire.fbx in Resources */,
-				1ADFA8D51E64DE9600588345 /* leg_showroom_spec.png in Resources */,
+				1A22E5FE1EB73F740013D588 /* pumpkin_diffuse.png in Resources */,
 				1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */,
-				1A5B67031E5BADCE000463E3 /* cube.mtl in Resources */,
-				1A05A4A21E9A7AC8003B8104 /* maria.fbx in Resources */,
 				1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */,
 				1A30362C1E856B1D00484367 /* ShaderAnimation.vsh in Resources */,
+				1A22E60F1EB746500013D588 /* vanguard_diffuse.png in Resources */,
+				1A22E61B1EB748AF0013D588 /* ganfaul_specular.png in Resources */,
+				1A22E6061EB744F40013D588 /* ely_diffuse.png in Resources */,
+				1A22E61A1EB748AF0013D588 /* ganfaul_diffuse.png in Resources */,
+				1A22E5FA1EB73C770013D588 /* maria_breathing_idle2.fbx in Resources */,
+				1A22E6101EB746500013D588 /* vanguard_specular.png in Resources */,
 				1AC181771E7355E0008C07F3 /* ShaderBasic.vsh in Resources */,
+				1A22E5F31EB72C2F0013D588 /* maria.xml in Resources */,
+				1A22E6071EB744F40013D588 /* ely_specular.png in Resources */,
 				1A05A4851E9A62BC003B8104 /* maria_warming_up.fbx in Resources */,
-				1A5B67071E5C4045000463E3 /* robot.mtl in Resources */,
-				1ADFA8BA1E64CAB600588345 /* nanosuit.obj in Resources */,
+				1A22E5FF1EB73F740013D588 /* pumpkin.fbx in Resources */,
+				1A22E60A1EB745060013D588 /* ely.xml in Resources */,
+				1A22E61C1EB748AF0013D588 /* ganfaul.fbx in Resources */,
+				1A22E5F41EB72C2F0013D588 /* vampire.xml in Resources */,
 				1A05A4A61E9A826C003B8104 /* beta_elbow_punch.fbx in Resources */,
-				1ADFA8D11E64DE9600588345 /* hand_showroom_spec.png in Resources */,
-				1A5B67081E5C4046000463E3 /* robot.obj in Resources */,
-				1AEFE74B1E65A12700698808 /* container2_specular.png in Resources */,
 				1AC181761E7355E0008C07F3 /* ShaderBasic.fsh in Resources */,
-				1AEFE74A1E65A12700698808 /* container2.png in Resources */,
+				1A22E5E81EB638CB0013D588 /* maria.fbx in Resources */,
 				1A17880B1E640D950087DE26 /* camera_para.dat in Resources */,
-				1ADFA8BC1E64CADA00588345 /* nanosuit.mtl in Resources */,
-				1ADFA8CC1E64DE9600588345 /* body_dif.png in Resources */,
-				1ADFA8CD1E64DE9600588345 /* body_showroom_spec.png in Resources */,
 				1A44DCCC1E55F34C0036E753 /* Assets.xcassets in Resources */,
-				1A05A4971E9A6773003B8104 /* maria1.fbx in Resources */,
-				1A5B66FF1E5BAD06000463E3 /* monkey.mtl in Resources */,
-				1A5B67041E5BADCE000463E3 /* cube.obj in Resources */,
+				1A22E6131EB746690013D588 /* vanguard.xml in Resources */,
 				1A44DCCF1E55F34C0036E753 /* LaunchScreen.storyboard in Resources */,
+				1A22E6081EB744F40013D588 /* ely.fbx in Resources */,
+				1A22E5F61EB735AC0013D588 /* beta.xml in Resources */,
 				1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */,
+				1A22E6161EB748990013D588 /* ganfaul.xml in Resources */,
 				1A05A49F1E9A6987003B8104 /* vampire_diffuse.png in Resources */,
-				1ADFA8CE1E64DE9600588345 /* glass_ddn.png in Resources */,
-				1A05A4981E9A6773003B8104 /* maria2.fbx in Resources */,
-				1A05A49C1E9A67F0003B8104 /* vampire2.fbx in Resources */,
-				1ADFA8CA1E64DE9600588345 /* arm_dif.png in Resources */,
-				1A5B67001E5BAD06000463E3 /* monkey.obj in Resources */,
-				1ADFA8D21E64DE9600588345 /* helmet_diff.png in Resources */,
+				1A22E6011EB73FA30013D588 /* pumpkin.xml in Resources */,
 				1A05A4951E9A6773003B8104 /* maria_diffuse.png in Resources */,
+				1A22E5F81EB739850013D588 /* maria_breathing_idle.fbx in Resources */,
 				1A05A4961E9A6773003B8104 /* maria_specular.png in Resources */,
+				1A22E6111EB746500013D588 /* vanguard.fbx in Resources */,
 				1A05A4A01E9A6987003B8104 /* vampire_specular.png in Resources */,
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,
 				1A05A48D1E9A674B003B8104 /* beta_breathing_idle.fbx in Resources */,
-				1AEFE7491E65A12700698808 /* box.obj in Resources */,
 				1AC1817B1E7356D0008C07F3 /* ShaderMaterial.vsh in Resources */,
-				1ADFA8D01E64DE9600588345 /* hand_dif.png in Resources */,
-				1ADFA8CB1E64DE9600588345 /* arm_showroom_spec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,10 +792,12 @@
 				1A4492751E978CC600C27B4B /* Model.swift in Sources */,
 				1A44927A1E979F5C00C27B4B /* FirstScene.swift in Sources */,
 				1AC1816C1E72C1AE008C07F3 /* Effect.swift in Sources */,
+				1A22E5DD1EB38ECF0013D588 /* EntityLoader.swift in Sources */,
 				1AC181221E71DF7B008C07F3 /* Shader.swift in Sources */,
 				1A6607A21E7A808D00FAF78B /* Animation.swift in Sources */,
 				1AC181731E735597008C07F3 /* EffectMaterial.swift in Sources */,
 				1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */,
+				1A05A4AF1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp in Sources */,
 				1AE317931E93C49900972BC2 /* Skeleton.swift in Sources */,
 				1A44925D1E96A9B900C27B4B /* Entity.swift in Sources */,
 				1A3036281E8566B500484367 /* EffectMatAnim.swift in Sources */,
@@ -765,6 +812,7 @@
 				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
 				1A05A47C1E9A31AB003B8104 /* TexturePool.swift in Sources */,
 				1ADFA8B81E64C05900588345 /* AssimpLoaderCInterface.cpp in Sources */,
+				1A05A4AC1E9A9158003B8104 /* FBXLoader.cpp in Sources */,
 				1A435D5D1E83BBC000D44433 /* Material.swift in Sources */,
 				1A435D5B1E83BB6F00D44433 /* Vertex.swift in Sources */,
 			);
@@ -925,6 +973,7 @@
 				HEADER_SEARCH_PATHS = (
 					../Dependencies/assimp/include,
 					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/include",
+					../Dependencies/FBX_SDK/2017.1/include,
 				);
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -932,7 +981,9 @@
 					"$(inherited)",
 					../Dependencies/assimp/lib/iOS,
 					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib",
+					"../Dependencies/FBX_SDK/2017.1/lib/ios-armv7/release",
 				);
+				"OTHER_LDFLAGS[arch=*]" = "-liconv";
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ARGame/Bridge.h;
@@ -952,6 +1003,7 @@
 				HEADER_SEARCH_PATHS = (
 					../Dependencies/assimp/include,
 					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/include",
+					../Dependencies/FBX_SDK/2017.1/include,
 				);
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -959,7 +1011,9 @@
 					"$(inherited)",
 					../Dependencies/assimp/lib/iOS,
 					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib",
+					"../Dependencies/FBX_SDK/2017.1/lib/ios-armv7/release",
 				);
+				"OTHER_LDFLAGS[arch=*]" = "-liconv";
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ARGame/Bridge.h;

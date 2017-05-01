@@ -135,7 +135,7 @@ class GameViewController: GLKViewController
             
             self.scene.updateAnimations()
             
-            if let entity = self.scene.getEntityAnimated("player1")
+            /*if let entity = self.scene.getEntityAnimated("player1")
             {
                 if !entity.glModel.animationController.isPlaying
                 {
@@ -144,7 +144,7 @@ class GameViewController: GLKViewController
                         entity.glModel.animationController.loop(("beta_elbow_punch", animation))
                     }
                 }
-            }
+            }*/
         }
     }
     

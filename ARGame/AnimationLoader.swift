@@ -11,11 +11,11 @@ import Foundation
 class AnimationLoader
 {
     /**
-     Loads an animation from file using the Assimp library.
+     Loads an animation from file using the FBX library.
      
      - parameters:
         - resource: Name of the resource to be loaded.
-        - type: The type of object to be loaded eg. fbx.
+        - type: The type of file to be loaded eg. fbx.
      
      - returns:
      The loaded animation.
@@ -29,6 +29,7 @@ class AnimationLoader
         let cpath = path?.cString(using: .utf8)
         
         // Load model using C code
+        //let loader = UnsafeRawPointer(flLoadFBXAnimation(cpath))
         let loader = UnsafeRawPointer(mlLoadAssimpAnimation(cpath))
         
         // Extract the animations from the assimp loader

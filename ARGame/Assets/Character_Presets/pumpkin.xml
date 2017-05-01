@@ -1,0 +1,7 @@
+﻿<?xml version="1.0"?>
+<Entity name="pumpkin" type="animated">
+    <Model name="pumpkin" type="fbx"/>
+    <Translation x="0.0" y="0.0" z="0.0"/>
+    <Scale       x="0.4" y="0.4" z="0.4"/>
+    <Rotation    x="0.0" y="0.0" z="0.0" w="0.0"/>
+</Entity>
