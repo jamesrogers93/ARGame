@@ -16,7 +16,6 @@ class FirstScene : Scene
         super.effectMaterialAnimated = EffectMatAnim()
         
         let entityLoader = EntityLoader()
-        entityLoader.loadEntityFromFile("ganfaul", self);
         entityLoader.loadEntityFromFile("beta", self);
         
         
@@ -25,17 +24,5 @@ class FirstScene : Scene
         {
             print("Could not add Animation: \(animation1.0) to scene")
         }
-        
-        self.entitesAnimated["beta"]?.glModel.animationController.loop(animation1)
-        
-        
-        /*let animation2 = ("maria_breathing_idle", AnimationLoader.loadAnimationFromFile("maria_breathing_idle2", "fbx")!)
-        if !super.addAnimation(animation2)
-        {
-            print("Could not add Animation: \(animation2.0) to scene")
-        }
-        
-        self.entitesAnimated["maria"]?.glModel.animationController.loop(animation2)*/
-        
     }
 }
