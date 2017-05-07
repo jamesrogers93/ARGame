@@ -19,6 +19,26 @@ class Scene
     
     private func initaliseScene() {}
     
+    
+    public func initalise(xml: String)
+    {
+        self.effectMaterial = EffectMaterial()
+        self.effectMaterialAnimated = EffectMatAnim()
+        
+        var sceneLoader: SceneLoader = SceneLoader()
+        sceneLoader.loadSceneFromFile(xml, self)
+    }
+    
+    public func initalise(scene: Scene)
+    {
+        self.effectMaterial = scene.effectMaterial
+        self.effectMaterialAnimated = scene.effectMaterialAnimated
+        
+        self.entitesStatic = scene.entitesStatic
+        self.entitesAnimated = scene.entitesAnimated
+        self.animations = scene.animations
+    }
+    
     public func destroyScene()
     {
         // Destroy the static entities

@@ -14,12 +14,12 @@ func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer?
     return UnsafeRawPointer(bitPattern: i)
 }
 
-class GameViewController: GLKViewController
+class FightGameController: GLKViewController
 {
     
     var context: EAGLContext? = nil
     
-    let scene: FirstScene = FirstScene()
+    let scene: Scene = Scene()
     
     var arHandler: ARHandler = ARHandler()
     
@@ -50,7 +50,8 @@ class GameViewController: GLKViewController
         
         self.setupGL()
 
-        self.scene.initaliseScene()
+        //self.scene.initaliseScene()
+        self.scene.initalise(xml: "character-selection")
         
         // Initalise the AR handler
         self.arHandler.onViewLoad()
@@ -91,7 +92,6 @@ class GameViewController: GLKViewController
             }
             self.context = nil
             
-            self.scene.destroyScene()
         }
     }
     
@@ -110,8 +110,6 @@ class GameViewController: GLKViewController
         
         self.scene.destroyScene()
     }
-    
-    var rotation: Float = 0.0
     
     // Update view in here
     func update()
