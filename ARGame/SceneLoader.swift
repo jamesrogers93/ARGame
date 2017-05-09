@@ -59,7 +59,7 @@ class SceneLoader : NSObject, XMLParserDelegate
                 
                 for i in 0..<self.animationsToParse.count
                 {
-                    let animation = (animationsToParse[i].0, AnimationLoader.loadAnimationFromFile(animationsToParse[i].1, "fbx")!)
+                    let animation = (animationsToParse[i].0, AnimationLoader.loadAnimationFromFile(animationsToParse[i].1, "bvh")!)
                     if !(self.scene?.addAnimation(animation))!
                     {
                         self.success = false

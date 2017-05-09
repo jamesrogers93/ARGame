@@ -6,7 +6,7 @@
     </entities>
     
 	<animations>
-		<animation name="beta_breathing_idle" file="beta_breathing_idle"/>
+		<animation name="y-bot_breathing_idle" file="y-bot_breathing_idle1"/>
 	</animations>
     
 </scene>

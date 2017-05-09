@@ -16,11 +16,14 @@ class CharacterSelectionController: GLKViewController
 
     var context: EAGLContext? = nil
     
-    let scene: Scene = Scene()
+    let scene: Scene = CharacterSelectionScene()
+    
+    // Gestures
+    
     
     deinit
     {
-        self.tearDownGL()
+        //self.tearDownGL()
         
         if EAGLContext.current() === self.context
         {
@@ -69,13 +72,13 @@ class CharacterSelectionController: GLKViewController
         }
         
         // Start the animation
-        if let entity = self.scene.getEntityAnimated("x-bot")
+        if let entity = self.scene.getEntityAnimated("y-bot")
         {
             if !entity.glModel.animationController.isPlaying
             {
-                if let animation = self.scene.getAnimation("beta_breathing_idle")
+                if let animation = self.scene.getAnimation("y-bot_breathing_idle")
                 {
-                    entity.glModel.animationController.loop(("beta_breathing_idle", animation))
+                    entity.glModel.animationController.loop(("y-bot_breathing_idle", animation))
                 }
             }
         }
@@ -90,6 +93,20 @@ class CharacterSelectionController: GLKViewController
     {
         super.viewWillDisappear(animated)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destinationViewController = segue.destination as? FightGameController {
+            
+            // Initalise the fight game view controller opengl context and pass the sharegroup to it
+            destinationViewController.context = EAGLContext(api: .openGLES3, sharegroup: self.context?.sharegroup)
+            destinationViewController.sharingShareGroup = true
+            
+            // Initalise the fight game view controller scene with the scene in this file
+            destinationViewController.scene.initalise(scene: self.scene)
+            
+        }
     }
     
     override func didReceiveMemoryWarning()
@@ -131,7 +148,10 @@ class CharacterSelectionController: GLKViewController
     // Update view in here
     func update()
     {
+        self.scene.updateScene()
         self.scene.updateAnimations()
+        
+        
     }
     
     // Draw OpenGL content here
@@ -143,6 +163,35 @@ class CharacterSelectionController: GLKViewController
         // Draw the object
         self.scene.render()
         
+    }
+    
+    func respondToSwipeGesture(_ gesture: UISwipeGestureRecognizer)
+    {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer
+        {
+            let child = self.scene as! CharacterSelectionScene
+            
+            switch swipeGesture.direction
+            {
+            case UISwipeGestureRecognizerDirection.right:
+                print("Swiped right")
+                child.previousCharacter()
+                break
+            case UISwipeGestureRecognizerDirection.down:
+                print("Swiped down")
+                break
+            case UISwipeGestureRecognizerDirection.left:
+                print("Swiped left")
+                child.nextCharacter()
+                break
+            case UISwipeGestureRecognizerDirection.up:
+                print("Swiped up")
+                break
+            default:
+                break
+            }
+        }
     }
 
 }

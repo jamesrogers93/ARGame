@@ -19,6 +19,9 @@ class FightGameController: GLKViewController
     
     var context: EAGLContext? = nil
     
+    // Indicates if context was create
+    var sharingShareGroup: Bool = false
+    
     let scene: Scene = Scene()
     
     var arHandler: ARHandler = ARHandler()
@@ -37,7 +40,10 @@ class FightGameController: GLKViewController
     {
         super.viewDidLoad()
         
-        self.context = EAGLContext(api: .openGLES3)
+        if self.context == nil
+        {
+            self.context = EAGLContext(api: .openGLES3)
+        }
         
         if !(self.context != nil)
         {
@@ -49,9 +55,11 @@ class FightGameController: GLKViewController
         view.drawableDepthFormat = .format24
         
         self.setupGL()
+        
+        glFlush()
 
         //self.scene.initaliseScene()
-        self.scene.initalise(xml: "character-selection")
+        //self.scene.initalise(xml: "character-selection")
         
         // Initalise the AR handler
         self.arHandler.onViewLoad()
@@ -80,7 +88,7 @@ class FightGameController: GLKViewController
     {
         super.didReceiveMemoryWarning()
         
-        if self.isViewLoaded && (self.view.window != nil)
+        /*if self.isViewLoaded && (self.view.window != nil)
         {
             self.view = nil
             
@@ -92,7 +100,7 @@ class FightGameController: GLKViewController
             }
             self.context = nil
             
-        }
+        }*/
     }
     
     func setupGL()
@@ -102,6 +110,20 @@ class FightGameController: GLKViewController
         
         // Allow depth testing
         glEnable(GLenum(GL_DEPTH_TEST))
+        
+        if sharingShareGroup
+        {
+            // Update the VAOs of the objects as VAOs are not shared between contexts
+            for (_, entity) in self.scene.entitesStatic
+            {
+                entity.glModel.updateModelVAO()
+            }
+        
+            for (_, entity) in self.scene.entitesAnimated
+            {
+                entity.glModel.updateModelVAO()
+            }
+        }
     }
     
     func tearDownGL()
@@ -133,16 +155,17 @@ class FightGameController: GLKViewController
             
             self.scene.updateAnimations()
             
-            /*if let entity = self.scene.getEntityAnimated("player1")
+            // Start the animation
+            if let entity = self.scene.getEntityAnimated("vangaurd")
             {
                 if !entity.glModel.animationController.isPlaying
                 {
-                    if let animation = self.scene.getAnimation("beta_elbow_punch")
+                    if let animation = self.scene.getAnimation("vangaurd_breathing_idle")
                     {
-                        entity.glModel.animationController.loop(("beta_elbow_punch", animation))
+                        entity.glModel.animationController.loop(("vangaurd_breathing_idle", animation))
                     }
                 }
-            }*/
+            }
         }
     }
     

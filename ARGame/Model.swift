@@ -47,6 +47,15 @@ class ModelStatic
             self.meshes[i].destroy();
         }
     }
+    
+    public func updateModelVAO()
+    {
+        // Loop over meshes
+        for i in 0..<self.meshes.count
+        {
+            self.meshes[i].setupVAO()
+        }
+    }
 }
 
 class ModelAnimated
@@ -103,6 +112,15 @@ class ModelAnimated
         for i in 0..<self.meshes.count
         {
             self.meshes[i].destroy();
+        }
+    }
+    
+    public func updateModelVAO()
+    {
+        // Loop over meshes
+        for i in 0..<self.meshes.count
+        {
+            self.meshes[i].setupVAO()
         }
     }
     

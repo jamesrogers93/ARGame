@@ -128,9 +128,11 @@ class MeshStatic : Mesh
      */
     private func setupMesh()
     {
+        setupVBOs()
+        setupVAO()
         
         // Create buffers/arrays
-        glGenVertexArraysOES(1, &self.VAO)
+        /*glGenVertexArraysOES(1, &self.VAO)
         glGenBuffers(1, &self.VBO)
         glGenBuffers(1, &self.EBO)
         
@@ -161,8 +163,50 @@ class MeshStatic : Mesh
         glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.texCoord.rawValue))
         glVertexAttribPointer(GLuint(ShaderVertexAttrib.texCoord.rawValue), 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size * 2))
         
+        glBindVertexArrayOES(0);*/
+    }
+    
+    private func setupVBOs()
+    {
+        // Create buffers
+        glGenBuffers(1, &self.VBO)
+        glGenBuffers(1, &self.EBO)
+        
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.VBO)
+        glBufferData(GLenum(GL_ARRAY_BUFFER), GLsizeiptr(MemoryLayout<Vertex>.size * self.vertices.count), &self.vertices, GLenum(GL_STATIC_DRAW))
+        
+        // Element Buffer
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), self.EBO)
+        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), GLsizeiptr(MemoryLayout<GLuint>.size * self.indices.count), &self.indices, GLenum(GL_STATIC_DRAW))
+    }
+    
+    public func setupVAO()
+    {
+        // Create vertex array object
+        glGenVertexArraysOES(1, &self.VAO)
+        
+        // Bind VAO and VBOs
+        glBindVertexArrayOES(self.VAO);
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.VBO)
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), self.EBO)
+        
+        // Set the vertex attribute pointers
+        
+        // Vertex Positions
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.position.rawValue))
+        glVertexAttribPointer(GLuint(ShaderVertexAttrib.position.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(0))
+        
+        // Vertex Normals
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.normal.rawValue))
+        glVertexAttribPointer(GLuint(ShaderVertexAttrib.normal.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size))
+        
+        // Texture Coordinates
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.texCoord.rawValue))
+        glVertexAttribPointer(GLuint(ShaderVertexAttrib.texCoord.rawValue), 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size * 2))
+        
         glBindVertexArrayOES(0);
     }
+    
     
     /**
      Destroys the VAO, VBO, EBO and material textures in OpenGL.
@@ -292,9 +336,11 @@ class MeshAnimated : Mesh
      */
     private func setupMesh()
     {
+        setupVBOs()
+        setupVAO()
         
         // Create buffers/arrays
-        glGenVertexArraysOES(1, &self.VAO)
+        /*glGenVertexArraysOES(1, &self.VAO)
         glGenBuffers(1, &self.VBO)
         glGenBuffers(1, &self.EBO)
         
@@ -333,6 +379,58 @@ class MeshAnimated : Mesh
         glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.boneWeight.rawValue))
         glVertexAttribPointer(GLuint(ShaderVertexAttrib.boneWeight.rawValue), 4, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<VertexAnimated>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size * 2 + MemoryLayout<GLKVector2>.size + MemoryLayout<Vector4i>.size))
         
+        glBindVertexArrayOES(0);*/
+    }
+    
+    private func setupVBOs()
+    {
+        // Create buffers
+        glGenBuffers(1, &self.VBO)
+        glGenBuffers(1, &self.EBO)
+        
+        // Vertex Buffer
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.VBO)
+        glBufferData(GLenum(GL_ARRAY_BUFFER), GLsizeiptr(MemoryLayout<VertexAnimated>.size * self.vertices.count), &self.vertices, GLenum(GL_STATIC_DRAW))
+        //glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
+        
+        // Element Buffer
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), self.EBO)
+        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), GLsizeiptr(MemoryLayout<GLuint>.size * self.indices.count), &self.indices, GLenum(GL_STATIC_DRAW))
+        //glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
+    }
+    
+    public func setupVAO()
+    {
+        // Create vertex array object
+        glGenVertexArraysOES(1, &self.VAO)
+        
+        // Bind VAO and VBOs
+        glBindVertexArrayOES(self.VAO);
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.VBO)
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), self.EBO)
+        
+        // Set the vertex attribute pointers
+        
+        // Vertex Positions
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.position.rawValue))
+        glVertexAttribPointer(GLuint(ShaderVertexAttrib.position.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<VertexAnimated>.size), BUFFER_OFFSET(0))
+        
+        // Vertex Normals
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.normal.rawValue))
+        glVertexAttribPointer(GLuint(ShaderVertexAttrib.normal.rawValue), 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<VertexAnimated>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size))
+        
+        // Texture Coordinates
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.texCoord.rawValue))
+        glVertexAttribPointer(GLuint(ShaderVertexAttrib.texCoord.rawValue), 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<VertexAnimated>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size * 2))
+        
+        // Bone IDs
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.boneIds.rawValue))
+        glVertexAttribIPointer(GLuint(ShaderVertexAttrib.boneIds.rawValue), 4, GLenum(GL_INT), GLsizei(MemoryLayout<VertexAnimated>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size * 2 + MemoryLayout<GLKVector2>.size))
+        
+        // Bone Weights
+        glEnableVertexAttribArray(GLuint(ShaderVertexAttrib.boneWeight.rawValue))
+        glVertexAttribPointer(GLuint(ShaderVertexAttrib.boneWeight.rawValue), 4, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<VertexAnimated>.size), BUFFER_OFFSET(MemoryLayout<GLKVector3>.size * 2 + MemoryLayout<GLKVector2>.size + MemoryLayout<Vector4i>.size))
+        
         glBindVertexArrayOES(0);
     }
     
@@ -346,11 +444,15 @@ class MeshAnimated : Mesh
     
     public func animate(_ animation: Animation, _ animationFrame: Int, _ skeleton: Skeleton)
     {
-        self.processSkeletonHierarchy(animation, animationFrame, skeleton, GLKMatrix4Identity)
+        
+        _ = self.processSkeletonHierarchy(animation, animationFrame, skeleton, GLKMatrix4Identity, GLKVector3Make(0.0,0.0,0.0))
     }
     
-    private func processSkeletonHierarchy(_ animation:Animation, _ animationFrame: Int, _ skeleton: Skeleton, _ parentTransformation: GLKMatrix4)
+    private func processSkeletonHierarchy(_ animation:Animation, _ animationFrame: Int, _ skeleton: Skeleton, _ parentTransformation: GLKMatrix4, _ parentPosition: GLKVector3) -> GLKVector3
     {
+        
+        // Initalise the position of this bone to the parent
+        var thisPosition: GLKVector3 = parentPosition
         
         var nodeTransformation: GLKMatrix4 = GLKMatrix4Identity
         
@@ -367,6 +469,11 @@ class MeshAnimated : Mesh
             {
                 position = (channel?.positions[animationFrame])!
             }
+            else if (channel?.positions.count)! == 1
+            {
+                position = (channel?.positions[0])!
+                //position = GLKVector3Make(0.0, 0.0, 0.0)
+            }
             else
             {
                 position = GLKVector3Make(0.0, 0.0, 0.0)
@@ -377,6 +484,10 @@ class MeshAnimated : Mesh
             {
                 scale = (channel?.scalings[animationFrame])!
             }
+            else if (channel?.scalings.count)! == 1
+            {
+                scale = (channel?.scalings[0])!
+            }
             else
             {
                 scale = GLKVector3Make(0.0, 0.0, 0.0)
@@ -386,6 +497,7 @@ class MeshAnimated : Mesh
             if (channel?.rotations.count)! > animationFrame
             {
                 rotation = (channel?.rotations[animationFrame])!
+                //rotation = GLKMatrix3Identity
             }
             else
             {
@@ -404,6 +516,9 @@ class MeshAnimated : Mesh
             // Transform bone
             nodeTransformation = GLKMatrix4Multiply(GLKMatrix4Multiply(tranMat, rotMat), scalMat)
             
+            // Update the position of this bone
+            thisPosition = GLKVector3Add(thisPosition, position)
+            
         }
         
         // Find global transformation
@@ -420,9 +535,10 @@ class MeshAnimated : Mesh
         // Recursively process the remaining child nodes
         for i in 0..<skeleton.children.count
         {
-            self.processSkeletonHierarchy(animation, animationFrame, skeleton.children[i], globalTransformation)
+            var childbonePosition = self.processSkeletonHierarchy(animation, animationFrame, skeleton.children[i], globalTransformation, thisPosition)
         }
         
+        return thisPosition
     }
     
     /**

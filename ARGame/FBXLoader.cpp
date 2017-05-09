@@ -60,39 +60,7 @@ void FBXLoader::loadFBXAnimation(std::string path)
     //FbxAnimStack *test = lScene->GetCurrentAnimationStack();
     
     DisplayAnimation(lScene);
-    //this->searchNode(lRootNode, lScene);
 
-    
-    
-    
-    // Get animation stack
-    /*FbxAnimStack* currAnimStack = lScene->GetSrcObject<FbxAnimStack>(0);
-    
-    // Get name of animation stack
-    FbxString animStackName = currAnimStack->GetName();
-    
-    // Get animation information
-    FbxTakeInfo* takeInfo = lScene->GetTakeInfo(animStackName);
-    FbxTime start = takeInfo->mLocalTimeSpan.GetStart();
-    FbxTime end = takeInfo->mLocalTimeSpan.GetStop();
-    float duration = end.GetFrameCount(FbxTime::eFrames30) - start.GetFrameCount(FbxTime::eFrames30) + 1;
-    
-    
-    for (FbxLongLong i = start.GetFrameCount(FbxTime::eFrames30); i <= end.GetFrameCount(FbxTime::eFrames30); i++)
-    {
-        FbxTime currTime;
-        currTime.SetFrame(i, FbxTime::eFrames30);
-        
-        //FbxAMatrix currentTransformOffset = inNode->EvaluateGlobalTransform(currTime) * geometryTransform;
-    }*/
-    
-    
-    
-    
-    
-    
-    
-    
     
     // The file has been imported; we can get rid of the importer.
     lImporter->Destroy();
@@ -270,5 +238,7 @@ void FBXLoader::DisplayChannels(FbxNode* pNode, FbxAnimLayer* pAnimLayer)
     {
         FBXSDK_printf("        TZ\n");
     }
+    
+    lAnimCurve = pNode->LclRotation.GetCurve(pAnimLayer, FBXSDK_CURVENODE_COMPONENT_X);
 }
 

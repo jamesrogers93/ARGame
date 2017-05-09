@@ -25,7 +25,7 @@ class Scene
         self.effectMaterial = EffectMaterial()
         self.effectMaterialAnimated = EffectMatAnim()
         
-        var sceneLoader: SceneLoader = SceneLoader()
+        let sceneLoader: SceneLoader = SceneLoader()
         sceneLoader.loadSceneFromFile(xml, self)
     }
     
@@ -151,6 +151,8 @@ class Scene
             }
         }
     }
+    
+    public func updateScene(){}
     
     public func updateAnimations()
     {
