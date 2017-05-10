@@ -48,6 +48,10 @@ class CharacterSelectionController: GLKViewController
         
         self.setupGL()
         
+        
+        // Set up the asyncronous texture loader
+        TexturePool.initaliseAsyncTextureLoader(sharegroup: (self.context?.sharegroup)!)
+        
         // Initalise the scene from xml file
         self.scene.initalise(xml: "character-selection")
         
@@ -72,13 +76,13 @@ class CharacterSelectionController: GLKViewController
         }
         
         // Start the animation
-        if let entity = self.scene.getEntityAnimated("y-bot")
+        if let entity = self.scene.getEntityAnimated("beta")
         {
             if !entity.glModel.animationController.isPlaying
             {
-                if let animation = self.scene.getAnimation("y-bot_breathing_idle")
+                if let animation = self.scene.getAnimation("beta_breathing_idle")
                 {
-                    entity.glModel.animationController.loop(("y-bot_breathing_idle", animation))
+                    entity.glModel.animationController.loop(("beta_breathing_idle", animation))
                 }
             }
         }
@@ -168,29 +172,18 @@ class CharacterSelectionController: GLKViewController
     func respondToSwipeGesture(_ gesture: UISwipeGestureRecognizer)
     {
         
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer
-        {
-            let child = self.scene as! CharacterSelectionScene
+        let child = self.scene as! CharacterSelectionScene
             
-            switch swipeGesture.direction
-            {
-            case UISwipeGestureRecognizerDirection.right:
-                print("Swiped right")
-                child.previousCharacter()
-                break
-            case UISwipeGestureRecognizerDirection.down:
-                print("Swiped down")
-                break
-            case UISwipeGestureRecognizerDirection.left:
-                print("Swiped left")
-                child.nextCharacter()
-                break
-            case UISwipeGestureRecognizerDirection.up:
-                print("Swiped up")
-                break
-            default:
-                break
-            }
+        switch gesture.direction
+        {
+        case UISwipeGestureRecognizerDirection.right:
+            child.previousCharacter()
+            break
+        case UISwipeGestureRecognizerDirection.left:
+            child.nextCharacter()
+            break
+        default:
+            break
         }
     }
 

@@ -22,7 +22,7 @@ class FightGameController: GLKViewController
     // Indicates if context was create
     var sharingShareGroup: Bool = false
     
-    let scene: Scene = Scene()
+    let scene: FightGameScene = FightGameScene()
     
     var arHandler: ARHandler = ARHandler()
     
@@ -60,6 +60,8 @@ class FightGameController: GLKViewController
 
         //self.scene.initaliseScene()
         //self.scene.initalise(xml: "character-selection")
+        
+        self.scene.setupGame()
         
         // Initalise the AR handler
         self.arHandler.onViewLoad()

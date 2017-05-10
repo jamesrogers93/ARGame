@@ -433,11 +433,25 @@ class ModelLoader
                     {
                         // Get resource path
                         let path = Bundle.main.path(forResource: diffTexName2, ofType: diffTexExt)
+                        
+                        
+                        /// TEST CODE
+                        
+                        TexturePool.asyncTextureLoader?.texture(withContentsOfFile: path!, options: opt, queue: TexturePool.queue,  completionHandler: {(texture: GLKTextureInfo?, error: Error?) -> Void in
+                            
+                            if texture != nil
+                            {
+                                TexturePool.textures[diffuseTexture] = texture
+                            }
+                        })
+                        
+                        // END TEST CODE
                     
-                        do
+                        /*do
                         {
                             // Load texture
                             TexturePool.textures[diffuseTexture] = try GLKTextureLoader.texture(withContentsOfFile: path!,   options: opt)
+                            
                         
                             glEnable(GLenum(GL_TEXTURE_2D));
                             glTexParameterf(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_S), GLfloat(GL_REPEAT));
@@ -445,7 +459,7 @@ class ModelLoader
                         {
                             print("Could not load diffuse texture for model")
                             isDiffuseLoaded = false
-                        }
+                        }*/
                     }
                 }
             }
@@ -482,7 +496,15 @@ class ModelLoader
                         // Get resource path
                         let path = Bundle.main.path(forResource: specTexName2, ofType: specTexExt)
             
-                        do
+                        TexturePool.asyncTextureLoader?.texture(withContentsOfFile: path!, options: opt, queue: TexturePool.queue,  completionHandler: {(texture: GLKTextureInfo?, error: Error?) -> Void in
+                            
+                            if texture != nil
+                            {
+                                TexturePool.textures[specularTexture] = texture
+                            }
+                        })
+                        
+                        /*do
                         {
                             // Load texture
                             TexturePool.textures[specularTexture] = try GLKTextureLoader.texture(withContentsOfFile: path!, options: opt)
@@ -493,7 +515,7 @@ class ModelLoader
                         {
                             print("Could not load specular texture for model")
                             isSpecularLoaded = false
-                        }
+                        }*/
                     }
                 }
             }

@@ -85,17 +85,42 @@ class MeshStatic : Mesh
     public func draw(_ effect: EffectMaterial)
     {
         // Prepare Effect
+        // Prepare Effect
         if self.material.diffuseTexture.0
         {
-            effect.setTexture0((TexturePool.textures[self.material.diffuseTexture.1]?.name)!)
+            if TexturePool.textures[self.material.diffuseTexture.1] != nil
+            {
+                effect.setTexture0((TexturePool.textures[self.material.diffuseTexture.1]?.name)!)
+                effect.setIsTexture0Loaded(true)
+            }
+            else
+            {
+                effect.setIsTexture0Loaded(false)
+            }
         }
-        effect.setIsTexture0Loaded(self.material.diffuseTexture.0)
+        else
+        {
+            effect.setIsTexture0Loaded(false)
+        }
+        //effect.setIsTexture0Loaded(self.material.diffuseTexture.0)
         
         if self.material.specularTexture.0
         {
-            effect.setTexture1((TexturePool.textures[self.material.specularTexture.1]?.name)!)
+            if TexturePool.textures[self.material.specularTexture.1] != nil
+            {
+                effect.setTexture1((TexturePool.textures[self.material.specularTexture.1]?.name)!)
+                effect.setIsTexture1Loaded(true)
+            }
+            else
+            {
+                effect.setIsTexture1Loaded(false)
+            }
         }
-        effect.setIsTexture1Loaded(self.material.specularTexture.0)
+        else
+        {
+            effect.setIsTexture1Loaded(false)
+        }
+        //effect.setIsTexture1Loaded(self.material.specularTexture.0)
         
         effect.setColourDiffuse(self.material.diffuseColour)
         effect.setColourSpecular(self.material.specularColour)
@@ -286,15 +311,37 @@ class MeshAnimated : Mesh
         // Prepare Effect
         if self.material.diffuseTexture.0
         {
-            effect.setTexture0((TexturePool.textures[self.material.diffuseTexture.1]?.name)!)
+            if TexturePool.textures[self.material.diffuseTexture.1] != nil
+            {
+                effect.setTexture0((TexturePool.textures[self.material.diffuseTexture.1]?.name)!)
+                effect.setIsTexture0Loaded(true)
+            }
+            else
+            {
+                effect.setIsTexture0Loaded(false)
+            }
         }
-        effect.setIsTexture0Loaded(self.material.diffuseTexture.0)
+        else
+        {
+            effect.setIsTexture0Loaded(false)
+        }
         
         if self.material.specularTexture.0
         {
-            effect.setTexture1((TexturePool.textures[self.material.specularTexture.1]?.name)!)
+            if TexturePool.textures[self.material.specularTexture.1] != nil
+            {
+                effect.setTexture1((TexturePool.textures[self.material.specularTexture.1]?.name)!)
+                effect.setIsTexture1Loaded(true)
+            }
+            else
+            {
+                effect.setIsTexture1Loaded(false)
+            }
         }
-        effect.setIsTexture1Loaded(self.material.specularTexture.0)
+        else
+        {
+            effect.setIsTexture1Loaded(false)
+        }
         
         effect.setColourDiffuse(self.material.diffuseColour)
         effect.setColourSpecular(self.material.specularColour)

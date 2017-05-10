@@ -98,6 +98,33 @@ class Scene
         return true
     }
     
+    public func deleteEntityStatic(_ entity: String)
+    {
+        if (self.entitesStatic[entity] != nil)
+        {
+            self.entitesStatic[entity]?.glModel.destroy()
+            self.entitesStatic.removeValue(forKey: entity)
+            
+        }
+    }
+    
+    public func deleteEntityAnimated(_ entity: String)
+    {
+        if (self.entitesAnimated[entity] != nil)
+        {
+            self.entitesAnimated[entity]?.glModel.destroy()
+            self.entitesAnimated.removeValue(forKey: entity)
+        }
+    }
+    
+    public func deleteAnimation(_ animation: String)
+    {
+        if (self.animations[animation] != nil)
+        {
+            self.animations.removeValue(forKey: animation)
+        }
+    }
+    
     public func getEntityStatic(_ name: String) -> EntityStatic?
     {
         return self.entitesStatic[name]

@@ -51,14 +51,12 @@
 		1A2465641EC1CF720043A60F /* vanguard_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A2465631EC1CF720043A60F /* vanguard_breathing_idle.bvh */; };
 		1A2465661EC1CF980043A60F /* y-bot_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A2465651EC1CF980043A60F /* y-bot_breathing_idle.bvh */; };
 		1A2465681EC1CFD00043A60F /* x-bot_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A2465671EC1CFD00043A60F /* x-bot_breathing_idle.bvh */; };
-		1A2465711EC22EEB0043A60F /* y-bot_breathing_idle1.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A2465701EC22EEB0043A60F /* y-bot_breathing_idle1.bvh */; };
 		1A3036281E8566B500484367 /* EffectMatAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3036271E8566B500484367 /* EffectMatAnim.swift */; };
 		1A30362C1E856B1D00484367 /* ShaderAnimation.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A30362A1E856B1D00484367 /* ShaderAnimation.vsh */; };
 		1A3B89BA1EBF7DCF0095E9AA /* x-bot.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B89B81EBF7DCF0095E9AA /* x-bot.xml */; };
 		1A3B89BB1EBF7DCF0095E9AA /* y-bot.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B89B91EBF7DCF0095E9AA /* y-bot.xml */; };
 		1A3B89BF1EBF7DFA0095E9AA /* x-bot.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B89BE1EBF7DFA0095E9AA /* x-bot.fbx */; };
 		1A3B89C11EBF7E050095E9AA /* y-bot.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B89C01EBF7E050095E9AA /* y-bot.fbx */; };
-		1A3B89C41EBF99D40095E9AA /* victory.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A3B89C31EBF99D40095E9AA /* victory.bvh */; };
 		1A435D5B1E83BB6F00D44433 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5A1E83BB6F00D44433 /* Vertex.swift */; };
 		1A435D5D1E83BBC000D44433 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A435D5C1E83BBC000D44433 /* Material.swift */; };
 		1A44925D1E96A9B900C27B4B /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44925C1E96A9B900C27B4B /* Entity.swift */; };
@@ -98,6 +96,14 @@
 		1ADFA8B81E64C05900588345 /* AssimpLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B71E64C05900588345 /* AssimpLoaderCInterface.cpp */; };
 		1AE317931E93C49900972BC2 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE317921E93C49900972BC2 /* Skeleton.swift */; };
 		1AE8748F1E97ED39009F1D4A /* AnimationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */; };
+		1AF835E71EC3A2F700EA282A /* FightGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF835E61EC3A2F700EA282A /* FightGameScene.swift */; };
+		1AF835E91EC3AC9200EA282A /* beta_warming_up.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835E81EC3AC9100EA282A /* beta_warming_up.bvh */; };
+		1AF835EB1EC3ACA500EA282A /* ely_warming_up.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835EA1EC3ACA500EA282A /* ely_warming_up.bvh */; };
+		1AF835ED1EC3ACB000EA282A /* ganfaul_warming_up.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835EC1EC3ACB000EA282A /* ganfaul_warming_up.bvh */; };
+		1AF835EF1EC3ACBA00EA282A /* pumpkin_warming_up.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835EE1EC3ACBA00EA282A /* pumpkin_warming_up.bvh */; };
+		1AF835F11EC3ACD200EA282A /* vanguard_warming_up.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835F01EC3ACD200EA282A /* vanguard_warming_up.bvh */; };
+		1AF835F31EC3ACDC00EA282A /* x-bot_warming_up.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835F21EC3ACDC00EA282A /* x-bot_warming_up.bvh */; };
+		1AF835F51EC3ACEA00EA282A /* y-bot_warming_up.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835F41EC3ACEA00EA282A /* y-bot_warming_up.bvh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,14 +168,12 @@
 		1A2465631EC1CF720043A60F /* vanguard_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vanguard_breathing_idle.bvh; path = Assets/Animations/Vangaurd/vanguard_breathing_idle.bvh; sourceTree = "<group>"; };
 		1A2465651EC1CF980043A60F /* y-bot_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "y-bot_breathing_idle.bvh"; path = "Assets/Animations/Y-Bot/y-bot_breathing_idle.bvh"; sourceTree = "<group>"; };
 		1A2465671EC1CFD00043A60F /* x-bot_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "x-bot_breathing_idle.bvh"; path = "Assets/Animations/X-Bot/x-bot_breathing_idle.bvh"; sourceTree = "<group>"; };
-		1A2465701EC22EEB0043A60F /* y-bot_breathing_idle1.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "y-bot_breathing_idle1.bvh"; path = "Assets/Animations/Y-Bot/y-bot_breathing_idle1.bvh"; sourceTree = "<group>"; };
 		1A3036271E8566B500484367 /* EffectMatAnim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectMatAnim.swift; sourceTree = "<group>"; };
 		1A30362A1E856B1D00484367 /* ShaderAnimation.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderAnimation.vsh; path = Shaders/ShaderAnimation.vsh; sourceTree = "<group>"; };
 		1A3B89B81EBF7DCF0095E9AA /* x-bot.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "x-bot.xml"; path = "Assets/Character_Presets/x-bot.xml"; sourceTree = "<group>"; };
 		1A3B89B91EBF7DCF0095E9AA /* y-bot.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "y-bot.xml"; path = "Assets/Character_Presets/y-bot.xml"; sourceTree = "<group>"; };
 		1A3B89BE1EBF7DFA0095E9AA /* x-bot.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = "x-bot.fbx"; path = "Assets/Characters/X-Bot/x-bot.fbx"; sourceTree = "<group>"; };
 		1A3B89C01EBF7E050095E9AA /* y-bot.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = "y-bot.fbx"; path = "Assets/Characters/Y-Bot/y-bot.fbx"; sourceTree = "<group>"; };
-		1A3B89C31EBF99D40095E9AA /* victory.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = victory.bvh; path = "Assets/Animations/Y-Bot/victory.bvh"; sourceTree = "<group>"; };
 		1A435D5A1E83BB6F00D44433 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		1A435D5C1E83BBC000D44433 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		1A44925C1E96A9B900C27B4B /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
@@ -234,6 +238,14 @@
 		1ADFA8B71E64C05900588345 /* AssimpLoaderCInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpLoaderCInterface.cpp; sourceTree = "<group>"; };
 		1AE317921E93C49900972BC2 /* Skeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
 		1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationLoader.swift; sourceTree = "<group>"; };
+		1AF835E61EC3A2F700EA282A /* FightGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FightGameScene.swift; sourceTree = "<group>"; };
+		1AF835E81EC3AC9100EA282A /* beta_warming_up.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_warming_up.bvh; path = Assets/Animations/Beta/beta_warming_up.bvh; sourceTree = "<group>"; };
+		1AF835EA1EC3ACA500EA282A /* ely_warming_up.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ely_warming_up.bvh; path = Assets/Animations/Ely/ely_warming_up.bvh; sourceTree = "<group>"; };
+		1AF835EC1EC3ACB000EA282A /* ganfaul_warming_up.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ganfaul_warming_up.bvh; path = Assets/Animations/Ganfaul/ganfaul_warming_up.bvh; sourceTree = "<group>"; };
+		1AF835EE1EC3ACBA00EA282A /* pumpkin_warming_up.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pumpkin_warming_up.bvh; path = Assets/Animations/Pumpkin/pumpkin_warming_up.bvh; sourceTree = "<group>"; };
+		1AF835F01EC3ACD200EA282A /* vanguard_warming_up.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vanguard_warming_up.bvh; path = Assets/Animations/Vangaurd/vanguard_warming_up.bvh; sourceTree = "<group>"; };
+		1AF835F21EC3ACDC00EA282A /* x-bot_warming_up.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "x-bot_warming_up.bvh"; path = "Assets/Animations/X-Bot/x-bot_warming_up.bvh"; sourceTree = "<group>"; };
+		1AF835F41EC3ACEA00EA282A /* y-bot_warming_up.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "y-bot_warming_up.bvh"; path = "Assets/Animations/Y-Bot/y-bot_warming_up.bvh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2465591EC1CF310043A60F /* beta_breathing_idle.bvh */,
+				1AF835E81EC3AC9100EA282A /* beta_warming_up.bvh */,
 			);
 			name = Beta;
 			sourceTree = "<group>";
@@ -349,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				1A4492791E979F5B00C27B4B /* CharacterSelectionScene.swift */,
+				1AF835E61EC3A2F700EA282A /* FightGameScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -412,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2465671EC1CFD00043A60F /* x-bot_breathing_idle.bvh */,
+				1AF835F21EC3ACDC00EA282A /* x-bot_warming_up.bvh */,
 			);
 			name = "X-Bot";
 			sourceTree = "<group>";
@@ -420,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				1A24655D1EC1CF4D0043A60F /* ganfaul_breathing_idle.bvh */,
+				1AF835EC1EC3ACB000EA282A /* ganfaul_warming_up.bvh */,
 			);
 			name = Ganfaul;
 			sourceTree = "<group>";
@@ -428,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				1A24655F1EC1CF630043A60F /* pumpkin_breathing_idle.bvh */,
+				1AF835EE1EC3ACBA00EA282A /* pumpkin_warming_up.bvh */,
 			);
 			name = Pumpkin;
 			sourceTree = "<group>";
@@ -444,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2465631EC1CF720043A60F /* vanguard_breathing_idle.bvh */,
+				1AF835F01EC3ACD200EA282A /* vanguard_warming_up.bvh */,
 			);
 			name = Vangaurd;
 			sourceTree = "<group>";
@@ -482,8 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2465651EC1CF980043A60F /* y-bot_breathing_idle.bvh */,
-				1A2465701EC22EEB0043A60F /* y-bot_breathing_idle1.bvh */,
-				1A3B89C31EBF99D40095E9AA /* victory.bvh */,
+				1AF835F41EC3ACEA00EA282A /* y-bot_warming_up.bvh */,
 			);
 			name = "Y-Bot";
 			sourceTree = "<group>";
@@ -492,6 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				1A24655B1EC1CF3C0043A60F /* ely_breathing_idle.bvh */,
+				1AF835EA1EC3ACA500EA282A /* ely_warming_up.bvh */,
 			);
 			name = Ely;
 			sourceTree = "<group>";
@@ -839,6 +857,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF835EF1EC3ACBA00EA282A /* pumpkin_warming_up.bvh in Resources */,
 				1A24655C1EC1CF3C0043A60F /* ely_breathing_idle.bvh in Resources */,
 				1A05A4901E9A6767003B8104 /* beta.fbx in Resources */,
 				1A22E5EE1EB6BFC10013D588 /* vampire.fbx in Resources */,
@@ -847,10 +866,11 @@
 				1A3B89BB1EBF7DCF0095E9AA /* y-bot.xml in Resources */,
 				1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */,
 				1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */,
+				1AF835ED1EC3ACB000EA282A /* ganfaul_warming_up.bvh in Resources */,
 				1A5FCF131EBF516B00C3E698 /* character-selection.xml in Resources */,
 				1A30362C1E856B1D00484367 /* ShaderAnimation.vsh in Resources */,
 				1A22E60F1EB746500013D588 /* vanguard_diffuse.png in Resources */,
-				1A2465711EC22EEB0043A60F /* y-bot_breathing_idle1.bvh in Resources */,
+				1AF835EB1EC3ACA500EA282A /* ely_warming_up.bvh in Resources */,
 				1A22E61B1EB748AF0013D588 /* ganfaul_specular.png in Resources */,
 				1A22E6061EB744F40013D588 /* ely_diffuse.png in Resources */,
 				1A2465681EC1CFD00043A60F /* x-bot_breathing_idle.bvh in Resources */,
@@ -864,6 +884,7 @@
 				1A2465531EC1C95C0043A60F /* maria_breathing_idle.bvh in Resources */,
 				1A22E60A1EB745060013D588 /* ely.xml in Resources */,
 				1A3B89C11EBF7E050095E9AA /* y-bot.fbx in Resources */,
+				1AF835F11EC3ACD200EA282A /* vanguard_warming_up.bvh in Resources */,
 				1A22E61C1EB748AF0013D588 /* ganfaul.fbx in Resources */,
 				1A22E5F41EB72C2F0013D588 /* vampire.xml in Resources */,
 				1AC181761E7355E0008C07F3 /* ShaderBasic.fsh in Resources */,
@@ -877,16 +898,18 @@
 				1A22E6081EB744F40013D588 /* ely.fbx in Resources */,
 				1A22E5F61EB735AC0013D588 /* beta.xml in Resources */,
 				1A24655E1EC1CF4D0043A60F /* ganfaul_breathing_idle.bvh in Resources */,
+				1AF835E91EC3AC9200EA282A /* beta_warming_up.bvh in Resources */,
 				1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */,
+				1AF835F31EC3ACDC00EA282A /* x-bot_warming_up.bvh in Resources */,
 				1A22E6161EB748990013D588 /* ganfaul.xml in Resources */,
 				1A05A49F1E9A6987003B8104 /* vampire_diffuse.png in Resources */,
 				1A22E6011EB73FA30013D588 /* pumpkin.xml in Resources */,
 				1A05A4951E9A6773003B8104 /* maria_diffuse.png in Resources */,
 				1A2465661EC1CF980043A60F /* y-bot_breathing_idle.bvh in Resources */,
 				1A05A4961E9A6773003B8104 /* maria_specular.png in Resources */,
-				1A3B89C41EBF99D40095E9AA /* victory.bvh in Resources */,
 				1A22E6111EB746500013D588 /* vanguard.fbx in Resources */,
 				1A05A4A01E9A6987003B8104 /* vampire_specular.png in Resources */,
+				1AF835F51EC3ACEA00EA282A /* y-bot_warming_up.bvh in Resources */,
 				1A24655A1EC1CF310043A60F /* beta_breathing_idle.bvh in Resources */,
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,
 				1A3B89BF1EBF7DFA0095E9AA /* x-bot.fbx in Resources */,
@@ -926,6 +949,7 @@
 				1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */,
 				1A5FCF101EBF4F4500C3E698 /* SceneLoader.swift in Sources */,
 				1A05A4AF1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp in Sources */,
+				1AF835E71EC3A2F700EA282A /* FightGameScene.swift in Sources */,
 				1AE317931E93C49900972BC2 /* Skeleton.swift in Sources */,
 				1A44925D1E96A9B900C27B4B /* Entity.swift in Sources */,
 				1A3036281E8566B500484367 /* EffectMatAnim.swift in Sources */,
