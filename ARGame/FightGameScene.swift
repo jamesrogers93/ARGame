@@ -67,14 +67,50 @@ class FightGameScene : Scene
         
         // Now load in the annimations for the 2 characters
         loadAllAnimations()
+        
+        // Now set the animations
+        //let playerAnimationName: String = self.playerName + "_warming_up"
+        let playerAnimationName: String = self.playerName + "_walking"
+        super.entitesAnimated[self.playerName]?.glModel.animationController.loop((playerAnimationName, super.animations[playerAnimationName]!))
+        
+        //let enemyAnimationName: String = self.enemyName + "_warming_up"
+        let enemyAnimationName: String = self.enemyName + "_walking"
+        super.entitesAnimated[self.enemyName]?.glModel.animationController.loop((enemyAnimationName, super.animations[enemyAnimationName]!))
     }
     
-    public func loadAllAnimations()
+    private func loadAllAnimations()
     {
-        let characterAnimations: Array<String> = ["_breathing_idle", "_warming_up"]
+        let characterAnimations: Array<String> = ["_breathing_idle", "_warming_up", "_walking"]
         
         for i in 0..<characterAnimations.count
         {
+            // Append character name to animation to load correct one
+            let playerAnimName = self.playerName + characterAnimations[i]
+            
+            // Check if animation does not exist
+            if !isAnimationExist(playerAnimName)
+            {
+                // Load animation from file
+                let animation = (playerAnimName, AnimationLoader.loadAnimationFromFile(playerAnimName, "bvh")!)
+                if !(super.addAnimation(animation))
+                {
+                    print("failed to load \(playerAnimName)")
+                }
+            }
+            
+            // Append character name to animation to load correct one
+            let enemyAnimName = self.enemyName + characterAnimations[i]
+            
+            // Check if animation does not exist
+            if !isAnimationExist(enemyAnimName)
+            {
+                // Load animation from file
+                let animation = (enemyAnimName, AnimationLoader.loadAnimationFromFile(enemyAnimName, "bvh")!)
+                if !(super.addAnimation(animation))
+                {
+                    print("failed to load \(enemyAnimName)")
+                }
+            }
             
         }
     }

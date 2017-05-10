@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A05A47C1E9A31AB003B8104 /* TexturePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A47B1E9A31AB003B8104 /* TexturePool.swift */; };
 		1A05A4901E9A6767003B8104 /* beta.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A48F1E9A6767003B8104 /* beta.fbx */; };
-		1A05A4951E9A6773003B8104 /* maria_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4911E9A6773003B8104 /* maria_diffuse.png */; };
-		1A05A4961E9A6773003B8104 /* maria_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A4921E9A6773003B8104 /* maria_specular.png */; };
-		1A05A49F1E9A6987003B8104 /* vampire_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A49D1E9A6987003B8104 /* vampire_diffuse.png */; };
-		1A05A4A01E9A6987003B8104 /* vampire_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A49E1E9A6987003B8104 /* vampire_specular.png */; };
 		1A05A4A81E9A8E37003B8104 /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A05A4A71E9A8E37003B8104 /* libfbxsdk.a */; };
 		1A05A4AC1E9A9158003B8104 /* FBXLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A4AB1E9A9158003B8104 /* FBXLoader.cpp */; };
 		1A05A4AF1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A4AD1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp */; };
@@ -22,10 +18,6 @@
 		1A17880B1E640D950087DE26 /* camera_para.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880A1E640D950087DE26 /* camera_para.dat */; };
 		1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */ = {isa = PBXBuildFile; fileRef = 1A17880C1E640D9E0087DE26 /* hiro.patt */; };
 		1A22E5DD1EB38ECF0013D588 /* EntityLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A22E5DC1EB38ECF0013D588 /* EntityLoader.swift */; };
-		1A22E5E81EB638CB0013D588 /* maria.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5E71EB638CB0013D588 /* maria.fbx */; };
-		1A22E5EE1EB6BFC10013D588 /* vampire.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5ED1EB6BFC10013D588 /* vampire.fbx */; };
-		1A22E5F31EB72C2F0013D588 /* maria.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5F11EB72C2F0013D588 /* maria.xml */; };
-		1A22E5F41EB72C2F0013D588 /* vampire.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5F21EB72C2F0013D588 /* vampire.xml */; };
 		1A22E5F61EB735AC0013D588 /* beta.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5F51EB735AC0013D588 /* beta.xml */; };
 		1A22E5FE1EB73F740013D588 /* pumpkin_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5FC1EB73F740013D588 /* pumpkin_diffuse.png */; };
 		1A22E5FF1EB73F740013D588 /* pumpkin.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E5FD1EB73F740013D588 /* pumpkin.fbx */; };
@@ -42,12 +34,10 @@
 		1A22E61A1EB748AF0013D588 /* ganfaul_diffuse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6171EB748AF0013D588 /* ganfaul_diffuse.png */; };
 		1A22E61B1EB748AF0013D588 /* ganfaul_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6181EB748AF0013D588 /* ganfaul_specular.png */; };
 		1A22E61C1EB748AF0013D588 /* ganfaul.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A22E6191EB748AF0013D588 /* ganfaul.fbx */; };
-		1A2465531EC1C95C0043A60F /* maria_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A2465521EC1C95C0043A60F /* maria_breathing_idle.bvh */; };
 		1A24655A1EC1CF310043A60F /* beta_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A2465591EC1CF310043A60F /* beta_breathing_idle.bvh */; };
 		1A24655C1EC1CF3C0043A60F /* ely_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A24655B1EC1CF3C0043A60F /* ely_breathing_idle.bvh */; };
 		1A24655E1EC1CF4D0043A60F /* ganfaul_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A24655D1EC1CF4D0043A60F /* ganfaul_breathing_idle.bvh */; };
 		1A2465601EC1CF630043A60F /* pumpkin_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A24655F1EC1CF630043A60F /* pumpkin_breathing_idle.bvh */; };
-		1A2465621EC1CF6A0043A60F /* vampire_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A2465611EC1CF6A0043A60F /* vampire_breathing_idle.bvh */; };
 		1A2465641EC1CF720043A60F /* vanguard_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A2465631EC1CF720043A60F /* vanguard_breathing_idle.bvh */; };
 		1A2465661EC1CF980043A60F /* y-bot_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A2465651EC1CF980043A60F /* y-bot_breathing_idle.bvh */; };
 		1A2465681EC1CFD00043A60F /* x-bot_breathing_idle.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A2465671EC1CFD00043A60F /* x-bot_breathing_idle.bvh */; };
@@ -104,6 +94,13 @@
 		1AF835F11EC3ACD200EA282A /* vanguard_warming_up.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835F01EC3ACD200EA282A /* vanguard_warming_up.bvh */; };
 		1AF835F31EC3ACDC00EA282A /* x-bot_warming_up.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835F21EC3ACDC00EA282A /* x-bot_warming_up.bvh */; };
 		1AF835F51EC3ACEA00EA282A /* y-bot_warming_up.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835F41EC3ACEA00EA282A /* y-bot_warming_up.bvh */; };
+		1AF835F71EC3BF1600EA282A /* beta_walking.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835F61EC3BF1600EA282A /* beta_walking.bvh */; };
+		1AF835F91EC3C93800EA282A /* ely_walking.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835F81EC3C93800EA282A /* ely_walking.bvh */; };
+		1AF835FB1EC3C94300EA282A /* ganfaul_walking.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835FA1EC3C94300EA282A /* ganfaul_walking.bvh */; };
+		1AF835FD1EC3C9E300EA282A /* pumpkin_walking.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835FC1EC3C9E300EA282A /* pumpkin_walking.bvh */; };
+		1AF835FF1EC3C9EC00EA282A /* vanguard_walking.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF835FE1EC3C9EC00EA282A /* vanguard_walking.bvh */; };
+		1AF836011EC3C9F700EA282A /* x-bot_walking.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF836001EC3C9F700EA282A /* x-bot_walking.bvh */; };
+		1AF836031EC3CA0000EA282A /* y-bot_walking.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1AF836021EC3CA0000EA282A /* y-bot_walking.bvh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,10 +123,6 @@
 /* Begin PBXFileReference section */
 		1A05A47B1E9A31AB003B8104 /* TexturePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexturePool.swift; sourceTree = "<group>"; };
 		1A05A48F1E9A6767003B8104 /* beta.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = beta.fbx; path = Assets/Characters/Beta/beta.fbx; sourceTree = "<group>"; };
-		1A05A4911E9A6773003B8104 /* maria_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maria_diffuse.png; path = Assets/Characters/Maria/maria_diffuse.png; sourceTree = "<group>"; };
-		1A05A4921E9A6773003B8104 /* maria_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maria_specular.png; path = Assets/Characters/Maria/maria_specular.png; sourceTree = "<group>"; };
-		1A05A49D1E9A6987003B8104 /* vampire_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vampire_diffuse.png; path = Assets/Characters/Vampire/vampire_diffuse.png; sourceTree = "<group>"; };
-		1A05A49E1E9A6987003B8104 /* vampire_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vampire_specular.png; path = Assets/Characters/Vampire/vampire_specular.png; sourceTree = "<group>"; };
 		1A05A4A71E9A8E37003B8104 /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../../../../../../../Applications/Autodesk/FBX SDK/2017.1/lib/ios-armv7/release/libfbxsdk.a"; sourceTree = "<group>"; };
 		1A05A4AA1E9A913E003B8104 /* FBXLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FBXLoader.hpp; sourceTree = "<group>"; };
 		1A05A4AB1E9A9158003B8104 /* FBXLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FBXLoader.cpp; sourceTree = "<group>"; };
@@ -139,10 +132,6 @@
 		1A17880A1E640D950087DE26 /* camera_para.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = camera_para.dat; path = Assets_AR/camera_para.dat; sourceTree = "<group>"; };
 		1A17880C1E640D9E0087DE26 /* hiro.patt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hiro.patt; path = Assets_AR/hiro.patt; sourceTree = "<group>"; };
 		1A22E5DC1EB38ECF0013D588 /* EntityLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityLoader.swift; sourceTree = "<group>"; };
-		1A22E5E71EB638CB0013D588 /* maria.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = maria.fbx; path = Assets/Characters/Maria/maria.fbx; sourceTree = "<group>"; };
-		1A22E5ED1EB6BFC10013D588 /* vampire.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = vampire.fbx; path = Assets/Characters/Vampire/vampire.fbx; sourceTree = "<group>"; };
-		1A22E5F11EB72C2F0013D588 /* maria.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = maria.xml; path = Assets/Character_Presets/maria.xml; sourceTree = "<group>"; };
-		1A22E5F21EB72C2F0013D588 /* vampire.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vampire.xml; path = Assets/Character_Presets/vampire.xml; sourceTree = "<group>"; };
 		1A22E5F51EB735AC0013D588 /* beta.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = beta.xml; path = Assets/Character_Presets/beta.xml; sourceTree = "<group>"; };
 		1A22E5FC1EB73F740013D588 /* pumpkin_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pumpkin_diffuse.png; path = Assets/Characters/Pumpkin/pumpkin_diffuse.png; sourceTree = "<group>"; };
 		1A22E5FD1EB73F740013D588 /* pumpkin.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = pumpkin.fbx; path = Assets/Characters/Pumpkin/pumpkin.fbx; sourceTree = "<group>"; };
@@ -159,12 +148,10 @@
 		1A22E6171EB748AF0013D588 /* ganfaul_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ganfaul_diffuse.png; path = Assets/Characters/Ganfaul/ganfaul_diffuse.png; sourceTree = "<group>"; };
 		1A22E6181EB748AF0013D588 /* ganfaul_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ganfaul_specular.png; path = Assets/Characters/Ganfaul/ganfaul_specular.png; sourceTree = "<group>"; };
 		1A22E6191EB748AF0013D588 /* ganfaul.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = ganfaul.fbx; path = Assets/Characters/Ganfaul/ganfaul.fbx; sourceTree = "<group>"; };
-		1A2465521EC1C95C0043A60F /* maria_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = maria_breathing_idle.bvh; path = Assets/Animations/Maria/maria_breathing_idle.bvh; sourceTree = "<group>"; };
 		1A2465591EC1CF310043A60F /* beta_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_breathing_idle.bvh; path = Assets/Animations/Beta/beta_breathing_idle.bvh; sourceTree = "<group>"; };
 		1A24655B1EC1CF3C0043A60F /* ely_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ely_breathing_idle.bvh; path = Assets/Animations/Ely/ely_breathing_idle.bvh; sourceTree = "<group>"; };
 		1A24655D1EC1CF4D0043A60F /* ganfaul_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ganfaul_breathing_idle.bvh; path = Assets/Animations/Ganfaul/ganfaul_breathing_idle.bvh; sourceTree = "<group>"; };
 		1A24655F1EC1CF630043A60F /* pumpkin_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pumpkin_breathing_idle.bvh; path = Assets/Animations/Pumpkin/pumpkin_breathing_idle.bvh; sourceTree = "<group>"; };
-		1A2465611EC1CF6A0043A60F /* vampire_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vampire_breathing_idle.bvh; path = Assets/Animations/Vampire/vampire_breathing_idle.bvh; sourceTree = "<group>"; };
 		1A2465631EC1CF720043A60F /* vanguard_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vanguard_breathing_idle.bvh; path = Assets/Animations/Vangaurd/vanguard_breathing_idle.bvh; sourceTree = "<group>"; };
 		1A2465651EC1CF980043A60F /* y-bot_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "y-bot_breathing_idle.bvh"; path = "Assets/Animations/Y-Bot/y-bot_breathing_idle.bvh"; sourceTree = "<group>"; };
 		1A2465671EC1CFD00043A60F /* x-bot_breathing_idle.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "x-bot_breathing_idle.bvh"; path = "Assets/Animations/X-Bot/x-bot_breathing_idle.bvh"; sourceTree = "<group>"; };
@@ -246,6 +233,13 @@
 		1AF835F01EC3ACD200EA282A /* vanguard_warming_up.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vanguard_warming_up.bvh; path = Assets/Animations/Vangaurd/vanguard_warming_up.bvh; sourceTree = "<group>"; };
 		1AF835F21EC3ACDC00EA282A /* x-bot_warming_up.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "x-bot_warming_up.bvh"; path = "Assets/Animations/X-Bot/x-bot_warming_up.bvh"; sourceTree = "<group>"; };
 		1AF835F41EC3ACEA00EA282A /* y-bot_warming_up.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "y-bot_warming_up.bvh"; path = "Assets/Animations/Y-Bot/y-bot_warming_up.bvh"; sourceTree = "<group>"; };
+		1AF835F61EC3BF1600EA282A /* beta_walking.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_walking.bvh; path = Assets/Animations/Beta/beta_walking.bvh; sourceTree = "<group>"; };
+		1AF835F81EC3C93800EA282A /* ely_walking.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ely_walking.bvh; path = Assets/Animations/Ely/ely_walking.bvh; sourceTree = "<group>"; };
+		1AF835FA1EC3C94300EA282A /* ganfaul_walking.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ganfaul_walking.bvh; path = Assets/Animations/Ganfaul/ganfaul_walking.bvh; sourceTree = "<group>"; };
+		1AF835FC1EC3C9E300EA282A /* pumpkin_walking.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pumpkin_walking.bvh; path = Assets/Animations/Pumpkin/pumpkin_walking.bvh; sourceTree = "<group>"; };
+		1AF835FE1EC3C9EC00EA282A /* vanguard_walking.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vanguard_walking.bvh; path = Assets/Animations/Vangaurd/vanguard_walking.bvh; sourceTree = "<group>"; };
+		1AF836001EC3C9F700EA282A /* x-bot_walking.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "x-bot_walking.bvh"; path = "Assets/Animations/X-Bot/x-bot_walking.bvh"; sourceTree = "<group>"; };
+		1AF836021EC3CA0000EA282A /* y-bot_walking.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "y-bot_walking.bvh"; path = "Assets/Animations/Y-Bot/y-bot_walking.bvh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,24 +276,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A05A47D1E9A5379003B8104 /* Maria */ = {
-			isa = PBXGroup;
-			children = (
-				1A2465521EC1C95C0043A60F /* maria_breathing_idle.bvh */,
-			);
-			name = Maria;
-			sourceTree = "<group>";
-		};
-		1A05A4861E9A6639003B8104 /* Vampire */ = {
-			isa = PBXGroup;
-			children = (
-				1A22E5ED1EB6BFC10013D588 /* vampire.fbx */,
-				1A05A49D1E9A6987003B8104 /* vampire_diffuse.png */,
-				1A05A49E1E9A6987003B8104 /* vampire_specular.png */,
-			);
-			name = Vampire;
-			sourceTree = "<group>";
-		};
 		1A05A4891E9A6737003B8104 /* Beta */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +289,7 @@
 			children = (
 				1A2465591EC1CF310043A60F /* beta_breathing_idle.bvh */,
 				1AF835E81EC3AC9100EA282A /* beta_warming_up.bvh */,
+				1AF835F61EC3BF1600EA282A /* beta_walking.bvh */,
 			);
 			name = Beta;
 			sourceTree = "<group>";
@@ -373,9 +350,7 @@
 				1A22E5F51EB735AC0013D588 /* beta.xml */,
 				1A22E6091EB745060013D588 /* ely.xml */,
 				1A22E6151EB748990013D588 /* ganfaul.xml */,
-				1A22E5F11EB72C2F0013D588 /* maria.xml */,
 				1A22E6001EB73FA30013D588 /* pumpkin.xml */,
-				1A22E5F21EB72C2F0013D588 /* vampire.xml */,
 				1A22E6121EB746690013D588 /* vanguard.xml */,
 				1A3B89B81EBF7DCF0095E9AA /* x-bot.xml */,
 				1A3B89B91EBF7DCF0095E9AA /* y-bot.xml */,
@@ -427,6 +402,7 @@
 			children = (
 				1A2465671EC1CFD00043A60F /* x-bot_breathing_idle.bvh */,
 				1AF835F21EC3ACDC00EA282A /* x-bot_warming_up.bvh */,
+				1AF836001EC3C9F700EA282A /* x-bot_walking.bvh */,
 			);
 			name = "X-Bot";
 			sourceTree = "<group>";
@@ -436,6 +412,7 @@
 			children = (
 				1A24655D1EC1CF4D0043A60F /* ganfaul_breathing_idle.bvh */,
 				1AF835EC1EC3ACB000EA282A /* ganfaul_warming_up.bvh */,
+				1AF835FA1EC3C94300EA282A /* ganfaul_walking.bvh */,
 			);
 			name = Ganfaul;
 			sourceTree = "<group>";
@@ -445,16 +422,9 @@
 			children = (
 				1A24655F1EC1CF630043A60F /* pumpkin_breathing_idle.bvh */,
 				1AF835EE1EC3ACBA00EA282A /* pumpkin_warming_up.bvh */,
+				1AF835FC1EC3C9E300EA282A /* pumpkin_walking.bvh */,
 			);
 			name = Pumpkin;
-			sourceTree = "<group>";
-		};
-		1A2465571EC1CEA30043A60F /* Vampire */ = {
-			isa = PBXGroup;
-			children = (
-				1A2465611EC1CF6A0043A60F /* vampire_breathing_idle.bvh */,
-			);
-			name = Vampire;
 			sourceTree = "<group>";
 		};
 		1A2465581EC1CEBB0043A60F /* Vangaurd */ = {
@@ -462,6 +432,7 @@
 			children = (
 				1A2465631EC1CF720043A60F /* vanguard_breathing_idle.bvh */,
 				1AF835F01EC3ACD200EA282A /* vanguard_warming_up.bvh */,
+				1AF835FE1EC3C9EC00EA282A /* vanguard_walking.bvh */,
 			);
 			name = Vangaurd;
 			sourceTree = "<group>";
@@ -501,6 +472,7 @@
 			children = (
 				1A2465651EC1CF980043A60F /* y-bot_breathing_idle.bvh */,
 				1AF835F41EC3ACEA00EA282A /* y-bot_warming_up.bvh */,
+				1AF836021EC3CA0000EA282A /* y-bot_walking.bvh */,
 			);
 			name = "Y-Bot";
 			sourceTree = "<group>";
@@ -510,6 +482,7 @@
 			children = (
 				1A24655B1EC1CF3C0043A60F /* ely_breathing_idle.bvh */,
 				1AF835EA1EC3ACA500EA282A /* ely_warming_up.bvh */,
+				1AF835F81EC3C93800EA282A /* ely_walking.bvh */,
 			);
 			name = Ely;
 			sourceTree = "<group>";
@@ -632,9 +605,7 @@
 				1A05A48A1E9A673E003B8104 /* Beta */,
 				1A3B89C51EBFA4380095E9AA /* Ely */,
 				1A2465551EC1CE7A0043A60F /* Ganfaul */,
-				1A05A47D1E9A5379003B8104 /* Maria */,
 				1A2465561EC1CE8E0043A60F /* Pumpkin */,
-				1A2465571EC1CEA30043A60F /* Vampire */,
 				1A2465581EC1CEBB0043A60F /* Vangaurd */,
 				1A2465541EC1CE620043A60F /* X-Bot */,
 				1A3B89C21EBF991A0095E9AA /* Y-Bot */,
@@ -690,24 +661,12 @@
 				1A05A4891E9A6737003B8104 /* Beta */,
 				1A22E6021EB744E60013D588 /* Ely */,
 				1A22E6141EB748740013D588 /* Ganfaul */,
-				1A99B2441E99597B00E2831B /* Maria */,
 				1A22E5FB1EB73F620013D588 /* Pumpkin */,
-				1A05A4861E9A6639003B8104 /* Vampire */,
 				1A22E60B1EB7463F0013D588 /* Vanguard */,
 				1A3B89BC1EBF7DD50095E9AA /* X-Bot */,
 				1A3B89BD1EBF7DE20095E9AA /* Y-Bot */,
 			);
 			name = Characters;
-			sourceTree = "<group>";
-		};
-		1A99B2441E99597B00E2831B /* Maria */ = {
-			isa = PBXGroup;
-			children = (
-				1A22E5E71EB638CB0013D588 /* maria.fbx */,
-				1A05A4911E9A6773003B8104 /* maria_diffuse.png */,
-				1A05A4921E9A6773003B8104 /* maria_specular.png */,
-			);
-			name = Maria;
 			sourceTree = "<group>";
 		};
 		1AC181611E72AA68008C07F3 /* Shaders */ = {
@@ -860,7 +819,6 @@
 				1AF835EF1EC3ACBA00EA282A /* pumpkin_warming_up.bvh in Resources */,
 				1A24655C1EC1CF3C0043A60F /* ely_breathing_idle.bvh in Resources */,
 				1A05A4901E9A6767003B8104 /* beta.fbx in Resources */,
-				1A22E5EE1EB6BFC10013D588 /* vampire.fbx in Resources */,
 				1A3B89BA1EBF7DCF0095E9AA /* x-bot.xml in Resources */,
 				1A22E5FE1EB73F740013D588 /* pumpkin_diffuse.png in Resources */,
 				1A3B89BB1EBF7DCF0095E9AA /* y-bot.xml in Resources */,
@@ -878,37 +836,35 @@
 				1A2465641EC1CF720043A60F /* vanguard_breathing_idle.bvh in Resources */,
 				1A22E6101EB746500013D588 /* vanguard_specular.png in Resources */,
 				1AC181771E7355E0008C07F3 /* ShaderBasic.vsh in Resources */,
-				1A22E5F31EB72C2F0013D588 /* maria.xml in Resources */,
 				1A22E6071EB744F40013D588 /* ely_specular.png in Resources */,
 				1A22E5FF1EB73F740013D588 /* pumpkin.fbx in Resources */,
-				1A2465531EC1C95C0043A60F /* maria_breathing_idle.bvh in Resources */,
 				1A22E60A1EB745060013D588 /* ely.xml in Resources */,
 				1A3B89C11EBF7E050095E9AA /* y-bot.fbx in Resources */,
 				1AF835F11EC3ACD200EA282A /* vanguard_warming_up.bvh in Resources */,
+				1AF835FD1EC3C9E300EA282A /* pumpkin_walking.bvh in Resources */,
+				1AF836031EC3CA0000EA282A /* y-bot_walking.bvh in Resources */,
 				1A22E61C1EB748AF0013D588 /* ganfaul.fbx in Resources */,
-				1A22E5F41EB72C2F0013D588 /* vampire.xml in Resources */,
 				1AC181761E7355E0008C07F3 /* ShaderBasic.fsh in Resources */,
-				1A22E5E81EB638CB0013D588 /* maria.fbx in Resources */,
 				1A17880B1E640D950087DE26 /* camera_para.dat in Resources */,
 				1A2465601EC1CF630043A60F /* pumpkin_breathing_idle.bvh in Resources */,
-				1A2465621EC1CF6A0043A60F /* vampire_breathing_idle.bvh in Resources */,
+				1AF835FF1EC3C9EC00EA282A /* vanguard_walking.bvh in Resources */,
 				1A44DCCC1E55F34C0036E753 /* Assets.xcassets in Resources */,
+				1AF835F91EC3C93800EA282A /* ely_walking.bvh in Resources */,
 				1A22E6131EB746690013D588 /* vanguard.xml in Resources */,
+				1AF836011EC3C9F700EA282A /* x-bot_walking.bvh in Resources */,
 				1A44DCCF1E55F34C0036E753 /* LaunchScreen.storyboard in Resources */,
 				1A22E6081EB744F40013D588 /* ely.fbx in Resources */,
+				1AF835F71EC3BF1600EA282A /* beta_walking.bvh in Resources */,
 				1A22E5F61EB735AC0013D588 /* beta.xml in Resources */,
 				1A24655E1EC1CF4D0043A60F /* ganfaul_breathing_idle.bvh in Resources */,
 				1AF835E91EC3AC9200EA282A /* beta_warming_up.bvh in Resources */,
 				1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */,
 				1AF835F31EC3ACDC00EA282A /* x-bot_warming_up.bvh in Resources */,
 				1A22E6161EB748990013D588 /* ganfaul.xml in Resources */,
-				1A05A49F1E9A6987003B8104 /* vampire_diffuse.png in Resources */,
 				1A22E6011EB73FA30013D588 /* pumpkin.xml in Resources */,
-				1A05A4951E9A6773003B8104 /* maria_diffuse.png in Resources */,
+				1AF835FB1EC3C94300EA282A /* ganfaul_walking.bvh in Resources */,
 				1A2465661EC1CF980043A60F /* y-bot_breathing_idle.bvh in Resources */,
-				1A05A4961E9A6773003B8104 /* maria_specular.png in Resources */,
 				1A22E6111EB746500013D588 /* vanguard.fbx in Resources */,
-				1A05A4A01E9A6987003B8104 /* vampire_specular.png in Resources */,
 				1AF835F51EC3ACEA00EA282A /* y-bot_warming_up.bvh in Resources */,
 				1A24655A1EC1CF310043A60F /* beta_breathing_idle.bvh in Resources */,
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,

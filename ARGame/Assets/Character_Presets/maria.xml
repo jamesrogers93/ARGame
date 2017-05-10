@@ -1,7 +1,0 @@
-﻿<?xml version="1.0"?>
-<Entity name="maria" type="animated">
-    <Model name="maria" type="fbx"/>
-    <Translation x="0.0" y="0.0" z="0.0"/>
-    <Scale       x="1.5" y="1.5" z="1.5"/>
-    <Rotation    x="0.0" y="0.0" z="0.0" w="0.0"/>
-</Entity>
