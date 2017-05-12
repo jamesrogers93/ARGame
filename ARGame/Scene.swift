@@ -179,7 +179,7 @@ class Scene
         }
     }
     
-    public func updateScene(){}
+    public func updateScene(delta: Double){}
     
     public func updateAnimations()
     {

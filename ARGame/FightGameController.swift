@@ -155,6 +155,7 @@ class FightGameController: GLKViewController
                 self.scene.effectMaterialAnimated?.setView(self.arHandler.camPose)
             }
             
+            self.scene.updateScene(delta: self.timeSinceLastUpdate)
             self.scene.updateAnimations()
             
             // Start the animation
@@ -187,5 +188,41 @@ class FightGameController: GLKViewController
             // Draw the object
             self.scene.render()
         }
+    }
+    
+    
+    @IBAction func moveLeftButtonDown(_ sender: UIButton)
+    {
+        self.scene.activateMoveLeft()
+    }
+    
+    @IBAction func moveLeftButtonUp(_ sender: UIButton)
+    {
+        self.scene.deactivateMoveLeft()
+    }
+    
+    @IBAction func moveRightButtonDown(_ sender: UIButton)
+    {
+        self.scene.activateMoveRight()
+    }
+    
+    @IBAction func moveRightButtonUp(_ sender: UIButton)
+    {
+        self.scene.deactivateMoveRight()
+    }
+
+    @IBAction func punchButton(_ sender: UIButton)
+    {
+        self.scene.punchButton()
+    }
+    
+    @IBAction func kickButton(_ sender: UIButton)
+    {
+        self.scene.kickButton()
+    }
+    
+    @IBAction func blockButton(_ sender: UIButton)
+    {
+        self.scene.blockButton()
     }
 }

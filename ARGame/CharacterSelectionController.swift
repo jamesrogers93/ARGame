@@ -152,7 +152,7 @@ class CharacterSelectionController: GLKViewController
     // Update view in here
     func update()
     {
-        self.scene.updateScene()
+        self.scene.updateScene(delta: self.timeSinceLastUpdate)
         self.scene.updateAnimations()
         
         

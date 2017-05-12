@@ -49,16 +49,20 @@ class AnimationPlayBack
     private var previousTime: TimeInterval = 0.0
     private var isPlay: Bool = false
     private var isLoop: Bool = false
+    private var reverse: Bool = false
     
-    public func play(_ animation:(String, Animation))
+    public func play(_ animation:(String, Animation), reverse: Bool = false)
     {
         self.initalise(animation)
+        self.reverse = reverse
+        
         self.restart(false)
     }
     
-    public func loop(_ animation:(String, Animation))
+    public func loop(_ animation:(String, Animation), reverse: Bool = false)
     {
         self.initalise(animation)
+        self.reverse = reverse
         self.restart(true)
     }
     
@@ -130,7 +134,14 @@ class AnimationPlayBack
                 // Calculate animation frame
                 let timeInTicks: Float = timef * self.animationTicksPerSecond
         
-                self.animationFrame = Int(timeInTicks)
+                if self.reverse
+                {
+                    self.animationFrame = Int(self.animationDuration - timeInTicks)
+                }
+                else
+                {
+                    self.animationFrame = Int(timeInTicks)
+                }
             }
         }
     }

@@ -66,6 +66,9 @@
 		1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4F606E1E5CBE7400B4C602 /* libAR.a */; };
 		1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F60711E5CCFA700B4C602 /* ARHandler.m */; };
 		1A57EBF31EC6444300861391 /* x-bot.dae in Resources */ = {isa = PBXBuildFile; fileRef = 1A57EBF21EC6444300861391 /* x-bot.dae */; };
+		1A57EBF51EC6663800861391 /* beta_punch.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A57EBF41EC6663800861391 /* beta_punch.bvh */; };
+		1A57EBF71EC6686C00861391 /* beta_kick.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A57EBF61EC6686C00861391 /* beta_kick.bvh */; };
+		1A57EBF91EC66AC700861391 /* beta_block.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A57EBF81EC66AC700861391 /* beta_block.bvh */; };
 		1A5FCF0E1EBF478300C3E698 /* CharacterSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5FCF0D1EBF478300C3E698 /* CharacterSelectionController.swift */; };
 		1A5FCF101EBF4F4500C3E698 /* SceneLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5FCF0F1EBF4F4500C3E698 /* SceneLoader.swift */; };
 		1A5FCF131EBF516B00C3E698 /* character-selection.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A5FCF121EBF516B00C3E698 /* character-selection.xml */; };
@@ -188,6 +191,9 @@
 		1A4F60711E5CCFA700B4C602 /* ARHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARHandler.m; sourceTree = "<group>"; };
 		1A4F60731E5CCFC100B4C602 /* ARHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARHandler.h; sourceTree = "<group>"; };
 		1A57EBF21EC6444300861391 /* x-bot.dae */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; name = "x-bot.dae"; path = "Assets/Characters/X-Bot/x-bot.dae"; sourceTree = "<group>"; };
+		1A57EBF41EC6663800861391 /* beta_punch.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_punch.bvh; path = Assets/Animations/Beta/beta_punch.bvh; sourceTree = "<group>"; };
+		1A57EBF61EC6686C00861391 /* beta_kick.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_kick.bvh; path = Assets/Animations/Beta/beta_kick.bvh; sourceTree = "<group>"; };
+		1A57EBF81EC66AC700861391 /* beta_block.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_block.bvh; path = Assets/Animations/Beta/beta_block.bvh; sourceTree = "<group>"; };
 		1A5B66F81E5BA82D000463E3 /* cube.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.mtl; path = ARGame/cube.mtl; sourceTree = "<group>"; };
 		1A5B66F91E5BA82D000463E3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = ARGame/cube.obj; sourceTree = "<group>"; };
 		1A5FCF0D1EBF478300C3E698 /* CharacterSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSelectionController.swift; sourceTree = "<group>"; };
@@ -289,7 +295,10 @@
 		1A05A48A1E9A673E003B8104 /* Beta */ = {
 			isa = PBXGroup;
 			children = (
+				1A57EBF81EC66AC700861391 /* beta_block.bvh */,
 				1A2465591EC1CF310043A60F /* beta_breathing_idle.bvh */,
+				1A57EBF61EC6686C00861391 /* beta_kick.bvh */,
+				1A57EBF41EC6663800861391 /* beta_punch.bvh */,
 				1AF835E81EC3AC9100EA282A /* beta_warming_up.bvh */,
 				1AF835F61EC3BF1600EA282A /* beta_walking.bvh */,
 			);
@@ -833,6 +842,7 @@
 				1A22E60F1EB746500013D588 /* vanguard_diffuse.png in Resources */,
 				1AF835EB1EC3ACA500EA282A /* ely_warming_up.bvh in Resources */,
 				1A22E61B1EB748AF0013D588 /* ganfaul_specular.png in Resources */,
+				1A57EBF91EC66AC700861391 /* beta_block.bvh in Resources */,
 				1A22E6061EB744F40013D588 /* ely_diffuse.png in Resources */,
 				1A2465681EC1CFD00043A60F /* x-bot_breathing_idle.bvh in Resources */,
 				1A22E61A1EB748AF0013D588 /* ganfaul_diffuse.png in Resources */,
@@ -859,11 +869,13 @@
 				1A22E6081EB744F40013D588 /* ely.fbx in Resources */,
 				1AF835F71EC3BF1600EA282A /* beta_walking.bvh in Resources */,
 				1A22E5F61EB735AC0013D588 /* beta.xml in Resources */,
+				1A57EBF71EC6686C00861391 /* beta_kick.bvh in Resources */,
 				1A24655E1EC1CF4D0043A60F /* ganfaul_breathing_idle.bvh in Resources */,
 				1AF835E91EC3AC9200EA282A /* beta_warming_up.bvh in Resources */,
 				1AA85D651E64521B00B7BAAC /* camera_para-iPhone 6 Plus rear 1280x720 0.3m.dat in Resources */,
 				1AF835F31EC3ACDC00EA282A /* x-bot_warming_up.bvh in Resources */,
 				1A22E6161EB748990013D588 /* ganfaul.xml in Resources */,
+				1A57EBF51EC6663800861391 /* beta_punch.bvh in Resources */,
 				1A22E6011EB73FA30013D588 /* pumpkin.xml in Resources */,
 				1AF835FB1EC3C94300EA282A /* ganfaul_walking.bvh in Resources */,
 				1A2465661EC1CF980043A60F /* y-bot_breathing_idle.bvh in Resources */,

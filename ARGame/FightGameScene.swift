@@ -14,14 +14,27 @@ class FightGameScene : Scene
     private var enemyName: String = ""
     private let startDistance: Float = 70.0
     
+    
+    private var moveLeft: Bool = false
+    private var moveRight: Bool = false
+    
+    private var characterSpeed: Double = 22.5
+    
     override init()
     {
         
     }
     
-    override public func updateScene()
+    override public func updateScene(delta: Double)
     {
-        
+        if self.moveRight
+        {
+            super.entitesAnimated[self.playerName]?.translate(GLKVector3MultiplyScalar(GLKVector3Make(1.0, 0.0, 0.0), Float(self.characterSpeed * delta)))
+        }
+        else if self.moveLeft
+        {
+            super.entitesAnimated[self.playerName]?.translate(GLKVector3MultiplyScalar(GLKVector3Make(-1.0, 0.0, 0.0), Float(self.characterSpeed * delta)))
+        }
     }
     
     public func setupGame()
@@ -97,6 +110,22 @@ class FightGameScene : Scene
                     print("failed to load \(playerAnimName)")
                 }
             }
+            var animation = ("beta_punch", AnimationLoader.loadAnimationFromFile("beta_punch", "bvh")!)
+            if !(super.addAnimation(animation))
+            {
+                print("failed to load beta_punch")
+            }
+            animation = ("beta_kick", AnimationLoader.loadAnimationFromFile("beta_kick", "bvh")!)
+            if !(super.addAnimation(animation))
+            {
+                print("failed to load beta_kick")
+            }
+            
+            animation = ("beta_block", AnimationLoader.loadAnimationFromFile("beta_block", "bvh")!)
+            if !(super.addAnimation(animation))
+            {
+                print("failed to load beta_block")
+            }
             
             // Append character name to animation to load correct one
             let enemyAnimName = self.enemyName + characterAnimations[i]
@@ -115,4 +144,71 @@ class FightGameScene : Scene
         }
     }
     
+    public func activateMoveLeft()
+    {
+        self.moveLeft = true
+
+        let playerAnimationName: String = self.playerName + "_walking"
+        super.entitesAnimated[self.playerName]?.glModel.animationController.loop((playerAnimationName, super.animations[playerAnimationName]!), reverse: true)
+    }
+    
+    public func deactivateMoveLeft()
+    {
+        self.stopMoving()
+        //self.moveLeft = false
+        //super.entitesAnimated[self.playerName]?.glModel.animationController.stop()
+    }
+    
+    public func activateMoveRight()
+    {
+        self.moveRight = true
+        
+        let playerAnimationName: String = self.playerName + "_walking"
+        super.entitesAnimated[self.playerName]?.glModel.animationController.loop((playerAnimationName, super.animations[playerAnimationName]!))
+    }
+    
+    public func deactivateMoveRight()
+    {
+        self.stopMoving()
+        //self.moveRight = false
+        //super.entitesAnimated[self.playerName]?.glModel.animationController.stop()
+    }
+    
+    private func stopMoving()
+    {
+        self.moveLeft = false
+        self.moveRight = false
+        
+        let animationPlaying = super.entitesAnimated[self.playerName]?.glModel.animationController.animation
+        
+        if (self.playerName + "_walking") == animationPlaying!
+        {
+            super.entitesAnimated[self.playerName]?.glModel.animationController.stop()
+        }
+    
+    }
+    
+    public func punchButton()
+    {
+        self.stopMoving()
+        
+        let playerAnimationName: String = self.playerName + "_punch"
+        super.entitesAnimated[self.playerName]?.glModel.animationController.play((playerAnimationName, super.animations[playerAnimationName]!))
+    }
+    
+    public func kickButton()
+    {
+        self.stopMoving()
+        
+        let playerAnimationName: String = self.playerName + "_kick"
+        super.entitesAnimated[self.playerName]?.glModel.animationController.play((playerAnimationName, super.animations[playerAnimationName]!))
+    }
+    
+    public func blockButton()
+    {
+        self.stopMoving()
+        
+        let playerAnimationName: String = self.playerName + "_block"
+        super.entitesAnimated[self.playerName]?.glModel.animationController.play((playerAnimationName, super.animations[playerAnimationName]!))
+    }
 }

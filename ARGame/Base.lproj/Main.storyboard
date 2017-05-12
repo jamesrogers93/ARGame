@@ -20,6 +20,57 @@
                     <view key="view" contentMode="scaleToFill" id="3se-qz-xqx" customClass="GLKView">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fn3-bH-LfA">
+                                <rect key="frame" x="0.0" y="304" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Left"/>
+                                <connections>
+                                    <action selector="moveLeftButtonDown:" destination="BV1-FR-VrT" eventType="touchDown" id="YTm-xL-2Iu"/>
+                                    <action selector="moveLeftButtonUp:" destination="BV1-FR-VrT" eventType="touchDragOutside" id="kQ3-3h-K0Q"/>
+                                    <action selector="moveLeftButtonUp:" destination="BV1-FR-VrT" eventType="touchUpInside" id="zJd-8P-I9R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajk-wM-GVE">
+                                <rect key="frame" x="115" y="304" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Right"/>
+                                <connections>
+                                    <action selector="moveRightButtonDown:" destination="BV1-FR-VrT" eventType="touchDown" id="gbi-fL-jLG"/>
+                                    <action selector="moveRightButtonUp:" destination="BV1-FR-VrT" eventType="touchDragOutside" id="1pN-6k-ug3"/>
+                                    <action selector="moveRightButtonUp:" destination="BV1-FR-VrT" eventType="touchUpInside" id="8di-LK-lBA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2b-wB-9EW">
+                                <rect key="frame" x="550" y="298" width="97" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Punch"/>
+                                <connections>
+                                    <action selector="punchButton:" destination="BV1-FR-VrT" eventType="touchDown" id="hre-s0-CPL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02m-La-sRg">
+                                <rect key="frame" x="445" y="298" width="97" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Kick"/>
+                                <connections>
+                                    <action selector="kickButton:" destination="BV1-FR-VrT" eventType="touchDown" id="Y8f-TC-4YM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3g-K1-Tpe">
+                                <rect key="frame" x="550" y="221" width="97" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Block"/>
+                                <connections>
+                                    <action selector="blockButton:" destination="BV1-FR-VrT" eventType="touchDown" id="4zg-D5-jKA"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>

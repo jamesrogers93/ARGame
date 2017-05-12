@@ -22,7 +22,7 @@ class CharacterSelectionScene : Scene
         
     }
  
-    override public func updateScene()
+    override public func updateScene(delta: Double)
     {
         
     }

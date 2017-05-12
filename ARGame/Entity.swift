@@ -67,7 +67,7 @@ class Entity
      */
     public func translate(_ translation: GLKVector3)
     {
-        self.translation = GLKMatrix4TranslateWithVector3(GLKMatrix4Identity, translation)
+        self.translation = GLKMatrix4TranslateWithVector3(self.translation, translation)
         self.updateModelMatrix()
     }
     
