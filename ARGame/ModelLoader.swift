@@ -218,7 +218,32 @@ class ModelLoader
                 let offset_t = Array(UnsafeBufferPointer(start: mlGetMeshBoneOffsetMatrix(loader, i, j), count: 16))
                 
                 // Convert bone offset array to glkmatrix
-                var offset: GLKMatrix4 = GLKMatrix4Make(offset_t[0], offset_t[1], offset_t[2], offset_t[3], offset_t[4], offset_t[5], offset_t[6], offset_t[7], offset_t[8], offset_t[9], offset_t[10], offset_t[11], offset_t[12], offset_t[13], offset_t[14], offset_t[15])
+                //var offset = GLKMatrix4Identity
+                var offset: GLKMatrix4 = GLKMatrix4Make(offset_t[0], offset_t[1], offset_t[2], offset_t[3],
+                                                        offset_t[4], offset_t[5], offset_t[6], offset_t[7],
+                                                        offset_t[8], offset_t[9], offset_t[10], offset_t[11],
+                                                        offset_t[12], offset_t[13], offset_t[14], offset_t[15])
+                
+                /*var offset: GLKMatrix4 = GLKMatrix4Make(1.0, 0.0, 0.0, offset_t[3],
+                                                        0.0, 1.0, 0.0, offset_t[7],
+                                                        0.0, 0.0, 1.0, offset_t[11],
+                                                        0.0, 0.0, 0.0, 1.0)*/
+    
+               /* var offset: GLKMatrix4 = GLKMatrix4Make(1.0,0.0,0.0, offset_t[3],
+                                                        0.0,1.0,0.0, offset_t[7],
+                                                        0.0,0.0,1.0, offset_t[11],
+                                                        0.0,0.0,0.0,1.0)*/
+                /*var offset:GLKMatrix4 = GLKMatrix4Make(1.0, 0.0, 0.0, 0.0,
+                                                        0.0, 1.0, 0.0, 0.0,
+                                                        0.0, 0.0, 1.0, 0.0,
+                                                        offset_t[3], offset_t[7], offset_t[11], 1.0)*/
+                
+                // TEST REMOVE ROTATION AND SCALE
+                /*var offset: GLKMatrix4 = GLKMatrix4Make(1.0, 0.0, 0.0, 0.0,
+                                                        0.0, 1.0, 0.0, 0.0,
+                                                        0.0, 0.0, 1.0, 0.0,
+                                                        offset_t[12], offset_t[13], offset_t[14], 1.0)*/
+                //var offset: GLKMatrix4 = GLKMatrix4Identity
                 
                 // Transpose matrix to move from row major to colum major
                 offset = GLKMatrix4Transpose(offset)
@@ -357,7 +382,16 @@ class ModelLoader
     {
         
         let rootNode: String = String(cString: mlGetNodeRoot(loader))
-        var skeleton: Skeleton = Skeleton(rootNode, Array<Skeleton>())
+        let rootTrans_t = Array(UnsafeBufferPointer(start: mlGetNodeTransformation(loader, rootNode), count: 16))
+        
+        // Convert node transformation array to glkmatrix
+        let rootTransformation: GLKMatrix4 = GLKMatrix4Make(
+                                                        rootTrans_t[0], rootTrans_t[4], rootTrans_t[8], rootTrans_t[12],
+                                                        rootTrans_t[1], rootTrans_t[5], rootTrans_t[9], rootTrans_t[13],
+                                                        rootTrans_t[2], rootTrans_t[6], rootTrans_t[10], rootTrans_t[14],
+                                                        rootTrans_t[3], rootTrans_t[7], rootTrans_t[11], rootTrans_t[15])
+        
+        var skeleton: Skeleton = Skeleton(rootNode, Array<Skeleton>(), rootTransformation)
         
         var nodesToProcess: Array<String> = Array()
         nodesToProcess.append(rootNode)
@@ -366,7 +400,7 @@ class ModelLoader
         {
             // Process next node
             
-            // Get name of last node
+            // Get name of last node in nodesToProcess
             let name = nodesToProcess[nodesToProcess.count-1]
             
             // Remove node from nodesToProcess
@@ -389,7 +423,23 @@ class ModelLoader
                 var children:Array<Skeleton> = Array()
                 for i in 0..<childrenStrArr.count
                 {
-                    children.append(Skeleton(childrenStrArr[i]))
+                    // Get transformation of child node
+                    let trans_t = Array(UnsafeBufferPointer(start: mlGetNodeTransformation(loader, childrenStrArr[i]), count: 16))
+                    
+                    // Convert node transformation array to glkmatrix
+                    let transformation: GLKMatrix4 = GLKMatrix4Make(trans_t[0], trans_t[4], trans_t[8], trans_t[12],
+                                                                    trans_t[1], trans_t[5], trans_t[9], trans_t[13],
+                                                                    trans_t[2], trans_t[6], trans_t[10], trans_t[14],
+                                                                    trans_t[3], trans_t[7], trans_t[11], trans_t[15])
+                    
+                    /*print("\n\nNode: \(childrenStrArr[i])")
+                    print("\(trans_t[0]), \(trans_t[1]), \(trans_t[2]), \(trans_t[3])")
+                    print("\(trans_t[4]), \(trans_t[5]), \(trans_t[6]), \(trans_t[7])")
+                    print("\(trans_t[8]), \(trans_t[9]), \(trans_t[10]), \(trans_t[11])")
+                    print("\(trans_t[12]), \(trans_t[13]), \(trans_t[14]), \(trans_t[15])")*/
+                    
+                    
+                    children.append(Skeleton(childrenStrArr[i], transformation))
                 }
                 
                 // Insert 'children' at node 'name' in skeleton
@@ -398,6 +448,8 @@ class ModelLoader
                     print("Error: couldn't find child")
                 }
             }
+            
+            // Get transformation Matrix of node
         }
         
         return skeleton

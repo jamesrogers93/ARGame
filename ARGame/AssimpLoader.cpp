@@ -48,6 +48,7 @@ void AssimpLoader::loadAnimatedAssimpModel(std::string path)
     
     // Process ASSIMP's root node recursively
     this->processNode(scene->mRootNode, scene, true);
+    
 }
 
 void AssimpLoader::loadAssimpAnimation(std::string path)
@@ -75,6 +76,10 @@ void AssimpLoader::loadAssimpAnimation(std::string path)
 
 void AssimpLoader::processNode(aiNode *node, const aiScene *scene, const bool &loadBones)
 {
+    //std::cout << node->mName.C_Str() << std::endl;
+    
+    // Store node Transformation
+    
     // Process each mesh located at the current node
     for(size_t i = 0; i < node->mNumMeshes; i++)
     {
@@ -90,17 +95,47 @@ void AssimpLoader::processNode(aiNode *node, const aiScene *scene, const bool &l
     // After we've processed all of the meshes (if any) we then recursively process each of the children nodes
     for(size_t i = 0; i < node->mNumChildren; i++)
     {
-        //CNode->children[i] = CNodeHierarchy();
-        this->processNode(node->mChildren[i], scene, loadBones);
+        //Replace DAE _ with : in node name
+        std::string nodeName = node->mChildren[i]->mName.data;
+        
+        
+        std::string str = "mixamorig_";
+        std::size_t found = nodeName.find(str);
+        if (found!=std::string::npos)
+        {
+            nodeName[found+str.length()-1] = ':';
+            node->mChildren[i]->mName = aiString(nodeName);
+        }
+        
+        std::cout << nodeName << std::endl;
         
         // Store all children in string seperated by a tilda ~
-        ss << node->mChildren[i]->mName.data;
+        ss << nodeName;
         if(i != node->mNumChildren-1)
             ss << "~";
         
+        this->processNode(node->mChildren[i], scene, loadBones);
+        
     }
     
+    // Store skeleton children
     this->parentNode.skeleton[node->mName.data] = ss.str();
+
+    // Store node Transformation
+    float transformation[16];
+    transformation[0]  = node->mTransformation.a1; transformation[1]  = node->mTransformation.a2;
+    transformation[2]  = node->mTransformation.a3; transformation[3]  = node->mTransformation.a4;
+    
+    transformation[4]  = node->mTransformation.b1; transformation[5]  = node->mTransformation.b2;
+    transformation[6]  = node->mTransformation.b3; transformation[7]  = node->mTransformation.b4;
+    
+    transformation[8]  = node->mTransformation.c1; transformation[9]  = node->mTransformation.c2;
+    transformation[10] = node->mTransformation.c3; transformation[11] = node->mTransformation.c4;
+    
+    transformation[12] = node->mTransformation.d1; transformation[13] = node->mTransformation.d2;
+    transformation[14] = node->mTransformation.d3; transformation[15]  = node->mTransformation.d4;
+    
+    this->parentNode.nodeTransforms[node->mName.data] = std::vector<float>( std::begin(transformation), std::end(transformation) );
 }
 
 CMesh AssimpLoader::processMesh(aiMesh *mesh, const aiScene *scene, const bool &loadBones)
@@ -194,8 +229,15 @@ CMesh AssimpLoader::processMesh(aiMesh *mesh, const aiScene *scene, const bool &
             {
                 // Get bone name
                 std::string name = mesh->mBones[i]->mName.data;
+                
+                std::string str = "mixamorig_";
+                std::size_t found = name.find(str);
+                if (found!=std::string::npos)
+                {
+                    name[found+str.length()-1] = ':';
+                }
             
-                // Get bone offset matrix
+                // Get inverse bind pose matrix
                 float offsetMatrix[16];
                 offsetMatrix[0]  = mesh->mBones[i]->mOffsetMatrix.a1; offsetMatrix[1]  = mesh->mBones[i]->mOffsetMatrix.a2;
                 offsetMatrix[2]  = mesh->mBones[i]->mOffsetMatrix.a3; offsetMatrix[3]  = mesh->mBones[i]->mOffsetMatrix.a4;
@@ -593,6 +635,22 @@ const char* AssimpLoader::getNodeChildren(const char *name)
     {
         // found
         return this->parentNode.skeleton[nameStr].data();
+    }
+}
+
+const float* AssimpLoader::getNodeTransformation(const char *name)
+{
+    std::string nameStr = std::string(name);
+    
+    if (this->parentNode.nodeTransforms.find(nameStr) == this->parentNode.nodeTransforms.end())
+    {
+        // Not found
+        return 0;
+    }
+    else
+    {
+        // found
+        return this->parentNode.nodeTransforms[nameStr].data();
     }
 }
 

@@ -489,19 +489,26 @@ class MeshAnimated : Mesh
         }
     }
     
+    var testInverseMatrix: GLKMatrix4 = GLKMatrix4Identity
     public func animate(_ animation: Animation, _ animationFrame: Int, _ skeleton: Skeleton)
     {
-        
-        _ = self.processSkeletonHierarchy(animation, animationFrame, skeleton, GLKMatrix4Identity, GLKVector3Make(0.0,0.0,0.0))
+        var testBool: UnsafeMutablePointer<Bool>?
+        testInverseMatrix = GLKMatrix4Invert(skeleton.transformation, testBool)
+        self.processSkeletonHierarchy(animation, animationFrame, skeleton, GLKMatrix4Identity)
     }
     
-    private func processSkeletonHierarchy(_ animation:Animation, _ animationFrame: Int, _ skeleton: Skeleton, _ parentTransformation: GLKMatrix4, _ parentPosition: GLKVector3) -> GLKVector3
+    private func processSkeletonHierarchy(_ animation:Animation, _ animationFrame: Int, _ skeleton: Skeleton, _ parentTransformation: GLKMatrix4)
     {
         
-        // Initalise the position of this bone to the parent
-        var thisPosition: GLKVector3 = parentPosition
+        //var nodeTransformation: GLKMatrix4 = GLKMatrix4Identity
+        var nodeTransformation: GLKMatrix4 = skeleton.transformation
         
-        var nodeTransformation: GLKMatrix4 = GLKMatrix4Identity
+        let nodeType: Array<String> = skeleton.name.components(separatedBy: "$")
+        
+        /*if nodeType[nodeType.count-1] == "_Translation"
+        {
+            nodeTransformation = GLKMatrix4Identity
+        }*/
         
         // Get animation channel from dictonary O(1) access complexity
         let channel = animation.channels[skeleton.name]
@@ -509,9 +516,22 @@ class MeshAnimated : Mesh
         if channel != nil
         {
             // Do transformation stuff
+            let position: GLKVector3
+            let scale: GLKVector3
+            let rotation: GLKMatrix3
+            
+            //position = GLKVector3Make(0.0,0.0,0.0)
+            //position = (channel?.positions[0])!
+            
+            //scale = GLKVector3Make(1.0,1.0,1.0)
+            //scale = (channel?.scalings[0])!
+            
+            //rotation = GLKMatrix3Identity
+            //rotation = (channel?.rotations[0])!
+            
             
             // Get the position, scale and rotation data from the channel
-            let position: GLKVector3
+           
             if (channel?.positions.count)! > animationFrame
             {
                 position = (channel?.positions[animationFrame])!
@@ -526,7 +546,6 @@ class MeshAnimated : Mesh
                 position = GLKVector3Make(0.0, 0.0, 0.0)
             }
             
-            let scale: GLKVector3
             if (channel?.scalings.count)! > animationFrame
             {
                 scale = (channel?.scalings[animationFrame])!
@@ -540,18 +559,16 @@ class MeshAnimated : Mesh
                 scale = GLKVector3Make(0.0, 0.0, 0.0)
             }
             
-            let rotation: GLKMatrix3
             if (channel?.rotations.count)! > animationFrame
             {
                 rotation = (channel?.rotations[animationFrame])!
-                //rotation = GLKMatrix3Identity
             }
             else
             {
                 rotation = GLKMatrix3Identity
             }
             
-            // Put into matricies
+            // Put into matrices
             let tranMat: GLKMatrix4 = GLKMatrix4TranslateWithVector3(GLKMatrix4Identity, position)
             let scalMat: GLKMatrix4 = GLKMatrix4ScaleWithVector3(GLKMatrix4Identity, scale)
             let rotMat: GLKMatrix4 = GLKMatrix4Make(
@@ -561,31 +578,29 @@ class MeshAnimated : Mesh
                 0.0,         0.0,         0.0,         1.0)
             
             // Transform bone
-            nodeTransformation = GLKMatrix4Multiply(GLKMatrix4Multiply(tranMat, rotMat), scalMat)
+            //nodeTransformation = GLKMatrix4Add(nodeTransformation, GLKMatrix4Multiply(GLKMatrix4Multiply(tranMat, rotMat), scalMat))
             
-            // Update the position of this bone
-            thisPosition = GLKVector3Add(thisPosition, position)
+            nodeTransformation = GLKMatrix4Multiply(GLKMatrix4Multiply(tranMat, rotMat), scalMat)
             
         }
         
         // Find global transformation
         let globalTransformation: GLKMatrix4 = GLKMatrix4Multiply(parentTransformation, nodeTransformation)
         
+        // Recursively process the remaining child nodes
+        for i in 0..<skeleton.children.count
+        {
+            self.processSkeletonHierarchy(animation, animationFrame, skeleton.children[i], globalTransformation)
+        }
+        
         // Get bone index from dictonary O(1) access complexity
         if let index = self.boneIndex[skeleton.name]
         {
             // Apply transformation if bone exists
-            self.bones[index].transform = GLKMatrix4Multiply(globalTransformation, self.bones[index].offset)
+            self.bones[index].transform = GLKMatrix4Multiply(testInverseMatrix, GLKMatrix4Multiply(globalTransformation, self.bones[index].offset))
             //self.bones[index].transform =  globalTransformation
         }
         
-        // Recursively process the remaining child nodes
-        for i in 0..<skeleton.children.count
-        {
-            var childbonePosition = self.processSkeletonHierarchy(animation, animationFrame, skeleton.children[i], globalTransformation, thisPosition)
-        }
-        
-        return thisPosition
     }
     
     /**

@@ -65,6 +65,7 @@
 		1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44DCF51E55FEC40036E753 /* ModelLoader.swift */; };
 		1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4F606E1E5CBE7400B4C602 /* libAR.a */; };
 		1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F60711E5CCFA700B4C602 /* ARHandler.m */; };
+		1A57EBF31EC6444300861391 /* x-bot.dae in Resources */ = {isa = PBXBuildFile; fileRef = 1A57EBF21EC6444300861391 /* x-bot.dae */; };
 		1A5FCF0E1EBF478300C3E698 /* CharacterSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5FCF0D1EBF478300C3E698 /* CharacterSelectionController.swift */; };
 		1A5FCF101EBF4F4500C3E698 /* SceneLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5FCF0F1EBF4F4500C3E698 /* SceneLoader.swift */; };
 		1A5FCF131EBF516B00C3E698 /* character-selection.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A5FCF121EBF516B00C3E698 /* character-selection.xml */; };
@@ -186,6 +187,7 @@
 		1A4F606E1E5CBE7400B4C602 /* libAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAR.a; path = "../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib/libAR.a"; sourceTree = "<group>"; };
 		1A4F60711E5CCFA700B4C602 /* ARHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARHandler.m; sourceTree = "<group>"; };
 		1A4F60731E5CCFC100B4C602 /* ARHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARHandler.h; sourceTree = "<group>"; };
+		1A57EBF21EC6444300861391 /* x-bot.dae */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; name = "x-bot.dae"; path = "Assets/Characters/X-Bot/x-bot.dae"; sourceTree = "<group>"; };
 		1A5B66F81E5BA82D000463E3 /* cube.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.mtl; path = ARGame/cube.mtl; sourceTree = "<group>"; };
 		1A5B66F91E5BA82D000463E3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = ARGame/cube.obj; sourceTree = "<group>"; };
 		1A5FCF0D1EBF478300C3E698 /* CharacterSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSelectionController.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				1A3B89BE1EBF7DFA0095E9AA /* x-bot.fbx */,
+				1A57EBF21EC6444300861391 /* x-bot.dae */,
 			);
 			name = "X-Bot";
 			sourceTree = "<group>";
@@ -556,8 +559,8 @@
 			isa = PBXGroup;
 			children = (
 				1A44DCF21E55F87E0036E753 /* MainMenuController.swift */,
-				1A44DCC61E55F34C0036E753 /* FightGameController.swift */,
 				1A5FCF0D1EBF478300C3E698 /* CharacterSelectionController.swift */,
+				1A44DCC61E55F34C0036E753 /* FightGameController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 				1A2465661EC1CF980043A60F /* y-bot_breathing_idle.bvh in Resources */,
 				1A22E6111EB746500013D588 /* vanguard.fbx in Resources */,
 				1AF835F51EC3ACEA00EA282A /* y-bot_warming_up.bvh in Resources */,
+				1A57EBF31EC6444300861391 /* x-bot.dae in Resources */,
 				1A24655A1EC1CF310043A60F /* beta_breathing_idle.bvh in Resources */,
 				1A17880D1E640D9E0087DE26 /* hiro.patt in Resources */,
 				1A3B89BF1EBF7DFA0095E9AA /* x-bot.fbx in Resources */,

@@ -305,9 +305,17 @@ extern "C" {
      *
      *  @param loader A void pointer to the AssimpModelLoader instance.
      *  @param name The name of the node we want to retrieve the children from.
-     *  @return The char array of the children names. Eahc child name will be seperated with a tilda. 0 will be returned if the node has no children.
+     *  @return The char array of the children names from the node. Note: The string contains all children names. Each child is seperated by a tilda ~. If no child or node exists, null will be returned.
      */
     const char* mlGetNodeChildren(const void *loader, const char *name);
+    
+    /**  Gets the transformation for a node contained in an AssimpLoaderInstance.
+     *
+     *  @param loader A void pointer to the AssimpModelLoader instance.
+     *  @param name The name of the node we want to retrieve the children from.
+     *  @return The float array of the node. Note: returns a 16 element array for a 4x4 row major matrix. If no node exists, null will be returned.
+     */
+    const float* mlGetNodeTransformation(const void *loader, const char *name);
     
     
 #ifdef __cplusplus

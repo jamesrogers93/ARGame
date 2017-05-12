@@ -70,11 +70,11 @@ class FightGameScene : Scene
         
         // Now set the animations
         //let playerAnimationName: String = self.playerName + "_warming_up"
-        let playerAnimationName: String = self.playerName + "_walking"
+        let playerAnimationName: String = self.playerName + "_breathing_idle"
         super.entitesAnimated[self.playerName]?.glModel.animationController.loop((playerAnimationName, super.animations[playerAnimationName]!))
         
         //let enemyAnimationName: String = self.enemyName + "_warming_up"
-        let enemyAnimationName: String = self.enemyName + "_walking"
+        let enemyAnimationName: String = self.enemyName + "_warming_up"
         super.entitesAnimated[self.enemyName]?.glModel.animationController.loop((enemyAnimationName, super.animations[enemyAnimationName]!))
     }
     
