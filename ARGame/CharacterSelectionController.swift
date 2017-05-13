@@ -82,7 +82,7 @@ class CharacterSelectionController: GLKViewController
             {
                 if let animation = self.scene.getAnimation("beta_breathing_idle")
                 {
-                    entity.glModel.animationController.loop(("beta_breathing_idle", animation))
+                    entity.glModel.animationController.play(("beta_breathing_idle", animation), loop: true)
                 }
             }
         }

@@ -10,31 +10,23 @@ import Foundation
 
 class FightGameScene : Scene
 {
-    private var playerName: String = ""
-    private var enemyName: String = ""
     private let startDistance: Float = 70.0
     
-    
-    private var moveLeft: Bool = false
-    private var moveRight: Bool = false
-    
-    private var characterSpeed: Double = 22.5
+    public var player: Fighter = Fighter()
+    public var enemy:  Fighter = Fighter()
     
     override init()
     {
-        
+        super.init()
+
+        player.world = self
+        enemy.world = self
     }
     
     override public func updateScene(delta: Double)
     {
-        if self.moveRight
-        {
-            super.entitesAnimated[self.playerName]?.translate(GLKVector3MultiplyScalar(GLKVector3Make(1.0, 0.0, 0.0), Float(self.characterSpeed * delta)))
-        }
-        else if self.moveLeft
-        {
-            super.entitesAnimated[self.playerName]?.translate(GLKVector3MultiplyScalar(GLKVector3Make(-1.0, 0.0, 0.0), Float(self.characterSpeed * delta)))
-        }
+        self.player.updateScene(delta: delta)
+        self.enemy.updateScene(delta: delta)
     }
     
     public func setupGame()
@@ -43,62 +35,65 @@ class FightGameScene : Scene
         // Retrieve it's name
         for (name, _) in super.entitesAnimated
         {
-            self.playerName = name
+            self.player.name = name
             break
         }
         
         // We know the character is at the origin
         // Transform it to its start position
-        super.entitesAnimated[self.playerName]?.translate(GLKVector3Make(-startDistance, 0.0, 0.0))
-        super.entitesAnimated[self.playerName]?.rotate(1.5, GLKVector3Make(0.0, 1.0, 0.0))
+        super.entitesAnimated[self.player.name]?.translate(GLKVector3Make(-startDistance, 0.0, 0.0))
+        super.entitesAnimated[self.player.name]?.rotate(1.5, GLKVector3Make(0.0, 1.0, 0.0))
         
         // Find a random enemy to fight
-        let characters: Array<String> = ["beta", "x-bot", "y-bot", "ely", "ganfaul", "pumpkin", "vanguard"]
+        /*let characters: Array<String> = ["beta", "x-bot", "y-bot", "ely", "ganfaul", "pumpkin", "vanguard"]
         while(true)
         {
             let randomIndex = Int(arc4random_uniform(UInt32(characters.count)))
             
-            if !(self.playerName == characters[randomIndex])
+            if !(self.player.name == characters[randomIndex])
             {
                 self.enemyName = characters[randomIndex]
                 break
             }
-        }
+        }*/
+        
+        // Set enemy to beta_red
+        self.enemy.name = "beta_red"
         
         // Now load enemy into scene
         let entityLoader: EntityLoader = EntityLoader()
         
         // Load character from file
-        if(!entityLoader.loadEntityFromFile(self.enemyName, self))
+        if(!entityLoader.loadEntityFromFile(self.enemy.name, self))
         {
-            print("failed to load \(self.enemyName)")
+            print("failed to load \(self.enemy.name)")
         }
-        
+    
         // And transform the enemy to it's starting position
-        super.entitesAnimated[self.enemyName]?.translate(GLKVector3Make(startDistance, 0.0, 0.0))
-        super.entitesAnimated[self.enemyName]?.rotate(-1.5, GLKVector3Make(0.0, 1.0, 0.0))
+        super.entitesAnimated[self.enemy.name]?.translate(GLKVector3Make(startDistance, 0.0, 0.0))
+        super.entitesAnimated[self.enemy.name]?.rotate(-1.5, GLKVector3Make(0.0, 1.0, 0.0))
         
         // Now load in the annimations for the 2 characters
         loadAllAnimations()
         
         // Now set the animations
         //let playerAnimationName: String = self.playerName + "_warming_up"
-        let playerAnimationName: String = self.playerName + "_breathing_idle"
-        super.entitesAnimated[self.playerName]?.glModel.animationController.loop((playerAnimationName, super.animations[playerAnimationName]!))
+        var animationName: String = "beta_breathing_idle"
+        super.entitesAnimated[self.player.name]?.glModel.animationController.play((animationName, super.animations[animationName]!), loop: true)
         
         //let enemyAnimationName: String = self.enemyName + "_warming_up"
-        let enemyAnimationName: String = self.enemyName + "_warming_up"
-        super.entitesAnimated[self.enemyName]?.glModel.animationController.loop((enemyAnimationName, super.animations[enemyAnimationName]!))
+        animationName = "beta_warming_up"
+        super.entitesAnimated[self.enemy.name]?.glModel.animationController.play((animationName, super.animations[animationName]!), loop: true)
     }
     
     private func loadAllAnimations()
     {
-        let characterAnimations: Array<String> = ["_breathing_idle", "_warming_up", "_walking"]
+        /*let characterAnimations: Array<String> = ["_breathing_idle", "_warming_up", "_walking"]
         
         for i in 0..<characterAnimations.count
         {
             // Append character name to animation to load correct one
-            let playerAnimName = self.playerName + characterAnimations[i]
+            let playerAnimName = self.player.name + characterAnimations[i]
             
             // Check if animation does not exist
             if !isAnimationExist(playerAnimName)
@@ -109,22 +104,6 @@ class FightGameScene : Scene
                 {
                     print("failed to load \(playerAnimName)")
                 }
-            }
-            var animation = ("beta_punch", AnimationLoader.loadAnimationFromFile("beta_punch", "bvh")!)
-            if !(super.addAnimation(animation))
-            {
-                print("failed to load beta_punch")
-            }
-            animation = ("beta_kick", AnimationLoader.loadAnimationFromFile("beta_kick", "bvh")!)
-            if !(super.addAnimation(animation))
-            {
-                print("failed to load beta_kick")
-            }
-            
-            animation = ("beta_block", AnimationLoader.loadAnimationFromFile("beta_block", "bvh")!)
-            if !(super.addAnimation(animation))
-            {
-                print("failed to load beta_block")
             }
             
             // Append character name to animation to load correct one
@@ -141,74 +120,67 @@ class FightGameScene : Scene
                 }
             }
             
-        }
-    }
-    
-    public func activateMoveLeft()
-    {
-        self.moveLeft = true
-
-        let playerAnimationName: String = self.playerName + "_walking"
-        super.entitesAnimated[self.playerName]?.glModel.animationController.loop((playerAnimationName, super.animations[playerAnimationName]!), reverse: true)
-    }
-    
-    public func deactivateMoveLeft()
-    {
-        self.stopMoving()
-        //self.moveLeft = false
-        //super.entitesAnimated[self.playerName]?.glModel.animationController.stop()
-    }
-    
-    public func activateMoveRight()
-    {
-        self.moveRight = true
+        }*/
         
-        let playerAnimationName: String = self.playerName + "_walking"
-        super.entitesAnimated[self.playerName]?.glModel.animationController.loop((playerAnimationName, super.animations[playerAnimationName]!))
-    }
-    
-    public func deactivateMoveRight()
-    {
-        self.stopMoving()
-        //self.moveRight = false
-        //super.entitesAnimated[self.playerName]?.glModel.animationController.stop()
-    }
-    
-    private func stopMoving()
-    {
-        self.moveLeft = false
-        self.moveRight = false
-        
-        let animationPlaying = super.entitesAnimated[self.playerName]?.glModel.animationController.animation
-        
-        if (self.playerName + "_walking") == animationPlaying!
+        // Load aditional animations for prototyping
+        var animation = ("beta_breathing_idle", AnimationLoader.loadAnimationFromFile("beta_breathing_idle", "bvh")!)
+        if !(super.addAnimation(animation))
         {
-            super.entitesAnimated[self.playerName]?.glModel.animationController.stop()
+            print("failed to load beta_breathing_idle")
         }
-    
-    }
-    
-    public func punchButton()
-    {
-        self.stopMoving()
         
-        let playerAnimationName: String = self.playerName + "_punch"
-        super.entitesAnimated[self.playerName]?.glModel.animationController.play((playerAnimationName, super.animations[playerAnimationName]!))
-    }
-    
-    public func kickButton()
-    {
-        self.stopMoving()
+        animation = ("beta_warming_up", AnimationLoader.loadAnimationFromFile("beta_warming_up", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_warming_up")
+        }
         
-        let playerAnimationName: String = self.playerName + "_kick"
-        super.entitesAnimated[self.playerName]?.glModel.animationController.play((playerAnimationName, super.animations[playerAnimationName]!))
-    }
-    
-    public func blockButton()
-    {
-        self.stopMoving()
+        animation = ("beta_walking", AnimationLoader.loadAnimationFromFile("beta_walking", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_walking")
+        }
         
-        let playerAnimationName: String = self.playerName + "_block"
-        super.entitesAnimated[self.playerName]?.glModel.animationController.play((playerAnimationName, super.animations[playerAnimationName]!))
+        animation = ("beta_punch_1", AnimationLoader.loadAnimationFromFile("beta_punch_1", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_punch_1")
+        }
+        
+        animation = ("beta_punch_2", AnimationLoader.loadAnimationFromFile("beta_punch_2", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_punch_2")
+        }
+        
+        animation = ("beta_punch_3", AnimationLoader.loadAnimationFromFile("beta_punch_3", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_punch_3")
+        }
+        
+        animation = ("beta_punch_4", AnimationLoader.loadAnimationFromFile("beta_punch_4", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_punch_4")
+        }
+        
+        animation = ("beta_step", AnimationLoader.loadAnimationFromFile("beta_step", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_step")
+        }
+        
+        animation = ("beta_kick", AnimationLoader.loadAnimationFromFile("beta_kick", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_kick")
+        }
+        
+        animation = ("beta_block", AnimationLoader.loadAnimationFromFile("beta_block", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_block")
+        }
     }
 }

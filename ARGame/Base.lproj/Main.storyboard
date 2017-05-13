@@ -27,6 +27,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Left"/>
                                 <connections>
+                                    <action selector="moveLeftButtonDoubleTap::" destination="BV1-FR-VrT" eventType="touchDownRepeat" id="AGT-0I-6hA"/>
                                     <action selector="moveLeftButtonDown:" destination="BV1-FR-VrT" eventType="touchDown" id="YTm-xL-2Iu"/>
                                     <action selector="moveLeftButtonUp:" destination="BV1-FR-VrT" eventType="touchDragOutside" id="kQ3-3h-K0Q"/>
                                     <action selector="moveLeftButtonUp:" destination="BV1-FR-VrT" eventType="touchUpInside" id="zJd-8P-I9R"/>
@@ -38,6 +39,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Right"/>
                                 <connections>
+                                    <action selector="moveRightButtonDoubleTap::" destination="BV1-FR-VrT" eventType="touchDownRepeat" id="BqR-x2-jWu"/>
                                     <action selector="moveRightButtonDown:" destination="BV1-FR-VrT" eventType="touchDown" id="gbi-fL-jLG"/>
                                     <action selector="moveRightButtonUp:" destination="BV1-FR-VrT" eventType="touchDragOutside" id="1pN-6k-ug3"/>
                                     <action selector="moveRightButtonUp:" destination="BV1-FR-VrT" eventType="touchUpInside" id="8di-LK-lBA"/>

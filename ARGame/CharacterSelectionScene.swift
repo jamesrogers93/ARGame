@@ -98,7 +98,7 @@ class CharacterSelectionScene : Scene
             {
                 if let animation = super.getAnimation(self.characterAnimations[self.currentSelection])
                 {
-                    entity.glModel.animationController.loop((self.characterAnimations[self.currentSelection], animation))
+                    entity.glModel.animationController.play((self.characterAnimations[self.currentSelection], animation), loop: true)
                 }
             }
         }

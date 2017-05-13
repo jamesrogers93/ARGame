@@ -165,7 +165,7 @@ class FightGameController: GLKViewController
                 {
                     if let animation = self.scene.getAnimation("vangaurd_breathing_idle")
                     {
-                        entity.glModel.animationController.loop(("vangaurd_breathing_idle", animation))
+                        entity.glModel.animationController.play(("vangaurd_breathing_idle", animation), loop: true)
                     }
                 }
             }
@@ -193,36 +193,54 @@ class FightGameController: GLKViewController
     
     @IBAction func moveLeftButtonDown(_ sender: UIButton)
     {
-        self.scene.activateMoveLeft()
+        self.scene.player.activateMoveLeft()
     }
     
     @IBAction func moveLeftButtonUp(_ sender: UIButton)
     {
-        self.scene.deactivateMoveLeft()
+        self.scene.player.deactivateMoveLeft()
     }
     
     @IBAction func moveRightButtonDown(_ sender: UIButton)
     {
-        self.scene.activateMoveRight()
+        self.scene.player.activateMoveRight()
     }
     
     @IBAction func moveRightButtonUp(_ sender: UIButton)
     {
-        self.scene.deactivateMoveRight()
+        self.scene.player.deactivateMoveRight()
     }
 
     @IBAction func punchButton(_ sender: UIButton)
     {
-        self.scene.punchButton()
+        self.scene.player.punchButton()
     }
     
     @IBAction func kickButton(_ sender: UIButton)
     {
-        self.scene.kickButton()
+        self.scene.player.kickButton()
     }
     
     @IBAction func blockButton(_ sender: UIButton)
     {
-        self.scene.blockButton()
+        self.scene.player.blockButton()
+    }
+    
+    @IBAction func moveLeftButtonDoubleTap(_ sender: UIButton, _ event: UIEvent)
+    {
+        let t: UITouch = event.allTouches!.first!
+        if t.tapCount == 2
+        {
+            self.scene.player.activateDashLeft()
+        }
+    }
+    
+    @IBAction func moveRightButtonDoubleTap(_ sender: UIButton, _ event: UIEvent)
+    {
+        let t: UITouch = event.allTouches!.first!
+        if t.tapCount == 2
+        {
+            self.scene.player.activateDashRight()
+        }
     }
 }

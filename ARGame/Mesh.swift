@@ -503,13 +503,6 @@ class MeshAnimated : Mesh
         //var nodeTransformation: GLKMatrix4 = GLKMatrix4Identity
         var nodeTransformation: GLKMatrix4 = skeleton.transformation
         
-        let nodeType: Array<String> = skeleton.name.components(separatedBy: "$")
-        
-        /*if nodeType[nodeType.count-1] == "_Translation"
-        {
-            nodeTransformation = GLKMatrix4Identity
-        }*/
-        
         // Get animation channel from dictonary O(1) access complexity
         let channel = animation.channels[skeleton.name]
         
