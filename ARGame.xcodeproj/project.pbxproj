@@ -1236,6 +1236,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ARGame/Bridge.h;
 				SWIFT_VERSION = 3.0;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
 		};
