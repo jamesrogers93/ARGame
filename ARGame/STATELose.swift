@@ -11,8 +11,10 @@ import Foundation
 class STATELose : STATE<FighterAI>
 {
     
-    override public func run(parent: FighterAI)
+    override public func run(parent: FighterAI) -> Int
     {
+        parent.lose()
         
+        return FighterStates.S_END.rawValue
     }
 }

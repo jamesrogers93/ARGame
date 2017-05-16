@@ -11,8 +11,10 @@ import Foundation
 class STATEWin : STATE<FighterAI>
 {
     
-    override public func run(parent: FighterAI)
+    override public func run(parent: FighterAI) -> Int
     {
+        parent.win()
         
+        return FighterStates.S_END.rawValue
     }
 }

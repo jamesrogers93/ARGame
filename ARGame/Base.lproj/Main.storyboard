@@ -72,13 +72,54 @@
                                     <action selector="blockButton:" destination="BV1-FR-VrT" eventType="touchDown" id="4zg-D5-jKA"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5R-L1-FbR" userLabel="Player Health">
+                                <rect key="frame" x="20" y="18" width="250" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" red="0.67000013589999996" green="0.16476604189999999" blue="0.096821281790000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="trackTintColor" red="0.16498105369999999" green="0.44035318680000002" blue="0.70063920449999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fCe-yA-LsX" userLabel="Enemy Health">
+                                <rect key="frame" x="397" y="18" width="250" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" red="0.67000013589999996" green="0.16476604189999999" blue="0.096821281790000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="trackTintColor" red="0.16498105369999999" green="0.44035318680000002" blue="0.70063920449999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCj-6d-2Fo">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="hnd-aI-jOf">
+                                    <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0t-qD-bvq" userLabel="continueButton">
+                                <rect key="frame" x="230" y="292" width="206" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Continue"/>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I27-gr-ejs" userLabel="endMessage">
+                                <rect key="frame" x="175" y="79" width="316" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="blurEffect" destination="CCj-6d-2Fo" id="2oC-S7-dkN"/>
+                        <outlet property="continueButton" destination="N0t-qD-bvq" id="GrF-aC-KLv"/>
+                        <outlet property="endMessage" destination="I27-gr-ejs" id="8Er-rT-h5Z"/>
+                        <outlet property="enemyHealthBar" destination="fCe-yA-LsX" id="1G3-JV-xEJ"/>
+                        <outlet property="playerHealthBar" destination="d5R-L1-FbR" id="UN2-fn-oOS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1635.832083958021" y="120.8"/>
+            <point key="canvasLocation" x="1653.8230884557722" y="120.8"/>
         </scene>
         <!--Character Selection Controller-->
         <scene sceneID="H3Q-KO-rVy">

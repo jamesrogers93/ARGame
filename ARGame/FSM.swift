@@ -23,7 +23,10 @@ class FSM <Parent>
     
     public func update()
     {
-        self.states[self._currentState].run(parent: self.parent)
+        if self._currentState >= 0
+        {
+            self.currentState = self.states[self._currentState].run(parent: self.parent)
+        }
     }
     
     public func addState(_ state: STATE<Parent>)
@@ -40,7 +43,7 @@ class FSM <Parent>
         
         set(newVal)
         {
-            if self._currentState < self.states.count && self._currentState >= 0
+            if self._currentState < self.states.count
             {
                 self._currentState = newVal
             }

@@ -10,5 +10,8 @@ import Foundation
 
 class STATE<Parent>
 {
-    public func run(parent: Parent){}
+    public func run(parent: Parent) -> Int
+    {
+        return -1
+    }
 }

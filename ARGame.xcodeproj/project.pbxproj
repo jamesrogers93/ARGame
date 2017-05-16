@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A05A47C1E9A31AB003B8104 /* TexturePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A47B1E9A31AB003B8104 /* TexturePool.swift */; };
 		1A05A4901E9A6767003B8104 /* beta.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 1A05A48F1E9A6767003B8104 /* beta.fbx */; };
-		1A05A4A81E9A8E37003B8104 /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A05A4A71E9A8E37003B8104 /* libfbxsdk.a */; };
-		1A05A4AC1E9A9158003B8104 /* FBXLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A4AB1E9A9158003B8104 /* FBXLoader.cpp */; };
-		1A05A4AF1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A4AD1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp */; };
 		1A0901881EC7430A00566088 /* beta_punch_1.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A0901841EC7430A00566088 /* beta_punch_1.bvh */; };
 		1A0901891EC7430A00566088 /* beta_punch_2.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A0901851EC7430A00566088 /* beta_punch_2.bvh */; };
 		1A09018A1EC7430A00566088 /* beta_punch_3.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A0901861EC7430A00566088 /* beta_punch_3.bvh */; };
@@ -25,13 +22,16 @@
 		1A09019E1EC79C0A00566088 /* FSM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A09019D1EC79C0A00566088 /* FSM.swift */; };
 		1A0901A11EC79E0C00566088 /* FSMFighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901A01EC79E0C00566088 /* FSMFighter.swift */; };
 		1A0901A31EC79F4E00566088 /* STATE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901A21EC79F4E00566088 /* STATE.swift */; };
-		1A0901A61EC7A1E400566088 /* STATEAttack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901A51EC7A1E400566088 /* STATEAttack.swift */; };
-		1A0901A81EC7A27B00566088 /* STATEBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901A71EC7A27B00566088 /* STATEBlock.swift */; };
-		1A0901AA1EC7A29000566088 /* STATEDodge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901A91EC7A29000566088 /* STATEDodge.swift */; };
+		1A0901A61EC7A1E400566088 /* STATECombat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901A51EC7A1E400566088 /* STATECombat.swift */; };
 		1A0901AC1EC7A2A100566088 /* STATEMoveToPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901AB1EC7A2A100566088 /* STATEMoveToPlayer.swift */; };
 		1A0901AF1EC7A2B500566088 /* STATEWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901AE1EC7A2B500566088 /* STATEWin.swift */; };
 		1A0901B11EC7A2C800566088 /* STATELose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901B01EC7A2C800566088 /* STATELose.swift */; };
 		1A0901B31EC7A48900566088 /* FighterStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901B21EC7A48900566088 /* FighterStates.swift */; };
+		1A0901B71EC8D38100566088 /* beta_hit.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A0901B51EC8D38100566088 /* beta_hit.bvh */; };
+		1A0901B91EC8D5DC00566088 /* FighterPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901B81EC8D5DC00566088 /* FighterPlayer.swift */; };
+		1A0901BC1ECADBB200566088 /* Multiplications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0901BB1ECADBB200566088 /* Multiplications.swift */; };
+		1A0901BE1ECB144B00566088 /* beta_defeated.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A0901BD1ECB144B00566088 /* beta_defeated.bvh */; };
+		1A0901C01ECB145500566088 /* beta_victory.bvh in Resources */ = {isa = PBXBuildFile; fileRef = 1A0901BF1ECB145500566088 /* beta_victory.bvh */; };
 		1A1788051E637A270087DE26 /* libARgsub_es2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E11E5E223800D136D5 /* libARgsub_es2.a */; };
 		1A1788061E637A270087DE26 /* libARICP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6BA3E31E5E225500D136D5 /* libARICP.a */; };
 		1A1788081E637A400087DE26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1788071E637A400087DE26 /* QuartzCore.framework */; };
@@ -147,10 +147,6 @@
 		1A05A47B1E9A31AB003B8104 /* TexturePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexturePool.swift; sourceTree = "<group>"; };
 		1A05A48F1E9A6767003B8104 /* beta.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; name = beta.fbx; path = Assets/Characters/Beta/beta.fbx; sourceTree = "<group>"; };
 		1A05A4A71E9A8E37003B8104 /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../../../../../../../Applications/Autodesk/FBX SDK/2017.1/lib/ios-armv7/release/libfbxsdk.a"; sourceTree = "<group>"; };
-		1A05A4AA1E9A913E003B8104 /* FBXLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FBXLoader.hpp; sourceTree = "<group>"; };
-		1A05A4AB1E9A9158003B8104 /* FBXLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FBXLoader.cpp; sourceTree = "<group>"; };
-		1A05A4AD1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FBXLoaderCInterface.cpp; sourceTree = "<group>"; };
-		1A05A4AE1E9ABAD2003B8104 /* FBXLoaderCInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBXLoaderCInterface.h; sourceTree = "<group>"; };
 		1A0901841EC7430A00566088 /* beta_punch_1.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_punch_1.bvh; path = Assets/Animations/Beta/beta_punch_1.bvh; sourceTree = "<group>"; };
 		1A0901851EC7430A00566088 /* beta_punch_2.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_punch_2.bvh; path = Assets/Animations/Beta/beta_punch_2.bvh; sourceTree = "<group>"; };
 		1A0901861EC7430A00566088 /* beta_punch_3.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_punch_3.bvh; path = Assets/Animations/Beta/beta_punch_3.bvh; sourceTree = "<group>"; };
@@ -164,13 +160,16 @@
 		1A09019D1EC79C0A00566088 /* FSM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSM.swift; sourceTree = "<group>"; };
 		1A0901A01EC79E0C00566088 /* FSMFighter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSMFighter.swift; sourceTree = "<group>"; };
 		1A0901A21EC79F4E00566088 /* STATE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STATE.swift; sourceTree = "<group>"; };
-		1A0901A51EC7A1E400566088 /* STATEAttack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STATEAttack.swift; sourceTree = "<group>"; };
-		1A0901A71EC7A27B00566088 /* STATEBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STATEBlock.swift; sourceTree = "<group>"; };
-		1A0901A91EC7A29000566088 /* STATEDodge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STATEDodge.swift; sourceTree = "<group>"; };
+		1A0901A51EC7A1E400566088 /* STATECombat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STATECombat.swift; sourceTree = "<group>"; };
 		1A0901AB1EC7A2A100566088 /* STATEMoveToPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STATEMoveToPlayer.swift; sourceTree = "<group>"; };
 		1A0901AE1EC7A2B500566088 /* STATEWin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STATEWin.swift; sourceTree = "<group>"; };
 		1A0901B01EC7A2C800566088 /* STATELose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STATELose.swift; sourceTree = "<group>"; };
 		1A0901B21EC7A48900566088 /* FighterStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FighterStates.swift; sourceTree = "<group>"; };
+		1A0901B51EC8D38100566088 /* beta_hit.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_hit.bvh; path = Assets/Animations/Beta/beta_hit.bvh; sourceTree = "<group>"; };
+		1A0901B81EC8D5DC00566088 /* FighterPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FighterPlayer.swift; sourceTree = "<group>"; };
+		1A0901BB1ECADBB200566088 /* Multiplications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Multiplications.swift; sourceTree = "<group>"; };
+		1A0901BD1ECB144B00566088 /* beta_defeated.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_defeated.bvh; path = Assets/Animations/Beta/beta_defeated.bvh; sourceTree = "<group>"; };
+		1A0901BF1ECB145500566088 /* beta_victory.bvh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beta_victory.bvh; path = Assets/Animations/Beta/beta_victory.bvh; sourceTree = "<group>"; };
 		1A1788071E637A400087DE26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A17880A1E640D950087DE26 /* camera_para.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = camera_para.dat; path = Assets_AR/camera_para.dat; sourceTree = "<group>"; };
 		1A17880C1E640D9E0087DE26 /* hiro.patt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hiro.patt; path = Assets_AR/hiro.patt; sourceTree = "<group>"; };
@@ -293,7 +292,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A05A4A81E9A8E37003B8104 /* libfbxsdk.a in Frameworks */,
 				1A4F606F1E5CBE7400B4C602 /* libAR.a in Frameworks */,
 				1A1788061E637A270087DE26 /* libARICP.a in Frameworks */,
 				1A1788051E637A270087DE26 /* libARgsub_es2.a in Frameworks */,
@@ -336,33 +334,26 @@
 			children = (
 				1A57EBF81EC66AC700861391 /* beta_block.bvh */,
 				1A2465591EC1CF310043A60F /* beta_breathing_idle.bvh */,
+				1A0901BD1ECB144B00566088 /* beta_defeated.bvh */,
+				1A0901B51EC8D38100566088 /* beta_hit.bvh */,
 				1A57EBF61EC6686C00861391 /* beta_kick.bvh */,
 				1A0901841EC7430A00566088 /* beta_punch_1.bvh */,
 				1A0901851EC7430A00566088 /* beta_punch_2.bvh */,
 				1A0901861EC7430A00566088 /* beta_punch_3.bvh */,
 				1A0901871EC7430A00566088 /* beta_punch_4.bvh */,
 				1A09018E1EC7569500566088 /* beta_step.bvh */,
+				1A0901BF1ECB145500566088 /* beta_victory.bvh */,
 				1AF835E81EC3AC9100EA282A /* beta_warming_up.bvh */,
 				1AF835F61EC3BF1600EA282A /* beta_walking.bvh */,
 			);
 			name = Beta;
 			sourceTree = "<group>";
 		};
-		1A05A4A91E9A9115003B8104 /* FBX */ = {
-			isa = PBXGroup;
-			children = (
-				1A05A4AA1E9A913E003B8104 /* FBXLoader.hpp */,
-				1A05A4AB1E9A9158003B8104 /* FBXLoader.cpp */,
-				1A05A4AE1E9ABAD2003B8104 /* FBXLoaderCInterface.h */,
-				1A05A4AD1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp */,
-			);
-			name = FBX;
-			sourceTree = "<group>";
-		};
 		1A0901901EC7615100566088 /* Fighters */ = {
 			isa = PBXGroup;
 			children = (
 				1A0901911EC7616A00566088 /* Fighter.swift */,
+				1A0901B81EC8D5DC00566088 /* FighterPlayer.swift */,
 				1A09019B1EC79BB300566088 /* FighterAI.swift */,
 			);
 			name = Fighters;
@@ -373,9 +364,7 @@
 			children = (
 				1A0901A01EC79E0C00566088 /* FSMFighter.swift */,
 				1A0901B21EC7A48900566088 /* FighterStates.swift */,
-				1A0901A51EC7A1E400566088 /* STATEAttack.swift */,
-				1A0901A71EC7A27B00566088 /* STATEBlock.swift */,
-				1A0901A91EC7A29000566088 /* STATEDodge.swift */,
+				1A0901A51EC7A1E400566088 /* STATECombat.swift */,
 				1A0901AB1EC7A2A100566088 /* STATEMoveToPlayer.swift */,
 				1A0901AE1EC7A2B500566088 /* STATEWin.swift */,
 				1A0901B01EC7A2C800566088 /* STATELose.swift */,
@@ -392,6 +381,14 @@
 			name = "State Machine";
 			sourceTree = "<group>";
 		};
+		1A0901BA1ECADB9800566088 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				1A0901BB1ECADBB200566088 /* Multiplications.swift */,
+			);
+			name = Math;
+			sourceTree = "<group>";
+		};
 		1A1788091E640D010087DE26 /* Assets_AR */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +402,7 @@
 		1A22E5DE1EB3D3500013D588 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				1A0901BA1ECADB9800566088 /* Math */,
 				1A4F60701E5CC42000B4C602 /* AR */,
 				1A3669601E756B3500C7C53E /* Entity */,
 				1A755C261E59E06A00E2FFBC /* FileLoading */,
@@ -615,7 +613,6 @@
 				1A1788091E640D010087DE26 /* Assets_AR */,
 				1A44DCF41E55F88E0036E753 /* Controllers */,
 				1A44DCF71E5601920036E753 /* Model */,
-				1AC181611E72AA68008C07F3 /* Shaders */,
 				1A44DCC01E55F34C0036E753 /* AppDelegate.swift */,
 				1A44DCCB1E55F34C0036E753 /* Assets.xcassets */,
 				1A6BA3F81E5E280900D136D5 /* Bridge.h */,
@@ -737,7 +734,6 @@
 		1A755C261E59E06A00E2FFBC /* FileLoading */ = {
 			isa = PBXGroup;
 			children = (
-				1A05A4A91E9A9115003B8104 /* FBX */,
 				1AE874901E97F294009F1D4A /* Assimp */,
 				1A44DCF51E55FEC40036E753 /* ModelLoader.swift */,
 				1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */,
@@ -776,6 +772,7 @@
 		1AC1816A1E72C159008C07F3 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				1AC181611E72AA68008C07F3 /* Shaders */,
 				1AC181211E71DF7B008C07F3 /* Shader.swift */,
 				1AC1816B1E72C1AD008C07F3 /* Effect.swift */,
 				1AC1816F1E734D4E008C07F3 /* EffectBasic.swift */,
@@ -914,11 +911,13 @@
 				1A05A4901E9A6767003B8104 /* beta.fbx in Resources */,
 				1A3B89BA1EBF7DCF0095E9AA /* x-bot.xml in Resources */,
 				1A0901961EC791D000566088 /* beta_red.xml in Resources */,
+				1A0901C01ECB145500566088 /* beta_victory.bvh in Resources */,
 				1A22E5FE1EB73F740013D588 /* pumpkin_diffuse.png in Resources */,
 				1A3B89BB1EBF7DCF0095E9AA /* y-bot.xml in Resources */,
 				1A44DCCA1E55F34C0036E753 /* Main.storyboard in Resources */,
 				1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */,
 				1AF835ED1EC3ACB000EA282A /* ganfaul_warming_up.bvh in Resources */,
+				1A0901BE1ECB144B00566088 /* beta_defeated.bvh in Resources */,
 				1A5FCF131EBF516B00C3E698 /* character-selection.xml in Resources */,
 				1A30362C1E856B1D00484367 /* ShaderAnimation.vsh in Resources */,
 				1A22E60F1EB746500013D588 /* vanguard_diffuse.png in Resources */,
@@ -932,6 +931,7 @@
 				1A22E61A1EB748AF0013D588 /* ganfaul_diffuse.png in Resources */,
 				1A2465641EC1CF720043A60F /* vanguard_breathing_idle.bvh in Resources */,
 				1A22E6101EB746500013D588 /* vanguard_specular.png in Resources */,
+				1A0901B71EC8D38100566088 /* beta_hit.bvh in Resources */,
 				1AC181771E7355E0008C07F3 /* ShaderBasic.vsh in Resources */,
 				1A22E6071EB744F40013D588 /* ely_specular.png in Resources */,
 				1A22E5FF1EB73F740013D588 /* pumpkin.fbx in Resources */,
@@ -1000,7 +1000,6 @@
 				1A0901AF1EC7A2B500566088 /* STATEWin.swift in Sources */,
 				1A4492751E978CC600C27B4B /* Model.swift in Sources */,
 				1A0901921EC7616A00566088 /* Fighter.swift in Sources */,
-				1A0901A81EC7A27B00566088 /* STATEBlock.swift in Sources */,
 				1A44927A1E979F5C00C27B4B /* CharacterSelectionScene.swift in Sources */,
 				1AC1816C1E72C1AE008C07F3 /* Effect.swift in Sources */,
 				1A22E5DD1EB38ECF0013D588 /* EntityLoader.swift in Sources */,
@@ -1011,8 +1010,8 @@
 				1A4F60721E5CCFA700B4C602 /* ARHandler.m in Sources */,
 				1A5FCF101EBF4F4500C3E698 /* SceneLoader.swift in Sources */,
 				1A0901B11EC7A2C800566088 /* STATELose.swift in Sources */,
-				1A05A4AF1E9ABAD2003B8104 /* FBXLoaderCInterface.cpp in Sources */,
 				1AF835E71EC3A2F700EA282A /* FightGameScene.swift in Sources */,
+				1A0901BC1ECADBB200566088 /* Multiplications.swift in Sources */,
 				1A0901A31EC79F4E00566088 /* STATE.swift in Sources */,
 				1AE317931E93C49900972BC2 /* Skeleton.swift in Sources */,
 				1A0901A11EC79E0C00566088 /* FSMFighter.swift in Sources */,
@@ -1024,18 +1023,17 @@
 				1AE8748F1E97ED39009F1D4A /* AnimationLoader.swift in Sources */,
 				1A0901AC1EC7A2A100566088 /* STATEMoveToPlayer.swift in Sources */,
 				1AC181701E734D4E008C07F3 /* EffectBasic.swift in Sources */,
-				1A0901AA1EC7A29000566088 /* STATEDodge.swift in Sources */,
 				1A44DCF61E55FEC40036E753 /* ModelLoader.swift in Sources */,
 				1A4492781E9790B000C27B4B /* Scene.swift in Sources */,
 				1A44DCC71E55F34C0036E753 /* FightGameController.swift in Sources */,
-				1A0901A61EC7A1E400566088 /* STATEAttack.swift in Sources */,
+				1A0901A61EC7A1E400566088 /* STATECombat.swift in Sources */,
+				1A0901B91EC8D5DC00566088 /* FighterPlayer.swift in Sources */,
 				1A44DCC11E55F34C0036E753 /* AppDelegate.swift in Sources */,
 				1A0901941EC78AAF00566088 /* ModelPool.swift in Sources */,
 				1A44926F1E9787BD00C27B4B /* Mesh.swift in Sources */,
 				1A44DCF31E55F87E0036E753 /* MainMenuController.swift in Sources */,
 				1A05A47C1E9A31AB003B8104 /* TexturePool.swift in Sources */,
 				1ADFA8B81E64C05900588345 /* AssimpLoaderCInterface.cpp in Sources */,
-				1A05A4AC1E9A9158003B8104 /* FBXLoader.cpp in Sources */,
 				1A09019C1EC79BB300566088 /* FighterAI.swift in Sources */,
 				1A435D5D1E83BBC000D44433 /* Material.swift in Sources */,
 				1A435D5B1E83BB6F00D44433 /* Vertex.swift in Sources */,
@@ -1197,7 +1195,6 @@
 				HEADER_SEARCH_PATHS = (
 					../Dependencies/assimp/include,
 					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/include",
-					../Dependencies/FBX_SDK/2017.1/include,
 				);
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1205,7 +1202,6 @@
 					"$(inherited)",
 					../Dependencies/assimp/lib/iOS,
 					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib",
-					"../Dependencies/FBX_SDK/2017.1/lib/ios-armv7/release",
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-liconv";
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;
@@ -1227,7 +1223,6 @@
 				HEADER_SEARCH_PATHS = (
 					../Dependencies/assimp/include,
 					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/include",
-					../Dependencies/FBX_SDK/2017.1/include,
 				);
 				INFOPLIST_FILE = ARGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1235,7 +1230,6 @@
 					"$(inherited)",
 					../Dependencies/assimp/lib/iOS,
 					"../Dependencies/ARToolKit5-bin-5.3.2-iOS/lib",
-					"../Dependencies/FBX_SDK/2017.1/lib/ios-armv7/release",
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-liconv";
 				PRODUCT_BUNDLE_IDENTIFIER = JamesRogers.ARGame;

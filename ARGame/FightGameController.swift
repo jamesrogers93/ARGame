@@ -26,6 +26,13 @@ class FightGameController: GLKViewController
     
     var arHandler: ARHandler = ARHandler()
     
+    @IBOutlet weak var playerHealthBar: UIProgressView!
+    @IBOutlet weak var enemyHealthBar: UIProgressView!
+    @IBOutlet weak var blurEffect: UIVisualEffectView!
+    @IBOutlet weak var endMessage: UILabel!
+    @IBOutlet weak var continueButton: UIButton!
+    
+    
     deinit
     {
         self.tearDownGL()
@@ -53,6 +60,8 @@ class FightGameController: GLKViewController
         let view = self.view as! GLKView
         view.context = self.context!
         view.drawableDepthFormat = .format24
+        
+        self.setupHealthBar()
         
         self.setupGL()
         
@@ -105,6 +114,17 @@ class FightGameController: GLKViewController
         }*/
     }
     
+    func setupHealthBar()
+    {
+        let transform: CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 3.0)
+        
+        self.playerHealthBar.setProgress(0.0, animated: false)
+        self.enemyHealthBar.setProgress(0.0, animated: false)
+        
+        self.playerHealthBar.transform = transform
+        self.enemyHealthBar.transform = transform
+    }
+    
     func setupGL()
     {
         // Set current GL context
@@ -139,8 +159,40 @@ class FightGameController: GLKViewController
     func update()
     {
         
+        // If the game is over, blur the screen
+        if self.scene.gameOver
+        {
+            UIView.animate(withDuration: 0.5)
+            {
+                self.blurEffect.alpha = 1.0
+            }
+            
+            self.continueButton.isHidden = false
+            self.endMessage.isHidden = false
+            
+            if self.scene.player.hasWon
+            {
+                self.endMessage.text = "You Won"
+            }
+            else
+            {
+                self.endMessage.text = "You Lose"
+            }
+        }
+        
         if self.arHandler.running
         {
+            // Update the health bar
+            let playerHealth = self.scene.player.startHealth - self.scene.player.health
+            if playerHealth > 0
+            {
+                self.playerHealthBar.setProgress(Float(playerHealth) / Float(self.scene.player.startHealth), animated: true)
+            }
+            let enemyHealth = self.scene.enemy.startHealth - self.scene.enemy.health
+            if enemyHealth > 0
+            {
+                self.enemyHealthBar.setProgress(Float(enemyHealth) / Float(self.scene.enemy.startHealth), animated: true)
+            }
             
             // Update the projection matrix and camera view
             if self.scene.effectMaterial != nil
@@ -157,18 +209,6 @@ class FightGameController: GLKViewController
             
             self.scene.updateScene(delta: self.timeSinceLastUpdate)
             self.scene.updateAnimations()
-            
-            // Start the animation
-            if let entity = self.scene.getEntityAnimated("vangaurd")
-            {
-                if !entity.glModel.animationController.isPlaying
-                {
-                    if let animation = self.scene.getAnimation("vangaurd_breathing_idle")
-                    {
-                        entity.glModel.animationController.play(("vangaurd_breathing_idle", animation), loop: true)
-                    }
-                }
-            }
         }
     }
     
@@ -193,54 +233,82 @@ class FightGameController: GLKViewController
     
     @IBAction func moveLeftButtonDown(_ sender: UIButton)
     {
-        self.scene.player.activateMoveLeft()
+        if !self.scene.gameOver
+        {
+            self.scene.player.activateMoveLeft()
+        }
     }
     
     @IBAction func moveLeftButtonUp(_ sender: UIButton)
     {
-        self.scene.player.deactivateMoveLeft()
+        if !self.scene.gameOver
+        {
+            self.scene.player.deactivateMoveLeft()
+        }
     }
     
     @IBAction func moveRightButtonDown(_ sender: UIButton)
     {
-        self.scene.player.activateMoveRight()
+        if !self.scene.gameOver
+        {
+            self.scene.player.activateMoveRight()
+        }
     }
     
     @IBAction func moveRightButtonUp(_ sender: UIButton)
     {
-        self.scene.player.deactivateMoveRight()
+        if !self.scene.gameOver
+        {
+            self.scene.player.deactivateMoveRight()
+        }
     }
 
     @IBAction func punchButton(_ sender: UIButton)
     {
-        self.scene.player.punchButton()
+        if !self.scene.gameOver
+        {
+            self.scene.player.punch()
+        }
     }
     
     @IBAction func kickButton(_ sender: UIButton)
     {
-        self.scene.player.kickButton()
+        if !self.scene.gameOver
+        {
+            self.scene.player.kick()
+        }
     }
     
     @IBAction func blockButton(_ sender: UIButton)
     {
-        self.scene.player.blockButton()
+        if !self.scene.gameOver
+        {
+            self.scene.player.block()
+        }
     }
     
     @IBAction func moveLeftButtonDoubleTap(_ sender: UIButton, _ event: UIEvent)
     {
-        let t: UITouch = event.allTouches!.first!
-        if t.tapCount == 2
+        if !self.scene.gameOver
         {
-            self.scene.player.activateDashLeft()
+            let t: UITouch = event.allTouches!.first!
+            if t.tapCount == 2
+            {
+                self.scene.player.activateDashLeft()
+            }
+    
         }
     }
     
     @IBAction func moveRightButtonDoubleTap(_ sender: UIButton, _ event: UIEvent)
     {
-        let t: UITouch = event.allTouches!.first!
-        if t.tapCount == 2
+        if !self.scene.gameOver
         {
-            self.scene.player.activateDashRight()
+            let t: UITouch = event.allTouches!.first!
+            if t.tapCount == 2
+            {
+                self.scene.player.activateDashRight()
+            }
         }
     }
 }

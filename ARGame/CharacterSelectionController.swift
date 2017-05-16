@@ -117,7 +117,7 @@ class CharacterSelectionController: GLKViewController
     {
         super.didReceiveMemoryWarning()
         
-        if self.isViewLoaded && (self.view.window != nil)
+       /* if self.isViewLoaded && (self.view.window != nil)
         {
             self.view = nil
             
@@ -130,7 +130,7 @@ class CharacterSelectionController: GLKViewController
             self.context = nil
             
             self.scene.destroyScene()
-        }
+        }*/
     }
     
     func setupGL()

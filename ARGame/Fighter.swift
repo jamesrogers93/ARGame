@@ -9,26 +9,250 @@
 import Foundation
 
 class Fighter {
+    
+    private static let DEFAULT_HEALTH: Int = 200
+    private static let DEFAULT_STRENGTH: Int = 10
+    private static let DEFAULT_WALK_SPEED: Double = 45.0
+    private static let DEFAULT_DASH_SPEED: Double = 200.0
+    private static let DEFAULT_ACTION_SPEED: Float = 2.0
+    private static let DEFAULT_DIRECTION: Int = 1
 
-    public var name: String = ""
-    public var world: Scene? = nil
-    public var moveLeft: Bool = false
-    public var moveRight: Bool = false
-    public var dashLeft: Bool = false
-    public var dashRight: Bool = false
-    public var combatAction:Bool = false
-    public var walkSpeed: Double = 45.0
-    public var dashSpeed: Double = 200.0
-    public var actionSpeed: Float = 2.0
-
+    private var _name: String = ""
+    private var _opponent: String = ""
+    private var _world: FightGameScene? = nil
+    private var _health: Int = DEFAULT_HEALTH
+    private var _startHealth: Int = DEFAULT_HEALTH
+    private var _strength: Int = DEFAULT_STRENGTH
+    private var _walkSpeed: Double = DEFAULT_WALK_SPEED
+    private var _dashSpeed: Double = DEFAULT_DASH_SPEED
+    private var _actionSpeed: Float = DEFAULT_ACTION_SPEED
+    private var _direction: Int = DEFAULT_DIRECTION
+    private var _moveLeft: Bool = false
+    private var _moveRight: Bool = false
+    private var _dashLeft: Bool = false
+    private var _dashRight: Bool = false
+    private var _combatAction:Bool = false
+    private var _canDamageFromAction: Bool = false
+    private var _blocking: Bool = false
+    private var _isHit: Bool = false
+    private var _distanceToOpponent: Float = 0.0
+    private var _hasWon: Bool = false
+    private var _hasLoss: Bool = false
+    
+    var name: String
+    {
+        get
+        {
+            return self._name
+        }
+        set(newVal)
+        {
+            self._name = newVal
+        }
+    }
+    
+    var opponent: String
+    {
+        get
+        {
+            return self._opponent
+        }
+    }
+    
+    var world: FightGameScene?
+    {
+        get
+        {
+            return self._world
+        }
+        set(newVal)
+        {
+            self._world = newVal
+        }
+    }
+    
+    var moveLeft: Bool
+    {
+        get
+        {
+            return self._moveLeft
+        }
+    }
+    
+    var moveRight: Bool
+    {
+        get
+        {
+            return self._moveRight
+        }
+    }
+    
+    var dashLeft: Bool
+    {
+        get
+        {
+            return self._dashLeft
+        }
+    }
+    
+    var dashRight: Bool
+    {
+        get
+        {
+            return self._dashRight
+        }
+    }
+    
+    var combatAction: Bool
+    {
+        get
+        {
+            return self._combatAction
+        }
+    }
+    
+    var canDamageFromAction: Bool
+    {
+        get
+        {
+            return self._canDamageFromAction
+        }
+        set(newVal)
+        {
+            self._canDamageFromAction = newVal
+        }
+    }
+    
+    var blocking: Bool
+    {
+        get
+        {
+            return self._blocking
+        }
+    }
+    
+    var isHit: Bool
+    {
+        get
+        {
+            return self._isHit
+        }
+    }
+    
+    var walkSpeed: Double
+    {
+        get
+        {
+            return self._walkSpeed
+        }
+    }
+    
+    var dashSpeed: Double
+    {
+        get
+        {
+            return self._dashSpeed
+        }
+    }
+    
+    var actionSpeed: Float
+    {
+        get
+        {
+            return self._actionSpeed
+        }
+    }
+    
+    var direction: Int
+    {
+        get
+        {
+            return self._direction
+        }
+        
+        set(newVal)
+        {
+            if newVal == -1 || newVal == 1
+            {
+                self._direction = newVal
+            }
+            else
+            {
+                print("Invalid direction. Must be -1 (Left) or 1 (Right)")
+            }
+        }
+    }
+    
+    var distanceToOpponent: Float
+    {
+        get
+        {
+            return self._distanceToOpponent
+        }
+    }
+    
+    var health: Int
+    {
+        get
+        {
+            return self._health
+        }
+    }
+    
+    var startHealth: Int
+    {
+        get
+        {
+            return self._startHealth
+        }
+    }
+    
+    var strength: Int
+    {
+        get
+        {
+            return self._strength
+        }
+    }
+    
+    var hasWon: Bool
+    {
+        get
+        {
+            return self._hasWon
+        }
+    }
+    
+    var hasLoss: Bool
+    {
+        get
+        {
+            return self._hasLoss
+        }
+    }
+    
     init()
     {
     }
     
     public func updateScene(delta: Double)
     {
-        if self.world != nil
+        self._distanceToOpponent = abs((self.world?.entitesAnimated[(self.world?.player.name)!]?.position[0])! - (self.world?.entitesAnimated[(self.world?.enemy.name)!]?.position[0])!)
+        
+        if self.world != nil && !self._hasWon && !self._hasLoss
         {
+            if distanceToOpponent < 30.0
+            {
+                if self._direction == 1
+                {
+                    self.stopMovingRight()
+                }
+                else
+                {
+                    self.stopMovingLeft()
+                }
+            }
+            
             if self.dashLeft
             {
                 self.world?.entitesAnimated[self.name]?.translate(GLKVector3MultiplyScalar(GLKVector3Make(-1.0, 0.0, 0.0), Float(self.dashSpeed * delta)))
@@ -50,49 +274,50 @@ class Fighter {
     
     public func activateMoveLeft()
     {
-        if !self.combatAction && self.world != nil
+        if !self.combatAction && self.world != nil && !self.moveLeft && !self.dashLeft && !self.dashRight && !self.isHit && !self._hasWon && !self._hasLoss
         {
-            self.moveLeft = true
+            self._moveLeft = true
             
-            //let playerAnimationName: String = self.name + "_walking"
+            let reverse: Bool = self._direction == 1 ? true : false
+            
             let playerAnimationName: String = "beta_walking"
-            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), loop: true, reverse: true, speed: 2.0)
+            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), loop: true, reverse: reverse, speed: 2.0)
         }
     }
     
     public func deactivateMoveLeft()
     {
-        self.stopMoving()
+        self.stopWalking()
     }
     
     public func activateMoveRight()
     {
-        if !combatAction && self.world != nil
+        if !combatAction && self.world != nil && !self.moveRight  && !self.dashLeft && !self.dashRight && !self.isHit && !self._hasWon && !self._hasLoss
         {
-            self.moveRight = true
+            self._moveRight = true
             
-            //let playerAnimationName: String = self.name + "_walking"
+            let reverse: Bool = self._direction == -1 ? true : false
+            
             let playerAnimationName: String = "beta_walking"
-            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), loop: true, speed: 2.0)
+            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), loop: true, reverse: reverse, speed: 2.0)
         }
     }
     
     public func deactivateMoveRight()
     {
-        self.stopMoving()
+        self.stopWalking()
     }
     
-    private func stopMoving()
+    private func stopWalking()
     {
         if self.world != nil
         {
-            self.moveLeft = false
-            self.moveRight = false
+            self._moveLeft = false
+            self._moveRight = false
         
             let animationPlaying = self.world?.entitesAnimated[self.name]?.glModel.animationController.animation
         
-            //if (self.name + "_walking") == animationPlaying!
-            if ("beta_walking") == animationPlaying!
+            if "beta_walking" == animationPlaying!
             {
                 self.world?.entitesAnimated[self.name]?.glModel.animationController.stop()
             }
@@ -100,98 +325,189 @@ class Fighter {
         
     }
     
+    private func stopMovingLeft()
+    {
+        if self.world != nil && (self.moveLeft || self.dashLeft) && !self._hasWon && !self._hasLoss
+        {
+            self._moveLeft = false
+            self._dashLeft = false
+            
+            let animationPlaying = self.world?.entitesAnimated[self.name]?.glModel.animationController.animation
+            
+            if "beta_walking" == animationPlaying! || "beta_step" == animationPlaying!
+            {
+                self.world?.entitesAnimated[self.name]?.glModel.animationController.stop()
+            }
+        }
+    }
+    
+    private func stopMovingRight()
+    {
+        if self.world != nil && (self.moveRight || self.dashRight) && !self._hasWon && !self._hasLoss
+        {
+            self._moveRight = false
+            self._dashRight = false
+            
+            let animationPlaying = self.world?.entitesAnimated[self.name]?.glModel.animationController.animation
+            
+            if "beta_walking" == animationPlaying! || "beta_step" == animationPlaying!
+            {
+                self.world?.entitesAnimated[self.name]?.glModel.animationController.stop()
+            }
+        }
+    }
+    
     public func activateDashLeft()
     {
-        if !self.combatAction && self.world != nil
+        if !self.combatAction && self.world != nil && !self.blocking && !self.isHit && !self._hasWon && !self._hasLoss
         {
-            // Set combat action flag
-            self.combatAction = true
+            self._dashLeft = true
             
-            self.dashLeft = true
+            self.stopWalking()
             
-            self.stopMoving()
+            let reverse: Bool = self._direction == 1 ? true : false
             
-            //let playerAnimationName: String = self.name + "_step"
             let playerAnimationName: String = "beta_step"
-            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), reverse: true, speed: 3.0, completion: self.dashActionComplete)
+            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), reverse: reverse, speed: 3.0, completion: self.dashActionComplete)
         }
     }
     
     public func activateDashRight()
     {
-        if !self.combatAction && self.world != nil
+        if !self.combatAction && self.world != nil && !self.blocking && !self.isHit && !self._hasWon && !self._hasLoss
         {
-            // Set combat action flag
-            self.combatAction = true
             
-            self.dashRight = true
+            self._dashRight = true
             
-            self.stopMoving()
+            self.stopWalking()
             
-            //let playerAnimationName: String = self.name + "_step"
+            let reverse: Bool = self._direction == -1 ? true : false
             let playerAnimationName: String = "beta_step"
-            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), speed: 3.0, completion: self.dashActionComplete)
+            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), reverse: reverse, speed: 3.0, completion: self.dashActionComplete)
         }
     }
     
-    public func punchButton()
+    public func punch()
     {
-        if !combatAction && self.world != nil
+        if !combatAction && self.world != nil && !self.dashLeft && !self.dashRight && !self.blocking && !self.isHit && !self._hasWon && !self._hasLoss
         {
             // Set combat action flag
-            self.combatAction = true
+            self._combatAction = true
             
-            self.stopMoving()
+            self._canDamageFromAction = true
+            
+            self.stopWalking()
             
             // Choose random punch animation
-            let randomIndex = Int(arc4random_uniform(UInt32(4)))
-            //let playerAnimationName: String = self.name + "_punch_\(randomIndex+1)"
-            let playerAnimationName: String = "beta_punch_\(randomIndex+1)"
+            let randomIndex = Int(arc4random_uniform(UInt32(4)))+1
+            let playerAnimationName: String = "beta_punch_\(randomIndex)"
             
             self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), speed: self.actionSpeed, completion: self.combatActionComplete)
             
         }
     }
     
-    public func kickButton()
+    public func kick()
     {
-        if !combatAction && self.world != nil
+        if !combatAction && self.world != nil && !self.dashLeft && !self.dashRight && !self.blocking && !self.isHit && !self._hasWon && !self._hasLoss
         {
             // Set combat action flag
-            self.combatAction = true
+            self._combatAction = true
             
-            self.stopMoving()
+            self._canDamageFromAction = true
             
-            //let playerAnimationName: String = self.name + "_kick"
+            self.stopWalking()
+            
             let playerAnimationName: String = "beta_kick"
             self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), speed: self.actionSpeed, completion: self.combatActionComplete)
         }
     }
     
-    public func blockButton()
+    public func block()
     {
-        if !combatAction && self.world != nil
+        if !self.blocking && !self.combatAction && self.world != nil && !self.dashLeft && !self.dashRight && !self.isHit && !self._hasWon && !self._hasLoss
         {
-            // Set combat action flag
-            self.combatAction = true
+            // Set blocking flag
+            self._blocking = true
             
-            self.stopMoving()
+            self.stopWalking()
             
-            //let playerAnimationName: String = self.name + "_block"
             let playerAnimationName: String = "beta_block"
-            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), speed: self.actionSpeed, completion: self.combatActionComplete)
+            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), speed: self.actionSpeed, completion: self.blockingComplete)
+        }
+    }
+    
+    public func hit(damage: Int)
+    {
+        if self.world != nil && !self.blocking && !self._hasWon && !self._hasLoss
+        {
+            self._isHit = true
+         
+            self._blocking = false
+            self._combatAction = false
+            self.stopWalking()
+            self._dashLeft = false
+            self._dashRight = false
+            
+            self._health -= damage
+            
+            let playerAnimationName: String = "beta_hit"
+            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), speed: 2.0, completion: self.hitComplete)
+        }
+    }
+    
+    public func isAlive() -> Bool
+    {
+        return self._health > 0
+    }
+    
+    public func win()
+    {
+        if !self._hasWon && !self._hasLoss
+        {
+            self._hasWon = true
+            
+            let playerAnimationName: String = "beta_victory"
+            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), loop: false, completion: victoryComplete)
+        }
+    }
+    
+    public func lose()
+    {
+        if !self._hasLoss && !self._hasWon
+        {
+            self._hasLoss = true
+            
+            let playerAnimationName: String = "beta_defeated"
+            self.world?.entitesAnimated[self.name]?.glModel.animationController.play((playerAnimationName, (self.world?.animations[playerAnimationName]!)!), loop: false)
         }
     }
     
     public func combatActionComplete() -> Void
     {
-        self.combatAction = false
+        self._combatAction = false
+        self._canDamageFromAction = false
+    }
+    
+    public func blockingComplete() -> Void
+    {
+        self._blocking = false
+    }
+    
+    public func hitComplete() -> Void
+    {
+        self._isHit = false
     }
     
     public func dashActionComplete() -> Void
     {
-        self.combatAction = false
-        self.dashLeft = false
-        self.dashRight = false
+        self._combatAction = false
+        self._dashLeft = false
+        self._dashRight = false
+    }
+    
+    public func victoryComplete() -> Void
+    {
+        self._world?.gameOver = true
     }
 }

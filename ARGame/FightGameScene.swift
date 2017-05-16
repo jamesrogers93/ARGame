@@ -12,8 +12,9 @@ class FightGameScene : Scene
 {
     private let startDistance: Float = 70.0
     
-    public var player: Fighter = Fighter()
-    public var enemy:  Fighter = Fighter()
+    public var player: FighterPlayer = FighterPlayer()
+    public var enemy:  FighterAI = FighterAI()
+    public var gameOver: Bool = false
     
     override init()
     {
@@ -72,6 +73,10 @@ class FightGameScene : Scene
         // And transform the enemy to it's starting position
         super.entitesAnimated[self.enemy.name]?.translate(GLKVector3Make(startDistance, 0.0, 0.0))
         super.entitesAnimated[self.enemy.name]?.rotate(-1.5, GLKVector3Make(0.0, 1.0, 0.0))
+        
+        // Set the players directions
+        self.player.direction = 1
+        self.enemy.direction = -1
         
         // Now load in the annimations for the 2 characters
         loadAllAnimations()
@@ -181,6 +186,24 @@ class FightGameScene : Scene
         if !(super.addAnimation(animation))
         {
             print("failed to load beta_block")
+        }
+        
+        animation = ("beta_hit", AnimationLoader.loadAnimationFromFile("beta_hit", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_hit")
+        }
+        
+        animation = ("beta_victory", AnimationLoader.loadAnimationFromFile("beta_victory", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_victory")
+        }
+        
+        animation = ("beta_defeated", AnimationLoader.loadAnimationFromFile("beta_defeated", "bvh")!)
+        if !(super.addAnimation(animation))
+        {
+            print("failed to load beta_defeated")
         }
     }
 }

@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum FighterStates {
-    case S_ATTACK
-    case S_BLOCK
-    case S_DODGE
-    case S_MOVETOPLAYER
-    case S_WIN
-    case S_LOSE
+enum FighterStates: Int
+{
+    case S_END = -1
+    case S_COMBAT = 0
+    case S_MOVETOPLAYER = 1
+    case S_WIN = 2
+    case S_LOSE = 3
 }

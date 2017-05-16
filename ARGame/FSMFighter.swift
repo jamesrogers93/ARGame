@@ -16,14 +16,12 @@ class FSMFighter : FSM<FighterAI>
         super.init(parent)
         
         // Add the states to the
-        super.addState(STATEAttack())
-        super.addState(STATEBlock())
-        super.addState(STATEDodge())
+        super.addState(STATECombat())
         super.addState(STATEMoveToPlayer())
         super.addState(STATEWin())
         super.addState(STATELose())
         
         // Set the current state
-        super.currentState = FighterStates.S_MOVETOPLAYER.hashValue
+        super.currentState = FighterStates.S_MOVETOPLAYER.rawValue
     }
 }
