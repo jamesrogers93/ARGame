@@ -106,6 +106,7 @@
 		1AC181771E7355E0008C07F3 /* ShaderBasic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181751E7355E0008C07F3 /* ShaderBasic.vsh */; };
 		1AC1817A1E7356D0008C07F3 /* ShaderMaterial.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */; };
 		1AC1817B1E7356D0008C07F3 /* ShaderMaterial.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */; };
+		1AD3C11E1ECCFBA8001344D4 /* DifficultySelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3C11D1ECCFBA8001344D4 /* DifficultySelectionController.swift */; };
 		1ADFA8B81E64C05900588345 /* AssimpLoaderCInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFA8B71E64C05900588345 /* AssimpLoaderCInterface.cpp */; };
 		1AE317931E93C49900972BC2 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE317921E93C49900972BC2 /* Skeleton.swift */; };
 		1AE8748F1E97ED39009F1D4A /* AnimationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */; };
@@ -267,6 +268,7 @@
 		1AC181751E7355E0008C07F3 /* ShaderBasic.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderBasic.vsh; path = Shaders/ShaderBasic.vsh; sourceTree = "<group>"; };
 		1AC181781E7356D0008C07F3 /* ShaderMaterial.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMaterial.fsh; path = Shaders/ShaderMaterial.fsh; sourceTree = "<group>"; };
 		1AC181791E7356D0008C07F3 /* ShaderMaterial.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderMaterial.vsh; path = Shaders/ShaderMaterial.vsh; sourceTree = "<group>"; };
+		1AD3C11D1ECCFBA8001344D4 /* DifficultySelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultySelectionController.swift; sourceTree = "<group>"; };
 		1ADFA8B71E64C05900588345 /* AssimpLoaderCInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssimpLoaderCInterface.cpp; sourceTree = "<group>"; };
 		1AE317921E93C49900972BC2 /* Skeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
 		1AE8748E1E97ED39009F1D4A /* AnimationLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationLoader.swift; sourceTree = "<group>"; };
@@ -641,6 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				1A44DCF21E55F87E0036E753 /* MainMenuController.swift */,
+				1AD3C11D1ECCFBA8001344D4 /* DifficultySelectionController.swift */,
 				1A5FCF0D1EBF478300C3E698 /* CharacterSelectionController.swift */,
 				1A44DCC61E55F34C0036E753 /* FightGameController.swift */,
 			);
@@ -1028,6 +1031,7 @@
 				1A0901B11EC7A2C800566088 /* STATELose.swift in Sources */,
 				1AF835E71EC3A2F700EA282A /* FightGameScene.swift in Sources */,
 				1A0901BC1ECADBB200566088 /* Multiplications.swift in Sources */,
+				1AD3C11E1ECCFBA8001344D4 /* DifficultySelectionController.swift in Sources */,
 				1A0901A31EC79F4E00566088 /* STATE.swift in Sources */,
 				1AE317931E93C49900972BC2 /* Skeleton.swift in Sources */,
 				1A0901A11EC79E0C00566088 /* FSMFighter.swift in Sources */,

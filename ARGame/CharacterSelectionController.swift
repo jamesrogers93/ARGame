@@ -18,7 +18,7 @@ class CharacterSelectionController: GLKViewController
     
     let scene: Scene = CharacterSelectionScene()
     
-    // Gestures
+    var difficulty: FighterAIDifficulty = .AI_NORMAL
     
     
     deinit
@@ -110,6 +110,9 @@ class CharacterSelectionController: GLKViewController
             // Initalise the fight game view controller scene with the scene in this file
             destinationViewController.scene.initalise(scene: self.scene)
             
+            // Set the difficulty in the CharacterSelectionController
+            destinationViewController.scene.enemy.difficulty = self.difficulty
+            
         }
     }
     
@@ -187,4 +190,9 @@ class CharacterSelectionController: GLKViewController
         }
     }
 
+    @IBAction func backButtonPressed()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

@@ -17,10 +17,11 @@ enum FighterAIDifficulty: Int
 
 class FighterAI : Fighter
 {
-    private static let DEFAULT_DIFFICULTY: FighterAIDifficulty = .AI_NORMAL
+    private static var DIFFICULTY: FighterAIDifficulty = .AI_NORMAL
+    private static let STRENGTH: [Int: Int] = [FighterAIDifficulty.AI_EASY.rawValue: 5,FighterAIDifficulty.AI_NORMAL.rawValue: 10, FighterAIDifficulty.AI_HARD.rawValue: 20 ]
     
     private var _brain: FSMFighter? = nil
-    private var _difficulty: FighterAIDifficulty = DEFAULT_DIFFICULTY
+    private var _difficulty: FighterAIDifficulty = DIFFICULTY
     private var _waitCount: Int = 0
     
     var difficulty: FighterAIDifficulty
@@ -28,6 +29,11 @@ class FighterAI : Fighter
         get
         {
             return self._difficulty
+        }
+        
+        set(newVal)
+        {
+            self._difficulty = newVal
         }
     }
     
@@ -59,7 +65,7 @@ class FighterAI : Fighter
     
         if super.distanceToOpponent < 45.0 && super.combatAction && super.canDamageFromAction
         {
-            super.world?.player.hit(damage: self.strength)
+            super.world?.player.hit(damage: FighterAI.STRENGTH[self.difficulty.rawValue]!)
             super.canDamageFromAction = false
         }
     }

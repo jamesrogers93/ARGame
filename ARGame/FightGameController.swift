@@ -334,8 +334,14 @@ class FightGameController: GLKViewController
         //self.dismiss(animated: false, completion: nil)
         
         let presentingViewController = self.presentingViewController
+        let presentingViewController2 = presentingViewController?.presentingViewController
+        
         self.dismiss(animated: false, completion: {
-            presentingViewController!.dismiss(animated: true, completion: {})
+            
+            presentingViewController!.dismiss(animated: false, completion: {
+                
+                presentingViewController2!.dismiss(animated: true, completion: {})
+            })
         })
         
         //self.dismiss(animated: true, completion: nil)
