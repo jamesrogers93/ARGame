@@ -98,6 +98,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="destroyController::" destination="BV1-FR-VrT" eventType="touchUpInside" id="Sie-B1-j0l"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I27-gr-ejs" userLabel="endMessage">
                                 <rect key="frame" x="175" y="79" width="316" height="74"/>
@@ -119,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1653.8230884557722" y="120.8"/>
+            <point key="canvasLocation" x="721" y="1198"/>
         </scene>
         <!--Character Selection Controller-->
         <scene sceneID="H3Q-KO-rVy">
@@ -145,7 +148,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="CONTINUE"/>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="XwU-wl-7wc"/>
+                                    <segue destination="BV1-FR-VrT" kind="presentation" id="agG-hc-sc9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECT YOUR CHARACTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDW-1U-VYx">
@@ -176,7 +179,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="904.49775112443785" y="120.8"/>
+            <point key="canvasLocation" x="1322" y="121"/>
         </scene>
         <!--Main Menu Controller-->
         <scene sceneID="Ph9-LQ-IuW">
@@ -203,7 +206,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="START"/>
                                 <connections>
-                                    <segue destination="Orr-m5-gxu" kind="show" id="tyl-Wq-XnH"/>
+                                    <segue destination="Orr-m5-gxu" kind="presentation" id="wqy-zL-KZa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -212,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qhj-wE-LvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121.88905547226388" y="122.40000000000001"/>
+            <point key="canvasLocation" x="169" y="121"/>
         </scene>
     </scenes>
 </document>

@@ -359,7 +359,7 @@
 			name = Fighters;
 			sourceTree = "<group>";
 		};
-		1A09019F1EC79C3800566088 /* State Machine */ = {
+		1A09019F1EC79C3800566088 /* AI */ = {
 			isa = PBXGroup;
 			children = (
 				1A0901A01EC79E0C00566088 /* FSMFighter.swift */,
@@ -369,7 +369,7 @@
 				1A0901AE1EC7A2B500566088 /* STATEWin.swift */,
 				1A0901B01EC7A2C800566088 /* STATELose.swift */,
 			);
-			name = "State Machine";
+			name = AI;
 			sourceTree = "<group>";
 		};
 		1A0901A41EC7A07500566088 /* State Machine */ = {
@@ -402,11 +402,12 @@
 		1A22E5DE1EB3D3500013D588 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				1A0901BA1ECADB9800566088 /* Math */,
+				1AD3C11C1ECB7EAE001344D4 /* Animation */,
 				1A4F60701E5CC42000B4C602 /* AR */,
 				1A3669601E756B3500C7C53E /* Entity */,
 				1A755C261E59E06A00E2FFBC /* FileLoading */,
 				1AC1816A1E72C159008C07F3 /* Graphics */,
+				1A0901BA1ECADB9800566088 /* Math */,
 				1A4492761E97908B00C27B4B /* Scene */,
 				1A0901A41EC7A07500566088 /* State Machine */,
 			);
@@ -416,7 +417,7 @@
 		1A22E5DF1EB3D3DC0013D588 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				1A09019F1EC79C3800566088 /* State Machine */,
+				1A09019F1EC79C3800566088 /* AI */,
 				1A0901901EC7615100566088 /* Fighters */,
 				1A22E5E01EB3D3F30013D588 /* Scenes */,
 			);
@@ -529,13 +530,8 @@
 		1A3669601E756B3500C7C53E /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				1A44925C1E96A9B900C27B4B /* Entity.swift */,
 				1A4492741E978CC600C27B4B /* Model.swift */,
-				1A44926E1E9787BD00C27B4B /* Mesh.swift */,
-				1A435D5A1E83BB6F00D44433 /* Vertex.swift */,
-				1A435D5C1E83BBC000D44433 /* Material.swift */,
-				1AE317921E93C49900972BC2 /* Skeleton.swift */,
-				1A6607A11E7A808D00FAF78B /* Animation.swift */,
+				1A44925C1E96A9B900C27B4B /* Entity.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -772,16 +768,36 @@
 		1AC1816A1E72C159008C07F3 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				1AD3C11B1ECB7E79001344D4 /* Effects */,
 				1AC181611E72AA68008C07F3 /* Shaders */,
+				1A44926E1E9787BD00C27B4B /* Mesh.swift */,
+				1A435D5A1E83BB6F00D44433 /* Vertex.swift */,
+				1A435D5C1E83BBC000D44433 /* Material.swift */,
 				1AC181211E71DF7B008C07F3 /* Shader.swift */,
-				1AC1816B1E72C1AD008C07F3 /* Effect.swift */,
-				1AC1816F1E734D4E008C07F3 /* EffectBasic.swift */,
-				1AC181721E735597008C07F3 /* EffectMaterial.swift */,
-				1A3036271E8566B500484367 /* EffectMatAnim.swift */,
 				1A05A47B1E9A31AB003B8104 /* TexturePool.swift */,
 				1A0901931EC78AAF00566088 /* ModelPool.swift */,
 			);
 			name = Graphics;
+			sourceTree = "<group>";
+		};
+		1AD3C11B1ECB7E79001344D4 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				1AC1816B1E72C1AD008C07F3 /* Effect.swift */,
+				1AC1816F1E734D4E008C07F3 /* EffectBasic.swift */,
+				1AC181721E735597008C07F3 /* EffectMaterial.swift */,
+				1A3036271E8566B500484367 /* EffectMatAnim.swift */,
+			);
+			name = Effects;
+			sourceTree = "<group>";
+		};
+		1AD3C11C1ECB7EAE001344D4 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				1AE317921E93C49900972BC2 /* Skeleton.swift */,
+				1A6607A11E7A808D00FAF78B /* Animation.swift */,
+			);
+			name = Animation;
 			sourceTree = "<group>";
 		};
 		1AE874901E97F294009F1D4A /* Assimp */ = {

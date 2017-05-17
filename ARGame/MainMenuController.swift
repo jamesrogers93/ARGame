@@ -11,6 +11,11 @@ import UIKit
 
 class MainMenuController : UIViewController
 {
+    deinit
+    {
+        print("DEINIT")
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -20,6 +25,4 @@ class MainMenuController : UIViewController
     {
         super.didReceiveMemoryWarning()
     }
-    
-    
 }

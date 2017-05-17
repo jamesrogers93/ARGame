@@ -35,12 +35,16 @@ class FightGameController: GLKViewController
     
     deinit
     {
+        
+        
         self.tearDownGL()
         
         if EAGLContext.current() === self.context
         {
             EAGLContext.setCurrent(nil)
         }
+        
+        self.arHandler.stop()
     }
     
     override func viewDidLoad()
@@ -79,6 +83,8 @@ class FightGameController: GLKViewController
     override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
+        
+        self.presentedViewController?.dismiss(animated: false, completion: nil)
         
         // Start the AR handler
         self.arHandler.start()
@@ -310,5 +316,33 @@ class FightGameController: GLKViewController
                 self.scene.player.activateDashRight()
             }
         }
+    }
+    
+    @IBAction func destroyController(_ sender: UIButton, _ event: UIEvent)
+    {
+        self.tearDownGL()
+        
+        if EAGLContext.current() === self.context
+        {
+            EAGLContext.setCurrent(nil)
+        }
+        
+        self.arHandler.stop()
+        
+        //self.dismiss(animated: false, completion: nil)
+        //self.dismiss(animated: false, completion: nil)
+        
+        let presentingViewController = self.presentingViewController
+        self.dismiss(animated: false, completion: {
+            presentingViewController!.dismiss(animated: true, completion: {})
+        })
+        
+        //self.dismiss(animated: true, completion: nil)
+        //var presentingViewController2: UIViewController! = self.presentedViewController
+        
+        //self.dismiss(animated: false) {
+
+        //    presentingViewController2?.dismiss(animated: false, completion: nil)
+        //}
     }
 }
