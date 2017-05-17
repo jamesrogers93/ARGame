@@ -21,6 +21,9 @@
 @interface ARHandler: NSObject <CameraVideoTookPictureDelegate>
 {}
 
+/*!   Singleton  */
++ (id)getInstance;
+
 /*!  This initalises the ARHandler. */
 - (void) onViewLoad;
 

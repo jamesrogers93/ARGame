@@ -24,7 +24,8 @@ class FightGameController: GLKViewController
     
     let scene: FightGameScene = FightGameScene()
     
-    var arHandler: ARHandler = ARHandler()
+    //var arHandler: ARHandler = ARHandler()
+    var arHandler: ARHandler = ARHandler.getInstance() as! ARHandler
     
     @IBOutlet weak var playerHealthBar: UIProgressView!
     @IBOutlet weak var enemyHealthBar: UIProgressView!
