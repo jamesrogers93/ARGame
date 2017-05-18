@@ -175,7 +175,7 @@ class CharacterSelectionController: GLKViewController
     func respondToSwipeGesture(_ gesture: UISwipeGestureRecognizer)
     {
         
-        let child = self.scene as! CharacterSelectionScene
+        /*let child = self.scene as! CharacterSelectionScene
             
         switch gesture.direction
         {
@@ -187,7 +187,7 @@ class CharacterSelectionController: GLKViewController
             break
         default:
             break
-        }
+        }*/
     }
 
     @IBAction func backButtonPressed()

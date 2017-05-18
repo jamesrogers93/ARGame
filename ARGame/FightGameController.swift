@@ -179,11 +179,11 @@ class FightGameController: GLKViewController
             
             if self.scene.player.hasWon
             {
-                self.endMessage.text = "You Won"
+                self.endMessage.text = "You Win!"
             }
             else
             {
-                self.endMessage.text = "You Lose"
+                self.endMessage.text = "You Lose!"
             }
         }
         
@@ -340,7 +340,7 @@ class FightGameController: GLKViewController
             
             presentingViewController!.dismiss(animated: false, completion: {
                 
-                presentingViewController2!.dismiss(animated: true, completion: {})
+                presentingViewController2!.dismiss(animated: false, completion: {})
             })
         })
         
