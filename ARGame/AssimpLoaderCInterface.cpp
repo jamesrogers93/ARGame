@@ -342,6 +342,15 @@ const char* mlGetNodeChildren(const void *loader, const char *name)
     return ptrLoader->getNodeChildren(name);
 }
 
+const float* mlGetNodeTransformation(const void *loader, const char *name)
+{
+    // Cast void pointer, loader to AssimpLoader type
+    AssimpLoader *ptrLoader = (AssimpLoader *)loader;
+    
+    // Return the value retrieved from AssimpLoader
+    return ptrLoader->getNodeTransformation(name);
+}
+
 
 
 

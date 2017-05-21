@@ -27,6 +27,7 @@ struct CNodeHierarchy
     std::string name;
     
     std::map<std::string, std::string> skeleton;
+    std::map<std::string, std::vector<float>> nodeTransforms;
     
     CNodeHierarchy()
     {}
@@ -74,6 +75,7 @@ struct CBone
     std::vector<unsigned int> vertexIds;
     std::vector<float> weights;
     float offsetMatrix[16];
+    //float initalRotation[16];
     
     CBone(std::string name, std::vector<unsigned int> vertexIds, std::vector<float> weights, float *offsetMatrix)
         : name(name), vertexIds(vertexIds), weights(weights)
@@ -362,11 +364,19 @@ public:
      */
     const char* getNodeRoot();
     
-    /**  Gets the entire heirarchy of the node tree.
+    /**  Gets the children names of a node.
      *
-     *  @return The char array of the heirarchy.
+     *  @param name The name of the node we want to retrieve the children from.
+     *  @return The char array of the children names from the node. Note: The string contains all children names. Each child is seperated by a tilda ~.
      */
     const char* getNodeChildren(const char *name);
+    
+    /**  Gets the transformation for a node.
+     *
+     *  @param name The name of the node we want to retrieve the transformation from.
+     *  @return The float array of the node. Note: returns a 16 element array for a 4x4 row major matrix.
+     */
+    const float* getNodeTransformation(const char *name);
     
 private:
     

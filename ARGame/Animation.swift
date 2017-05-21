@@ -49,17 +49,18 @@ class AnimationPlayBack
     private var previousTime: TimeInterval = 0.0
     private var isPlay: Bool = false
     private var isLoop: Bool = false
+    private var reverse: Bool = false
+    private var speed: Float = 1.0
+    private var completion: () -> Void = {}
     
-    public func play(_ animation:(String, Animation))
+    public func play(_ animation:(String, Animation), loop: Bool = false, reverse: Bool = false, speed: Float = 1.0, completion: @escaping () -> Void = {})
     {
         self.initalise(animation)
-        self.restart(false)
-    }
-    
-    public func loop(_ animation:(String, Animation))
-    {
-        self.initalise(animation)
-        self.restart(true)
+        self.reverse = reverse
+        self.speed = speed
+        self.completion = completion
+        
+        self.restart(loop)
     }
     
     public func stop()
@@ -110,7 +111,7 @@ class AnimationPlayBack
             let time: TimeInterval = NSDate().timeIntervalSince1970 - self.previousTime
             let timef: Float = Float(time)
             
-            if timef > (self.animationDuration / self.animationTicksPerSecond)
+            if timef > ((self.animationDuration / self.animationTicksPerSecond) / self.speed)
             {
                 
                 if self.isLoop
@@ -122,15 +123,29 @@ class AnimationPlayBack
                 {
                     // Stop the animation
                     self.stop()
+                    
+                    // Call the callback function if specified
+                    self.completion()
+                    /*if self.completion != nil
+                    {
+                        self.completion!()
+                    }*/
                 }
             }
             else
             {
                 
                 // Calculate animation frame
-                let timeInTicks: Float = timef * self.animationTicksPerSecond
+                let timeInTicks: Float = timef * self.animationTicksPerSecond * self.speed
         
-                self.animationFrame = Int(timeInTicks)
+                if self.reverse
+                {
+                    self.animationFrame = Int(self.animationDuration - timeInTicks)
+                }
+                else
+                {
+                    self.animationFrame = Int(timeInTicks)
+                }
             }
         }
     }

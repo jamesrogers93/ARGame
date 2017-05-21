@@ -19,6 +19,26 @@ class Scene
     
     private func initaliseScene() {}
     
+    
+    public func initalise(xml: String)
+    {
+        self.effectMaterial = EffectMaterial()
+        self.effectMaterialAnimated = EffectMatAnim()
+        
+        let sceneLoader: SceneLoader = SceneLoader()
+        sceneLoader.loadSceneFromFile(xml, self)
+    }
+    
+    public func initalise(scene: Scene)
+    {
+        self.effectMaterial = scene.effectMaterial
+        self.effectMaterialAnimated = scene.effectMaterialAnimated
+        
+        self.entitesStatic = scene.entitesStatic
+        self.entitesAnimated = scene.entitesAnimated
+        self.animations = scene.animations
+    }
+    
     public func destroyScene()
     {
         // Destroy the static entities
@@ -78,6 +98,33 @@ class Scene
         return true
     }
     
+    public func deleteEntityStatic(_ entity: String)
+    {
+        if (self.entitesStatic[entity] != nil)
+        {
+            self.entitesStatic[entity]?.glModel.destroy()
+            self.entitesStatic.removeValue(forKey: entity)
+            
+        }
+    }
+    
+    public func deleteEntityAnimated(_ entity: String)
+    {
+        if (self.entitesAnimated[entity] != nil)
+        {
+            self.entitesAnimated[entity]?.glModel.destroy()
+            self.entitesAnimated.removeValue(forKey: entity)
+        }
+    }
+    
+    public func deleteAnimation(_ animation: String)
+    {
+        if (self.animations[animation] != nil)
+        {
+            self.animations.removeValue(forKey: animation)
+        }
+    }
+    
     public func getEntityStatic(_ name: String) -> EntityStatic?
     {
         return self.entitesStatic[name]
@@ -131,6 +178,8 @@ class Scene
             }
         }
     }
+    
+    public func updateScene(delta: Double){}
     
     public func updateAnimations()
     {

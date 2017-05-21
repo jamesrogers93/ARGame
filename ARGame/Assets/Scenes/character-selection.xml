@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<scene>
+    
+	<entities>
+        <entity name="beta" file="beta"/>
+    </entities>
+    
+	<animations>
+		<animation name="beta_breathing_idle" file="beta_breathing_idle"/>
+	</animations>
+    
+</scene>

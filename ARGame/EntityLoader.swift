@@ -1,5 +1,5 @@
 //
-//  SceneLoader.swift
+//  EntityLoader.swift
 //  ARGame
 //
 //  Created by James Rogers on 28/04/2017.

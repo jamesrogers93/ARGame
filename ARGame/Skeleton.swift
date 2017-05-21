@@ -12,29 +12,22 @@ struct Skeleton
 {
     var name: String = ""
     var children: Array<Skeleton> = Array()
+    var transformation: GLKMatrix4 = GLKMatrix4Identity
     
     init()
     {}
     
-    init(_ _name: String, _ _children: Array<Skeleton>)
+    init(_ _name: String, _ _children: Array<Skeleton>, _ _transformation: GLKMatrix4)
     {
         self.name = _name
         self.children = _children
+        self.transformation = _transformation
     }
     
-    init(_ _name: String, _ _children: Array<String>)
+    init(_ _name: String, _ _transformation: GLKMatrix4)
     {
         self.name = _name
-        
-        for i in 0..<_children.count
-        {
-            self.children.append(Skeleton(_children[i], Array<Skeleton>()))
-        }
-    }
-    
-    init(_ _name: String)
-    {
-        self.name = _name
+        self.transformation = _transformation
     }
     
     public mutating func insertChildrenAt(_ _name: String, _ _children: Array<Skeleton>) -> Bool

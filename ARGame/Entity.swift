@@ -34,6 +34,11 @@ class Entity
     private var rotation:GLKMatrix4 = GLKMatrix4Identity
     
     /**
+     The position vector
+    */
+    private var _position:GLKVector3 = GLKVector3Make(0.0, 0.0, 0.0)
+    
+    /**
     Constructor is file private
     */
     fileprivate init() {}
@@ -46,6 +51,17 @@ class Entity
         get
         {
             return self._model
+        }
+    }
+    
+    /**
+     Accessor method for the model matrix
+     */
+    public var position: GLKVector3
+    {
+        get
+        {
+            return self._position
         }
     }
     
@@ -67,7 +83,10 @@ class Entity
      */
     public func translate(_ translation: GLKVector3)
     {
-        self.translation = GLKMatrix4TranslateWithVector3(GLKMatrix4Identity, translation)
+        
+        self._position = GLKVector3Add(self._position, translation)
+        
+        self.translation = GLKMatrix4TranslateWithVector3(GLKMatrix4Identity, self._position)
         self.updateModelMatrix()
     }
     
@@ -164,7 +183,8 @@ class EntityAnimated : Entity
      - returns:
      The ModelAnimated instance
      */
-    var glModel: ModelAnimated {
+    var glModel: ModelAnimated
+    {
         get
         {
             return self._glModel
